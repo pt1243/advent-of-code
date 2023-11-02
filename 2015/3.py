@@ -1,7 +1,12 @@
-def problem_1():
-    from collections import defaultdict
-    with open('./2015/resources/3.txt') as f:
-        directions = f.read().strip()
+from collections import defaultdict
+from itertools import batched
+
+
+with open('./2015/resources/3.txt') as f:
+    directions = f.read().strip()
+
+
+def problem_1():    
     houses = defaultdict(int)
     houses[(0, 0)] = 1
     current_x, current_y = 0, 0
@@ -20,10 +25,6 @@ def problem_1():
 
 
 def problem_2():
-    from collections import defaultdict
-    from itertools import batched
-    with open('./2015/resources/3.txt') as f:
-        directions = f.read().strip()
     houses = defaultdict(int)
     houses[(0, 0)] = 1
     santa_x, santa_y = 0, 0

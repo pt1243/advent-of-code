@@ -1,8 +1,11 @@
-def problem_1():
-    import numpy as np
-    with open('./2015/resources/6.txt') as f:
-        instructions = [line.strip() for line in f]
+import numpy as np
 
+
+with open('./2015/resources/6.txt') as f:
+    instructions = [line.strip() for line in f]
+
+
+def problem_1():
     lights = np.zeros((1000, 1000), dtype=bool)
     for instruction in instructions:
         start_str, _, end_str = instruction.partition(" through ")
@@ -22,10 +25,6 @@ def problem_1():
 
 
 def problem_2():
-    import numpy as np
-    with open('./2015/resources/6.txt') as f:
-        instructions = [line.strip() for line in f]
-
     lights = np.zeros((1000, 1000), dtype=int)
     for instruction in instructions:
         start_str, _, end_str = instruction.partition(" through ")

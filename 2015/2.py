@@ -1,6 +1,8 @@
+with open("./2015/resources/2.txt") as f:
+    boxes = [line.strip() for line in f]
+
+
 def problem_1():
-    with open("./2015/resources/2.txt") as f:
-        boxes = [line.strip() for line in f]
     total = 0
     for line in boxes:
         l, w, h = (int(i) for i in line.split('x'))
@@ -13,8 +15,6 @@ def problem_1():
 
 
 def problem_2():
-    with open("./2015/resources/2.txt") as f:
-        boxes = [line.strip() for line in f]
     total = 0
     for line in boxes:
         l, w, h = (int(i) for i in line.split('x'))

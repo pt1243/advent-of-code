@@ -1,6 +1,8 @@
+from hashlib import md5
+prefix = "ckczppom"
+
+
 def problem_1():
-    from hashlib import md5
-    prefix = "ckczppom"
     i = 1
     while True:
         combined = (prefix + str(i)).encode()
@@ -12,8 +14,6 @@ def problem_1():
 
 
 def problem_2():
-    from hashlib import md5
-    prefix = "ckczppom"
     i = 1
     while True:
         combined = (prefix + str(i)).encode()

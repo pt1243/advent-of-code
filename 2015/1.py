@@ -1,7 +1,9 @@
+with open('./2015/resources/1.txt') as f:
+    input_string = f.read().strip()
+
+
 def problem_1():
     floor = 0
-    with open('./2015/resources/1.txt') as f:
-        input_string = f.read().strip()
     for char in input_string:
         if char == "(":
             floor += 1
@@ -12,8 +14,6 @@ def problem_1():
 
 def problem_2():
     floor = 0
-    with open('./2015/resources/1.txt') as f:
-        input_string = f.read().strip()
     for idx, char in enumerate(input_string):
         if char == "(":
             floor += 1

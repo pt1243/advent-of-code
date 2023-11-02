@@ -1,7 +1,11 @@
-def problem_1():
-    with open('./2015/resources/5.txt') as f:
-        strings = [line.strip() for line in f]
+from string import ascii_lowercase
 
+
+with open('./2015/resources/5.txt') as f:
+    strings = [line.strip() for line in f]
+
+
+def problem_1():
     total = 0
     for s in strings:
         vowel_count = s.count("a") + s.count("e") + s.count("i") + s.count("o") + s.count("u")
@@ -19,10 +23,6 @@ def problem_1():
 
 
 def problem_2():
-    from string import ascii_lowercase
-
-    with open('./2015/resources/5.txt') as f:
-        strings = [line.strip() for line in f]
     total = 0
     for s in strings:
         pair_found = False
