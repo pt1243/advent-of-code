@@ -121,7 +121,7 @@ def problem_2():
     for connection in connections:
         Wire(connection)
     
-    Wire(f"{Wire.lookup["a"].evaluate()} -> b")
+    Wire(f"{Wire.lookup['a'].evaluate()} -> b")
     for wire in Wire.lookup.values():
         wire.evaluate.cache_clear()
 
