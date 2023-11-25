@@ -1,0 +1,25 @@
+from collections import Counter
+
+
+with open('./2016/resources/6.txt') as f:
+    lines = [line.strip() for line in f]
+
+
+def problem_1():
+    counters = [Counter() for _ in lines[0]]
+
+    for line in lines:
+        for idx, char in enumerate(line):
+            counters[idx].update((char,))
+    
+    print("".join(c.most_common(1)[0][0] for c in counters))
+
+
+def problem_2():
+    counters = [Counter() for _ in lines[0]]
+
+    for line in lines:
+        for idx, char in enumerate(line):
+            counters[idx].update((char,))
+    
+    print("".join(c.most_common()[-1][0] for c in counters))
