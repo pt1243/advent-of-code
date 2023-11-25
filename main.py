@@ -3,14 +3,14 @@ from time import perf_counter
 
 
 year = 2016
-day = 7
+day = 8
 problem = 2
 
 
 def main():
+    start = perf_counter()
     module = importlib.import_module(f"{year}.{day}", package=".")
     function = getattr(module, f"problem_{problem}")
-    start = perf_counter()
     function()
     print(f"{year} day {day}, problem {problem} completed in {perf_counter() - start:.3f}s")
 
