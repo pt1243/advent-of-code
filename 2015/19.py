@@ -17,10 +17,16 @@ def split_into_atoms(s: str) -> list[str]:
     return list("".join(atom_chars) for atom_chars in split_when(s, lambda c1, c2: (c1 in ascii_lowercase and c2 in ascii_uppercase) or (c1 in ascii_uppercase and c2 in ascii_uppercase)))
 
 
-class StringCandidate(NamedTuple):
-    weight: int
-    steps: int
-    content: str
+class Symbol:
+    pass
+
+
+class TerminalSymbol(Symbol):
+    pass
+
+
+class NonTerminalSymbol(Symbol):
+    pass
 
 
 def find_substring(s: str, sub: str) -> Iterable[int]:  # note: should inline for better performance
@@ -55,58 +61,60 @@ def problem_1():
 
 
 def problem_2():
-    list_substitutions: defaultdict[str, list[str]] = defaultdict(list)
-    for line in lines:
-        if "=>" in line:
-            initial, replacement = line.split(" => ")
-            # print(f"{initial = }, {replacement = }")
-            list_substitutions[initial].append(replacement)
-        elif line:
-            final_molecule = line
+    pass
+
+    # list_substitutions: defaultdict[str, list[str]] = defaultdict(list)
+    # for line in lines:
+    #     if "=>" in line:
+    #         initial, replacement = line.split(" => ")
+    #         # print(f"{initial = }, {replacement = }")
+    #         list_substitutions[initial].append(replacement)
+    #     elif line:
+    #         final_molecule = line
     
-    substitutions = {initial: tuple(replacements) for initial, replacements in list_substitutions.items()}
+    # substitutions = {initial: tuple(replacements) for initial, replacements in list_substitutions.items()}
 
 
 
-    final_molecule_length = len(final_molecule)
-    stack = ["e"]
-    steps: dict[str, int] = {"e": 0}
-    seen: set[str] = set()
-    seen_seen: set[int] = set()
+    # final_molecule_length = len(final_molecule)
+    # stack = ["e"]
+    # steps: dict[str, int] = {"e": 0}
+    # seen: set[str] = set()
+    # seen_seen: set[int] = set()
 
-    while stack:
-        current = stack.pop()
-        # seen.add(current)
-        current_steps = steps[current]
-        length_1000 = len(seen) // 1000
-        if length_1000 not in seen_seen:
-            print(f"current stack length = {len(stack)}, {current_steps = }, number seen = {len(seen)}")
-            seen_seen.add(length_1000)
-        for initial, replacements in substitutions.items():
-            if initial in current:
-                # print(f"checking {initial = }, {replacements = }")
-                len_initial = len(initial)
-                min_index = 0
-                while True:
-                    start_idx = current.find(initial, min_index)
-                    if start_idx == -1:
-                        break
-                # for start_idx in find_substring(current, initial):
-                    # print(f"checking {start_idx = }")
-                    for replacement in replacements:
-                        new = current[:start_idx] + replacement + current[start_idx+len_initial:]
-                        if len(new) > final_molecule_length or new in seen:
-                            continue
-                        new_steps = current_steps + 1
-                        steps[new] = new_steps
-                        # if new_steps > 1
-                        if new == final_molecule:
-                            print(new)
-                            print(new_steps)
-                            return
-                        stack.append(new)
-                        seen.add(new)
-                    min_index = start_idx + 1
+    # while stack:
+    #     current = stack.pop()
+    #     # seen.add(current)
+    #     current_steps = steps[current]
+    #     length_1000 = len(seen) // 1000
+    #     if length_1000 not in seen_seen:
+    #         print(f"current stack length = {len(stack)}, {current_steps = }, number seen = {len(seen)}")
+    #         seen_seen.add(length_1000)
+    #     for initial, replacements in substitutions.items():
+    #         if initial in current:
+    #             # print(f"checking {initial = }, {replacements = }")
+    #             len_initial = len(initial)
+    #             min_index = 0
+    #             while True:
+    #                 start_idx = current.find(initial, min_index)
+    #                 if start_idx == -1:
+    #                     break
+    #             # for start_idx in find_substring(current, initial):
+    #                 # print(f"checking {start_idx = }")
+    #                 for replacement in replacements:
+    #                     new = current[:start_idx] + replacement + current[start_idx+len_initial:]
+    #                     if len(new) > final_molecule_length or new in seen:
+    #                         continue
+    #                     new_steps = current_steps + 1
+    #                     steps[new] = new_steps
+    #                     # if new_steps > 1
+    #                     if new == final_molecule:
+    #                         print(new)
+    #                         print(new_steps)
+    #                         return
+    #                     stack.append(new)
+    #                     seen.add(new)
+    #                 min_index = start_idx + 1
 
 
                 
