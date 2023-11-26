@@ -1,123 +1,99 @@
 from __future__ import annotations
 
 from typing import ClassVar
-from enum import auto, Enum
 from functools import cache
 
-class ConnectionType(Enum):
-    Const = auto()
-    And = auto()
-    Or = auto()
-    Not = auto()
-    Lshift = auto()
-    Rshift = auto()
+
+with open('./2015/resources/7.txt') as f:
+        connections = [line.strip() for line in f]
+
 
 class Wire:
     lookup: ClassVar[dict[str, Wire]] = {}
 
-    def __init__(self, s: str) -> None:
-        self.name = s.split(" -> ")[1]
-        # print(f"setting name to {self.name}")
-        arrow_index = s.index("-")
-        self.lookup[self.name] = self
-        self.eval_type: ConnectionType
+    def __init__(self, input_string: str) -> None:
+        self.name = input_string.split(" -> ")[1]
+        Wire.lookup[self.name] = self
 
-        if "AND" in s:
-            self.eval_type = ConnectionType.And
-            dep1 = s[0:s.index("AND")-1]
-            dep2 = s[s.index("AND")+4:arrow_index-1]
-            try:
-                dep1 = int(dep1)
-            except ValueError:
-                pass
-            try:
-                dep2 = int(dep2)
-            except ValueError:
-                pass
-            self.dependencies = (dep1, dep2)
-        
-        elif "OR" in s:
-            self.eval_type = ConnectionType.Or
-            dep1 = s[0:s.index("OR")-1]
-            dep2 = s[s.index("OR")+3:arrow_index-1]
-            self.dependencies = (dep1, dep2)
-
-        elif "NOT" in s:
-            self.eval_type = ConnectionType.Not
-            self.dependencies = s[4:arrow_index-1]
-        
-        elif "LSHIFT" in s:
-            self.eval_type = ConnectionType.Lshift
-            dep1 = s[0:s.index("LSHIFT")-1]
-            dep2 = int(s[s.index("LSHIFT")+7:arrow_index-1])
-            self.dependencies = (dep1, dep2)
-
-        elif "RSHIFT" in s:
-            self.eval_type = ConnectionType.Rshift
-            dep1 = s[0:s.index("RSHIFT")-1]
-            dep2 = int(s[s.index("RSHIFT")+7:arrow_index-1])
-            self.dependencies = (dep1, dep2)
-            
+        if "AND" in input_string:
+            self.dep = AND(input_string.split())
+        elif "OR" in input_string:
+            self.dep = OR(input_string.split())
+        elif "NOT" in input_string:
+            self.dep = NOT(input_string.split())
+        elif "LSHIFT" in input_string:
+            self.dep = LSHIFT(input_string.split())
+        elif "RSHIFT" in input_string:
+            self.dep = RSHIFT(input_string.split())
         else:
-            self.eval_type = ConnectionType.Const
-            source = s.split(" -> ")[0]
-            try:
-                dep = int(source)
-            except ValueError:
-                dep = source
-            self.dependencies = dep
+            self.dep = DIRECT(input_string.split())
     
     @cache
     def evaluate(self) -> int:
-        # print(f"evaluating {self}")
-        if self.eval_type is ConnectionType.And:
-            dep1, dep2 = self.dependencies
-            if isinstance(dep1, str) and isinstance(dep2, str):
-                return self.lookup[dep1].evaluate() & self.lookup[dep2].evaluate()
-            elif isinstance(dep1, str):  # dep2 is an int
-                return self.lookup[dep1].evaluate() & dep2
-            else:  # dep1 is an int
-                return dep1 & self.lookup[dep2].evaluate()
-        
-        if self.eval_type is ConnectionType.Or:
-            dep1, dep2 = self.dependencies
-            return self.lookup[dep1].evaluate() | self.lookup[dep2].evaluate()
-        
-        if self.eval_type is ConnectionType.Not:
-            return 65535 - self.lookup[self.dependencies].evaluate()
-        
-        if self.eval_type is ConnectionType.Lshift:
-            dep, shift = self.dependencies
-            return self.lookup[dep].evaluate() << shift
+        return self.dep.evaluate()
 
-        if self.eval_type is ConnectionType.Rshift:
-            dep, shift = self.dependencies
-            return self.lookup[dep].evaluate() >> shift
+
+class DIRECT:
+    def __init__(self, split_line: list[str]) -> None:
+        self.val = int(split_line[0]) if split_line[0].isnumeric() else split_line[0]
+    
+    def evaluate(self) -> int:
+        return self.val if isinstance(self.val, int) else Wire.lookup[self.val].evaluate()
+
+
+class AND:
+    def __init__(self, split_line: list[str]) -> None:
+        self.dep_1 = DIRECT(split_line[0]) if split_line[0].isnumeric() else split_line[0]
+        self.dep_2 = DIRECT(split_line[2]) if split_line[2].isnumeric() else split_line[2]
         
-        if isinstance(self.dependencies, int):
-            return self.dependencies
-        return self.lookup[self.dependencies].evaluate()
+    def evaluate(self) -> int:
+        val_1 = Wire.lookup[self.dep_1] if isinstance(self.dep_1, str) else self.dep_1
+        val_2 = Wire.lookup[self.dep_2] if isinstance(self.dep_2, str) else self.dep_2 
+        return val_1.evaluate() & val_2.evaluate()
+
+
+class OR:
+    def __init__(self, split_line: list[str]) -> None:
+        self.dep_1 = split_line[0]
+        self.dep_2 = split_line[2]
+
+    def evaluate(self) -> int:
+        return Wire.lookup[self.dep_1].evaluate() | Wire.lookup[self.dep_2].evaluate()
+
+
+class NOT:
+    def __init__(self, split_line: list[str]) -> None:
+        self.dep = split_line[1]
     
-    def __str__(self) -> str:
-        return f"Wire {self.name}"
+    def evaluate(self) -> int:
+        return 65535 - Wire.lookup[self.dep].evaluate()
+
+
+class LSHIFT:
+    def __init__(self, split_line: list[str]) -> None:
+        self.dep = split_line[0]
+        self.shift = int(split_line[2])
     
-    def __repr__(self) -> str:
-        return str(self)
+    def evaluate(self) -> int:
+        return Wire.lookup[self.dep].evaluate() << self.shift
+
+
+class RSHIFT:
+    def __init__(self, split_line: list[str]) -> None:
+        self.dep = split_line[0]
+        self.shift = int(split_line[2])
+    
+    def evaluate(self) -> int:
+        return Wire.lookup[self.dep].evaluate() >> self.shift
 
 
 def problem_1():
-    with open('./2015/resources/7.txt') as f:
-        connections = [line.strip() for line in f]
-
     for connection in connections:
         Wire(connection)
     
     print(Wire.lookup["a"].evaluate())
 
 def problem_2():
-    with open('./2015/resources/7.txt') as f:
-        connections = [line.strip() for line in f]
-
     for connection in connections:
         Wire(connection)
     
