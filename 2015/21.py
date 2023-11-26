@@ -46,20 +46,20 @@ ring_choices = (
 
 
 def simulate(player_hp: int, player_damage: int, player_armour: int, boss_hp: int, boss_damage: int, boss_armour: int) -> bool:
-        current_turn = "player"
-        while boss_hp > 0 and player_hp > 0:
-            if current_turn == "player":
-                damage = max(player_damage - boss_armour, 1)
-                boss_hp -= damage
-                current_turn = "boss"
-            else:
-                damage = max(boss_damage - player_armour, 1)
-                player_hp -= damage
-                current_turn = "player"
-        return player_hp > 0
+    current_turn = "player"
+    while boss_hp > 0 and player_hp > 0:
+        if current_turn == "player":
+            damage = max(player_damage - boss_armour, 1)
+            boss_hp -= damage
+            current_turn = "boss"
+        else:
+            damage = max(boss_damage - player_armour, 1)
+            player_hp -= damage
+            current_turn = "player"
+    return player_hp > 0
 
 
-def problem_1():    
+def problem_1() -> None:    
     min_cost = float('inf')
     for weapon, armour, ring_combo in product(weapon_choices, armour_choices, ring_choices):
         total_cost = weapon.cost + armour.cost + ring_combo.cost
@@ -73,7 +73,7 @@ def problem_1():
     print(min_cost)
 
 
-def problem_2():
+def problem_2() -> None:
     max_cost = 0
     for weapon, armour, ring_combo in product(weapon_choices, armour_choices, ring_choices):
         total_cost = weapon.cost + armour.cost + ring_combo.cost

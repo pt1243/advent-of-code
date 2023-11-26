@@ -5,7 +5,7 @@ from itertools import count
 door_id = "uqwqemis"
 
 
-def problem_1():
+def problem_1() -> None:
     password = ""
     for i in count():
         combined = (door_id + str(i)).encode()
@@ -16,8 +16,9 @@ def problem_1():
                 print(password)
                 break
 
-def problem_2():
-    password = [None for _ in range(8)]
+
+def problem_2() -> None:
+    password: list[None | str] = [None for _ in range(8)]
     for i in count():
         combined = (door_id + str(i)).encode()
         computed_hash = md5(combined, usedforsecurity=False).hexdigest()
@@ -28,5 +29,5 @@ def problem_2():
                 if 0 <= position <= 7 and password[position] is None:
                     password[position] = computed_hash[6]
                     if all(c is not None for c in password):
-                        print("".join(password))
+                        print("".join(password))  # type: ignore[arg-type]
                         break

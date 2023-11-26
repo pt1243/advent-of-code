@@ -2,7 +2,7 @@ with open('./2015/resources/1.txt') as f:
     input_string = f.read().strip()
 
 
-def problem_1():
+def problem_1() -> None:
     floor = 0
     for char in input_string:
         if char == "(":
@@ -12,7 +12,7 @@ def problem_1():
     print(floor)
 
 
-def problem_2():
+def problem_2() -> None:
     floor = 0
     for idx, char in enumerate(input_string):
         if char == "(":

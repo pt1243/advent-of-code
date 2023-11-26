@@ -58,11 +58,11 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
                 instruction_pointer += offset if b == 1 else 1
 
 
-def problem_1():
+def problem_1() -> None:
     _, b = run_instructions(0, 0)
     print(b)
 
 
-def problem_2():
+def problem_2() -> None:
     _, b = run_instructions(1, 0)
     print(b)

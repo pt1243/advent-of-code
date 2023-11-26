@@ -5,7 +5,7 @@ with open('./2015/resources/5.txt') as f:
     strings = [line.strip() for line in f]
 
 
-def problem_1():
+def problem_1() -> None:
     total = 0
     for s in strings:
         vowel_count = s.count("a") + s.count("e") + s.count("i") + s.count("o") + s.count("u")
@@ -22,7 +22,7 @@ def problem_1():
     print(total)
 
 
-def problem_2():
+def problem_2() -> None:
     total = 0
     for s in strings:
         pair_found = False

@@ -39,7 +39,7 @@ def find_substring(s: str, sub: str) -> Iterable[int]:  # note: should inline fo
         min_index = found_idx + 1
 
 
-def problem_1():
+def problem_1() -> None:
     substitutions: defaultdict[str, list[str]] = defaultdict(list)
     for line in lines:
         if "=>" in line:
@@ -60,7 +60,7 @@ def problem_1():
     print(len(one_step))
 
 
-def problem_2():
+def problem_2() -> None:
     pass
 
     # list_substitutions: defaultdict[str, list[str]] = defaultdict(list)

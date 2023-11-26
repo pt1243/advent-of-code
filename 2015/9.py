@@ -5,7 +5,7 @@ with open('./2015/resources/9.txt') as f:
     all_distances = [line.strip() for line in f]
 
 
-def problem_1():
+def problem_1() -> None:
     destinations: set[str] = set()
     distances: dict[tuple[str, str], int] = {}
     for entry in all_distances:
@@ -29,7 +29,7 @@ def problem_1():
     print(shortest_distance)
 
 
-def problem_2():
+def problem_2() -> None:
     destinations: set[str] = set()
     distances: dict[tuple[str, str], int] = {}
     for entry in all_distances:

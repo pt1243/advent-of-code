@@ -5,8 +5,8 @@ with open('./2016/resources/6.txt') as f:
     lines = [line.strip() for line in f]
 
 
-def problem_1():
-    counters = [Counter() for _ in lines[0]]
+def problem_1() -> None:
+    counters: list[Counter] = [Counter() for _ in lines[0]]
 
     for line in lines:
         for idx, char in enumerate(line):
@@ -15,8 +15,8 @@ def problem_1():
     print("".join(c.most_common(1)[0][0] for c in counters))
 
 
-def problem_2():
-    counters = [Counter() for _ in lines[0]]
+def problem_2() -> None:
+    counters: list[Counter] = [Counter() for _ in lines[0]]
 
     for line in lines:
         for idx, char in enumerate(line):

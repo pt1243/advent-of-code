@@ -1,4 +1,4 @@
-from collections.abc import Iterable
+from collections.abc import Iterator
 from itertools import cycle
 
 
@@ -6,8 +6,8 @@ with open('./2015/resources/14.txt') as f:
     lines = [line.strip() for line in f]
 
 
-def problem_1():
-    all_reindeer: dict[str, Iterable] = {}
+def problem_1() -> None:
+    all_reindeer: dict[str, Iterator[int]] = {}
     for line in lines:
         reindeer = line.split(maxsplit=1)[0]
         speed = int(line[line.index("fly")+4:line.index("km/s")-1])
@@ -24,8 +24,8 @@ def problem_1():
     print(max(distances.values()))
 
 
-def problem_2():
-    all_reindeer: dict[str, Iterable] = {}
+def problem_2() -> None:
+    all_reindeer: dict[str, Iterator[int]] = {}
     for line in lines:
         reindeer = line.split(maxsplit=1)[0]
         speed = int(line[line.index("fly")+4:line.index("km/s")-1])

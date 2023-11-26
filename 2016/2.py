@@ -9,7 +9,7 @@ def clamp(val: int, min_val: int, max_val: int) -> int:
     return val if min_val <= val <= max_val else (min_val if val < min_val else max_val)
 
 
-def problem_1():
+def problem_1() -> None:
     row, col = 1, 1
     code = ""
     
@@ -32,7 +32,7 @@ def problem_1():
     print(code)
 
 
-def problem_2():
+def problem_2() -> None:
     row, col = 2, 0
     code = ""
 

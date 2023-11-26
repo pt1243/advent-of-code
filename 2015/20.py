@@ -4,7 +4,7 @@ from math import sqrt, ceil
 target = 34000000
 
 
-def sum_divisors(n: int) -> set[int]:
+def sum_divisors(n: int) -> int:
     found: set[int] = set()
     for i in range(1, ceil(sqrt(n)) + 1):
         if n % i == 0:
@@ -13,7 +13,7 @@ def sum_divisors(n: int) -> set[int]:
     return sum(found)
 
 
-def sum_divisors_part_2(n: int) -> set[int]:
+def sum_divisors_part_2(n: int) -> int:
     found: set[int] = set()
     for i in range(1, ceil(sqrt(n)) + 1):
         if n % i == 0:
@@ -25,7 +25,7 @@ def sum_divisors_part_2(n: int) -> set[int]:
     return sum(found)
 
 
-def problem_1():
+def problem_1() -> None:
     n = 1
     while True:
         current_house_total = 10 * sum_divisors(n)
@@ -35,7 +35,7 @@ def problem_1():
         n += 1
 
 
-def problem_2():
+def problem_2() -> None:
     n = 1
     while True:
         current_house_total = 11 * sum_divisors_part_2(n)

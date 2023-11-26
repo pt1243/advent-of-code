@@ -5,7 +5,7 @@ with open('./2016/resources/4.txt') as f:
     rooms = [line.strip() for line in f]
 
 
-def problem_1():
+def problem_1() -> None:
     valid_sector_id_sum = 0
 
     for room in rooms:
@@ -22,7 +22,7 @@ def problem_1():
     print(valid_sector_id_sum)
 
 
-def problem_2():
+def problem_2() -> None:
     for room in rooms:
         name, _, sector_id_and_checksum = room.rpartition("-")
         sector_id = int(sector_id_and_checksum[:sector_id_and_checksum.index("[")])

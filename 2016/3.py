@@ -1,11 +1,11 @@
-from more_itertools import batched
+from itertools import batched
 
 
 with open('./2016/resources/3.txt') as f:
     triangles = [line.strip() for line in f]
 
 
-def problem_1():
+def problem_1() -> None:
     count = 0
     for triangle in triangles:
         a, b, c = (int(side) for side in triangle.split())
@@ -14,7 +14,7 @@ def problem_1():
     print(count)
 
 
-def problem_2():
+def problem_2() -> None:
     count = 0
     for row_1, row_2, row_3 in batched(triangles, 3):
         a1, a2, a3 = (int(side) for side in row_1.split())

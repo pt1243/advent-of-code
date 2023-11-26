@@ -2,8 +2,8 @@ import importlib
 from time import perf_counter
 
 
-year = 2016
-day = 9
+year = 2015
+day = 11
 problem = 2
 
 
@@ -14,11 +14,9 @@ def main():
     try:
         function()
     except KeyboardInterrupt:
-        message = "aborted after"
+        print(f"{year} day {day}, problem {problem} cancelled after {perf_counter() - start:.3f}s")
     else:
-        message = "completed in"
-    finally:
-        print(f"{year} day {day}, problem {problem} {message} {perf_counter() - start:.3f}s")
+        print(f"{year} day {day}, problem {problem} completed in {perf_counter() - start:.3f}s")
 
 
 if __name__ == "__main__":

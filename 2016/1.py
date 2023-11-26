@@ -12,7 +12,7 @@ class Direction(Enum):
     W = 3
 
 
-def problem_1():
+def problem_1() -> None:
     x, y = 0, 0
     direction: Direction = Direction.N
 
@@ -34,7 +34,7 @@ def problem_1():
     print(abs(x) + abs(y))
 
 
-def problem_2():
+def problem_2() -> None:
     x, y = 0, 0
     direction: Direction = Direction.N
     seen: set[tuple[int, int]] = set()

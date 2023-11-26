@@ -5,7 +5,7 @@ with open('./2015/resources/13.txt') as f:
     lines = [line.strip() for line in f]
 
 
-def problem_1():
+def problem_1() -> None:
     happiness_by_person: dict[str, dict[str, int]] = {}
 
     for line in lines:
@@ -37,7 +37,7 @@ def problem_1():
     print(max_happiness)
 
 
-def problem_2():
+def problem_2() -> None:
     happiness_by_person: dict[str, dict[str, int]] = {}
 
     for line in lines:

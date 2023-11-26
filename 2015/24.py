@@ -45,7 +45,7 @@ def can_partition_into_three(nums: set[int], target: int) -> bool:
             return False
 
 
-def problem_1():
+def problem_1() -> None:
     target = sum(weights) // 3
 
     min_qe = float('inf')
@@ -66,7 +66,7 @@ def problem_1():
         num_first_group += 1
 
 
-def problem_2():
+def problem_2() -> None:
     target = sum(weights) // 4
 
     min_qe = float('inf')

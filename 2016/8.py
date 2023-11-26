@@ -30,16 +30,16 @@ def process_screen() -> np.ndarray:
     return screen
 
 
-def problem_1():
+def problem_1() -> None:
     screen = process_screen()
         
     print(np.sum(screen))
 
 
-def problem_2():
+def problem_2() -> None:
     screen = process_screen()
     letters = np.split(screen, 10, axis=1)
-    text = [[None for _ in range(10)] for _ in range(6)]
+    text: list[list[None | str]] = [[None for _ in range(10)] for _ in range(6)]
     for letter_idx, letter in enumerate(letters):
         for row_idx, row in enumerate(letter):
             text[row_idx][letter_idx] = "".join("#" if c else " " for c in row)
