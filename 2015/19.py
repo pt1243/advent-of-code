@@ -17,10 +17,16 @@ def split_into_atoms(s: str) -> list[str]:
     return list("".join(atom_chars) for atom_chars in split_when(s, lambda c1, c2: (c1 in ascii_lowercase and c2 in ascii_uppercase) or (c1 in ascii_uppercase and c2 in ascii_uppercase)))
 
 
-class StringCandidate(NamedTuple):
-    weight: int
-    steps: int
-    content: str
+class Symbol:
+    pass
+
+
+class TerminalSymbol(Symbol):
+    pass
+
+
+class NonTerminalSymbol(Symbol):
+    pass
 
 
 def find_substring(s: str, sub: str) -> Iterable[int]:  # note: should inline for better performance
@@ -33,7 +39,7 @@ def find_substring(s: str, sub: str) -> Iterable[int]:  # note: should inline fo
         min_index = found_idx + 1
 
 
-def problem_1():
+def problem_1() -> None:
     substitutions: defaultdict[str, list[str]] = defaultdict(list)
     for line in lines:
         if "=>" in line:
@@ -54,40 +60,20 @@ def problem_1():
     print(len(one_step))
 
 
-def problem_2():
-    unsorted: dict[str, str] = {}
-    for line in lines:
-        if "=>" in line:
-            replacement, initial = line.split(" => ")
-            # print(f"{initial = }, {replacement = }")
-            unsorted[initial] = replacement
-        elif line:
-            final_molecule = line
-    
-    substitutions = {initial: unsorted[initial] for initial in sorted(unsorted.keys(), key=len, reverse=True)}
-    
-    # def solve(s: str) -> int:
-    #     print(f"called with {s = }")
-    #     if s == "e":
-    #         return 0
-    #     solution = (solve(s.replace(initial, replacement)) for initial, replacement in substitutions.items() if initial in s)
-    #     return next(solution) + 1
-    
-    # print(solve(final_molecule))
+def problem_2() -> None:
+    pass
 
-    from pprint import pprint
-    print(substitutions)
+    # list_substitutions: defaultdict[str, list[str]] = defaultdict(list)
+    # for line in lines:
+    #     if "=>" in line:
+    #         initial, replacement = line.split(" => ")
+    #         # print(f"{initial = }, {replacement = }")
+    #         list_substitutions[initial].append(replacement)
+    #     elif line:
+    #         final_molecule = line
+    
+    # substitutions = {initial: tuple(replacements) for initial, replacements in list_substitutions.items()}
 
-    current = final_molecule
-    steps = 0
-    while current != "e":
-        for initial, replacement in unsorted.items():
-            if initial in current:
-                current = current.replace(initial, replacement)
-                steps += 1
-                break
-        print(f"{current = }")
-    print(steps)
 
 
     # final_molecule_length = len(final_molecule)

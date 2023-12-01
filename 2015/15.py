@@ -1,4 +1,4 @@
-from collections.abc import Iterator, Sequence
+from collections.abc import Iterator
 from typing import NamedTuple
 
 
@@ -15,6 +15,19 @@ class Ingredient(NamedTuple):
     calories: int
 
 
+def process_ingredients() -> list[Ingredient]:
+    possible_ingredients: list[Ingredient] = []
+    for ingredient_text in ingredients_data:
+        name = ingredient_text.split(":")[0]
+        capacity = int(ingredient_text[ingredient_text.index("capacity")+9:ingredient_text.index("durability")-2])
+        durability = int(ingredient_text[ingredient_text.index("durability")+11:ingredient_text.index("flavor")-2])
+        flavour = int(ingredient_text[ingredient_text.index("flavor")+7:ingredient_text.index("texture")-2])
+        texture = int(ingredient_text[ingredient_text.index("texture")+8:ingredient_text.index("calories")-2])
+        calories = int(ingredient_text[ingredient_text.index("calories")+9:])
+        possible_ingredients.append(Ingredient(name, capacity, durability, flavour, texture, calories))
+    return possible_ingredients
+
+
 def sum_to(total: int, num_items: int) -> Iterator[list[int]]:
     if num_items == 1:
         yield [total]
@@ -24,16 +37,8 @@ def sum_to(total: int, num_items: int) -> Iterator[list[int]]:
                 yield [i] + rest
 
 
-def problem_1():
-    possible_ingredients: list[Ingredient] = []
-    for ingredient in ingredients_data:
-        name = ingredient.split(":")[0]
-        capacity = int(ingredient[ingredient.index("capacity")+9:ingredient.index("durability")-2])
-        durability = int(ingredient[ingredient.index("durability")+11:ingredient.index("flavor")-2])
-        flavour = int(ingredient[ingredient.index("flavor")+7:ingredient.index("texture")-2])
-        texture = int(ingredient[ingredient.index("texture")+8:ingredient.index("calories")-2])
-        calories = int(ingredient[ingredient.index("calories")+9:])
-        possible_ingredients.append(Ingredient(name, capacity, durability, flavour, texture, calories))
+def problem_1() -> None:
+    possible_ingredients = process_ingredients()
 
     max_found = None
     for combination in sum_to(100, len(possible_ingredients)):
@@ -58,16 +63,8 @@ def problem_1():
     print(max_found)
 
 
-def problem_2():
-    possible_ingredients: list[Ingredient] = []
-    for ingredient in ingredients_data:
-        name = ingredient.split(":")[0]
-        capacity = int(ingredient[ingredient.index("capacity")+9:ingredient.index("durability")-2])
-        durability = int(ingredient[ingredient.index("durability")+11:ingredient.index("flavor")-2])
-        flavour = int(ingredient[ingredient.index("flavor")+7:ingredient.index("texture")-2])
-        texture = int(ingredient[ingredient.index("texture")+8:ingredient.index("calories")-2])
-        calories = int(ingredient[ingredient.index("calories")+9:])
-        possible_ingredients.append(Ingredient(name, capacity, durability, flavour, texture, calories))
+def problem_2() -> None:
+    possible_ingredients = process_ingredients()
 
     max_found = None
     for combination in sum_to(100, len(possible_ingredients)):

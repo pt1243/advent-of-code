@@ -1,7 +1,7 @@
 from more_itertools import split_when
 
 
-def problem_1():
+def problem_1() -> None:
     val = "1113122113"
     for _ in range(40):
         new_val = ""
@@ -12,7 +12,7 @@ def problem_1():
     print(len(val))
 
 
-def problem_2():
+def problem_2() -> None:
     val = "1113122113"
     for _ in range(50):
         new_val = ""

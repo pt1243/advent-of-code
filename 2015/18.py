@@ -29,7 +29,7 @@ def get_num_neighbours_on(matrix: list[list[bool]], i: int, j: int):
     return num
 
 
-def problem_1():
+def problem_1() -> None:
     matrix: list[list[bool]] = [[True if char == "#" else False for char in line] for line in lines]
     update_dict: dict[tuple[int, int], bool] = {}
 
@@ -48,7 +48,7 @@ def problem_1():
     print(sum(sum(line) for line in matrix))
 
 
-def problem_2():
+def problem_2() -> None:
     matrix: list[list[bool]] = [[True if char == "#" else False for char in line] for line in lines]
     update_dict: dict[tuple[int, int], bool] = {}
 

@@ -6,7 +6,7 @@ with open('./2015/resources/3.txt') as f:
     directions = f.read().strip()
 
 
-def problem_1():    
+def problem_1() -> None:    
     houses = defaultdict(int)
     houses[(0, 0)] = 1
     current_x, current_y = 0, 0
@@ -24,7 +24,7 @@ def problem_1():
     print(len(houses))
 
 
-def problem_2():
+def problem_2() -> None:
     houses = defaultdict(int)
     houses[(0, 0)] = 1
     santa_x, santa_y = 0, 0
