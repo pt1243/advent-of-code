@@ -2,8 +2,8 @@ import importlib
 from time import perf_counter
 
 
-year = 2016
-day = 13
+year = 2017
+day = 3
 problem = 2
 
 
