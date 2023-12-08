@@ -45,7 +45,7 @@ def problem_1() -> None:
         numbered_cards = [card_to_number(c) for c in line.split()[0]]
         bid = int(line.split()[1])
         hand_type = get_hand_type(numbered_cards)
-        all_cards.append((hand_type, tuple(numbered_cards), bid))
+        all_cards.append((hand_type, tuple(numbered_cards), bid))  # type: ignore[arg-type]
     sorted_hands = sorted(all_cards, reverse=True)
     for i, (*_, bid) in enumerate(reversed(sorted_hands), start=1):
         total_winnings += i * bid
@@ -60,13 +60,13 @@ def problem_2() -> None:
         if "J" in line:
             cards = line.split()[0]
             options = [(card_to_number(c),) if c != "J" else tuple(i for i in range(2, 15)) for c in cards]
-            possible_hand_types = [get_hand_type(possible_hand) for possible_hand in product(*options)]
+            possible_hand_types = [get_hand_type(possible_hand) for possible_hand in product(*options)]  # type: ignore[arg-type]
             best_hand_type = max(possible_hand_types)
-            all_cards.append((best_hand_type, tuple(card_to_number(c, use_jokers=True) for c in cards), bid))
+            all_cards.append((best_hand_type, tuple(card_to_number(c, use_jokers=True) for c in cards), bid))  # type: ignore[arg-type]
         else:
             numbered_cards = [card_to_number(c) for c in line.split()[0]]
             hand_type = get_hand_type(numbered_cards)
-            all_cards.append((hand_type, tuple(numbered_cards), bid))
+            all_cards.append((hand_type, tuple(numbered_cards), bid))  # type: ignore[arg-type]
     sorted_hands = sorted(all_cards, reverse=True)
     for i, (*_, bid) in enumerate(reversed(sorted_hands), start=1):
         total_winnings += i * bid

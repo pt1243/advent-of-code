@@ -20,7 +20,7 @@ def get_neighbours(node: tuple[int, int]) -> list[tuple[int, int]]:
     return [n for n in neighbours if is_open(n)]
 
 
-def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int]]:
+def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int]]:  # type: ignore[return]
 
     # list of nodes visited to get to the goal
     def reconstruct_path(current: tuple[int, int]) -> list[tuple[int, int]]:
@@ -64,7 +64,7 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    visited: set[int, int] = {(1, 1)}
+    visited: set[tuple[int, int]] = {(1, 1)}
     for _ in range(50):
         for start_node in visited.copy():
             for neighbour in get_neighbours(start_node):

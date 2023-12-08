@@ -41,7 +41,7 @@ def scramble(d: deque[str]) -> str:
 
 
 def problem_1() -> None:
-    print(scramble("abcdefgh"))
+    print(scramble(deque("abcdefgh")))
     
 
 def problem_2() -> None:

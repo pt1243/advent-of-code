@@ -16,7 +16,7 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    total += 1
+    total = 0
     ranges = tuple(sorted(tuple(int(val) for val in line.split("-")) for line in lines))
     for i in range(0, 4294967295 + 1):
         if not any(lower <= i <= upper for lower, upper in ranges):
