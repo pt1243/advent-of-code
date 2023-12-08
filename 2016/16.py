@@ -20,12 +20,12 @@ def problem_1() -> None:
     data = initial_data
     while len(data) < disk_size:
         data = generate_data(data)
-    
+
     data = data[:disk_size]
     checksum = generate_checksum(data)
     while len(checksum) % 2 == 0:
         checksum = generate_checksum(checksum)
-    
+
     print(checksum)
 
 
@@ -35,10 +35,10 @@ def problem_2() -> None:
     data = initial_data
     while len(data) < disk_size:
         data = generate_data(data)
-    
+
     data = data[:disk_size]
     checksum = generate_checksum(data)
     while len(checksum) % 2 == 0:
         checksum = generate_checksum(checksum)
-    
+
     print(checksum)

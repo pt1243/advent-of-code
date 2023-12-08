@@ -27,15 +27,16 @@ with open('./2017/resources/7.txt') as f:
 
 class Program:
     lookup: ClassVar[dict[str, Program]] = {}
+
     def __init__(self, name: str, weight: int, children: list[str]) -> None:
         self.name = name
         self.weight = weight
         self.children = children
         Program.lookup[name] = self
-    
+
     def get_weight(self) -> int:
         return self.weight + sum(Program.lookup[p].get_weight() for p in self.children)
-    
+
     def is_balanced(self) -> bool:
         if not self.children:
             return True
@@ -59,7 +60,7 @@ def problem_1() -> None:
         else:
             print(current)
             return
-    
+
 
 def problem_2() -> None:
     for line in lines:
@@ -86,5 +87,8 @@ def problem_2() -> None:
     for child_name in deepest_unbalanced.children:
         child = Program.lookup[child_name]
         if weights.count(child.get_weight()) == 1:
-            print([w for w in weights if w != child.weight][0] - sum(Program.lookup[c].get_weight() for c in child.children))
+            print(
+                [w for w in weights if w != child.weight][0]
+                - sum(Program.lookup[c].get_weight() for c in child.children)
+            )
             return

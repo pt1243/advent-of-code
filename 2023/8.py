@@ -33,7 +33,7 @@ def problem_1() -> None:
         name, connections = line.split(" = ")
         left, right = connections[1:-1].split(", ")
         Node(name, left, right)
-    
+
     current = Node.lookup["AAA"]
     for i, step in enumerate(steps_iterator, start=1):
         current = current.left if step == "L" else current.right
@@ -48,7 +48,6 @@ def problem_2() -> None:
         left, right = connections[1:-1].split(", ")
         Node(name, left, right)
 
-    
     results: list[int] = []
     for current in [n for n in Node.lookup.values() if n.name.endswith("A")]:
         steps_iterator = cycle(lines[0])

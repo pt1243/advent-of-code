@@ -12,7 +12,7 @@ def clamp(val: int, min_val: int, max_val: int) -> int:
 def problem_1() -> None:
     row, col = 1, 1
     code = ""
-    
+
     for line in lines:
         for char in line:
             if char == "U":
@@ -26,9 +26,9 @@ def problem_1() -> None:
 
             row = clamp(row, 0, 2)
             col = clamp(col, 0, 2)
-        
+
         code += str(row * 3 + col + 1)
-    
+
     print(code)
 
 

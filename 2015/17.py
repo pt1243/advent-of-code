@@ -14,7 +14,7 @@ def problem_1() -> None:
                 comb_total += sizes[idx]
         if comb_total == 150:
             total += 1
-    
+
     print(total)
 
 
@@ -26,6 +26,6 @@ def problem_2() -> None:
             if include:
                 comb_total += sizes[idx]
         if comb_total == 150:
-             num_ways[sum(comb)] += 1
-    
+            num_ways[sum(comb)] += 1
+
     print(num_ways[min({k: v for k, v in num_ways.items() if v > 0})])

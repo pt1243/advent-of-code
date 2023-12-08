@@ -32,7 +32,7 @@ def process_screen() -> np.ndarray:
 
 def problem_1() -> None:
     screen = process_screen()
-        
+
     print(np.sum(screen))
 
 

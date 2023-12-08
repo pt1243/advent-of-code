@@ -12,20 +12,20 @@ def get_num_neighbours_on(matrix: list[list[bool]], i: int, j: int):
     num = 0
     if above:
         if left:
-            num += matrix[i-1][j-1]
-        num += matrix[i-1][j]
+            num += matrix[i - 1][j - 1]
+        num += matrix[i - 1][j]
         if right:
-            num += matrix[i-1][j+1]
+            num += matrix[i - 1][j + 1]
     if left:
-        num += matrix[i][j-1]
+        num += matrix[i][j - 1]
     if right:
-        num += matrix[i][j+1]
+        num += matrix[i][j + 1]
     if below:
         if left:
-            num += matrix[i+1][j-1]
-        num += matrix[i+1][j]
+            num += matrix[i + 1][j - 1]
+        num += matrix[i + 1][j]
         if right:
-            num += matrix[i+1][j+1]
+            num += matrix[i + 1][j + 1]
     return num
 
 

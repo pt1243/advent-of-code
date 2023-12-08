@@ -10,8 +10,8 @@ def problem_1() -> None:
         prev_row = rows[-1]
         new_row: list[bool] = []
         for i, center in enumerate(prev_row):
-            left = False if i == 0 else prev_row[i-1]
-            right = False if i == row_size - 1 else prev_row[i+1]
+            left = False if i == 0 else prev_row[i - 1]
+            right = False if i == row_size - 1 else prev_row[i + 1]
 
             if (
                 (left and center and not right)
@@ -23,8 +23,8 @@ def problem_1() -> None:
             else:
                 new_row.append(False)
         rows.append(new_row)
-    
-    print(num_rows*row_size - sum(sum(row) for row in rows))
+
+    print(num_rows * row_size - sum(sum(row) for row in rows))
 
 
 def problem_2() -> None:
@@ -35,8 +35,8 @@ def problem_2() -> None:
         prev_row = rows[-1]
         new_row: list[bool] = []
         for i, center in enumerate(prev_row):
-            left = False if i == 0 else prev_row[i-1]
-            right = False if i == row_size - 1 else prev_row[i+1]
+            left = False if i == 0 else prev_row[i - 1]
+            right = False if i == row_size - 1 else prev_row[i + 1]
 
             if (
                 (left and center and not right)
@@ -48,5 +48,5 @@ def problem_2() -> None:
             else:
                 new_row.append(False)
         rows.append(new_row)
-    
-    print(num_rows*row_size - sum(sum(row) for row in rows))
+
+    print(num_rows * row_size - sum(sum(row) for row in rows))

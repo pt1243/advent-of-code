@@ -69,7 +69,7 @@ def problem_2() -> None:
         "d": 0,
     }
 
-    # NOTE: very unoptimized, will take 10+ mins... need to implement multiplication 
+    # NOTE: very unoptimized, will take 10+ mins... need to implement multiplication
     # so that inc x / dec y / jnz y -2 => x += y
     result = run_instructions(registers)
     print(result["a"])

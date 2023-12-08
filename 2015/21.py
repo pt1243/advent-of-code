@@ -41,11 +41,16 @@ rings = (
 ring_choices = (
     Item("No rings", 0, 0, 0),
     *(r for r in rings),  # one ring
-    *(Item(r1.name + " and " + r2.name, r1.cost + r2.cost, r1.damage + r2.damage, r1.armour + r2.armour) for r1, r2 in combinations(rings, 2)),
+    *(
+        Item(r1.name + " and " + r2.name, r1.cost + r2.cost, r1.damage + r2.damage, r1.armour + r2.armour)
+        for r1, r2 in combinations(rings, 2)
+    ),
 )
 
 
-def simulate(player_hp: int, player_damage: int, player_armour: int, boss_hp: int, boss_damage: int, boss_armour: int) -> bool:
+def simulate(
+    player_hp: int, player_damage: int, player_armour: int, boss_hp: int, boss_damage: int, boss_armour: int
+) -> bool:
     current_turn = "player"
     while boss_hp > 0 and player_hp > 0:
         if current_turn == "player":
@@ -59,7 +64,7 @@ def simulate(player_hp: int, player_damage: int, player_armour: int, boss_hp: in
     return player_hp > 0
 
 
-def problem_1() -> None:    
+def problem_1() -> None:
     min_cost = float('inf')
     for weapon, armour, ring_combo in product(weapon_choices, armour_choices, ring_choices):
         total_cost = weapon.cost + armour.cost + ring_combo.cost

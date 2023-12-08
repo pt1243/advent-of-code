@@ -10,7 +10,14 @@ class Bot:
     lookup: ClassVar[dict[int, Bot]] = {}
     outputs: ClassVar[dict[int, int]] = {}
 
-    def __init__(self, bot_num: int, low_type: Literal["bot", "output"], low_target: int, high_type: Literal["bot", "output"], high_target: int) -> None:
+    def __init__(
+        self,
+        bot_num: int,
+        low_type: Literal["bot", "output"],
+        low_target: int,
+        high_type: Literal["bot", "output"],
+        high_target: int,
+    ) -> None:
         self.bot_num = bot_num
         Bot.lookup[bot_num] = self
         self.values: list[int] = []
@@ -18,7 +25,7 @@ class Bot:
         self.low_target = low_target
         self.high_type = high_type
         self.high_target = high_target
-    
+
     def add_microchip(self, value: int, add_to_output: bool = False) -> None:
         self.values.append(value)
         if len(self.values) == 2:
@@ -51,7 +58,7 @@ def problem_1() -> None:
             high_type = split[10]
             high_target = int(split[11])
             Bot(bot_num, low_type, low_target, high_type, high_target)  # type: ignore[arg-type]
-    
+
     for line in lines:
         if line.startswith("value"):
             split = line.split()

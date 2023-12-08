@@ -11,7 +11,7 @@ def problem_1() -> None:
     for line in lines:
         for idx, char in enumerate(line):
             counters[idx].update((char,))
-    
+
     print("".join(c.most_common(1)[0][0] for c in counters))
 
 
@@ -21,5 +21,5 @@ def problem_2() -> None:
     for line in lines:
         for idx, char in enumerate(line):
             counters[idx].update((char,))
-    
+
     print("".join(c.most_common()[-1][0] for c in counters))

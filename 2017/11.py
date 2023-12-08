@@ -4,13 +4,13 @@ with open('./2017/resources/11.txt') as f:
 
 # https://www.redblobgames.com/grids/hexagons/#distances
 directions = {
-        "n": (0, -1),
-        "nw": (-1, 0),
-        "ne": (1, -1),
-        "s": (0, 1),
-        "sw": (-1, 1),
-        "se": (1, 0),
-    }
+    "n": (0, -1),
+    "nw": (-1, 0),
+    "ne": (1, -1),
+    "s": (0, 1),
+    "sw": (-1, 1),
+    "se": (1, 0),
+}
 
 
 def problem_1() -> None:

@@ -20,7 +20,7 @@ class Program:
         self.id_num = id_num
         self.group = 0
         self.connections: list[Program] = []
-    
+
     def extend_connections(self, connections: list[int]) -> None:
         for connection in connections:
             p = self.get_program(connection)
@@ -39,13 +39,15 @@ def problem_1() -> None:
             p2.extend_connections([int(first)])
 
     p0 = Program.get_program(0)
+
     def search_recursive(p: Program):
         p.group = 1
         for c in p.connections:
             if not c.group:
                 search_recursive(c)
+
     search_recursive(p0)
-    
+
     print(len([p for p in Program.lookup.values() if p.group]))
 
 

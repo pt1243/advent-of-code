@@ -19,7 +19,7 @@ def problem_1() -> None:
     for step in steps:
         turn = step[0]
         distance = int(step[1:])
-        
+
         direction = Direction((direction.value + (1 if turn == "R" else -1)) % 4)
 
         if direction is Direction.N:
@@ -30,7 +30,7 @@ def problem_1() -> None:
             y -= distance
         else:
             x -= distance
-    
+
     print(abs(x) + abs(y))
 
 
@@ -42,9 +42,9 @@ def problem_2() -> None:
     for step in steps:
         turn = step[0]
         distance = int(step[1:])
-        
+
         direction = Direction((direction.value + (1 if turn == "R" else -1)) % 4)
-        
+
         if direction is Direction.N:
             for _ in range(distance):
                 y += 1

@@ -14,7 +14,14 @@ with open('./2015/resources/19.txt') as f:
 
 
 def split_into_atoms(s: str) -> list[str]:
-    return list("".join(atom_chars) for atom_chars in split_when(s, lambda c1, c2: (c1 in ascii_lowercase and c2 in ascii_uppercase) or (c1 in ascii_uppercase and c2 in ascii_uppercase)))
+    return list(
+        "".join(atom_chars)
+        for atom_chars in split_when(
+            s,
+            lambda c1, c2: (c1 in ascii_lowercase and c2 in ascii_uppercase)
+            or (c1 in ascii_uppercase and c2 in ascii_uppercase),
+        )
+    )
 
 
 class Symbol:
@@ -47,16 +54,16 @@ def problem_1() -> None:
             substitutions[initial].append(replacement)
         elif line:
             molecule = line
-    
+
     atoms = split_into_atoms(molecule)
-    
+
     one_step: set[str] = set()
 
     for idx, atom in enumerate(atoms):
         if atom in substitutions:
             for substitution in substitutions[atom]:
-                one_step.add("".join(atoms[:idx]) + substitution + "".join(atoms[idx+1:]))
-    
+                one_step.add("".join(atoms[:idx]) + substitution + "".join(atoms[idx + 1 :]))
+
     print(len(one_step))
 
 
@@ -71,10 +78,8 @@ def problem_2() -> None:
     #         list_substitutions[initial].append(replacement)
     #     elif line:
     #         final_molecule = line
-    
+
     # substitutions = {initial: tuple(replacements) for initial, replacements in list_substitutions.items()}
-
-
 
     # final_molecule_length = len(final_molecule)
     # stack = ["e"]
@@ -116,16 +121,13 @@ def problem_2() -> None:
     #                     seen.add(new)
     #                 min_index = start_idx + 1
 
-
-                
-
     # len_final_molecule = len(final_molecule)
     # # print(substitutions)
     # found: set[str] = set()
     # queue: list[StringCandidate] = [StringCandidate(len_final_molecule - len("e"), 0, "e")]
 
     # # need to use bisect
-    
+
     # def search():
     #     while True:
     #         current_item = heapq.heappop(queue)
@@ -152,12 +154,12 @@ def problem_2() -> None:
     #                             print(steps)
     #                             return
     #                         weight = abs(len_final_molecule - len(new))
-                            
+
     #                         if new not in found:
     #                             found.add(new)
     #                             item = StringCandidate(weight, steps, new)
     #                             heapq.heappush(queue, item)
-                            
+
     #                     min_index = index_found + 1
 
     # search()

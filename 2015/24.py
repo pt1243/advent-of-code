@@ -15,20 +15,20 @@ with open('./2015/resources/24.txt') as f:
 def can_partition_into_two(S: Sequence[int]) -> bool:
     n = len(S)
     K = sum(S)
-    P = np.empty((floor(K/2)+1, n+1), dtype=bool)
-    
-    P[:, 0] = np.zeros(floor(K/2) + 1)
+    P = np.empty((floor(K / 2) + 1, n + 1), dtype=bool)
+
+    P[:, 0] = np.zeros(floor(K / 2) + 1)
     P[0, :] = np.ones(n + 1)
 
-    for i in range(1, floor(K/2) + 1):
-        for j in range(1, n+1):
-            x = S[j-1]
+    for i in range(1, floor(K / 2) + 1):
+        for j in range(1, n + 1):
+            x = S[j - 1]
             if i - x >= 0:
-                P[i, j] = P[i, j-1] or P[i-x, j-1]
+                P[i, j] = P[i, j - 1] or P[i - x, j - 1]
             else:
-                P[i, j] = P[i, j-1]
-    
-    return P[floor(K/2), n]
+                P[i, j] = P[i, j - 1]
+
+    return P[floor(K / 2), n]
 
 
 def can_partition_into_three(nums: set[int], target: int) -> bool:

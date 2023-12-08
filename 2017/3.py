@@ -40,7 +40,7 @@ def problem_2() -> None:
         for j in range(square_size - 1):
             idx_y = zero_y + i - 1 - j
             idx_x = zero_x + i
-            value = np.sum(grid[idx_y-1:idx_y+2, idx_x-1:idx_x+2])
+            value = np.sum(grid[idx_y - 1 : idx_y + 2, idx_x - 1 : idx_x + 2])
             if value > number:
                 print(value)
                 return
@@ -48,7 +48,7 @@ def problem_2() -> None:
         for j in range(square_size - 1):
             idx_y = zero_y - i
             idx_x = zero_x + i - 1 - j
-            value = np.sum(grid[idx_y-1:idx_y+2, idx_x-1:idx_x+2])
+            value = np.sum(grid[idx_y - 1 : idx_y + 2, idx_x - 1 : idx_x + 2])
             if value > number:
                 print(value)
                 return
@@ -56,7 +56,7 @@ def problem_2() -> None:
         for j in range(square_size - 1):
             idx_y = zero_y - i + 1 + j
             idx_x = zero_x - i
-            value = np.sum(grid[idx_y-1:idx_y+2, idx_x-1:idx_x+2])
+            value = np.sum(grid[idx_y - 1 : idx_y + 2, idx_x - 1 : idx_x + 2])
             if value > number:
                 print(value)
                 return
@@ -64,7 +64,7 @@ def problem_2() -> None:
         for j in range(square_size - 1):
             idx_y = zero_y + i
             idx_x = zero_x - i + 1 + j
-            value = np.sum(grid[idx_y-1:idx_y+2, idx_x-1:idx_x+2])
+            value = np.sum(grid[idx_y - 1 : idx_y + 2, idx_x - 1 : idx_x + 2])
             if value > number:
                 print(value)
                 return

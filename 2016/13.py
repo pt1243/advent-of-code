@@ -7,7 +7,7 @@ designer_number = 1352
 
 def is_open(node: tuple[int, int]) -> bool:
     x, y = node
-    return (x*x + 3*x + 2*x*y + y + y*y + designer_number).bit_count() % 2 == 0
+    return (x * x + 3 * x + 2 * x * y + y + y * y + designer_number).bit_count() % 2 == 0
 
 
 def get_neighbours(node: tuple[int, int]) -> list[tuple[int, int]]:
@@ -21,7 +21,6 @@ def get_neighbours(node: tuple[int, int]) -> list[tuple[int, int]]:
 
 
 def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int]]:  # type: ignore[return]
-
     # list of nodes visited to get to the goal
     def reconstruct_path(current: tuple[int, int]) -> list[tuple[int, int]]:
         total_path: list[tuple[int, int]] = [current]
@@ -33,14 +32,14 @@ def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int
     # heuristic function: Manhattan distance
     def h(node: tuple[int, int], goal: tuple[int, int]) -> int:
         return abs(node[0] - goal[0]) + abs(node[1] - goal[1])
-    
+
     open_set: list[tuple[int, int, int]] = [(0, *start)]  # num steps, x, y
     came_from: dict[tuple[int, int], tuple[int, int]] = {}
 
-    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10 ** 6)
+    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**6)
     g_score[start] = 0
 
-    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10 ** 6)
+    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**6)
     f_score[start] = h(start, goal)
 
     while open_set:

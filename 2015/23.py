@@ -10,7 +10,7 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
             instruction = lines[instruction_pointer]
         except IndexError:
             return a, b
-        
+
         if instruction.startswith("hlf"):
             reg = instruction.split()[1]
             if reg == "a":
@@ -34,11 +34,11 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
             else:
                 b += 1
             instruction_pointer += 1
-        
+
         elif instruction.startswith("jmp"):
             offset = int(instruction.split()[1])
             instruction_pointer += offset
-        
+
         elif instruction.startswith("jie"):
             target, offset_str = instruction.split(", ")
             offset = int(offset_str)
@@ -47,7 +47,7 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
                 instruction_pointer += offset if a % 2 == 0 else 1
             else:
                 instruction_pointer += offset if b % 2 == 0 else 1
-        
+
         else:
             target, offset_str = instruction.split(", ")
             offset = int(offset_str)

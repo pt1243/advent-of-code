@@ -28,7 +28,7 @@ def scramble(d: deque[str]) -> str:
         elif "reverse" in line:
             idx1, idx2 = int(split[2]), int(split[4])
             vals: list[str] = []
-            for i in range(idx1, idx2+1):
+            for i in range(idx1, idx2 + 1):
                 vals.append(d[i])
             for i, val in enumerate(reversed(vals), idx1):
                 d[i] = val
@@ -42,7 +42,7 @@ def scramble(d: deque[str]) -> str:
 
 def problem_1() -> None:
     print(scramble(deque("abcdefgh")))
-    
+
 
 def problem_2() -> None:
     target = "fbgdceah"

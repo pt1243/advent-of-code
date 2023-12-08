@@ -54,5 +54,5 @@ def problem_2() -> None:
             multiplier = 1 if split[1] == "inc" else -1
             registers[target] += multiplier * value
         max_seen = max(max_seen, max(registers.values()))
-        
+
     print(max_seen)

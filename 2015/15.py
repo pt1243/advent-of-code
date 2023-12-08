@@ -19,11 +19,13 @@ def process_ingredients() -> list[Ingredient]:
     possible_ingredients: list[Ingredient] = []
     for ingredient_text in ingredients_data:
         name = ingredient_text.split(":")[0]
-        capacity = int(ingredient_text[ingredient_text.index("capacity")+9:ingredient_text.index("durability")-2])
-        durability = int(ingredient_text[ingredient_text.index("durability")+11:ingredient_text.index("flavor")-2])
-        flavour = int(ingredient_text[ingredient_text.index("flavor")+7:ingredient_text.index("texture")-2])
-        texture = int(ingredient_text[ingredient_text.index("texture")+8:ingredient_text.index("calories")-2])
-        calories = int(ingredient_text[ingredient_text.index("calories")+9:])
+        capacity = int(ingredient_text[ingredient_text.index("capacity") + 9 : ingredient_text.index("durability") - 2])
+        durability = int(
+            ingredient_text[ingredient_text.index("durability") + 11 : ingredient_text.index("flavor") - 2]
+        )
+        flavour = int(ingredient_text[ingredient_text.index("flavor") + 7 : ingredient_text.index("texture") - 2])
+        texture = int(ingredient_text[ingredient_text.index("texture") + 8 : ingredient_text.index("calories") - 2])
+        calories = int(ingredient_text[ingredient_text.index("calories") + 9 :])
         possible_ingredients.append(Ingredient(name, capacity, durability, flavour, texture, calories))
     return possible_ingredients
 
@@ -32,7 +34,7 @@ def sum_to(total: int, num_items: int) -> Iterator[list[int]]:
     if num_items == 1:
         yield [total]
     else:
-        for i in range(total+1):
+        for i in range(total + 1):
             for rest in sum_to(total - i, num_items - 1):
                 yield [i] + rest
 
@@ -59,7 +61,7 @@ def problem_1() -> None:
         total = capacity * durability * flavour * texture
         if max_found is None or total > max_found:
             max_found = total
-    
+
     print(max_found)
 
 
@@ -89,5 +91,5 @@ def problem_2() -> None:
         total = capacity * durability * flavour * texture
         if max_found is None or total > max_found:
             max_found = total
-    
+
     print(max_found)

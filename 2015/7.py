@@ -44,19 +44,13 @@ class DIRECT:
         self.val: int | str = int(item) if item.isnumeric() else item
 
     def evaluate(self) -> int:
-        return (
-            self.val if isinstance(self.val, int) else Wire.lookup[self.val].evaluate()
-        )
+        return self.val if isinstance(self.val, int) else Wire.lookup[self.val].evaluate()
 
 
 class AND:
     def __init__(self, split_line: list[str]) -> None:
-        self.dep_1: DIRECT | str = (
-            DIRECT(split_line[0]) if split_line[0].isnumeric() else split_line[0]
-        )
-        self.dep_2: DIRECT | str = (
-            DIRECT(split_line[2]) if split_line[2].isnumeric() else split_line[2]
-        )
+        self.dep_1: DIRECT | str = DIRECT(split_line[0]) if split_line[0].isnumeric() else split_line[0]
+        self.dep_2: DIRECT | str = DIRECT(split_line[2]) if split_line[2].isnumeric() else split_line[2]
 
     def evaluate(self) -> int:
         # this seems to be an issue with mypy

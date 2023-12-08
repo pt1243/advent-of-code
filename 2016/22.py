@@ -17,13 +17,15 @@ def problem_1() -> None:
     all_nodes: list[Node] = []
     for line in lines:
         split = line.split()
-        all_nodes.append(Node(
-            int(split[0][split[0].index("-")+2:split[0].rindex("-")]),
-            int(split[0][split[0].rindex("-")+2:]),
-            int(split[1][:-1]),
-            int(split[2][:-1]),
-            int(split[3][:-1]),
-        ))
+        all_nodes.append(
+            Node(
+                int(split[0][split[0].index("-") + 2 : split[0].rindex("-")]),
+                int(split[0][split[0].rindex("-") + 2 :]),
+                int(split[1][:-1]),
+                int(split[2][:-1]),
+                int(split[3][:-1]),
+            )
+        )
     found_viable_pairs = 0
     for a in all_nodes:
         for b in all_nodes:

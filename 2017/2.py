@@ -16,7 +16,7 @@ def problem_2() -> None:
         nums = [int(n) for n in line.split()]
         found = False
         for i, num_1 in enumerate(nums):
-            for num_2 in nums[i+1:]:
+            for num_2 in nums[i + 1 :]:
                 if num_1 % num_2 == 0:
                     total += num_1 // num_2
                     found = True

@@ -55,7 +55,6 @@ def problem_1() -> None:
     temperature_to_humidity: dict[int, tuple[int, int]] = {}
     humidity_to_location: dict[int, tuple[int, int]] = {}
 
-    
     targets = {
         "seed-to-soil": seed_to_soil,
         "soil-to-fertilizer": soil_to_fertilizer,
@@ -78,7 +77,7 @@ def problem_1() -> None:
                 # target.update({source_range_start + i: dest_range_start + i for i in range(range_length)})
                 # # for i in range(range_length):
                 #     target[source_range_start + i] = dest_range_start + i
-    
+
     for seed in list(seeds.keys()):
         soil = get_transformed_value(seed_to_soil, seed)
         fertilizer = get_transformed_value(soil_to_fertilizer, soil)
@@ -94,9 +93,11 @@ def problem_1() -> None:
         # temperature = light_to_temperature.get(light, light)
         # humidity = temperature_to_humidity.get(temperature, temperature)
         # location = humidity_to_location.get(humidity, humidity)
-        print(f"{seed = }, {soil = }, {fertilizer = }, {water = }, {light = }, {temperature = }, {humidity = }, {location = }")
+        print(
+            f"{seed = }, {soil = }, {fertilizer = }, {water = }, {light = }, {temperature = }, {humidity = }, {location = }"
+        )
         seeds[seed] = location
-    
+
     print(min(seeds.values()))
 
 

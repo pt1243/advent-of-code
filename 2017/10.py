@@ -17,7 +17,7 @@ def knot_hash(lst: list[int], lengths: list[int], current_pos: int, skip_size: i
         current_pos %= num_elements
         skip_size += 1
     return lst, current_pos, skip_size
-    
+
 
 def problem_1() -> None:
     input_lengths = [int(n) for n in input_text.split(",")]

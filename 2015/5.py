@@ -34,13 +34,13 @@ def problem_2() -> None:
                     continue
                 if abs(second_idx - first_idx) < 2:  # overlapping
                     continue
-                
-                if first_char == second_char and s[first_idx-1] == s[second_idx-1]:
+
+                if first_char == second_char and s[first_idx - 1] == s[second_idx - 1]:
                     pair_found = True
                     break
             if pair_found:
                 break
-        
+
         three_found = any(c1 + c2 + c1 in s for c1 in ascii_lowercase for c2 in ascii_lowercase)
 
         if pair_found and three_found:
