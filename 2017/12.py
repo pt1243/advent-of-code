@@ -18,7 +18,7 @@ class Program:
 
     def __init__(self, id_num: int) -> None:
         self.id_num = id_num
-        self.group: int = 0
+        self.group = 0
         self.connections: list[Program] = []
     
     def extend_connections(self, connections: list[int]) -> None:
