@@ -3,7 +3,7 @@ from time import perf_counter
 
 
 year = 2023
-day = 13
+day = 15
 problem = 2
 
 
