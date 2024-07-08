@@ -1,49 +1,141 @@
 from collections import defaultdict
 from collections.abc import Iterable
-import heapq
-import re
-from string import ascii_lowercase, ascii_uppercase
-from typing import NamedTuple
-from time import sleep
+from itertools import count
 
-from more_itertools import split_when
+from pprint import pprint
+
+from more_itertools import split_before
+import numpy as np
 
 
 with open('./2015/resources/19.txt') as f:
     lines = [line.strip() for line in f]
 
+class CNFGrammar:
+    def __init__(self, initial_rules: Iterable[tuple[str, str]], final: str):
+        self.final = final
+        self.rules: defaultdict[str, set[tuple[str, ...]]] = defaultdict(set)
+        for lhs, rhs in initial_rules:
+            self.rules[lhs].add(tuple("".join(x) for x in split_before(rhs, lambda s: s.isupper())))
+        
+        final_symbols = ("".join(x) for x in split_before(final, lambda s: s.isupper()))
+        for s in final_symbols:
+            self.rules[s].add((f"TERM_{s}",))
+        self.terminals = {term for options in self.rules.values() for rhs in options for term in rhs if term not in self.rules.keys()}
+        self.terminals.update(f"TERM_{s}" for s in final_symbols)
+        pprint(self.terminals)
 
-def split_into_atoms(s: str) -> list[str]:
-    return list(
-        "".join(atom_chars)
-        for atom_chars in split_when(
-            s,
-            lambda c1, c2: (c1 in ascii_lowercase and c2 in ascii_uppercase)
-            or (c1 in ascii_uppercase and c2 in ascii_uppercase),
-        )
-    )
+        # print("before starting")
+        # pprint(self.rules)
 
+        self._run_term()
+        # print("after TERM")
+        # pprint(self.rules)
+        self._run_bin()
+        # print("after BIN")
+        # pprint(self.rules)
+        # self._run_del()
+        self._run_unit()
+        # print("after UNIT")
+        # pprint(self.rules)
 
-class Symbol:
-    pass
+    def _run_term(self):
+        new_rules: defaultdict[str, set[tuple[str, ...]]] = defaultdict(set)
 
+        for lhs, options in self.rules.items():
+            for rhs in options:
+                terminals_present = [t for t in rhs if t in self.terminals]
+                if len(rhs) > len(terminals_present):
+                    for t in terminals_present:
+                        new_rules[f"N_{t}"].add(t)
+                    new_rhs = [orig if orig not in self.terminals else f"N_{orig}" for orig in rhs]
+                    new_rules[lhs].add(tuple(new_rhs))
+                else:
+                    new_rules[lhs].add(rhs)
+        self.rules = new_rules
 
-class TerminalSymbol(Symbol):
-    pass
+    def _run_bin(self):
+        new_rules: defaultdict[str, set[tuple[str, ...]]] = defaultdict(set)
+        for lhs, options in self.rules.items():
+            for rhs in options:
+                if len(rhs) > 2:
+                    new_rules[lhs].add((rhs[0], f"{lhs}_1"))
+                    for n in range(1, len(rhs) - 2):
+                        new_rules[f"{lhs}_{n}"].add((rhs[n], f"{lhs}_{n+1}"))
+                    new_rules[f"{lhs}_{len(rhs) - 2}"].add((rhs[-2], rhs[-1]))
+                else:
+                    new_rules[lhs].add(rhs)
 
+        self.rules = new_rules
+        # pprint(self.rules)
 
-class NonTerminalSymbol(Symbol):
-    pass
+    def _run_del(self):
+        pass  # no epsilon rules
 
+    def _run_unit(self):
+        new_rules: defaultdict[str, set[tuple[str, ...]]] = defaultdict(set)
+        # pprint(self.rules)
+        for lhs, options in self.rules.items():
+            for rhs in options:
+                if len(rhs) == 1 and lhs not in self.terminals and rhs[0] not in self.terminals:
+                    new_rules[lhs].update(self.rules[rhs[0]])
+                else:
+                    new_rules[lhs].add(rhs)
+        
+        self.rules = new_rules
+        # pprint(self.rules)
+    
+    def CYK(self):
+        # pprint(self.rules)
+        target_symbols = ["TERM_" + "".join(x) for x in split_before(self.final, lambda s: s.isupper())]
+        counter = count(1)
+        R_index = {}
+        R_index["e"] = 0
+        for sym in self.rules.keys():
+            if sym in self.terminals:
+                continue
+            if sym == "e":
+                continue
+            R_index[sym] = next(counter)
+        pprint(R_index)
+        n = len(target_symbols)
+        r = len(R_index)
+        P = np.zeros((n, n, r), dtype=bool)
+        back = defaultdict(list)
 
-def find_substring(s: str, sub: str) -> Iterable[int]:  # note: should inline for better performance
-    min_index = 0
-    while True:
-        found_idx = s.find(sub, min_index)
-        if found_idx == -1:
-            break
-        yield found_idx
-        min_index = found_idx + 1
+        for s in range(n):
+            for lhs, options in self.rules.items():
+                for rhs in options:
+                    if rhs == (target_symbols[s],):
+                        v = R_index[lhs]
+                        P[0, s, v] = True
+        
+        dual_productions = []
+        for lhs, options in self.rules.items():
+            for rhs in options:
+                if len(rhs) == 2 and rhs[0] not in self.terminals and rhs[1] not in self.terminals:
+                    # print(f"{lhs = }, {rhs[0] = }, {rhs[1] = }")
+                    a = R_index[lhs]
+                    b = R_index[rhs[0]]
+                    c = R_index[rhs[1]]
+                    dual_productions.append((a, b, c))
+        pprint(self.rules)
+        pprint(dual_productions)
+
+        for l in range(1, n):
+            print(f"running {l = }")
+            for s in range(n - l + 1):
+                for p in range(l):
+                    print(f"  {l = }, {s = }, {p = }")
+                    for a, b, c in dual_productions:
+                        if P[p, s, b] and P[l - p, s + p, c]:
+                            P[l, s, a] = True
+                            back[(l, s, a)].append((p, b, c))
+                # print(f"{l = }, {s = }, {P[l, s, :] = }")
+        # print(P)
+        print(np.any(P, axis=2))
+        print(P[n - 1, 0, 0])
+        # breakpoint()
 
 
 def problem_1() -> None:
@@ -55,7 +147,13 @@ def problem_1() -> None:
         elif line:
             molecule = line
 
-    atoms = split_into_atoms(molecule)
+    atoms = [
+        "".join(atom_chars)
+        for atom_chars in split_before(
+            molecule,
+            lambda s: s.isupper(),
+        )
+    ]
 
     one_step: set[str] = set()
 
@@ -68,98 +166,20 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    pass
-
-    # list_substitutions: defaultdict[str, list[str]] = defaultdict(list)
-    # for line in lines:
-    #     if "=>" in line:
-    #         initial, replacement = line.split(" => ")
-    #         # print(f"{initial = }, {replacement = }")
-    #         list_substitutions[initial].append(replacement)
-    #     elif line:
-    #         final_molecule = line
-
-    # substitutions = {initial: tuple(replacements) for initial, replacements in list_substitutions.items()}
-
-    # final_molecule_length = len(final_molecule)
-    # stack = ["e"]
-    # steps: dict[str, int] = {"e": 0}
-    # seen: set[str] = set()
-    # seen_seen: set[int] = set()
-
-    # while stack:
-    #     current = stack.pop()
-    #     # seen.add(current)
-    #     current_steps = steps[current]
-    #     length_1000 = len(seen) // 1000
-    #     if length_1000 not in seen_seen:
-    #         print(f"current stack length = {len(stack)}, {current_steps = }, number seen = {len(seen)}")
-    #         seen_seen.add(length_1000)
-    #     for initial, replacements in substitutions.items():
-    #         if initial in current:
-    #             # print(f"checking {initial = }, {replacements = }")
-    #             len_initial = len(initial)
-    #             min_index = 0
-    #             while True:
-    #                 start_idx = current.find(initial, min_index)
-    #                 if start_idx == -1:
-    #                     break
-    #             # for start_idx in find_substring(current, initial):
-    #                 # print(f"checking {start_idx = }")
-    #                 for replacement in replacements:
-    #                     new = current[:start_idx] + replacement + current[start_idx+len_initial:]
-    #                     if len(new) > final_molecule_length or new in seen:
-    #                         continue
-    #                     new_steps = current_steps + 1
-    #                     steps[new] = new_steps
-    #                     # if new_steps > 1
-    #                     if new == final_molecule:
-    #                         print(new)
-    #                         print(new_steps)
-    #                         return
-    #                     stack.append(new)
-    #                     seen.add(new)
-    #                 min_index = start_idx + 1
-
-    # len_final_molecule = len(final_molecule)
-    # # print(substitutions)
-    # found: set[str] = set()
-    # queue: list[StringCandidate] = [StringCandidate(len_final_molecule - len("e"), 0, "e")]
-
-    # # need to use bisect
-
-    # def search():
-    #     while True:
-    #         current_item = heapq.heappop(queue)
-    #         current = current_item.content
-    #         current_steps = current_item.steps
-    #         # print(f"current weight = {current_item.weight}, queue length = {len(queue)}, found length = {len(found)}")
-    #         steps = current_steps + 1
-    #         if steps > 10_000:  # guess
-    #             continue
-    #         for initial, replacements in substitutions.items():
-    #             if initial in current:
-    #                 min_index = 0
-    #                 len_initial = len(initial)
-    #                 while True:
-    #                     index_found = current.find(initial, min_index)
-    #                     if index_found == -1:
-    #                         break
-    #                     prev, post = current[:index_found], current[index_found+len_initial:]
-    #                     for replacement in replacements:
-    #                         new = prev + replacement + post
-    #                         if len(new) > len_final_molecule:
-    #                             continue
-    #                         if new == final_molecule:
-    #                             print(steps)
-    #                             return
-    #                         weight = abs(len_final_molecule - len(new))
-
-    #                         if new not in found:
-    #                             found.add(new)
-    #                             item = StringCandidate(weight, steps, new)
-    #                             heapq.heappush(queue, item)
-
-    #                     min_index = index_found + 1
-
-    # search()
+    # grammar = CNFGrammar(
+    #     [line.split(" => ") for line in lines[:-2]],
+    #     lines[-1]
+    # )
+    # grammar.CYK()
+    # grammar = CNFGrammar(
+    #     [("e", "H"), ("e", "O"), ("H", "HO"), ("H", "OH"), ("O", "HH")],
+    #     "HOHOHO",
+    # )
+    # grammar.CYK()
+    grammar = CNFGrammar(
+        [
+            ("e", "NpVp"), ("Vp", "VpPp"), ("Vp", "VNp"), ("Vp", "Eats"), ("Pp", "PNp"), ("Np", "DetN"), ("Np", "She"), ("V", "Eats"), ("P", "With"), ("N", "Fish"), ("N", "Fork"), ("Det", "A")
+        ],
+        "SheEatsAFishWithAFork"
+    )
+    grammar.CYK()
