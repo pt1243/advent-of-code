@@ -1,4 +1,4 @@
-from math import floor, log2
+from math import floor, log2, log
 
 
 num_elves = 3018458
@@ -11,5 +11,13 @@ def problem_1() -> None:
     print(2 * difference + 1)
 
 
-def problem_2() -> None:
-    pass
+def problem_2():
+    max_pow_3 = 3**floor(log(num_elves, 3))
+    if max_pow_3 == num_elves:
+        ans = num_elves
+    else:
+        threshold = 2 * max_pow_3
+        ans = num_elves - max_pow_3
+        if num_elves > threshold:
+            ans += (num_elves - 2*max_pow_3)
+    print(ans)
