@@ -36,6 +36,8 @@ class CNFGrammar:
 
         for lhs, options in self.rules.items():
             for rhs in options:
+                # BUG: something is going wrong here with the TERM_ things; no idea what, the "CYK algorithm working"
+                # commit does not, in fact, work
                 terminals_present = [t for t in rhs if t in self.terminals]
                 print(lhs, rhs, terminals_present)
                 if len(rhs) > len(terminals_present):
