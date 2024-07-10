@@ -1,6 +1,7 @@
 from collections import deque
 from hashlib import md5
 
+
 passcode = "qzthpkfp"
 
 
@@ -44,4 +45,3 @@ def problem_2() -> None:
         if col < 3 and computed_hash[3] in open_chars:
             queue.append((path + "R", col + 1, row))
     print(max_path)
-        
