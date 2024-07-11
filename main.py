@@ -3,8 +3,8 @@ from time import perf_counter
 
 
 year = 2017
-day = 22
-problem = 2
+day = 23
+problem = 1
 
 
 def main():
