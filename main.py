@@ -3,13 +3,13 @@ from time import perf_counter
 
 
 year = 2017
-day = 23
-problem = 2
+day = 10
+problem = 1
 
 
 def main():
     start = perf_counter()
-    module = importlib.import_module(f"{year}.{day}", package=".")
+    module = importlib.import_module(f"{year}.{str(day).zfill(2)}", package=".")
     function = getattr(module, f"problem_{problem}")
     try:
         function()
