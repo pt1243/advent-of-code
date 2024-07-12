@@ -1,7 +1,8 @@
 from math import floor, log2, log
 
 
-num_elves = 3018458
+with open("./2016/resources/19.txt") as f:
+    num_elves = int(f.read().strip())
 
 
 def problem_1() -> None:

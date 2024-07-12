@@ -2,7 +2,8 @@ from collections import deque
 from hashlib import md5
 
 
-passcode = "qzthpkfp"
+with open("./2016/resources/17.txt") as f:
+    passcode = f.read().strip()
 
 
 def problem_1() -> None:

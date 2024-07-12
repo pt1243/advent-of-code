@@ -1,7 +1,8 @@
 from math import sqrt, ceil
 
 
-target = 34000000
+with open("./2015/resources/20.txt") as f:
+    target = int(f.read().strip())
 
 
 def sum_divisors(n: int) -> int:

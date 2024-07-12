@@ -1,8 +1,8 @@
 from hashlib import md5
 from itertools import count
 
-
-door_id = "uqwqemis"
+with open("./2016/resources/5.txt") as f:
+    door_id = f.read().strip()
 
 
 def problem_1() -> None:

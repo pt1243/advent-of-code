@@ -3,7 +3,8 @@ from hashlib import md5
 from itertools import count
 
 
-salt = "qzyelonm"
+with open("./2016/resources/14.txt") as f:
+    salt = f.read().strip()
 
 
 @cache

@@ -42,6 +42,6 @@ def problem_2() -> None:
     text: list[list[None | str]] = [[None for _ in range(10)] for _ in range(6)]
     for letter_idx, letter in enumerate(letters):
         for row_idx, row in enumerate(letter):
-            text[row_idx][letter_idx] = "".join("#" if c else " " for c in row)
+            text[row_idx][letter_idx] = "".join("■" if c else " " for c in row)
     for row in text:
         print("    ".join(char_string for char_string in row))

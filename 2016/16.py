@@ -1,7 +1,8 @@
 from itertools import batched
 
 
-initial_data = "01110110101001000"
+with open("./2016/resources/16.txt") as f:
+    initial_data = f.read().strip()
 
 
 def generate_data(a: str) -> str:

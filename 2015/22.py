@@ -2,10 +2,13 @@ import heapq
 from typing import NamedTuple
 
 
+with open("./2015/resources/22.txt") as f:
+    lines = [line.strip() for line in f]
+
 starting_player_hp = 50
 starting_player_mana = 500
-starting_boss_hp = 58
-boss_damage = 9
+starting_boss_hp = int(lines[0].split(": ")[1])
+boss_damage = int(lines[1].split(": ")[1])
 
 
 class State(NamedTuple):

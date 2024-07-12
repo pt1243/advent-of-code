@@ -2,7 +2,8 @@ import heapq
 from collections import defaultdict
 
 
-designer_number = 1352
+with open("./2016/resources/13.txt") as f:
+    designer_number = int(f.read().strip())
 
 
 def is_open(node: tuple[int, int]) -> bool:

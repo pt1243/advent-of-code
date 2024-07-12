@@ -1,4 +1,5 @@
-current_password = "hepxcrrq"
+with open("./2015/resources/11.txt") as f:
+    current_password = f.read().strip()
 
 
 def inc_list(lst: list[int]) -> list[int]:

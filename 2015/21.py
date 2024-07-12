@@ -2,6 +2,15 @@ from itertools import product, combinations
 from typing import NamedTuple
 
 
+with open("./2015/resources/21.txt") as f:
+    lines = [line.strip() for line in f]
+
+
+starting_boss_hp = int(lines[0].split(": ")[1])
+boss_damage = int(lines[1].split(": ")[1])
+boss_armour = int(lines[2].split(": ")[1])
+
+
 class Item(NamedTuple):
     name: str
     cost: int
@@ -49,9 +58,10 @@ ring_choices = (
 
 
 def simulate(
-    player_hp: int, player_damage: int, player_armour: int, boss_hp: int, boss_damage: int, boss_armour: int
+    player_hp: int, player_damage: int, player_armour: int
 ) -> bool:
     current_turn = "player"
+    boss_hp = starting_boss_hp
     while boss_hp > 0 and player_hp > 0:
         if current_turn == "player":
             damage = max(player_damage - boss_armour, 1)
@@ -71,7 +81,7 @@ def problem_1() -> None:
         total_damage = weapon.damage + armour.damage + ring_combo.damage
         total_armour = weapon.armour + armour.armour + ring_combo.armour
 
-        if simulate(100, total_damage, total_armour, 104, 8, 1):
+        if simulate(100, total_damage, total_armour):
             if total_cost < min_cost:
                 min_cost = total_cost
 
@@ -85,7 +95,7 @@ def problem_2() -> None:
         total_damage = weapon.damage + armour.damage + ring_combo.damage
         total_armour = weapon.armour + armour.armour + ring_combo.armour
 
-        if not simulate(100, total_damage, total_armour, 104, 8, 1):
+        if not simulate(100, total_damage, total_armour):
             if total_cost > max_cost:
                 max_cost = total_cost
 
