@@ -3,13 +3,13 @@ with open("./2017/resources/24.txt") as f:
 
 
 def problem_1() -> None:
-    components = {}
+    components: dict[int, tuple[int, int]] = {}
     for i, line in enumerate(lines):
         left, right = line.split("/")
         components[i] = (int(left), int(right))
     max_strength = 0
 
-    def find_bridges(current_num: int, indices_used: set[int]):
+    def find_bridges(current_num: int, indices_used: set[int]) -> None:
         nonlocal max_strength
         max_strength = max(max_strength, sum((sum(components[i]) for i in indices_used)))
         next_indices = {i for i, component in components.items() if i not in indices_used and current_num in component}
@@ -25,13 +25,13 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    components = {}
+    components: dict[int, tuple[int, int]] = {}
     for i, line in enumerate(lines):
         left, right = line.split("/")
         components[i] = (int(left), int(right))
     max_strength, max_length = 0, 0
 
-    def find_bridges(current_num: int, indices_used: set[int]):
+    def find_bridges(current_num: int, indices_used: set[int]) -> None:
         nonlocal max_strength, max_length
         length = len(indices_used)
         if length > max_length:

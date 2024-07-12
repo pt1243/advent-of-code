@@ -9,7 +9,7 @@ with open("./2017/resources/23.txt") as f:
 def problem_1() -> None:
     i = 0
     times_mul_invoked = 0
-    registers = defaultdict(int)
+    registers: defaultdict[str, int] = defaultdict(int)
     while 0 <= i < len(instructions):
         opcode, reg, src = instructions[i].split()
         try:

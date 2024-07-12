@@ -40,7 +40,7 @@ def problem_1() -> None:
 
     p0 = Program.get_program(0)
 
-    def search_recursive(p: Program):
+    def search_recursive(p: Program) -> None:
         p.group = 1
         for c in p.connections:
             if not c.group:

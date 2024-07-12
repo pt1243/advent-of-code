@@ -46,8 +46,8 @@ def problem_1() -> None:
     steps = int(header[1].split()[-2])
 
     states: dict[str, State] = {}
-    for state in blueprint_states[1:]:
-        lines = state.split("\n")
+    for state_string in blueprint_states[1:]:
+        lines = state_string.split("\n")
         states[lines[0].split()[-1][0]] = State(
             int(lines[2].split()[-1][0]),
             -1 if lines[3].split()[-1][:-1] == "left" else 1,
@@ -58,7 +58,7 @@ def problem_1() -> None:
         )
 
     position = 0
-    tape = defaultdict(int)
+    tape: defaultdict[int, int] = defaultdict(int)
     state = states[starting_state]
     for _ in range(steps):
         if not tape[position]:

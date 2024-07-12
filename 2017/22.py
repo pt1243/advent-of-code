@@ -11,8 +11,8 @@ reverse = {"u": "d", "d": "u", "l": "r", "r": "l"}
 
 def problem_1() -> None:
     nodes = defaultdict(lambda: False)
-    for i, row in enumerate(lines):
-        for j, char in enumerate(row):
+    for i, grid_row in enumerate(lines):
+        for j, char in enumerate(grid_row):
             if char == "#":
                 nodes[(i, j)] = True
     row = len(lines) // 2
@@ -39,8 +39,8 @@ def problem_1() -> None:
 
 def problem_2() -> None:
     nodes = defaultdict(lambda: 0)
-    for i, row in enumerate(lines):
-        for j, char in enumerate(row):
+    for i, grid_row in enumerate(lines):
+        for j, char in enumerate(grid_row):
             if char == "#":
                 nodes[(i, j)] = 2
     row = len(lines) // 2

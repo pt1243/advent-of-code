@@ -127,8 +127,8 @@ def problem_1() -> None:
             registers[dest] %= val
             i += 1
         elif curr.startswith("rcv"):
-            condition = split[1]
-            if registers[condition] == 0:
+            reg = split[1]
+            if registers[reg] == 0:
                 i += 1
                 continue
             print(last_sound)

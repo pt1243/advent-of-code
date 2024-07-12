@@ -4,7 +4,7 @@ from collections import deque
 n_times = 354
 
 
-def spinlock(n: int, iterations: int) -> list[int]:
+def spinlock(n: int, iterations: int) -> deque[int]:
     lst = deque([0])
     for i in range(1, iterations + 1):
         lst.rotate(-n)
