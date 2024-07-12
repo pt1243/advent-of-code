@@ -5,10 +5,16 @@ with open('./2016/resources/23.txt') as f:
 def run_instructions(registers: dict[str, int]) -> dict[str, int]:
     i = 0
     while 0 <= i < len(instructions):
+        if i >= 19:
+            for inst in instructions:
+                print(inst)
+            print(f"{i = }, {instructions[i] = }")
+            return
         current = instructions[i]
         if current.startswith("tgl"):
             offset = int(current.split()[1]) if current.split()[1].isnumeric() else registers[current.split()[1]]
             target_index = i + offset
+            print(f"toggling; c = {offset}")
             if target_index < 0 or target_index >= len(instructions):
                 i += 1
                 continue
@@ -62,14 +68,10 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    registers = {
-        "a": 12,
-        "b": 0,
-        "c": 0,
-        "d": 0,
-    }
-
-    # NOTE: very unoptimized, will take 10+ mins... need to implement multiplication
-    # so that inc x / dec y / jnz y -2 => x += y
-    result = run_instructions(registers)
-    print(result["a"])
+    a = 12
+    for b in range(11, 0, -1):
+        a *= b
+    c = int(instructions[-7].split()[1])
+    d = int(instructions[-6].split()[1])
+    a += c * d
+    print(a)
