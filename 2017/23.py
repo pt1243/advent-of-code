@@ -1,4 +1,5 @@
 from collections import defaultdict
+from math import ceil, sqrt
 
 
 with open("./2017/resources/23.txt") as f:
@@ -38,4 +39,13 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    pass
+    lower_bound = int(instructions[0].split()[2]) * int(instructions[4].split()[2]) - int(instructions[5].split()[2])
+    upper_bound = lower_bound - int(instructions[7].split()[2])
+    step = -int(instructions[-2].split()[2])
+    num_not_prime = 0
+    for i in range(lower_bound, upper_bound + 1, step):
+        for j in range(2, ceil(sqrt(i)) + 1):
+            if i % j == 0:
+                num_not_prime += 1
+                break
+    print(num_not_prime)
