@@ -36,7 +36,7 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    groups: defaultdict[tuple(int, int), int] = defaultdict(int)
+    groups: defaultdict[tuple[int, int], int] = defaultdict(int)
     all_squares: list[str] = []
     for i in range(128):
         hex_string = knot_hash(f"{key_string}-{i}")
