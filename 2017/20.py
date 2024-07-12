@@ -13,8 +13,10 @@ def problem_1() -> None:
         p_arr = np.array([int(i) for i in p_entries[3:-1].split(",")])
         v_arr = np.array([int(i) for i in v_entries[3:-1].split(",")])
         a_arr = np.array([int(i) for i in a_entries[3:-1].split(",")])
-        
-        final_pos = p_arr + stupidly_high_number * v_arr + (stupidly_high_number * (stupidly_high_number + 1) // 2) * a_arr
+
+        final_pos = (
+            p_arr + stupidly_high_number * v_arr + (stupidly_high_number * (stupidly_high_number + 1) // 2) * a_arr
+        )
         final_dist = np.sum(np.abs(final_pos))
         if final_dist < closest_dist:
             closest_dist, closest_particle = final_dist, i
@@ -29,12 +31,12 @@ def problem_2() -> None:
         v_arr = np.array([int(i) for i in v_entries[3:-1].split(",")])
         a_arr = np.array([int(i) for i in a_entries[3:-1].split(",")])
         particles[i, :] = np.block([p_arr, v_arr, a_arr])
-    
+
     ticks_to_simulate = 200
     for _ in range(ticks_to_simulate):
         particles[:, 3:6] += particles[:, 6:]
         particles[:, :3] += particles[:, 3:6]
-        
+
         _, unique_indices, counts = np.unique(particles[:, :3], axis=0, return_index=True, return_counts=True)
         if unique_indices.shape[0] != particles.shape[0]:
             indices = unique_indices[counts == 1]

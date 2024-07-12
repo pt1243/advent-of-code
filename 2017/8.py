@@ -2,7 +2,7 @@ from collections import defaultdict
 import operator
 
 
-with open('./2017/resources/8.txt') as f:
+with open("./2017/resources/8.txt") as f:
     lines = [line.strip() for line in f]
 
 

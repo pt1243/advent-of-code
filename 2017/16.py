@@ -1,7 +1,7 @@
 from itertools import count
 
 
-with open('./2017/resources/16.txt') as f:
+with open("./2017/resources/16.txt") as f:
     steps = f.read().strip().split(",")
 
 
@@ -10,7 +10,7 @@ def dance(start: list[str]) -> list[str]:
     for step in steps:
         if step.startswith("s"):
             end_size = int(step[1:])
-            programs = programs[-end_size:] + programs[:16 - end_size]
+            programs = programs[-end_size:] + programs[: 16 - end_size]
         elif step.startswith("x"):
             index_strings = step[1:].split("/")
             idx_a, idx_b = int(index_strings[0]), int(index_strings[1])

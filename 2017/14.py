@@ -11,7 +11,7 @@ def knot_hash(text: str) -> str:
     lengths = [ord(c) for c in text] + [17, 31, 73, 47, 23]
     lst, num_elements = list(range(256)), 256
     current_pos, skip_size = 0, 0
-    
+
     for _ in range(64):
         for length in lengths:
             for i in range(length // 2):
@@ -42,7 +42,7 @@ def problem_2() -> None:
         hex_string = knot_hash(f"{key_string}-{i}")
         binary_string = "".join(bin(int(c, 16))[2:].zfill(4) for c in hex_string)
         all_squares.append(binary_string)
-    
+
     def mark_recursive(row: int, col: int, group: int) -> None:
         groups[(row, col)] = group
         if row > 0 and all_squares[row - 1][col] == "1" and not groups[(row - 1, col)]:
@@ -53,10 +53,10 @@ def problem_2() -> None:
             mark_recursive(row, col - 1, group)
         if col < 127 and all_squares[row][col + 1] == "1" and not groups[(row, col + 1)]:
             mark_recursive(row, col + 1, group)
-    
+
     for row, row_list in enumerate(all_squares):
         for col, char in enumerate(row_list):
             if char == "1" and not groups[(row, col)]:
                 mark_recursive(row, col, max(groups.values()) + 1)
-    
+
     print(max(groups.values()))

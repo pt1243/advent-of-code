@@ -56,7 +56,7 @@ def problem_1() -> None:
             -1 if lines[7].split()[-1][:-1] == "left" else 1,
             lines[8].split()[-1][0],
         )
-    
+
     position = 0
     tape = defaultdict(int)
     state = states[starting_state]

@@ -1,4 +1,4 @@
-with open('./2017/resources/5.txt') as f:
+with open("./2017/resources/5.txt") as f:
     jumps = [int(line.strip()) for line in f]
 
 

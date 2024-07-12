@@ -17,7 +17,7 @@ def problem_1() -> None:
         else:
             col += 1
         char = lines[row][col]
-        
+
         if char.isupper():
             letters_found += char
             if len(letters_found) == num_letters:
@@ -47,7 +47,7 @@ def problem_2() -> None:
         else:
             col += 1
         char = lines[row][col]
-        
+
         if char.isupper():
             letters_found += char
             if len(letters_found) == num_letters:

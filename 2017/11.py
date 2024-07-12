@@ -1,4 +1,4 @@
-with open('./2017/resources/11.txt') as f:
+with open("./2017/resources/11.txt") as f:
     moves = f.read().strip().split(",")
 
 

@@ -14,8 +14,12 @@ def run_iterations(iterations: int) -> int:
             target_input, target_output = two_by_two_inputs, two_by_two_outputs
         else:
             target_input, target_output = three_by_three_inputs, three_by_three_outputs
-        target_input.append(np.array([[1 if char == "#" else 0 for char in row] for row in left.split("/")], dtype=bool))
-        target_output.append(np.array([[1 if char == "#" else 0 for char in row] for row in right.split("/")], dtype=bool))
+        target_input.append(
+            np.array([[1 if char == "#" else 0 for char in row] for row in left.split("/")], dtype=bool)
+        )
+        target_output.append(
+            np.array([[1 if char == "#" else 0 for char in row] for row in right.split("/")], dtype=bool)
+        )
 
     for _ in range(iterations):
         if pattern.shape[0] % 2 == 0:
@@ -27,14 +31,22 @@ def run_iterations(iterations: int) -> int:
         cache = {}
         for i in range(n):
             for j in range(n):
-                section = pattern[skip*i:skip*(i+1), skip*j:skip*(j+1)]
+                section = pattern[skip * i : skip * (i + 1), skip * j : skip * (j + 1)]
                 section_tuple = tuple(tuple(row) for row in section)
                 if section_tuple not in cache:
                     for idx, match in enumerate(input_list):
-                        if np.all(section == match) or np.all(section[:, ::-1] == match) or np.all(section[::-1, :] == match):
+                        if (
+                            np.all(section == match)
+                            or np.all(section[:, ::-1] == match)
+                            or np.all(section[::-1, :] == match)
+                        ):
                             break
                         one_rotation = np.rot90(section)
-                        if np.all(one_rotation == match) or np.all(one_rotation[:, ::-1] == match) or np.all(one_rotation[::-1, :] == match):
+                        if (
+                            np.all(one_rotation == match)
+                            or np.all(one_rotation[:, ::-1] == match)
+                            or np.all(one_rotation[::-1, :] == match)
+                        ):
                             break
                         two_rotations = np.rot90(one_rotation)
                         if np.all(two_rotations == match):
