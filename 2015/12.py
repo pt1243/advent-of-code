@@ -2,7 +2,7 @@ import json
 from collections.abc import Iterable, Mapping
 
 
-with open('./2015/resources/12.txt') as f:
+with open("./2015/resources/12.txt") as f:
     data = json.loads(f.read().strip())
 
 

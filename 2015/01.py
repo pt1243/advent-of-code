@@ -1,4 +1,4 @@
-with open('./2015/resources/1.txt') as f:
+with open("./2015/resources/1.txt") as f:
     input_string = f.read().strip()
 
 

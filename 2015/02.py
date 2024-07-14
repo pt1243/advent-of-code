@@ -5,7 +5,7 @@ with open("./2015/resources/2.txt") as f:
 def problem_1() -> None:
     total = 0
     for line in boxes:
-        l, w, h = (int(i) for i in line.split('x'))
+        l, w, h = (int(i) for i in line.split("x"))
         lw = l * w
         lh = l * h
         wh = w * h
@@ -17,7 +17,7 @@ def problem_1() -> None:
 def problem_2() -> None:
     total = 0
     for line in boxes:
-        l, w, h = (int(i) for i in line.split('x'))
+        l, w, h = (int(i) for i in line.split("x"))
         perimeter_lw = 2 * l + 2 * w
         perimeter_lh = 2 * l + 2 * h
         perimeter_wh = 2 * w + 2 * h

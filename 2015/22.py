@@ -59,7 +59,7 @@ def evaluate_cost(spells: tuple[str, ...], part_2: bool = False) -> tuple[int, S
         apply_effects()
         if boss_hp <= 0:
             return spent_mana, None, True
-        
+
         # player turn
         if spell == "magic missile":
             spent_mana += 53
@@ -88,7 +88,7 @@ def evaluate_cost(spells: tuple[str, ...], part_2: bool = False) -> tuple[int, S
             spent_mana += 229
             player_mana -= 229
             recharge_timer = 5
-        
+
         # if player did not have enough to cast the last spell
         if player_mana < 0:
             return 0, None, False
@@ -97,12 +97,12 @@ def evaluate_cost(spells: tuple[str, ...], part_2: bool = False) -> tuple[int, S
         apply_effects()
         if boss_hp <= 0:
             return spent_mana, None, True
-        
+
         armor = 7 if shield_timer > 0 else 0
         player_hp -= max(boss_damage - armor, 1)
         if player_hp <= 0:
             return 0, None, False
-    
+
     # continue playing
     return spent_mana, State(player_hp, player_mana, boss_hp, shield_timer, poison_timer, recharge_timer), False
 
@@ -121,6 +121,7 @@ def problem_1() -> None:
             new_cost, state, victory = evaluate_cost(new_spells)
             if victory or (state is not None):
                 heapq.heappush(possibilities, (new_cost, new_spells, victory))
+
 
 def problem_2() -> None:
     possibilities = []

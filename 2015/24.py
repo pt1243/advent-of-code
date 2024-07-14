@@ -7,8 +7,9 @@ from math import floor
 import numpy as np
 
 
-with open('./2015/resources/24.txt') as f:
+with open("./2015/resources/24.txt") as f:
     weights = {int(line.strip()) for line in f}
+
 
 def can_partition_into_two(S: Sequence[int]) -> bool:
     n = len(S)
@@ -46,7 +47,7 @@ def can_partition_into_three(nums: set[int], target: int) -> bool:
 def problem_1() -> None:
     target = sum(weights) // 3
 
-    min_qe = float('inf')
+    min_qe = float("inf")
     num_first_group = 1
     found = False
 
@@ -67,7 +68,7 @@ def problem_1() -> None:
 def problem_2() -> None:
     target = sum(weights) // 4
 
-    min_qe = float('inf')
+    min_qe = float("inf")
     num_first_group = 1
     found = False
 

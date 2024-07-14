@@ -1,7 +1,7 @@
 import numpy as np
 
 
-with open('./2015/resources/6.txt') as f:
+with open("./2015/resources/6.txt") as f:
     instructions = [line.strip() for line in f]
 
 
@@ -9,7 +9,7 @@ def problem_1() -> None:
     lights = np.zeros((1000, 1000), dtype=bool)
     for instruction in instructions:
         start_str, end_str = instruction.split(" through ")
-        end_x, end_y = tuple(int(i) for i in end_str.split(','))
+        end_x, end_y = tuple(int(i) for i in end_str.split(","))
         start_x, start_y = tuple(int(i) for i in start_str.rsplit(" ", maxsplit=1)[1].split(","))
 
         subarray = lights[start_x : end_x + 1, start_y : end_y + 1]
@@ -28,7 +28,7 @@ def problem_2() -> None:
     lights = np.zeros((1000, 1000), dtype=int)
     for instruction in instructions:
         start_str, end_str = instruction.split(" through ")
-        end_x, end_y = tuple(int(i) for i in end_str.split(','))
+        end_x, end_y = tuple(int(i) for i in end_str.split(","))
         start_x, start_y = tuple(int(i) for i in start_str.rsplit(" ", maxsplit=1)[1].split(","))
 
         subarray = lights[start_x : end_x + 1, start_y : end_y + 1]

@@ -1,4 +1,4 @@
-with open('./2015/resources/16.txt') as f:
+with open("./2015/resources/16.txt") as f:
     sues = [line.strip() for line in f]
 
 

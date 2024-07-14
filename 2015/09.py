@@ -1,7 +1,7 @@
 from itertools import pairwise, permutations
 
 
-with open('./2015/resources/9.txt') as f:
+with open("./2015/resources/9.txt") as f:
     all_distances = [line.strip() for line in f]
 
 

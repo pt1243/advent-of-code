@@ -9,8 +9,7 @@ with open("./2015/resources/7.txt") as f:
 
 
 class SupportsEvaluate(Protocol):
-    def evaluate(self) -> int:
-        ...
+    def evaluate(self) -> int: ...
 
 
 class Wire:

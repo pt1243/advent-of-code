@@ -1,7 +1,7 @@
 from string import ascii_lowercase
 
 
-with open('./2015/resources/5.txt') as f:
+with open("./2015/resources/5.txt") as f:
     strings = [line.strip() for line in f]
 
 

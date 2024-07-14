@@ -57,9 +57,7 @@ ring_choices = (
 )
 
 
-def simulate(
-    player_hp: int, player_damage: int, player_armour: int
-) -> bool:
+def simulate(player_hp: int, player_damage: int, player_armour: int) -> bool:
     current_turn = "player"
     boss_hp = starting_boss_hp
     while boss_hp > 0 and player_hp > 0:
@@ -75,7 +73,7 @@ def simulate(
 
 
 def problem_1() -> None:
-    min_cost = float('inf')
+    min_cost = float("inf")
     for weapon, armour, ring_combo in product(weapon_choices, armour_choices, ring_choices):
         total_cost = weapon.cost + armour.cost + ring_combo.cost
         total_damage = weapon.damage + armour.damage + ring_combo.damage
