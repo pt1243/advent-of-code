@@ -2,7 +2,7 @@ with open("./2015/resources/18.txt") as f:
     lines = [line.strip() for line in f]
 
 
-def get_num_neighbours_on(matrix: list[list[bool]], i: int, j: int):
+def get_num_neighbours_on(matrix: list[list[bool]], i: int, j: int) -> int:
     max_idx = len(matrix) - 1
     above = i > 0
     below = i < max_idx

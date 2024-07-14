@@ -1,12 +1,16 @@
+from __future__ import annotations
 import json
 from collections.abc import Iterable, Mapping
+from typing import Union
 
 
 with open("./2015/resources/12.txt") as f:
     data = json.loads(f.read().strip())
 
+IterableToSum = list[Union[int, str, "IterableToSum"]] | Mapping[str | int, Union[int, str, "IterableToSum"]]
 
-def sum_recursive(iterable: Iterable, ignore_red=False):
+
+def sum_recursive(iterable: IterableToSum, ignore_red: bool = False) -> int:
     total = 0
     red_found = False
     if isinstance(iterable, Mapping):

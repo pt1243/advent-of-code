@@ -41,7 +41,7 @@ def problem_2() -> None:
     count = 0
     pattern = "|".join(rules.keys())
 
-    def get_replacement(s: re.Match) -> str:
+    def get_replacement(s: re.Match[str]) -> str:
         return rules[s.group()]
 
     while molecule != "e":

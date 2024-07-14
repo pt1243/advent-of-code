@@ -39,7 +39,7 @@ def evaluate_cost(spells: tuple[str, ...], part_2: bool = False) -> tuple[int, S
 
     spent_mana = 0
 
-    def apply_effects():
+    def apply_effects() -> None:
         nonlocal player_mana, boss_hp, shield_timer, poison_timer, recharge_timer
         if shield_timer > 0:
             shield_timer -= 1
@@ -108,7 +108,7 @@ def evaluate_cost(spells: tuple[str, ...], part_2: bool = False) -> tuple[int, S
 
 
 def problem_1() -> None:
-    possibilities = []
+    possibilities: list[tuple[int, tuple[str, ...], bool]] = []
     for spell, cost in spell_costs.items():
         heapq.heappush(possibilities, (cost, (spell,), False))
     while True:
@@ -124,7 +124,7 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    possibilities = []
+    possibilities: list[tuple[int, tuple[str, ...], bool]] = []
     for spell, cost in spell_costs.items():
         heapq.heappush(possibilities, (cost, (spell,), False))
     while True:

@@ -1,10 +1,11 @@
-from typing import Sequence
+from typing import cast, Sequence
 from functools import reduce
 from operator import mul
 from itertools import combinations
 from math import floor
 
 import numpy as np
+import numpy.typing as npt
 
 
 with open("./2015/resources/24.txt") as f:
@@ -14,7 +15,7 @@ with open("./2015/resources/24.txt") as f:
 def can_partition_into_two(S: Sequence[int]) -> bool:
     n = len(S)
     K = sum(S)
-    P = np.empty((floor(K / 2) + 1, n + 1), dtype=bool)
+    P = cast(npt.NDArray[np.bool_], np.empty((floor(K / 2) + 1, n + 1), dtype=bool))
 
     P[:, 0] = np.zeros(floor(K / 2) + 1)
     P[0, :] = np.ones(n + 1)
@@ -27,7 +28,7 @@ def can_partition_into_two(S: Sequence[int]) -> bool:
             else:
                 P[i, j] = P[i, j - 1]
 
-    return P[floor(K / 2), n]
+    return cast(bool, P[floor(K / 2), n])
 
 
 def can_partition_into_three(nums: set[int], target: int) -> bool:
