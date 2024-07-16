@@ -13,9 +13,9 @@ class Bot:
     def __init__(
         self,
         bot_num: int,
-        low_type: Literal["bot", "output"],
+        low_type: str,
         low_target: int,
-        high_type: Literal["bot", "output"],
+        high_type: str,
         high_target: int,
     ) -> None:
         self.bot_num = bot_num
@@ -57,7 +57,7 @@ def problem_1() -> None:
             low_target = int(split[6])
             high_type = split[10]
             high_target = int(split[11])
-            Bot(bot_num, low_type, low_target, high_type, high_target)  # type: ignore[arg-type]
+            Bot(bot_num, low_type, low_target, high_type, high_target)
 
     for line in lines:
         if line.startswith("value"):
@@ -77,7 +77,7 @@ def problem_2() -> None:
             low_target = int(split[6])
             high_type = split[10]
             high_target = int(split[11])
-            Bot(bot_num, low_type, low_target, high_type, high_target)  # type: ignore[arg-type]
+            Bot(bot_num, low_type, low_target, high_type, high_target)
 
     for line in lines:
         if line.startswith("value"):

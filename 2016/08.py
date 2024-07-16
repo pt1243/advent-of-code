@@ -1,13 +1,14 @@
 from collections import deque
 
 import numpy as np
+import numpy.typing as npt
 
 
 with open("./2016/resources/8.txt") as f:
     lines = [line.strip() for line in f]
 
 
-def process_screen() -> np.ndarray:
+def process_screen() -> npt.NDArray[np.bool_]:
     screen = np.zeros((6, 50), dtype=bool)
 
     for line in lines:
@@ -32,7 +33,6 @@ def process_screen() -> np.ndarray:
 
 def problem_1() -> None:
     screen = process_screen()
-
     print(np.sum(screen))
 
 

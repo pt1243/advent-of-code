@@ -35,6 +35,7 @@ def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int
         return abs(node[0] - goal[0]) + abs(node[1] - goal[1])
 
     open_set: list[tuple[int, int, int]] = [(0, *start)]  # num steps, x, y
+    open_set_set = {start}
     came_from: dict[tuple[int, int], tuple[int, int]] = {}
 
     g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**6)
@@ -46,6 +47,7 @@ def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int
     while open_set:
         _, x, y = heapq.heappop(open_set)
         current = (x, y)
+        open_set_set.remove(current)
         if current == goal:
             return reconstruct_path(current)
         for neighbor in get_neighbours(current):
@@ -54,8 +56,9 @@ def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int
                 came_from[neighbor] = current
                 g_score[neighbor] = tentative_g_score
                 f_score[neighbor] = tentative_g_score + h(neighbor, goal)
-                if neighbor not in open_set:
-                    heapq.heappush(open_set, (tentative_g_score, *neighbor))
+                if neighbor not in open_set_set:
+                    open_set_set.add(neighbor)
+                    heapq.heappush(open_set, (tentative_g_score, neighbor[0], neighbor[1]))
 
 
 def problem_1() -> None:

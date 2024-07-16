@@ -12,7 +12,7 @@ def problem_1() -> None:
     print(2 * difference + 1)
 
 
-def problem_2():
+def problem_2() -> None:
     max_pow_3 = 3 ** floor(log(num_elves, 3))
     if max_pow_3 == num_elves:
         ans = num_elves

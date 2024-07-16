@@ -1,5 +1,6 @@
 from itertools import combinations
 from collections import defaultdict
+from collections.abc import Iterator
 import heapq
 
 
@@ -7,21 +8,21 @@ with open("./2016/resources/24.txt") as f:
     lines = [line.strip() for line in f]
 
 
-def find_distance(start_pos, end_pos):
-    def h(pos):
+def find_distance(start_pos: tuple[int, int], end_pos: tuple[int, int]) -> set[tuple[int, int]]:
+    def h(pos: tuple[int, int]) -> int:
         return abs(end_pos[0] - pos[0]) + abs(end_pos[1] - pos[1])
 
-    def get_neighbours(pos):
+    def get_neighbours(pos: tuple[int, int]) -> Iterator[tuple[int, int]]:
         for drow, dcol in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             if lines[pos[0] + drow][pos[1] + dcol] != "#":
                 yield pos[0] + drow, pos[1] + dcol
 
     open_set = [(h(start_pos), start_pos)]
     open_set_set = {start_pos}
-    came_from = {}
-    g_score = defaultdict(lambda: float("inf"))
+    came_from: dict[tuple[int, int], tuple[int, int]] = {}
+    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
     g_score[start_pos] = 0
-    f_score = defaultdict(lambda: float("inf"))
+    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
     f_score[start_pos] = h(start_pos)
 
     while open_set:
@@ -40,9 +41,10 @@ def find_distance(start_pos, end_pos):
                 g_score[neighbour] = tentative_g_score
                 f_score[neighbour] = tentative_g_score + h(neighbour)
                 if neighbour not in open_set_set:
-                    came_from
                     open_set_set.add(neighbour)
-                    heapq.heappush(open_set, (f_score[neighbour], neighbour))
+                    neighbour_item = (f_score[neighbour], neighbour)
+                    heapq.heappush(open_set, neighbour_item)
+    return set()
 
 
 def problem_1() -> None:
@@ -66,17 +68,16 @@ def problem_1() -> None:
     all_digits = set(digits.keys())
     queue = [(0, ["0"])]
     while queue:
-        steps, path = heapq.heappop(queue)
-        if set(path) == all_digits:
+        steps, digit_path = heapq.heappop(queue)
+        if set(digit_path) == all_digits:
             print(steps)
             return
-        last_digit = path[-1]
+        last_digit = digit_path[-1]
         for next_digit, distance in connections[last_digit]:
-            heapq.heappush(queue, (steps + distance, path + [next_digit]))
+            heapq.heappush(queue, (steps + distance, digit_path + [next_digit]))
 
 
 def problem_2() -> None:
-    # WARNING: slow (~90 s)
     digits = {char: (i, j) for i, row in enumerate(lines) for j, char in enumerate(row) if char.isnumeric()}
     connections = defaultdict(list)
 
@@ -104,14 +105,18 @@ def problem_2() -> None:
     all_digits = set(digits.keys())
     queue = [(0, ["0"])]
     while queue:
-        steps, path = heapq.heappop(queue)
-        if set(path) == all_digits:
-            if path[-1] == "0":
+        steps, digit_path = heapq.heappop(queue)
+        if set(digit_path) == all_digits:
+            if digit_path[-1] == "0":
                 print(steps)
                 return
             else:
-                heapq.heappush(queue, (steps + distance_to_zero[path[-1]], path + ["0"]))
+                heapq.heappush(queue, (steps + distance_to_zero[digit_path[-1]], digit_path + ["0"]))
                 continue
-        last_digit = path[-1]
+        last_digit = digit_path[-1]
+        # optimisation: if we have gone from A -> B -> A, no need to go back to B
+        digit_to_ignore = digit_path[-2] if len(digit_path) >= 3 and digit_path[-3] == digit_path[-1] else None
         for next_digit, distance in connections[last_digit]:
-            heapq.heappush(queue, (steps + distance, path + [next_digit]))
+            if next_digit == digit_to_ignore:
+                continue
+            heapq.heappush(queue, (steps + distance, digit_path + [next_digit]))

@@ -44,7 +44,7 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
         kwargs[f"{element}_microchip"] = microchip_starting_floor
         kwargs[f"{element}_generator"] = generator_starting_floors[element]
 
-    State = namedtuple("State", kwargs.keys())
+    State = namedtuple("State", kwargs.keys())  # type: ignore[misc]  # not sure what mypy doesn't like about
 
     def deduplicate_state(state: State) -> State:
         return State(
@@ -60,8 +60,8 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
         state = heapq.heappop(possible_states)
         states_to_check.remove(state)
 
-        microchips = list(state[3::2])
-        generators = list(state[4::2])
+        microchips: list[str] = list(state[3::2])
+        generators: list[str] = list(state[4::2])
 
         # check that the state is valid
         valid = True
@@ -75,28 +75,28 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
         if not valid:
             continue
 
-        if state.distance_to_top_floor == 0:
-            return state.steps
+        if state.distance_to_top_floor == 0:  # type: ignore[attr-defined]
+            return state.steps  # type: ignore[attr-defined,no-any-return]
 
         # find possible new states
-        current_floor_items = [i for i in range(3, 3 + 2 * num_elements) if state[i] == state.elevator_position]
+        current_floor_items = [i for i in range(3, 3 + 2 * num_elements) if state[i] == state.elevator_position]  # type: ignore[attr-defined]
         # first, all possible states that take one item from the current floor
         for i in current_floor_items:
             replacement_args = {
-                "steps": state.steps + 1,
-                "distance_to_top_floor": state.distance_to_top_floor + 1,
-                "elevator_position": state.elevator_position - 1,
+                "steps": state.steps + 1,  # type: ignore[attr-defined]
+                "distance_to_top_floor": state.distance_to_top_floor + 1,  # type: ignore[attr-defined]
+                "elevator_position": state.elevator_position - 1,  # type: ignore[attr-defined]
                 state._fields[i]: state[i] - 1,
             }
-            if state.elevator_position > 1:
+            if state.elevator_position > 1:  # type: ignore[attr-defined]
                 new_state = deduplicate_state(state._replace(**replacement_args))
                 if new_state not in states_to_check:
                     states_to_check.add(new_state)
                     heapq.heappush(possible_states, new_state)
 
-            if state.elevator_position < 4:
-                replacement_args["elevator_position"] = state.elevator_position + 1
-                replacement_args["distance_to_top_floor"] = state.distance_to_top_floor - 1
+            if state.elevator_position < 4:  # type: ignore[attr-defined]
+                replacement_args["elevator_position"] = state.elevator_position + 1  # type: ignore[attr-defined]
+                replacement_args["distance_to_top_floor"] = state.distance_to_top_floor - 1  # type: ignore[attr-defined]
                 replacement_args[state._fields[i]] = state[i] + 1
                 new_state = deduplicate_state(state._replace(**replacement_args))
                 if new_state not in states_to_check:
@@ -106,26 +106,27 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
         # two items from the current floor:
         for i, j in combinations(current_floor_items, 2):
             replacement_args = {
-                "steps": state.steps + 1,
-                "distance_to_top_floor": state.distance_to_top_floor + 2,
-                "elevator_position": state.elevator_position - 1,
+                "steps": state.steps + 1,  # type: ignore[attr-defined]
+                "distance_to_top_floor": state.distance_to_top_floor + 2,  # type: ignore[attr-defined]
+                "elevator_position": state.elevator_position - 1,  # type: ignore[attr-defined]
                 state._fields[i]: state[i] - 1,
                 state._fields[j]: state[j] - 1,
             }
-            if state.elevator_position > 1:
+            if state.elevator_position > 1:  # type: ignore[attr-defined]
                 new_state = deduplicate_state(state._replace(**replacement_args))
                 if new_state not in states_to_check:
                     states_to_check.add(new_state)
                     heapq.heappush(possible_states, new_state)
-            if state.elevator_position < 4:
-                replacement_args["distance_to_top_floor"] = state.distance_to_top_floor - 2
-                replacement_args["elevator_position"] = state.elevator_position + 1
+            if state.elevator_position < 4:  # type: ignore[attr-defined]
+                replacement_args["distance_to_top_floor"] = state.distance_to_top_floor - 2  # type: ignore[attr-defined]
+                replacement_args["elevator_position"] = state.elevator_position + 1  # type: ignore[attr-defined]
                 replacement_args[state._fields[i]] = state[i] + 1
                 replacement_args[state._fields[j]] = state[j] + 1
                 new_state = deduplicate_state(state._replace(**replacement_args))
                 if new_state not in states_to_check:
                     states_to_check.add(new_state)
                     heapq.heappush(possible_states, new_state)
+    return 0  # to make mypy happy
 
 
 def problem_1() -> None:
