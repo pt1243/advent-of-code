@@ -1,7 +1,7 @@
 from itertools import count
 
 
-with open('./2016/resources/15.txt') as f:
+with open("./2016/resources/15.txt") as f:
     disc_information_list = [line.strip() for line in f]
 
 

@@ -1,4 +1,4 @@
-with open('./2016/resources/12.txt') as f:
+with open("./2016/resources/12.txt") as f:
     instructions = [line.strip() for line in f]
 
 
@@ -6,7 +6,6 @@ def run_instructions(registers: dict[str, int]) -> dict[str, int]:
     i = 0
     while 0 <= i < len(instructions):
         current = instructions[i]
-        # print(f"{current = }")
         if current.startswith("cpy"):
             i += 1
             split = current.split()

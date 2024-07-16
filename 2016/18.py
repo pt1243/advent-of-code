@@ -1,10 +1,10 @@
-with open('./2016/resources/18.txt') as f:
+with open("./2016/resources/18.txt") as f:
     first_row = f.read().strip()
 
 
 def problem_1() -> None:
     num_rows = 40
-    rows: list[list[bool]] = [[True if char == "^" else False for char in first_row]]
+    rows: list[list[bool]] = [[char == "^" for char in first_row]]
     row_size = len(rows[0])
     for _ in range(39):
         prev_row = rows[-1]
@@ -29,7 +29,7 @@ def problem_1() -> None:
 
 def problem_2() -> None:
     num_rows = 400000
-    rows: list[list[bool]] = [[True if char == "^" else False for char in first_row]]
+    rows: list[list[bool]] = [[char == "^" for char in first_row]]
     row_size = len(rows[0])
     for _ in range(num_rows - 1):
         prev_row = rows[-1]

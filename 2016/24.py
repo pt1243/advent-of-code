@@ -10,12 +10,12 @@ with open("./2016/resources/24.txt") as f:
 def find_distance(start_pos, end_pos):
     def h(pos):
         return abs(end_pos[0] - pos[0]) + abs(end_pos[1] - pos[1])
-    
+
     def get_neighbours(pos):
         for drow, dcol in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             if lines[pos[0] + drow][pos[1] + dcol] != "#":
                 yield pos[0] + drow, pos[1] + dcol
-    
+
     open_set = [(h(start_pos), start_pos)]
     open_set_set = {start_pos}
     came_from = {}
@@ -48,8 +48,7 @@ def find_distance(start_pos, end_pos):
 def problem_1() -> None:
     digits = {char: (i, j) for i, row in enumerate(lines) for j, char in enumerate(row) if char.isnumeric()}
     connections = defaultdict(list)
-    
-    
+
     for start_digit, end_digit in combinations(digits.keys(), 2):
         start_pos, end_pos = digits[start_digit], digits[end_digit]
         path = find_distance(start_pos, end_pos)
@@ -63,7 +62,7 @@ def problem_1() -> None:
         if not found_other_digit:
             connections[start_digit].append((end_digit, len(path) - 1))
             connections[end_digit].append((start_digit, len(path) - 1))
-    
+
     all_digits = set(digits.keys())
     queue = [(0, ["0"])]
     while queue:
@@ -80,7 +79,7 @@ def problem_2() -> None:
     # WARNING: slow (~90 s)
     digits = {char: (i, j) for i, row in enumerate(lines) for j, char in enumerate(row) if char.isnumeric()}
     connections = defaultdict(list)
-    
+
     for start_digit, end_digit in combinations(digits.keys(), 2):
         start_pos, end_pos = digits[start_digit], digits[end_digit]
         path = find_distance(start_pos, end_pos)
@@ -94,14 +93,14 @@ def problem_2() -> None:
         if not found_other_digit:
             connections[start_digit].append((end_digit, len(path) - 1))
             connections[end_digit].append((start_digit, len(path) - 1))
-    
+
     distance_to_zero = {}
     for start_digit, start_pos in digits.items():
         if start_digit == "0":
             continue
         path = find_distance(start_pos, digits["0"])
         distance_to_zero[start_digit] = len(path) - 1
-    
+
     all_digits = set(digits.keys())
     queue = [(0, ["0"])]
     while queue:

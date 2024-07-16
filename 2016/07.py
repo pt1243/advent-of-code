@@ -1,4 +1,4 @@
-with open('./2016/resources/7.txt') as f:
+with open("./2016/resources/7.txt") as f:
     ips = [line.strip() for line in f]
 
 
@@ -55,13 +55,7 @@ def problem_2() -> None:
 
         counted = False
         for aba in abas_found:
-            (
-                a,
-                b,
-            ) = (
-                aba[0],
-                aba[1],
-            )
+            a, b = aba[0], aba[1]
             for bab in babs_found:
                 c1, c2, c3 = bab[0], bab[1], bab[2]
                 if c1 == b and c2 == a:

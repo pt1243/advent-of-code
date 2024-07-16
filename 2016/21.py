@@ -2,7 +2,7 @@ from collections import deque
 from itertools import permutations
 
 
-with open('./2016/resources/21.txt') as f:
+with open("./2016/resources/21.txt") as f:
     lines = [line.strip() for line in f]
 
 

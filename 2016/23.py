@@ -1,20 +1,14 @@
-with open('./2016/resources/23.txt') as f:
+with open("./2016/resources/23.txt") as f:
     instructions = [line.strip() for line in f]
 
 
 def run_instructions(registers: dict[str, int]) -> dict[str, int]:
     i = 0
     while 0 <= i < len(instructions):
-        if i >= 19:
-            for inst in instructions:
-                print(inst)
-            print(f"{i = }, {instructions[i] = }")
-            return
         current = instructions[i]
         if current.startswith("tgl"):
             offset = int(current.split()[1]) if current.split()[1].isnumeric() else registers[current.split()[1]]
             target_index = i + offset
-            print(f"toggling; c = {offset}")
             if target_index < 0 or target_index >= len(instructions):
                 i += 1
                 continue

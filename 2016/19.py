@@ -13,12 +13,12 @@ def problem_1() -> None:
 
 
 def problem_2():
-    max_pow_3 = 3**floor(log(num_elves, 3))
+    max_pow_3 = 3 ** floor(log(num_elves, 3))
     if max_pow_3 == num_elves:
         ans = num_elves
     else:
         threshold = 2 * max_pow_3
         ans = num_elves - max_pow_3
         if num_elves > threshold:
-            ans += (num_elves - 2*max_pow_3)
+            ans += num_elves - 2 * max_pow_3
     print(ans)

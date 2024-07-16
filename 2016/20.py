@@ -2,7 +2,7 @@ from itertools import count
 import numpy as np
 
 
-with open('./2016/resources/20.txt') as f:
+with open("./2016/resources/20.txt") as f:
     lines = [line.strip() for line in f]
     for line in lines:
         lower, upper = line.split("-")
@@ -20,6 +20,6 @@ def problem_2() -> None:
     upper_limit = 4294967295
     arr = np.ones(upper_limit + 1, dtype=bool)
     ranges = tuple(sorted(tuple(int(val) for val in line.split("-")) for line in lines))
-    for (lower, upper) in ranges:
-        arr[lower:upper+1] = np.zeros_like(arr[lower:upper+1])
+    for lower, upper in ranges:
+        arr[lower : upper + 1] = np.zeros_like(arr[lower : upper + 1])
     print(np.sum(arr))

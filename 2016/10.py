@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import ClassVar, Protocol, Literal
 
 
-with open('./2016/resources/10.txt') as f:
+with open("./2016/resources/10.txt") as f:
     lines = [line.strip() for line in f]
 
 

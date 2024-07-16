@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-with open('./2016/resources/1.txt') as f:
+with open("./2016/resources/1.txt") as f:
     steps = f.read().strip().split(", ")
 
 

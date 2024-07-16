@@ -1,7 +1,7 @@
 from itertools import batched
 
 
-with open('./2016/resources/3.txt') as f:
+with open("./2016/resources/3.txt") as f:
     triangles = [line.strip() for line in f]
 
 

@@ -48,7 +48,10 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
 
     def deduplicate_state(state: State) -> State:
         return State(
-            *chain(state[:3], chain.from_iterable(sorted([(state[2 * i + 3], state[2 * i + 4]) for i in range(num_elements)])))
+            *chain(
+                state[:3],
+                chain.from_iterable(sorted([(state[2 * i + 3], state[2 * i + 4]) for i in range(num_elements)])),
+            )
         )
 
     possible_states = [deduplicate_state(State(**kwargs))]

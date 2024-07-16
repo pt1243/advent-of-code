@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-with open('./2016/resources/4.txt') as f:
+with open("./2016/resources/4.txt") as f:
     rooms = [line.strip() for line in f]
 
 

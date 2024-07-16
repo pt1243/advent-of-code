@@ -3,7 +3,7 @@ from collections import deque
 import numpy as np
 
 
-with open('./2016/resources/8.txt') as f:
+with open("./2016/resources/8.txt") as f:
     lines = [line.strip() for line in f]
 
 
