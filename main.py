@@ -2,9 +2,9 @@ import importlib
 from time import perf_counter
 
 
-year = 2016
-day = 25
-problem = 1
+year = 2018
+day = 1
+problem = 2
 
 
 def main():
