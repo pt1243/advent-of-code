@@ -2,7 +2,8 @@ from math import sqrt, ceil
 import numpy as np
 
 
-number = 277678
+with open("./2017/resources/3.txt") as f:
+    number = int(f.read().strip())
 
 
 def problem_1() -> None:

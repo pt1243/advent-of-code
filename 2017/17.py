@@ -1,7 +1,8 @@
 from collections import deque
 
 
-n_times = 354
+with open("./2017/resources/17.txt") as f:
+    n_times = int(f.read().strip())
 
 
 def spinlock(n: int, iterations: int) -> deque[int]:

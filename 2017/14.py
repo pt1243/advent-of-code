@@ -4,7 +4,8 @@ from operator import xor
 from collections import defaultdict
 
 
-key_string = "jxqlasbh"
+with open("./2017/resources/14.txt") as f:
+    key_string = f.read().strip()
 
 
 def knot_hash(text: str) -> str:
