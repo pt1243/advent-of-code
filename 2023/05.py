@@ -1,105 +1,59 @@
+from itertools import batched
+
+
 with open('./2023/resources/5.txt') as f:
-    lines = f.read().strip()
+    input_text = f.read().strip()
 
 
-lines_old = """\
-seeds: 79 14 55 13
+def process_transformations(initial_ranges: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    conversions: list[dict[tuple[int, int], int]] = []
+    blocks = input_text.split("\n\n")
+    for block in blocks[1:]:
+        lines = block.split("\n")
+        current_conversions: dict[tuple[int, int], int] = {}
+        for line in lines[1:]:
+            dest_range_start, source_range_start, range_length = (int(x) for x in line.split())
+            offset = dest_range_start - source_range_start
+            current_conversions[(source_range_start, range_length)] = offset
+        conversions.append(current_conversions)
+    
+    current_ranges = initial_ranges.copy()
 
-seed-to-soil map:
-50 98 2
-52 50 48
-
-soil-to-fertilizer map:
-0 15 37
-37 52 2
-39 0 15
-
-fertilizer-to-water map:
-49 53 8
-0 11 42
-42 0 7
-57 7 4
-
-water-to-light map:
-88 18 7
-18 25 70
-
-light-to-temperature map:
-45 77 23
-81 45 19
-68 64 13
-
-temperature-to-humidity map:
-0 69 1
-1 0 69
-
-humidity-to-location map:
-60 56 37
-56 93 4\
-"""
-
-
-def get_transformed_value(target: dict[int, tuple[int, int]], value: int) -> int:
-    for source_range_start, (dest_range_start, range_length) in target.items():
-        if source_range_start <= value < source_range_start + range_length:
-            return (value - source_range_start) + dest_range_start
-    return value
+    for conversion_map in conversions:
+        transformed: list[tuple[int, int]] = []
+        still_to_be_transformed: list[tuple[int, int]] = []
+        for (source_range_start, range_length), offset in conversion_map.items():
+            source_range_end = source_range_start + range_length - 1
+            while current_ranges:
+                low, length = current_ranges.pop()
+                high = low + length - 1
+                if high < source_range_start or low > source_range_end:
+                    still_to_be_transformed.append((low, length))
+                elif source_range_start <= low and high <= source_range_end:
+                    transformed.append((low + offset, length))
+                else:
+                    num_below = max(source_range_start - low, 0)
+                    num_above = max(high - source_range_end, 0)
+                    in_range = (max(source_range_start, low) + offset, length - num_above - num_below)
+                    transformed.append(in_range)
+                    if num_below:
+                        still_to_be_transformed.append((low, num_below))
+                    if num_above:
+                        still_to_be_transformed.append((source_range_end + 1, num_above))
+            current_ranges = still_to_be_transformed
+            still_to_be_transformed = []
+        current_ranges += transformed
+    return current_ranges
 
 
 def problem_1() -> None:
-    seed_to_soil: dict[int, tuple[int, int]] = {}
-    soil_to_fertilizer: dict[int, tuple[int, int]] = {}
-    fertilizer_to_water: dict[int, tuple[int, int]] = {}
-    water_to_light: dict[int, tuple[int, int]] = {}
-    light_to_temperature: dict[int, tuple[int, int]] = {}
-    temperature_to_humidity: dict[int, tuple[int, int]] = {}
-    humidity_to_location: dict[int, tuple[int, int]] = {}
-
-    targets = {
-        "seed-to-soil": seed_to_soil,
-        "soil-to-fertilizer": soil_to_fertilizer,
-        "fertilizer-to-water": fertilizer_to_water,
-        "water-to-light": water_to_light,
-        "light-to-temperature": light_to_temperature,
-        "temperature-to-humidity": temperature_to_humidity,
-        "humidity-to-location": humidity_to_location,
-    }
-
-    for line_group in lines.split("\n\n"):
-        if line_group.startswith("seeds"):
-            seeds = {int(n): 0 for n in line_group.split(": ")[1].split()}
-        else:
-            split_lines = line_group.split("\n")
-            target = targets[split_lines[0].split()[0]]
-            for line in split_lines[1:]:
-                dest_range_start, source_range_start, range_length = (int(c) for c in line.split())
-                target[source_range_start] = (dest_range_start, range_length)
-                # target.update({source_range_start + i: dest_range_start + i for i in range(range_length)})
-                # # for i in range(range_length):
-                #     target[source_range_start + i] = dest_range_start + i
-
-    for seed in list(seeds.keys()):
-        soil = get_transformed_value(seed_to_soil, seed)
-        fertilizer = get_transformed_value(soil_to_fertilizer, soil)
-        water = get_transformed_value(fertilizer_to_water, fertilizer)
-        light = get_transformed_value(water_to_light, water)
-        temperature = get_transformed_value(light_to_temperature, light)
-        humidity = get_transformed_value(temperature_to_humidity, temperature)
-        location = get_transformed_value(humidity_to_location, humidity)
-        # soil = seed_to_soil.get(seed, seed)
-        # fertilizer = soil_to_fertilizer.get(soil, soil)
-        # water = fertilizer_to_water.get(fertilizer, fertilizer)
-        # light = water_to_light.get(water, water)
-        # temperature = light_to_temperature.get(light, light)
-        # humidity = temperature_to_humidity.get(temperature, temperature)
-        # location = humidity_to_location.get(humidity, humidity)
-        print(
-            f"{seed = }, {soil = }, {fertilizer = }, {water = }, {light = }, {temperature = }, {humidity = }, {location = }"
-        )
-        seeds[seed] = location
-
-    print(min(seeds.values()))
+    initial_ranges = [(int(start), 1) for start in input_text.split("\n")[0].split(": ")[1].split()]
+    transformed_ranges = process_transformations(initial_ranges)
+    print(min(transformed_ranges)[0])
 
 
 def problem_2() -> None:
-    ...
+    nums = [int(x) for x in input_text.split("\n")[0].split(": ")[1].split()]
+    initial_ranges = list(batched(nums, 2))
+    transformed_ranges = process_transformations(initial_ranges)
+    print(min(transformed_ranges)[0])
