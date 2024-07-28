@@ -33,7 +33,7 @@ def problem_1() -> None:
                 continue
             geologic_index[x, y] = erosion_level[x - 1, y] * erosion_level[x, y - 1]
             erosion_level[x, y] = (geologic_index[x, y] + depth) % 20183
-    
+
     print(np.sum(erosion_level % 3))
 
 
@@ -61,27 +61,26 @@ def problem_2() -> None:
                 continue
             geologic_index[x, y] = erosion_level[x - 1, y] * erosion_level[x, y - 1]
             erosion_level[x, y] = (geologic_index[x, y] + depth) % 20183
-    
+
     types = erosion_level % 3
 
     class Equipment(Enum):
         Neither = auto()
         Torch = auto()
         ClimbingGear = auto()
+
         def __lt__(self, other: object):
             if self.__class__ is other.__class__:
                 return self.value < other.value
             return NotImplemented
-    
-    equipment_regions = {
-        Equipment.Neither: {1, 2},
-        Equipment.Torch: {0, 2},
-        Equipment.ClimbingGear: {0, 1}
-    }
+
+    equipment_regions = {Equipment.Neither: {1, 2}, Equipment.Torch: {0, 2}, Equipment.ClimbingGear: {0, 1}}
 
     distances = ((-1, 0), (1, 0), (0, -1), (0, 1))
-    
-    def get_neighbour_states(position: tuple[int, int], equipment: Equipment) -> Generator[tuple[int, tuple[int, int], Equipment]]:
+
+    def get_neighbour_states(
+        position: tuple[int, int], equipment: Equipment
+    ) -> Generator[tuple[int, tuple[int, int], Equipment]]:
         # consider changing tool
         current_region = types[position[0], position[1]]
         for new_equipment in Equipment:
@@ -98,7 +97,7 @@ def problem_2() -> None:
             if new_region not in equipment_regions[equipment]:
                 continue
             yield 1, (new_x, new_y), equipment
-    
+
     start = ((0, 0), Equipment.Torch)
     open_set = [(0, *start)]
     g_score = defaultdict(lambda: 10**12)
