@@ -1,27 +1,15 @@
-from itertools import count, chain
+from itertools import count
 from typing import Literal
+
 import numpy as np
+import numpy.typing as npt
 
 
-with open('./2023/resources/14.txt') as f:
+with open("./2023/resources/14.txt") as f:
     lines = [line.strip() for line in f]
 
 
-lines_test = [
-    "O....#....",
-    "O.OO#....#",
-    ".....##...",
-    "OO.#O....O",
-    ".O.....O#.",
-    "O.#..O.#.#",
-    "..O..#O..O",
-    ".......O..",
-    "#....###..",
-    "#OO..#....",
-]
-
-
-def tilt(arr: np.ndarray, direction: Literal["N", "E", "S", "W"]) -> None:
+def tilt(arr: npt.NDArray[np.int_], direction: Literal["N", "E", "S", "W"]) -> None:
     height, width = arr.shape
     if direction == "N" or direction == "S":
         lower_bound = 1 if direction == "N" else 0
@@ -61,7 +49,7 @@ def problem_1() -> None:
                 arr[row, col] = 1
             elif char == "O":
                 arr[row, col] = 2
-    
+
     tilt(arr, "N")
 
     total_weight = 0
@@ -71,7 +59,7 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    seen: dict[int, np.ndarray] = {}
+    seen: dict[int, npt.NDArray[np.int_]] = {}
     width = len(lines[0])
     height = len(lines)
     arr = np.zeros((height, width), dtype=int)
@@ -81,7 +69,7 @@ def problem_2() -> None:
                 arr[row, col] = 1
             elif char == "O":
                 arr[row, col] = 2
-    
+
     found = False
     for i in count(1):
         tilt(arr, "N")
@@ -99,7 +87,7 @@ def problem_2() -> None:
     cycle_length = i - j
     cycle_start = j
     final_index = cycle_start + (1_000_000_000 - cycle_start) % cycle_length
-    
+
     total_weight = 0
     for i, row in enumerate(seen[final_index]):
         total_weight += (height - i) * np.sum(row == 2)

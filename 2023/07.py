@@ -1,7 +1,8 @@
 from itertools import product
+from typing import Sequence
 
 
-with open('./2023/resources/7.txt') as f:
+with open("./2023/resources/7.txt") as f:
     lines = [line.strip() for line in f]
 
 
@@ -19,7 +20,7 @@ def card_to_number(card: str, use_jokers: bool = False) -> int:
     return int(card)
 
 
-def get_hand_type(hand: list[int]) -> int:
+def get_hand_type(hand: Sequence[int]) -> int:
     set_cards = set(hand)
     if len(set_cards) == 1:
         return 7  # five of a kind
@@ -40,12 +41,12 @@ def get_hand_type(hand: list[int]) -> int:
 
 def problem_1() -> None:
     total_winnings = 0
-    all_cards: list[tuple[int, tuple[int, int, int, int, int], int]] = []
+    all_cards: list[tuple[int, tuple[int, ...], int]] = []
     for line in lines:
         numbered_cards = [card_to_number(c) for c in line.split()[0]]
         bid = int(line.split()[1])
         hand_type = get_hand_type(numbered_cards)
-        all_cards.append((hand_type, tuple(numbered_cards), bid))  # type: ignore[arg-type]
+        all_cards.append((hand_type, tuple(numbered_cards), bid))
     sorted_hands = sorted(all_cards, reverse=True)
     for i, (*_, bid) in enumerate(reversed(sorted_hands), start=1):
         total_winnings += i * bid
@@ -54,19 +55,19 @@ def problem_1() -> None:
 
 def problem_2() -> None:
     total_winnings = 0
-    all_cards: list[tuple[int, tuple[int, int, int, int, int], int]] = []
+    all_cards: list[tuple[int, tuple[int, ...], int]] = []
     for line in lines:
         bid = int(line.split()[1])
         if "J" in line:
             cards = line.split()[0]
             options = [(card_to_number(c),) if c != "J" else tuple(i for i in range(2, 15)) for c in cards]
-            possible_hand_types = [get_hand_type(possible_hand) for possible_hand in product(*options)]  # type: ignore[arg-type]
+            possible_hand_types = [get_hand_type(possible_hand) for possible_hand in product(*options)]
             best_hand_type = max(possible_hand_types)
-            all_cards.append((best_hand_type, tuple(card_to_number(c, use_jokers=True) for c in cards), bid))  # type: ignore[arg-type]
+            all_cards.append((best_hand_type, tuple(card_to_number(c, use_jokers=True) for c in cards), bid))
         else:
             numbered_cards = [card_to_number(c) for c in line.split()[0]]
             hand_type = get_hand_type(numbered_cards)
-            all_cards.append((hand_type, tuple(numbered_cards), bid))  # type: ignore[arg-type]
+            all_cards.append((hand_type, tuple(numbered_cards), bid))
     sorted_hands = sorted(all_cards, reverse=True)
     for i, (*_, bid) in enumerate(reversed(sorted_hands), start=1):
         total_winnings += i * bid

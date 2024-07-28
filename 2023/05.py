@@ -1,7 +1,8 @@
 from itertools import batched
+from typing import cast
 
 
-with open('./2023/resources/5.txt') as f:
+with open("./2023/resources/5.txt") as f:
     input_text = f.read().strip()
 
 
@@ -16,7 +17,7 @@ def process_transformations(initial_ranges: list[tuple[int, int]]) -> list[tuple
             offset = dest_range_start - source_range_start
             current_conversions[(source_range_start, range_length)] = offset
         conversions.append(current_conversions)
-    
+
     current_ranges = initial_ranges.copy()
 
     for conversion_map in conversions:
@@ -54,6 +55,6 @@ def problem_1() -> None:
 
 def problem_2() -> None:
     nums = [int(x) for x in input_text.split("\n")[0].split(": ")[1].split()]
-    initial_ranges = list(batched(nums, 2))
+    initial_ranges = cast(list[tuple[int, int]], list(batched(nums, 2)))
     transformed_ranges = process_transformations(initial_ranges)
     print(min(transformed_ranges)[0])

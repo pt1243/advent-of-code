@@ -3,10 +3,10 @@ from enum import Enum
 import numpy as np
 
 
-sys.setrecursionlimit(10 ** 6)
+sys.setrecursionlimit(10**6)
 
 
-with open('./2023/resources/10.txt') as f:
+with open("./2023/resources/10.txt") as f:
     lines = [line.strip() for line in f]
 
 
@@ -32,13 +32,13 @@ def problem_1() -> None:
         if "S" in line:
             start_row = row
             start_col = line.index("S")
-    
+
     valid_north = ("|", "7", "F")
     valid_west = ("-", "L", "F")
 
-    if lines[start_row-1][start_col] in valid_north:
+    if lines[start_row - 1][start_col] in valid_north:
         direction = Direction.N
-    elif lines[start_row][start_col-1] in valid_west:
+    elif lines[start_row][start_col - 1] in valid_west:
         direction = Direction.W
     else:
         direction = Direction.E
@@ -62,15 +62,15 @@ def problem_2() -> None:
         if "S" in line:
             start_row = row
             start_col = line.index("S")
-    
+
     valid_north = ("|", "7", "F")
     valid_east = ("-", "J", "7")
     valid_west = ("-", "L", "F")
 
     initial_line = lines[start_row]
     start_char = initial_line[start_col]
-    
-    if lines[start_row-1][start_col] in valid_north:
+
+    if lines[start_row - 1][start_col] in valid_north:
         direction = Direction.N
         if start_char in valid_east:
             replacement_char = "L"
@@ -78,7 +78,7 @@ def problem_2() -> None:
             replacement_char = "J"
         else:
             replacement_char = "|"
-    elif lines[start_row][start_col-1] in valid_west:
+    elif lines[start_row][start_col - 1] in valid_west:
         direction = Direction.W
         if start_char in valid_east:
             replacement_char = "-"
@@ -87,8 +87,8 @@ def problem_2() -> None:
     else:
         direction = Direction.E
         replacement_char = "F"
-    
-    lines[start_row] = initial_line[:start_col] + replacement_char + initial_line[start_col+1:]
+
+    lines[start_row] = initial_line[:start_col] + replacement_char + initial_line[start_col + 1 :]
 
     loop_members = {(start_row, start_col)}
     row, col = start_row, start_col
@@ -100,7 +100,7 @@ def problem_2() -> None:
             break
         loop_members.add((row, col))
         direction = next_direction[lines[row][col]][direction]
-    
+
     expanded_replacements = {
         "|": np.array([[0, 1, 0], [0, 1, 0], [0, 1, 0]]),
         "-": np.array([[0, 0, 0], [1, 1, 1], [0, 0, 0]]),
@@ -116,11 +116,12 @@ def problem_2() -> None:
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if (row, col) not in loop_members:
-                grid[row*3:row*3+3, col*3:col*3+3] = expanded_replacements["empty"]
+                grid[row * 3 : row * 3 + 3, col * 3 : col * 3 + 3] = expanded_replacements["empty"]
             else:
-                grid[row*3:row*3+3, col*3:col*3+3] = expanded_replacements[char]
-    
+                grid[row * 3 : row * 3 + 3, col * 3 : col * 3 + 3] = expanded_replacements[char]
+
     max_row, max_col = grid.shape
+
     def floodfill(row: int, col: int) -> None:
         grid[row, col] = 1
         if row > 0 and not grid[row - 1, col]:
@@ -131,7 +132,7 @@ def problem_2() -> None:
             floodfill(row, col - 1)
         if col < max_col - 1 and not grid[row, col + 1]:
             floodfill(row, col + 1)
-    
+
     floodfill(0, 0)
-        
+
     print(len(lines) * len(lines[0]) - np.count_nonzero(grid[1::3, 1::3]))

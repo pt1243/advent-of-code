@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 
-with open('./2023/resources/3.txt') as f:
+with open("./2023/resources/3.txt") as f:
     lines = [line.strip() for line in f]
 
 

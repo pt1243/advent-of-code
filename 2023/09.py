@@ -1,4 +1,4 @@
-with open('./2023/resources/9.txt') as f:
+with open("./2023/resources/9.txt") as f:
     lines = [[int(c) for c in line.strip().split()] for line in f]
 
 

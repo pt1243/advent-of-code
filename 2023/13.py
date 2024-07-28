@@ -1,26 +1,32 @@
 import numpy as np
+import numpy.typing as npt
 
 
-with open('./2023/resources/13.txt') as f:
+with open("./2023/resources/13.txt") as f:
     contents = f.read().strip()
 
 
-def get_reflection_score(arr: np.ndarray, ignore: tuple[int, int] | None = None) -> tuple[int, int]:
+def get_reflection_score(arr: npt.NDArray[np.bool_], ignore: tuple[int, int] | None = None) -> tuple[int, int]:
     height, width = arr.shape
     for reflection_left_col in range(width - 1):
-        num_to_check = min(reflection_left_col + 1, width - reflection_left_col - 1)        
-        if all(np.all(arr[:, reflection_left_col - i] == arr[:, reflection_left_col + i + 1]) for i in range(num_to_check)):
+        num_to_check = min(reflection_left_col + 1, width - reflection_left_col - 1)
+        if all(
+            np.all(arr[:, reflection_left_col - i] == arr[:, reflection_left_col + i + 1]) for i in range(num_to_check)
+        ):
             result = 1, reflection_left_col + 1
             if result != ignore:
                 return result
 
     for reflection_upper_row in range(height - 1):
         num_to_check = min(reflection_upper_row + 1, height - reflection_upper_row - 1)
-        if all(np.all(arr[reflection_upper_row - i, :] == arr[reflection_upper_row + i + 1, :]) for i in range(num_to_check)):
+        if all(
+            np.all(arr[reflection_upper_row - i, :] == arr[reflection_upper_row + i + 1, :])
+            for i in range(num_to_check)
+        ):
             result = 2, (reflection_upper_row + 1)
             if result != ignore:
                 return result
-    
+
     return 0, 0
 
 
@@ -36,7 +42,7 @@ def problem_1() -> None:
                     arr[row, col] = True
         score = get_reflection_score(arr)
         total += score[1] if score[0] == 1 else 100 * score[1]
-    
+
     print(total)
 
 

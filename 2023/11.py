@@ -1,4 +1,4 @@
-with open('./2023/resources/11.txt') as f:
+with open("./2023/resources/11.txt") as f:
     lines = [line.strip() for line in f]
 
 
@@ -13,13 +13,13 @@ def problem_1() -> None:
         for col, char in enumerate(line):
             if char == "#":
                 galaxies.append((row, col))
-    
+
     empty_cols = {i for i in range(len(lines[0])) if not any(x[1] == i for x in galaxies)}
 
     total_distance = 0
     for i, g1 in enumerate(galaxies):
         r1, c1 = g1
-        for g2 in galaxies[i+1:]:
+        for g2 in galaxies[i + 1 :]:
             r2, c2 = g2
             dist = abs(r1 - r2) + abs(c1 - c2)
             upper_row = r1 if r1 >= r2 else r2
@@ -43,13 +43,13 @@ def problem_2() -> None:
         for col, char in enumerate(line):
             if char == "#":
                 galaxies.append((row, col))
-    
+
     empty_cols = {i for i in range(len(lines[0])) if not any(x[1] == i for x in galaxies)}
 
     total_distance = 0
     for i, g1 in enumerate(galaxies):
         r1, c1 = g1
-        for g2 in galaxies[i+1:]:
+        for g2 in galaxies[i + 1 :]:
             r2, c2 = g2
             dist = abs(r1 - r2) + abs(c1 - c2)
             upper_row = r1 if r1 >= r2 else r2
