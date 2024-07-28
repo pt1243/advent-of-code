@@ -24,7 +24,7 @@ class Group:
     target: Group | None = None
 
     @property
-    def effective_power(self):
+    def effective_power(self) -> int:
         return self.units * self.attack_damage
 
 

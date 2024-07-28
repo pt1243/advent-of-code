@@ -69,8 +69,8 @@ def problem_2() -> None:
         Torch = auto()
         ClimbingGear = auto()
 
-        def __lt__(self, other: object):
-            if self.__class__ is other.__class__:
+        def __lt__(self, other: object) -> bool:
+            if type(other) is Equipment:
                 return self.value < other.value
             return NotImplemented
 
@@ -80,7 +80,7 @@ def problem_2() -> None:
 
     def get_neighbour_states(
         position: tuple[int, int], equipment: Equipment
-    ) -> Generator[tuple[int, tuple[int, int], Equipment]]:
+    ) -> Generator[tuple[int, tuple[int, int], Equipment], None, None]:
         # consider changing tool
         current_region = types[position[0], position[1]]
         for new_equipment in Equipment:

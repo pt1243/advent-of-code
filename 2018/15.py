@@ -163,6 +163,7 @@ def simulate_game(text_input: list[str], elf_attack_power: int = 3) -> tuple[int
                         ) == num_elves and all_units[0].unit_type == "elf"
                     new_row, new_col = move(item, row_idx, col_idx)
                     attack(item, new_row, new_col)
+    assert False  # so that mypy can be sure that this is unreachable
 
 
 def problem_1() -> None:

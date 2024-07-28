@@ -6,7 +6,7 @@ with open("./2018/resources/21.txt") as f:
     lines = [line.strip() for line in f]
 
 
-def run_program() -> Generator[int]:
+def run_program() -> Generator[int, None, None]:
     input_num = int(lines[8].split()[1])
     r4 = 0
     while True:
@@ -28,7 +28,7 @@ def problem_1() -> None:
 
 def problem_2() -> None:
     program = run_program()
-    seen = []
+    seen: list[int] = []
     while True:
         val = next(program)
         if val in seen:

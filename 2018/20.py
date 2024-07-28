@@ -66,6 +66,7 @@ def a_star(target: tuple[int, int], doors: Mapping[tuple[int, int], set[tuple[in
                 g_score[neighbour] = tentative_g_score
                 f_score[neighbour] = tentative_g_score + abs(neighbour[0] - target[0]) + abs(neighbour[1] - target[1])
                 heapq.heappush(open_set, (f_score[neighbour], neighbour))
+    raise ValueError("could not find path to specified target")
 
 
 def problem_1() -> None:

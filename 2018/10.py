@@ -24,7 +24,7 @@ def problem_1() -> None:
 
     best_future_positions = positions + best_time * velocities
     best_future_positions -= np.min(best_future_positions, axis=0)
-    output_strings = [[" " for _ in range(np.max(best_future_positions[:, 0]) + 1)] for _ in range(min_height + 1)]
+    output_strings = [[" " for _ in range(np.max(best_future_positions[:, 0]) + 1)] for _ in range(int(min_height) + 1)]
     for col, row in best_future_positions:
         output_strings[row][col] = "■"
     for row in output_strings:

@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import cast
 
 
 with open("./2018/resources/25.txt") as f:
@@ -17,7 +18,7 @@ class Constellation:
 
 
 def problem_1() -> None:
-    points = [tuple((int(x) for x in line.split(","))) for line in lines]
+    points = [cast(tuple[int, int, int, int], tuple((int(x) for x in line.split(",")))) for line in lines]
 
     constellations: list[Constellation] = []
     for p in points:

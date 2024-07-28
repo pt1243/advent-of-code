@@ -5,7 +5,7 @@ with open("./2018/resources/12.txt") as f:
 def problem_1() -> None:
     initial_state, all_rules = text.split("\n\n")
     state = [True if char == "#" else False for char in initial_state.split(": ")[1]]
-    rules: dict[tuple[bool, bool, bool, bool, bool], bool] = {}
+    rules: dict[tuple[bool, ...], bool] = {}
     for rule in all_rules.split("\n"):
         lhs, rhs = rule.split(" => ")
         rules[tuple([True if char == "#" else False for char in lhs])] = True if rhs == "#" else False
@@ -37,7 +37,7 @@ def problem_1() -> None:
 def problem_2() -> None:
     initial_state, all_rules = text.split("\n\n")
     state = [True if char == "#" else False for char in initial_state.split(": ")[1]]
-    rules: dict[tuple[bool, bool, bool, bool, bool], bool] = {}
+    rules: dict[tuple[bool, ...], bool] = {}
     for rule in all_rules.split("\n"):
         lhs, rhs = rule.split(" => ")
         rules[tuple([True if char == "#" else False for char in lhs])] = True if rhs == "#" else False

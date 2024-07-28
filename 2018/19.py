@@ -1,5 +1,6 @@
 from collections import Counter
 from itertools import count, product
+from typing import Callable, Mapping
 
 
 with open("./2018/resources/19.txt") as f:
@@ -10,7 +11,7 @@ def problem_1() -> None:
     registers = {i: 0 for i in range(6)}
     ip_register = int(lines[0].split()[1])
     instructions = lines[1:]
-    opcodes = {
+    opcodes: dict[str, Callable[[Mapping[int, int], int, int], int]] = {
         "addr": lambda r, a, b: r[a] + r[b],  # addr
         "addi": lambda r, a, b: r[a] + b,  # addi
         "mulr": lambda r, a, b: r[a] * r[b],  # mulr
@@ -45,7 +46,7 @@ def problem_2() -> None:
     registers[0] = 1
     ip_register = int(lines[0].split()[1])
     instructions = lines[1:]
-    opcodes = {
+    opcodes: dict[str, Callable[[Mapping[int, int], int, int], int]] = {
         "addr": lambda r, a, b: r[a] + r[b],  # addr
         "addi": lambda r, a, b: r[a] + b,  # addi
         "mulr": lambda r, a, b: r[a] * r[b],  # mulr
