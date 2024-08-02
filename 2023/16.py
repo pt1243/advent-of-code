@@ -1,5 +1,5 @@
 with open("./2023/resources/16.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def get_num_energized(starting_row: int, starting_col: int, starting_direction: int) -> int:

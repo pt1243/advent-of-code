@@ -1,15 +1,15 @@
-from typing import cast, Sequence
 from functools import reduce
-from operator import mul
 from itertools import combinations
 from math import floor
+from operator import mul
+from typing import cast, Sequence
 
 import numpy as np
 import numpy.typing as npt
 
 
 with open("./2015/resources/24.txt") as f:
-    weights = {int(line.strip()) for line in f}
+    weights = {int(weight) for weight in f.read().splitlines()}
 
 
 def can_partition_into_two(S: Sequence[int]) -> bool:

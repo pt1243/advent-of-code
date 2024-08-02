@@ -2,15 +2,13 @@ from collections import defaultdict
 
 
 with open("./2017/resources/22.txt") as f:
-    lines = [line.strip() for line in f]
-
-turn_left = {"u": "l", "l": "d", "d": "r", "r": "u"}
-turn_right = {"u": "r", "r": "d", "d": "l", "l": "u"}
-reverse = {"u": "d", "d": "u", "l": "r", "r": "l"}
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:
-    nodes = defaultdict(lambda: False)
+    turn_left = {"u": "l", "l": "d", "d": "r", "r": "u"}
+    turn_right = {"u": "r", "r": "d", "d": "l", "l": "u"}
+    nodes = defaultdict(bool)
     for i, grid_row in enumerate(lines):
         for j, char in enumerate(grid_row):
             if char == "#":
@@ -38,6 +36,9 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
+    turn_left = {"u": "l", "l": "d", "d": "r", "r": "u"}
+    turn_right = {"u": "r", "r": "d", "d": "l", "l": "u"}
+    reverse = {"u": "d", "d": "u", "l": "r", "r": "l"}
     nodes = defaultdict(lambda: 0)
     for i, grid_row in enumerate(lines):
         for j, char in enumerate(grid_row):

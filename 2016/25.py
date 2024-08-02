@@ -2,7 +2,7 @@ from itertools import count
 
 
 with open("./2016/resources/25.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

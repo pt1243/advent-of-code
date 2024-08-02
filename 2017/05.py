@@ -1,5 +1,5 @@
 with open("./2017/resources/5.txt") as f:
-    jumps = [int(line.strip()) for line in f]
+    jumps = [int(jump) for jump in f.read().splitlines()]
 
 
 def problem_1() -> None:

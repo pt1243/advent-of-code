@@ -1,5 +1,5 @@
 with open("./2015/resources/2.txt") as f:
-    boxes = [line.strip() for line in f]
+    boxes = f.read().splitlines()
 
 
 def problem_1() -> None:

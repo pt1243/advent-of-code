@@ -3,7 +3,7 @@ from itertools import combinations
 
 
 with open("./2018/resources/2.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

@@ -2,11 +2,11 @@ import heapq
 from itertools import product
 from math import ceil, log2
 from operator import itemgetter
-from typing import NamedTuple, cast
+from typing import cast, NamedTuple
 
 
 with open("./2018/resources/23.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 class Nanobot(NamedTuple):

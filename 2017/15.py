@@ -1,18 +1,18 @@
-from typing import Iterator
+from typing import Generator
 
 
 with open("./2017/resources/15.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
-def gen(start: int, factor: int) -> Iterator[int]:
+def gen(start: int, factor: int) -> Generator[int, None, None]:
     current = start
     while True:
         current = (current * factor) % 2147483647
         yield current
 
 
-def gen_criteria(start: int, factor: int, multiple: int) -> Iterator[int]:
+def gen_criteria(start: int, factor: int, multiple: int) -> Generator[int, None, None]:
     current = start
     while True:
         current = (current * factor) % 2147483647

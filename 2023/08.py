@@ -1,12 +1,12 @@
 from __future__ import annotations
 from itertools import cycle
 from functools import cached_property
-from typing import ClassVar
 from math import lcm
+from typing import ClassVar
 
 
 with open("./2023/resources/8.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 class Node:

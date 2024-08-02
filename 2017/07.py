@@ -3,7 +3,7 @@ from typing import ClassVar
 
 
 with open("./2017/resources/7.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 class Program:

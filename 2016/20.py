@@ -3,9 +3,7 @@ import numpy as np
 
 
 with open("./2016/resources/20.txt") as f:
-    lines = [line.strip() for line in f]
-    for line in lines:
-        lower, upper = line.split("-")
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

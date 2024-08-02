@@ -2,7 +2,7 @@ from collections import defaultdict
 
 
 with open("./2017/resources/18.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 class AsyncProgram:

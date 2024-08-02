@@ -2,7 +2,7 @@ from string import ascii_lowercase
 
 
 with open("./2015/resources/5.txt") as f:
-    strings = [line.strip() for line in f]
+    strings = f.read().splitlines()
 
 
 def problem_1() -> None:

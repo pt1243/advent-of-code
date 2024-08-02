@@ -2,7 +2,7 @@ from itertools import pairwise, permutations
 
 
 with open("./2015/resources/9.txt") as f:
-    all_distances = [line.strip() for line in f]
+    all_distances = f.read().splitlines()
 
 
 def problem_1() -> None:

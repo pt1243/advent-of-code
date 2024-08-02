@@ -1,5 +1,5 @@
 with open("./2015/resources/23.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:

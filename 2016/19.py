@@ -1,4 +1,4 @@
-from math import floor, log2, log
+from math import floor, log, log2
 
 
 with open("./2016/resources/19.txt") as f:

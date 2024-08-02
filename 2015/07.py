@@ -5,7 +5,7 @@ from functools import cache
 
 
 with open("./2015/resources/7.txt") as f:
-    connections = [line.strip() for line in f]
+    connections = f.read().splitlines()
 
 
 class SupportsEvaluate(Protocol):

@@ -2,11 +2,11 @@ from functools import partial
 
 
 with open("./2016/resources/2.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def clamp(val: int, min_val: int, max_val: int) -> int:
-    return val if min_val <= val <= max_val else (min_val if val < min_val else max_val)
+    return min(max_val, max(min_val, val))
 
 
 def problem_1() -> None:

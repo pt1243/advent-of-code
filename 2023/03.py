@@ -2,7 +2,7 @@ from collections import defaultdict
 
 
 with open("./2023/resources/3.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def find_number_indices() -> list[tuple[int, int, int]]:

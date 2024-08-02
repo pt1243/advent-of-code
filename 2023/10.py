@@ -7,7 +7,7 @@ sys.setrecursionlimit(10**6)
 
 
 with open("./2023/resources/10.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 class Direction(Enum):

@@ -3,7 +3,7 @@ from typing import Generator
 
 
 with open("./2018/resources/21.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def run_program() -> Generator[int, None, None]:

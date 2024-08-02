@@ -7,7 +7,7 @@ from typing import Literal
 
 
 with open("./2018/resources/15.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 @dataclass

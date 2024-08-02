@@ -6,7 +6,7 @@ import numpy.typing as npt
 
 
 with open("./2023/resources/14.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def tilt(arr: npt.NDArray[np.int_], direction: Literal["N", "E", "S", "W"]) -> None:

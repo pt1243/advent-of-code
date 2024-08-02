@@ -5,7 +5,7 @@ import numpy.typing as npt
 
 
 with open("./2016/resources/8.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def process_screen() -> npt.NDArray[np.bool_]:

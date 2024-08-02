@@ -5,7 +5,7 @@ import numpy as np
 
 
 with open("./2023/resources/24.txt") as f:
-    input_text = [line.strip() for line in f]
+    input_text = f.read().splitlines()
 
 
 class Hailstone(NamedTuple):

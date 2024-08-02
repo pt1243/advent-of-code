@@ -2,7 +2,7 @@ from itertools import cycle
 
 
 with open("./2018/resources/13.txt") as f:
-    lines = [line.strip("\n") for line in f]
+    lines = f.read().splitlines()
 
 
 class Cart:

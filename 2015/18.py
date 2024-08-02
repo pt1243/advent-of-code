@@ -1,5 +1,5 @@
 with open("./2015/resources/18.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def get_num_neighbours_on(matrix: list[list[bool]], i: int, j: int) -> int:

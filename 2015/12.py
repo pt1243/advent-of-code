@@ -5,7 +5,7 @@ from typing import Union
 
 
 with open("./2015/resources/12.txt") as f:
-    data = json.loads(f.read().strip())
+    data = json.load(f)
 
 IterableToSum = list[Union[int, str, "IterableToSum"]] | Mapping[str | int, Union[int, str, "IterableToSum"]]
 

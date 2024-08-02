@@ -1,5 +1,5 @@
 with open("./2016/resources/23.txt") as f:
-    instructions = [line.strip() for line in f]
+    instructions = f.read().splitlines()
 
 
 def run_instructions(registers: dict[str, int]) -> dict[str, int]:

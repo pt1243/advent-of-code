@@ -1,5 +1,5 @@
-import heapq
 from collections import defaultdict
+import heapq
 
 
 with open("./2016/resources/13.txt") as f:

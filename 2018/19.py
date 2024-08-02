@@ -4,7 +4,7 @@ from typing import Callable, Mapping
 
 
 with open("./2018/resources/19.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

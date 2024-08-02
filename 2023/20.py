@@ -6,7 +6,7 @@ from typing import ClassVar, cast, Literal
 
 
 with open("./2023/resources/20.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 class Module:

@@ -3,7 +3,7 @@ from itertools import count
 
 
 with open("./2018/resources/7.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

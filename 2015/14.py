@@ -3,7 +3,7 @@ from itertools import cycle
 
 
 with open("./2015/resources/14.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

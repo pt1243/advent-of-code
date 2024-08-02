@@ -2,7 +2,7 @@ from itertools import count
 
 
 with open("./2016/resources/15.txt") as f:
-    disc_information_list = [line.strip() for line in f]
+    disc_information_list = f.read().splitlines()
 
 
 def problem_1() -> None:

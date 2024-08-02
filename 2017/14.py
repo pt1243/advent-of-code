@@ -1,7 +1,7 @@
+from collections import defaultdict
 from functools import reduce
 from itertools import batched
 from operator import xor
-from collections import defaultdict
 
 
 with open("./2017/resources/14.txt") as f:

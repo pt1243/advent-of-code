@@ -3,7 +3,7 @@ from math import ceil, sqrt
 
 
 with open("./2017/resources/23.txt") as f:
-    instructions = [line.strip() for line in f]
+    instructions = f.read().splitlines()
 
 
 def problem_1() -> None:

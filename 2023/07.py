@@ -3,7 +3,7 @@ from typing import Sequence
 
 
 with open("./2023/resources/7.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def card_to_number(card: str, use_jokers: bool = False) -> int:

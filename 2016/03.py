@@ -2,7 +2,7 @@ from itertools import batched
 
 
 with open("./2016/resources/3.txt") as f:
-    triangles = [line.strip() for line in f]
+    triangles = f.read().splitlines()
 
 
 def problem_1() -> None:

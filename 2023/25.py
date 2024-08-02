@@ -9,7 +9,7 @@ random.seed("AOC2023")
 
 
 with open("./2023/resources/25.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 class Component:

@@ -4,7 +4,7 @@ import heapq
 
 
 with open("./2016/resources/11.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | None = None) -> int:

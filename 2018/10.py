@@ -2,7 +2,7 @@ import numpy as np
 
 
 with open("./2018/resources/10.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

@@ -3,7 +3,7 @@ import heapq
 
 
 with open("./2023/resources/17.txt") as f:
-    heat_map = [[int(char) for char in line.strip()] for line in f]
+    heat_map = [[int(char) for char in line] for line in f.read().splitlines()]
 
 
 def a_star(min_dist: int, max_dist: int) -> int:

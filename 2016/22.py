@@ -2,7 +2,7 @@ from typing import NamedTuple
 
 
 with open("./2016/resources/22.txt") as f:
-    lines = [line.strip() for line in f][2:]
+    lines = f.read().splitlines()[2:]
 
 
 class Node(NamedTuple):

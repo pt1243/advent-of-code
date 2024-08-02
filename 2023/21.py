@@ -2,7 +2,7 @@ import numpy as np
 
 
 with open("./2023/resources/21.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def get_num_positions(steps: int) -> int:

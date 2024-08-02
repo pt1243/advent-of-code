@@ -1,5 +1,5 @@
 with open("./2016/resources/7.txt") as f:
-    ips = [line.strip() for line in f]
+    ips = f.read().splitlines()
 
 
 def problem_1() -> None:

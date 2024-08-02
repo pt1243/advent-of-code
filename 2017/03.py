@@ -1,4 +1,4 @@
-from math import sqrt, ceil
+from math import ceil, sqrt
 import numpy as np
 
 

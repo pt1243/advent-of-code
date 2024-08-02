@@ -5,7 +5,7 @@ import sys
 sys.setrecursionlimit(10_000)
 
 with open("./2018/resources/17.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def fill(x: int, y: int, tiles: defaultdict[tuple[int, int], str], max_y: int) -> defaultdict[tuple[int, int], str]:

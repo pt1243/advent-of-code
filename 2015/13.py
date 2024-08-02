@@ -2,7 +2,7 @@ from itertools import permutations
 
 
 with open("./2015/resources/13.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

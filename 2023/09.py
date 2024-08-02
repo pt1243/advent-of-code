@@ -1,5 +1,5 @@
 with open("./2023/resources/9.txt") as f:
-    lines = [[int(c) for c in line.strip().split()] for line in f]
+    lines = [[int(c) for c in line.split()] for line in f.read().splitlines()]
 
 
 def problem_1() -> None:

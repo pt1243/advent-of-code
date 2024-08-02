@@ -3,7 +3,7 @@ from typing import NamedTuple
 
 
 with open("./2015/resources/15.txt") as f:
-    ingredients_data = [line.strip() for line in f]
+    ingredients_data = f.read().splitlines()
 
 
 class Ingredient(NamedTuple):

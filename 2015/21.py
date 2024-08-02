@@ -3,7 +3,7 @@ from typing import NamedTuple
 
 
 with open("./2015/resources/21.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 starting_boss_hp = int(lines[0].split(": ")[1])

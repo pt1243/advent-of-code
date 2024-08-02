@@ -3,7 +3,7 @@ from typing import Sequence
 
 
 with open("./2023/resources/18.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def get_area(vertices: Sequence[tuple[int, int]]) -> int:

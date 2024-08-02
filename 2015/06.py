@@ -2,7 +2,7 @@ import numpy as np
 
 
 with open("./2015/resources/6.txt") as f:
-    instructions = [line.strip() for line in f]
+    instructions = f.read().splitlines()
 
 
 def problem_1() -> None:

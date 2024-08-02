@@ -2,7 +2,7 @@ from itertools import count
 
 
 with open("./2017/resources/13.txt") as f:
-    layers = {int(line.strip().split(": ")[0]): int(line.strip().split(": ")[1]) for line in f}
+    layers = {int(line.split(": ")[0]): int(line.split(": ")[1]) for line in f.read().splitlines()}
 
 
 def get_position(length: int, steps: int) -> int:

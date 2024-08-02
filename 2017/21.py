@@ -5,7 +5,7 @@ from typing import cast
 
 
 with open("./2017/resources/21.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def run_iterations(iterations: int) -> int:

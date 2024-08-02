@@ -1,11 +1,11 @@
-from itertools import combinations
 from collections import defaultdict
 from collections.abc import Iterator
 import heapq
+from itertools import combinations
 
 
 with open("./2016/resources/24.txt") as f:
-    lines = [line.strip() for line in f]
+    lines = f.read().splitlines()
 
 
 def find_distance(start_pos: tuple[int, int], end_pos: tuple[int, int]) -> set[tuple[int, int]]:
