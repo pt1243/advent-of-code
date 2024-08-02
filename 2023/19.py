@@ -23,7 +23,7 @@ class Workflow:
             self.decision_value += 1  # left if <, right if >= decision value
 
         if destination == "A":
-            self.left = True
+            self.left: bool | str = True
         elif destination == "R":
             self.left = False
         else:
@@ -32,7 +32,7 @@ class Workflow:
         if len(rules) == 2:
             right_destination = rules[1]
             if right_destination == "A":
-                self.right = True
+                self.right: bool | str = True
             elif right_destination == "R":
                 self.right = False
             else:

@@ -2,7 +2,7 @@ from __future__ import annotations
 from collections import deque
 from itertools import count
 from math import lcm
-from typing import ClassVar, Literal
+from typing import ClassVar, cast, Literal
 
 
 with open("./2023/resources/20.txt") as f:
@@ -61,7 +61,7 @@ class Module:
             type(self).num_low_pulses += len(self.destinations)
 
     @classmethod
-    def push_button(cls, num: int = 0, watch_for_high: list[Module] | None = None) -> bool:
+    def push_button(cls, num: int = 0, watch_for_high: list[Module] | None = None) -> None:
         broadcaster = cls.lookup["broadcaster"]
         broadcaster.process_input("button", False)
         cls.num_low_pulses += 1
@@ -83,7 +83,8 @@ class Module:
         for num in count(1):
             cls.push_button(num, inputs_to_aggregator)
             if all(time_to_high is not None for time_to_high in cls.rx_aggregator_inputs.values()):
-                return cls.rx_aggregator_inputs
+                return cast(dict[str, int], cls.rx_aggregator_inputs)
+        assert False  # to make mypy happy
 
 
 def problem_1() -> None:
@@ -95,6 +96,8 @@ def problem_1() -> None:
             type_str = name_and_type[0]
             module_type = "flip-flop" if type_str == "%" else "conjunction"
             name = name_and_type[1:]
+        # mypy is being particularly stupid... even pylance can get this
+        module_type = cast(Literal["broadcaster", "flip-flop", "conjunction", "rx"], module_type)
         Module(module_type, name, destinations.split(", "))
     Module("rx", "rx", [])
 
@@ -114,6 +117,7 @@ def problem_2() -> None:
             type_str = name_and_type[0]
             module_type = "flip-flop" if type_str == "%" else "conjunction"
             name = name_and_type[1:]
+        module_type = cast(Literal["broadcaster", "flip-flop", "conjunction", "rx"], module_type)
         Module(module_type, name, destinations.split(", "))
     Module("rx", "rx", [])
 

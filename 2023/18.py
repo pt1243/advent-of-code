@@ -8,7 +8,7 @@ with open("./2023/resources/18.txt") as f:
 
 def get_area(vertices: Sequence[tuple[int, int]]) -> int:
     # https://en.wikipedia.org/wiki/Shoelace_formula
-    area = 0
+    area: float = 0
     for (x1, y1), (x2, y2) in pairwise(vertices):
         area += (x1 * y2 - x2 * y1) / 2
     area = abs(area)

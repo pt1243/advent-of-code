@@ -72,6 +72,7 @@ def problem_1() -> None:
             for neighbour in current.connections:
                 if neighbour not in visited:
                     queue.append((neighbour, new_path))
+        raise ValueError("could not reach destination")
 
     frequencies: Counter[tuple[str, str]] = Counter()
     num_points_to_check = 5000
@@ -91,7 +92,7 @@ def problem_1() -> None:
     c5.connections.remove(c6)
     c6.connections.remove(c5)
 
-    def mark_recursive(c: Component):
+    def mark_recursive(c: Component) -> None:
         c.reachable = True
         for neighbour in c.connections:
             if not neighbour.reachable:

@@ -2,12 +2,12 @@ from collections import defaultdict
 
 
 with open("./2023/resources/23.txt") as f:
-    lines = [line.strip() for line in f]  
+    lines = [line.strip() for line in f]
 
 
 def problem_1() -> None:
     max_path_length = 0
-    current_paths = [(0, lines[0].index("."), set())]
+    current_paths: list[tuple[int, int, set[tuple[int, int]]]] = [(0, lines[0].index("."), set())]
     slopes = {"^": (-1, 0), ">": (0, 1), "v": (1, 0), "<": (0, -1)}
     while current_paths:
         row, col, visited = current_paths.pop()
@@ -24,7 +24,12 @@ def problem_1() -> None:
                 new_row, new_col = row + drow, col + dcol
                 if new_row >= 0 and lines[new_row][new_col] != "#" and (new_row, new_col) not in visited:
                     char = lines[new_row][new_col]
-                    if (char == "<" and dcol == 1) or (char == ">" and dcol == -1) or (char == "^" and drow == 1) or (char == "v" and drow == -1):
+                    if (
+                        (char == "<" and dcol == 1)
+                        or (char == ">" and dcol == -1)
+                        or (char == "^" and drow == 1)
+                        or (char == "v" and drow == -1)
+                    ):
                         continue
                     new_visited = visited.copy()
                     new_visited.add((row, col))
@@ -45,7 +50,7 @@ def problem_2() -> None:
     end = (len(lines) - 1, lines[-1].index("."))
     nodes.add(start)
     nodes.add(end)
-    
+
     def distance_between(starting_point: tuple[int, int], ending_point: tuple[int, int]) -> int:
         current: list[tuple[tuple[int, int], tuple[int, int], int]] = []
         offsets = ((-1, 0), (0, 1), (1, 0), (0, -1))
@@ -65,7 +70,7 @@ def problem_2() -> None:
                 if new_position != last_position and lines[new_position[0]][new_position[1]] != "#":
                     current.append((new_position, position, dist + 1))
         return max_dist
-    
+
     distances: defaultdict[tuple[int, int], dict[tuple[int, int], int]] = defaultdict(dict)
     for point in nodes:
         for other_point in nodes:
@@ -74,7 +79,7 @@ def problem_2() -> None:
                 distances[point][other_point] = dist
                 distances[other_point][point] = dist
 
-    paths: list[tuple[tuple[int, int], set[int], int]] = [(start, set(), 0)]
+    paths: list[tuple[tuple[int, int], set[tuple[int, int]], int]] = [(start, set(), 0)]
     max_length = 0
     while paths:
         current_pos, visited, dist = paths.pop()
