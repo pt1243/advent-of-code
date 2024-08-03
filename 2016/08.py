@@ -39,9 +39,7 @@ def problem_1() -> None:
 def problem_2() -> None:
     screen = process_screen()
     letters = np.split(screen, 10, axis=1)
-    text: list[list[None | str]] = [[None for _ in range(10)] for _ in range(6)]
-    for letter_idx, letter in enumerate(letters):
-        for row_idx, row in enumerate(letter):
-            text[row_idx][letter_idx] = "".join("■" if c else " " for c in row)
-    for row in text:
-        print("    ".join(char_string for char_string in row))
+    for row in range(6):
+        for letter in letters:
+            print("".join("█" if char else " " for char in letter[row]), end=" ")
+        print()
