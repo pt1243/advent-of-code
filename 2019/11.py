@@ -29,7 +29,7 @@ class IntcodeProgram:
         else:
             raise ValueError(f"unknown mode for parameter {param_mode} with opcode {self.memory[self.i]}")
         return param
-    
+
     def _get_write_address(self) -> int:
         param_mode = self.memory[self.i] // 100
         if param_mode == 0:
@@ -143,7 +143,7 @@ class IntcodeProgram:
         first_param, second_param, write_address = self._read_two_parameters_get_write_address()
         self.memory[write_address] = 1 if first_param == second_param else 0
         self.i += 4
-    
+
     def _relative_base_offset(self) -> None:
         param = self._read_one_parameter()
         self.relative_base += param

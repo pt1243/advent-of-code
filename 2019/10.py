@@ -14,7 +14,7 @@ def problem_1() -> None:
         for col, char in enumerate(line):
             if char == "#":
                 asteroids.append((row, col))
-    
+
     most_detected = 0
     for monitoring_station in asteroids:
         angles: set[float] = set()
@@ -52,19 +52,19 @@ def problem_2() -> None:
     station_row, station_col = best_location
     for asteroid in asteroids:
         row, col = asteroid
-        dist = (row - station_row)**2 + (col - station_col)**2
+        dist = (row - station_row) ** 2 + (col - station_col) ** 2
         vertical_dist = station_row - row
         horizontal_dist = col - station_col
         raw_angle = atan2(horizontal_dist, vertical_dist)
         if raw_angle < 0:
-            raw_angle += 2*pi
+            raw_angle += 2 * pi
         all_angles.add((raw_angle, dist, row, col))
-    
+
     all_items: deque[deque[tuple[int, int]]] = deque()
     for _, g in groupby(sorted(all_angles), key=itemgetter(0)):
         sorted_by_dist = sorted(g, key=itemgetter(1))
         all_items.append(deque((item[2], item[3]) for item in sorted_by_dist))
-    
+
     num_vapourised = 0
     while all_items:
         asteroids_at_current_angle = all_items[0]
