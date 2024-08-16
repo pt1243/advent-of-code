@@ -1,5 +1,4 @@
 from collections import defaultdict, deque
-from itertools import product
 
 
 with open("./2019/resources/21.txt") as f:
