@@ -13,7 +13,7 @@ class OrbitingBody:
     def __init__(self, name: str) -> None:
         self.name = name
         type(self)._lookup[name] = self
-        self.center_body: OrbitingBody | None = None
+        self.center_body: OrbitingBody
 
     @classmethod
     def get_by_name(cls, name: str) -> Self:
@@ -25,7 +25,6 @@ class OrbitingBody:
     def direct_and_indirect_orbits(self) -> int:
         if self.name == "COM":
             return 0
-        assert self.center_body is not None
         return 1 + self.center_body.direct_and_indirect_orbits()
 
 
@@ -47,20 +46,16 @@ def problem_2() -> None:
         in_orbit_body.center_body = center_body
 
     current = OrbitingBody.get_by_name("YOU").center_body
-    assert current is not None
     cumulative_transfers = 0
     transfers_to: dict[str, int] = {}
     while current.name != "COM":
         current = current.center_body
-        assert current is not None
         cumulative_transfers += 1
         transfers_to[current.name] = cumulative_transfers
 
     current = OrbitingBody.get_by_name("SAN").center_body
-    assert current is not None
     cumulative_transfers = 0
     while current.name not in transfers_to:
         current = current.center_body
-        assert current is not None
         cumulative_transfers += 1
     print(transfers_to[current.name] + cumulative_transfers)
