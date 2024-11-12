@@ -2,18 +2,6 @@ with open("./2020/resources/8.txt") as f:
     lines = f.read().splitlines()
 
 
-# lines = """\
-# nop +0
-# acc +1
-# jmp +4
-# acc +3
-# jmp -3
-# acc -99
-# acc +1
-# jmp -4
-# acc +6""".splitlines()
-
-
 def problem_1() -> None:
     accumulator = 0
     seen: set[int] = set()

@@ -4,12 +4,6 @@ from itertools import product
 with open("./2020/resources/17.txt") as f:
     lines = f.read().splitlines()
 
-# lines = """\
-# .#.
-# ..#
-# ###
-# """.splitlines()
-
 
 def problem_1() -> None:
     current: set[tuple[int, int, int]] = set()

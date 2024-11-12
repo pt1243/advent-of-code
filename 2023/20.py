@@ -41,7 +41,6 @@ class Module:
                     dest.inputs[module_str] = False
 
     def process_input(self, sender: str, pulse_type: bool) -> None:
-        # print(f"{sender} -{'high' if pulse_type else 'low'}-> {self.name}")
         if self.module_type == "flip-flop":
             if not pulse_type:
                 self.flip_flop_state = not self.flip_flop_state
