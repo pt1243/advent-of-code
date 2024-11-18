@@ -1,13 +1,19 @@
+import argparse
 import importlib
 from time import perf_counter
 
 
-year = 2021
-day = 5
-problem = 2
-
-
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("year", type=int)
+    parser.add_argument("day", type=int)
+    parser.add_argument("problem", type=int)
+    args = parser.parse_args()
+
+    year = args.year
+    day = args.day
+    problem = args.problem
+
     start = perf_counter()
     module = importlib.import_module(f"{year}.{str(day).zfill(2)}", package=".")
     function = getattr(module, f"problem_{problem}")
