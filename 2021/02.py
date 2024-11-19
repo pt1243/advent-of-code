@@ -1,5 +1,5 @@
 with open("./2021/resources/2.txt") as f:
-    lines = f.readlines()
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

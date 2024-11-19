@@ -2,7 +2,7 @@ from collections import defaultdict
 
 
 with open("./2021/resources/8.txt") as f:
-    lines = f.readlines()
+    lines = f.read().splitlines()
 
 
 def problem_1() -> None:

@@ -3,7 +3,7 @@ from more_itertools import sliding_window
 
 
 with open("./2021/resources/1.txt") as f:
-    depths = [int(depth) for depth in f.readlines()]
+    depths = [int(depth) for depth in f.read().splitlines()]
 
 
 def problem_1() -> None:
