@@ -1,13 +1,14 @@
 from collections import defaultdict
 import numpy as np
+import numpy.typing as npt
 
 
 with open("./2020/resources/20.txt") as f:
     text = f.read().strip()
 
 
-def extract_tiles(text: str) -> dict[int, np.ndarray]:
-    tiles: dict[int, np.ndarray] = {}
+def extract_tiles(text: str) -> dict[int, npt.NDArray[np.bool_]]:
+    tiles: dict[int, npt.NDArray[np.bool_]] = {}
     for tile_group in text.split("\n\n"):
         lines = tile_group.splitlines()
         tile_id = int(lines[0].split()[1].strip(":"))
@@ -16,8 +17,8 @@ def extract_tiles(text: str) -> dict[int, np.ndarray]:
     return tiles
 
 
-def get_connections(tiles: dict[int, np.ndarray]) -> defaultdict[int, set[int]]:
-    connections: defaultdict[int, list[int]] = defaultdict(set)
+def get_connections(tiles: dict[int, npt.NDArray[np.bool_]]) -> defaultdict[int, set[int]]:
+    connections: defaultdict[int, set[int]] = defaultdict(set)
     for tile_id, tile in tiles.items():
         for other_tile_id, other_tile in tiles.items():
             if tile_id == other_tile_id:
@@ -131,7 +132,7 @@ def problem_2() -> None:
     single_tile_height -= 2
     single_tile_width -= 2
 
-    oriented_tiles: dict[int, np.ndarray] = {}
+    oriented_tiles: dict[int, npt.NDArray[np.bool_]] = {}
     first_tile = tiles[arranged_tile_ids[0, 0]]
     second_tile = tiles[arranged_tile_ids[0, 1]]
     third_tile = tiles[arranged_tile_ids[1, 0]]
