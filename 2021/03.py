@@ -6,7 +6,7 @@ with open("./2021/resources/3.txt") as f:
 
 
 def problem_1() -> None:
-    column_counters = [Counter() for _ in lines[0]]
+    column_counters: list[Counter[str]] = [Counter() for _ in lines[0]]
     for line in lines:
         for c, char in zip(column_counters, line):
             c.update(char)

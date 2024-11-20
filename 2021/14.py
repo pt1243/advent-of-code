@@ -17,8 +17,8 @@ def run_pair_insertion_process(steps: int) -> int:
         rules[left] = (left[0] + right, right + left[1])
 
     current_counts: defaultdict[str, int] = defaultdict(int)
-    for pair in pairwise(polymer_template):
-        current_counts[pair[0] + pair[1]] += 1
+    for pair_string in pairwise(polymer_template):
+        current_counts[pair_string[0] + pair_string[1]] += 1
 
     for _ in range(steps):
         new_counts: defaultdict[str, int] = defaultdict(int)

@@ -8,7 +8,7 @@ with open("./2021/resources/6.txt") as f:
 def simulate_lanternfish(days: int) -> int:
     current = Counter(int(x) for x in text.split(","))
     for _ in range(days):
-        new = Counter()
+        new: Counter[int] = Counter()
         for i in range(1, 9):
             new[i - 1] = current[i]
         new[6] += current[0]
