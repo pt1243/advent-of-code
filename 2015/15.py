@@ -3,7 +3,7 @@ from typing import NamedTuple
 
 
 with open("./2015/resources/15.txt") as f:
-    ingredients_data = f.read().splitlines()
+    lines = f.read().splitlines()
 
 
 class Ingredient(NamedTuple):
@@ -16,18 +16,17 @@ class Ingredient(NamedTuple):
 
 
 def process_ingredients() -> list[Ingredient]:
-    possible_ingredients: list[Ingredient] = []
-    for ingredient_text in ingredients_data:
-        name = ingredient_text.split(":")[0]
-        capacity = int(ingredient_text[ingredient_text.index("capacity") + 9 : ingredient_text.index("durability") - 2])
-        durability = int(
-            ingredient_text[ingredient_text.index("durability") + 11 : ingredient_text.index("flavor") - 2]
-        )
-        flavour = int(ingredient_text[ingredient_text.index("flavor") + 7 : ingredient_text.index("texture") - 2])
-        texture = int(ingredient_text[ingredient_text.index("texture") + 8 : ingredient_text.index("calories") - 2])
-        calories = int(ingredient_text[ingredient_text.index("calories") + 9 :])
-        possible_ingredients.append(Ingredient(name, capacity, durability, flavour, texture, calories))
-    return possible_ingredients
+    ingredients: list[Ingredient] = []
+    for line in lines:
+        split = line.split()
+        name = split[0].strip(":")
+        capacity = int(split[2].strip(","))
+        durability = int(split[4].strip(","))
+        flavour = int(split[6].strip(","))
+        texture = int(split[8].strip(","))
+        calories = int(split[10].strip(","))
+        ingredients.append(Ingredient(name, capacity, durability, flavour, texture, calories))
+    return ingredients
 
 
 def sum_to(total: int, num_items: int) -> Iterator[list[int]]:
@@ -42,14 +41,13 @@ def sum_to(total: int, num_items: int) -> Iterator[list[int]]:
 def problem_1() -> None:
     possible_ingredients = process_ingredients()
 
-    max_found = None
+    max_score = 0
     for combination in sum_to(100, len(possible_ingredients)):
         capacity = 0
         durability = 0
         flavour = 0
         texture = 0
-        for idx, number in enumerate(combination):
-            ingredient = possible_ingredients[idx]
+        for ingredient, number in zip(possible_ingredients, combination):
             capacity += number * ingredient.capacity
             durability += number * ingredient.durability
             flavour += number * ingredient.flavour
@@ -59,24 +57,22 @@ def problem_1() -> None:
         flavour = max(flavour, 0)
         texture = max(texture, 0)
         total = capacity * durability * flavour * texture
-        if max_found is None or total > max_found:
-            max_found = total
+        max_score = max(max_score, total)
 
-    print(max_found)
+    print(max_score)
 
 
 def problem_2() -> None:
     possible_ingredients = process_ingredients()
 
-    max_found = None
+    max_score = 0
     for combination in sum_to(100, len(possible_ingredients)):
         capacity = 0
         durability = 0
         flavour = 0
         texture = 0
         calories = 0
-        for idx, number in enumerate(combination):
-            ingredient = possible_ingredients[idx]
+        for ingredient, number in zip(possible_ingredients, combination):
             capacity += number * ingredient.capacity
             durability += number * ingredient.durability
             flavour += number * ingredient.flavour
@@ -89,7 +85,6 @@ def problem_2() -> None:
         flavour = max(flavour, 0)
         texture = max(texture, 0)
         total = capacity * durability * flavour * texture
-        if max_found is None or total > max_found:
-            max_found = total
+        max_score = max(max_score, total)
 
-    print(max_found)
+    print(max_score)

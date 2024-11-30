@@ -1,5 +1,5 @@
 from collections import defaultdict
-import re
+from itertools import count
 
 from more_itertools import split_before
 
@@ -15,13 +15,7 @@ def problem_1() -> None:
         initial, replacement = rule.split(" => ")
         substitutions[initial].append(replacement)
 
-    atoms = [
-        "".join(atom_chars)
-        for atom_chars in split_before(
-            molecule,
-            lambda s: s.isupper(),
-        )
-    ]
+    atoms = ["".join(atom_chars) for atom_chars in split_before(molecule, lambda s: s.isupper())]
 
     one_step: set[str] = set()
 
@@ -38,14 +32,17 @@ def problem_2() -> None:
     molecule = molecule[::-1]
     rules = {rule.split(" => ")[1][::-1]: rule.split(" => ")[0][::-1] for rule in all_rules.split("\n")}
 
-    count = 0
-    pattern = "|".join(rules.keys())
-
-    def get_replacement(s: re.Match[str]) -> str:
-        return rules[s.group()]
-
+    steps = 0
+    # greedily substitute in first matching rule from the right
     while molecule != "e":
-        molecule = re.sub(pattern, get_replacement, molecule, 1)
-        count += 1
-
-    print(count)
+        for i in count():
+            found = False
+            for start in rules:
+                if molecule[i : i + len(start)] == start:
+                    found = True
+                    break
+            if found:
+                break
+        molecule = molecule[:i] + rules[start] + molecule[i + len(start) :]
+        steps += 1
+    print(steps)

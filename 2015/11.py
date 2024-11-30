@@ -2,18 +2,6 @@ with open("./2015/resources/11.txt") as f:
     current_password = f.read().strip()
 
 
-def inc_list(lst: list[int]) -> list[int]:
-    lst[-1] += 1
-    while any(i > 25 for i in lst):
-        last_idx = 0
-        for idx, val in enumerate(lst):
-            if val > 25:
-                last_idx = idx
-        lst[last_idx] -= 26
-        lst[last_idx - 1] += 1
-    return lst
-
-
 def get_next_password(current: str) -> str:
     password = [ord(c) - ord("a") for c in current]
     i_int = ord("i") - ord("a")
@@ -21,7 +9,12 @@ def get_next_password(current: str) -> str:
     l_int = ord("l") - ord("a")
 
     while True:
-        password = inc_list(password)
+        password[-1] += 1
+        for i in range(7, 0, -1):
+            if password[i] == 26:
+                password[i - 1] += 1
+                password[i] = 0
+
         if i_int in password or o_int in password or l_int in password:
             continue
         if not any(password[i] + 2 == password[i + 1] + 1 == password[i + 2] for i in range(6)):

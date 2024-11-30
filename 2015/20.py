@@ -1,4 +1,5 @@
-from math import sqrt, ceil
+from itertools import count
+from math import isqrt
 
 
 with open("./2015/resources/20.txt") as f:
@@ -7,7 +8,7 @@ with open("./2015/resources/20.txt") as f:
 
 def sum_divisors(n: int) -> int:
     found: set[int] = set()
-    for i in range(1, ceil(sqrt(n)) + 1):
+    for i in range(1, isqrt(n) + 2):
         if n % i == 0:
             found.add(i)
             found.add(n // i)
@@ -16,7 +17,7 @@ def sum_divisors(n: int) -> int:
 
 def sum_divisors_part_2(n: int) -> int:
     found: set[int] = set()
-    for i in range(1, ceil(sqrt(n)) + 1):
+    for i in range(1, isqrt(n) + 2):
         if n % i == 0:
             f1, f2 = i, n // i
             if f1 <= 50:
@@ -27,20 +28,16 @@ def sum_divisors_part_2(n: int) -> int:
 
 
 def problem_1() -> None:
-    n = 1
-    while True:
+    for n in count(1):
         current_house_total = 10 * sum_divisors(n)
         if current_house_total >= target:
             print(n)
             break
-        n += 1
 
 
 def problem_2() -> None:
-    n = 1
-    while True:
+    for n in count(1):
         current_house_total = 11 * sum_divisors_part_2(n)
         if current_house_total >= target:
             print(n)
             break
-        n += 1

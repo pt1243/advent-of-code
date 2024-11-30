@@ -15,7 +15,7 @@ with open("./2015/resources/24.txt") as f:
 def can_partition_into_two(S: Sequence[int]) -> bool:
     n = len(S)
     K = sum(S)
-    P = cast(npt.NDArray[np.bool_], np.empty((floor(K / 2) + 1, n + 1), dtype=bool))
+    P: npt.NDArray[np.bool_] = np.empty((floor(K / 2) + 1, n + 1), dtype=bool)
 
     P[:, 0] = np.zeros(floor(K / 2) + 1)
     P[0, :] = np.ones(n + 1)

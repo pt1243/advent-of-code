@@ -5,14 +5,11 @@ with open("./2015/resources/23.txt") as f:
 def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
     instruction_pointer = 0
     a, b = start_a, start_b
-    while True:
-        try:
-            instruction = lines[instruction_pointer]
-        except IndexError:
-            return a, b
+    while 0 <= instruction_pointer < len(lines):
+        instruction = lines[instruction_pointer]
+        reg = instruction.split()[1]
 
         if instruction.startswith("hlf"):
-            reg = instruction.split()[1]
             if reg == "a":
                 a //= 2
             else:
@@ -20,7 +17,6 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
             instruction_pointer += 1
 
         elif instruction.startswith("tpl"):
-            reg = instruction.split()[1]
             if reg == "a":
                 a *= 3
             else:
@@ -28,7 +24,6 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
             instruction_pointer += 1
 
         elif instruction.startswith("inc"):
-            reg = instruction.split()[1]
             if reg == "a":
                 a += 1
             else:
@@ -56,6 +51,7 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
                 instruction_pointer += offset if a == 1 else 1
             else:
                 instruction_pointer += offset if b == 1 else 1
+    return a, b
 
 
 def problem_1() -> None:

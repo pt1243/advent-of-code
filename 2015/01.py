@@ -3,22 +3,13 @@ with open("./2015/resources/1.txt") as f:
 
 
 def problem_1() -> None:
-    floor = 0
-    for char in input_string:
-        if char == "(":
-            floor += 1
-        else:
-            floor -= 1
-    print(floor)
+    print(sum(1 if char == "(" else -1 for char in input_string))
 
 
 def problem_2() -> None:
     floor = 0
-    for idx, char in enumerate(input_string):
-        if char == "(":
-            floor += 1
-        else:
-            floor -= 1
+    for idx, char in enumerate(input_string, start=1):
+        floor += 1 if char == "(" else -1
         if floor == -1:
-            print(idx + 1)
+            print(idx)
             break

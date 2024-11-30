@@ -4,14 +4,14 @@ from typing import NamedTuple
 
 with open("./2015/resources/22.txt") as f:
     lines = f.read().splitlines()
-
-starting_player_hp = 50
-starting_player_mana = 500
-starting_boss_hp = int(lines[0].split(": ")[1])
-boss_damage = int(lines[1].split(": ")[1])
+    starting_player_hp = 50
+    starting_player_mana = 500
+    starting_boss_hp = int(lines[0].split(": ")[1])
+    boss_damage = int(lines[1].split(": ")[1])
 
 
 class State(NamedTuple):
+    spent_mana: int
     player_hp: int
     player_mana: int
     boss_hp: int
@@ -29,111 +29,113 @@ spell_costs = {
 }
 
 
-def evaluate_cost(spells: tuple[str, ...], part_2: bool = False) -> tuple[int, State | None, bool]:
-    player_hp = starting_player_hp
-    player_mana = starting_player_mana
-    boss_hp = starting_boss_hp
-    shield_timer = 0
-    poison_timer = 0
-    recharge_timer = 0
+def apply_spell(state: State, spell: str, part_2: bool = False) -> State | bool:
+    spent_mana, player_hp, player_mana, boss_hp, shield_timer, poison_timer, recharge_timer = state
 
-    spent_mana = 0
-
-    def apply_effects() -> None:
-        nonlocal player_mana, boss_hp, shield_timer, poison_timer, recharge_timer
-        if shield_timer > 0:
-            shield_timer -= 1
-        if poison_timer > 0:
-            boss_hp -= 3
-            poison_timer -= 1
-        if recharge_timer > 0:
-            player_mana += 101
-            recharge_timer -= 1
-
-    for spell in spells:
-        # before player turn
-        if part_2:
-            player_hp -= 1
-            if player_hp <= 0:
-                return 0, None, False
-        apply_effects()
-        if boss_hp <= 0:
-            return spent_mana, None, True
-
-        # player turn
-        if spell == "magic missile":
-            spent_mana += 53
-            player_mana -= 53
-            boss_hp -= 4
-        elif spell == "drain":
-            spent_mana += 73
-            player_mana -= 73
-            boss_hp -= 2
-            player_hp += 2
-        elif spell == "shield":
-            if shield_timer > 0:
-                return 0, None, False
-            spent_mana += 113
-            player_mana -= 113
-            shield_timer = 6
-        elif spell == "poison":
-            if poison_timer > 0:
-                return 0, None, False
-            spent_mana += 173
-            player_mana -= 173
-            poison_timer = 6
-        elif spell == "recharge":
-            if recharge_timer > 0:
-                return 0, None, False
-            spent_mana += 229
-            player_mana -= 229
-            recharge_timer = 5
-
-        # if player did not have enough to cast the last spell
-        if player_mana < 0:
-            return 0, None, False
-
-        # boss turn
-        apply_effects()
-        if boss_hp <= 0:
-            return spent_mana, None, True
-
-        armor = 7 if shield_timer > 0 else 0
-        player_hp -= max(boss_damage - armor, 1)
+    # before player turn
+    if part_2:
+        player_hp -= 1
         if player_hp <= 0:
-            return 0, None, False
+            return False
 
-    # continue playing
-    return spent_mana, State(player_hp, player_mana, boss_hp, shield_timer, poison_timer, recharge_timer), False
+    # apply timer effects
+    shield_timer = max(shield_timer - 1, 0)
+    if poison_timer > 0:
+        boss_hp -= 3
+    poison_timer = max(poison_timer - 1, 0)
+    if recharge_timer > 0:
+        player_mana += 101
+    recharge_timer = max(recharge_timer - 1, 0)
+
+    if boss_hp <= 0:
+        return True
+
+    # player turn
+    spent_mana += spell_costs[spell]
+    player_mana -= spell_costs[spell]
+
+    if player_mana < 0:
+        return False
+
+    if spell == "magic missile":
+        boss_hp -= 4
+    elif spell == "drain":
+        boss_hp -= 2
+        player_hp += 2
+    elif spell == "shield":
+        if shield_timer > 0:
+            return False
+        shield_timer = 6
+    elif spell == "poison":
+        if poison_timer > 0:
+            return False
+        poison_timer = 6
+    elif spell == "recharge":
+        if recharge_timer > 0:
+            return False
+        recharge_timer = 5
+
+    if boss_hp <= 0:
+        return True
+
+    # boss turn
+    # apply timer effects
+    shield_timer = max(shield_timer - 1, 0)
+    if poison_timer > 0:
+        boss_hp -= 3
+    poison_timer = max(poison_timer - 1, 0)
+    if recharge_timer > 0:
+        player_mana += 101
+    recharge_timer = max(recharge_timer - 1, 0)
+
+    if boss_hp <= 0:
+        return True
+
+    armour = 7 if shield_timer > 0 else 0
+    player_hp -= max(boss_damage - armour, 1)
+    if player_hp <= 0:
+        return False
+
+    return State(spent_mana, player_hp, player_mana, boss_hp, shield_timer, poison_timer, recharge_timer)
 
 
 def problem_1() -> None:
-    possibilities: list[tuple[int, tuple[str, ...], bool]] = []
-    for spell, cost in spell_costs.items():
-        heapq.heappush(possibilities, (cost, (spell,), False))
+    possibilities = [(State(0, starting_player_hp, starting_player_mana, starting_boss_hp, 0, 0, 0), False)]
+    seen: set[State] = set()
     while True:
-        cost, spells, victory = heapq.heappop(possibilities)
+        state, victory = heapq.heappop(possibilities)
         if victory:
-            print(cost)
+            print(state.spent_mana)
             return
-        for new_spell in spell_costs.keys():
-            new_spells = (*spells, new_spell)
-            new_cost, state, victory = evaluate_cost(new_spells)
-            if victory or (state is not None):
-                heapq.heappush(possibilities, (new_cost, new_spells, victory))
+        for spell, cost in spell_costs.items():
+            result = apply_spell(state, spell)
+            if result is False:  # lost the fight or invalid spell
+                continue
+            if result is True:  # victory
+                heapq.heappush(possibilities, (state._replace(spent_mana=state.spent_mana + cost), True))
+            else:  # no result yet
+                if result in seen:
+                    continue
+                seen.add(result)
+                heapq.heappush(possibilities, (result, False))
 
 
 def problem_2() -> None:
-    possibilities: list[tuple[int, tuple[str, ...], bool]] = []
-    for spell, cost in spell_costs.items():
-        heapq.heappush(possibilities, (cost, (spell,), False))
+    possibilities = [(State(0, starting_player_hp, starting_player_mana, starting_boss_hp, 0, 0, 0), False)]
+    seen: set[State] = set()
     while True:
-        cost, spells, victory = heapq.heappop(possibilities)
+        state, victory = heapq.heappop(possibilities)
         if victory:
-            print(cost)
+            print(state.spent_mana)
             return
-        for new_spell in spell_costs.keys():
-            new_spells = (*spells, new_spell)
-            new_cost, state, victory = evaluate_cost(new_spells, part_2=True)
-            if victory or (state is not None):
-                heapq.heappush(possibilities, (new_cost, new_spells, victory))
+        for spell, cost in spell_costs.items():
+            result = apply_spell(state, spell, part_2=True)
+            if result is False:  # lost the fight or invalid spell
+                continue
+            if result is True:  # victory
+                heapq.heappush(possibilities, (state._replace(spent_mana=state.spent_mana + cost), True))
+            else:  # no result yet
+                if result in seen:
+                    continue
+                seen.add(result)
+                heapq.heappush(possibilities, (result, False))

@@ -4,11 +4,9 @@ from typing import NamedTuple
 
 with open("./2015/resources/21.txt") as f:
     lines = f.read().splitlines()
-
-
-starting_boss_hp = int(lines[0].split(": ")[1])
-boss_damage = int(lines[1].split(": ")[1])
-boss_armour = int(lines[2].split(": ")[1])
+    starting_boss_hp = int(lines[0].split(": ")[1])
+    boss_damage = int(lines[1].split(": ")[1])
+    boss_armour = int(lines[2].split(": ")[1])
 
 
 class Item(NamedTuple):
@@ -53,22 +51,22 @@ ring_choices = (
     *(
         Item(r1.name + " and " + r2.name, r1.cost + r2.cost, r1.damage + r2.damage, r1.armour + r2.armour)
         for r1, r2 in combinations(rings, 2)
-    ),
+    ),  # two rings
 )
 
 
 def simulate(player_hp: int, player_damage: int, player_armour: int) -> bool:
-    current_turn = "player"
+    player_turn = True
     boss_hp = starting_boss_hp
     while boss_hp > 0 and player_hp > 0:
-        if current_turn == "player":
+        if player_turn:
             damage = max(player_damage - boss_armour, 1)
             boss_hp -= damage
-            current_turn = "boss"
+            player_turn = False
         else:
             damage = max(boss_damage - player_armour, 1)
             player_hp -= damage
-            current_turn = "player"
+            player_turn = True
     return player_hp > 0
 
 

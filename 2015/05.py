@@ -1,3 +1,4 @@
+from itertools import pairwise
 from string import ascii_lowercase
 
 
@@ -9,13 +10,7 @@ def problem_1() -> None:
     total = 0
     for s in strings:
         vowel_count = s.count("a") + s.count("e") + s.count("i") + s.count("o") + s.count("u")
-        twice_in_a_row = False
-        for idx, char in enumerate(s):
-            if idx == 0:
-                continue
-            if char == s[idx - 1]:
-                twice_in_a_row = True
-                break
+        twice_in_a_row = any(c1 == c2 for c1, c2 in pairwise(s))
         forbidden = any(forbidden_string in s for forbidden_string in ("ab", "cd", "pq", "xy"))
         if vowel_count >= 3 and twice_in_a_row and not forbidden:
             total += 1
