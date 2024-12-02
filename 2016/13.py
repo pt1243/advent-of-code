@@ -13,15 +13,15 @@ def is_open(node: tuple[int, int]) -> bool:
 
 def get_neighbours(node: tuple[int, int]) -> list[tuple[int, int]]:
     x, y = node
-    neighbours = [(x, y + 1), (x + 1, y)]
+    tentative_neighbours = [(x, y + 1), (x + 1, y)]
     if x != 0:
-        neighbours.append((x - 1, y))
+        tentative_neighbours.append((x - 1, y))
     if y != 0:
-        neighbours.append((x, y - 1))
-    return [n for n in neighbours if is_open(n)]
+        tentative_neighbours.append((x, y - 1))
+    return [n for n in tentative_neighbours if is_open(n)]
 
 
-def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int]]:  # type: ignore[return]
+def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int]]:
     # list of nodes visited to get to the goal
     def reconstruct_path(current: tuple[int, int]) -> list[tuple[int, int]]:
         total_path: list[tuple[int, int]] = [current]
@@ -59,6 +59,7 @@ def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int
                 if neighbor not in open_set_set:
                     open_set_set.add(neighbor)
                     heapq.heappush(open_set, (tentative_g_score, neighbor[0], neighbor[1]))
+    raise ValueError("did not find path to goal")
 
 
 def problem_1() -> None:

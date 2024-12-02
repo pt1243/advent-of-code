@@ -12,20 +12,12 @@ def clamp(val: int, min_val: int, max_val: int) -> int:
 def problem_1() -> None:
     row, col = 1, 1
     code = ""
-
+    directions = {"U": (-1, 0), "D": (1, 0), "L": (0, -1), "R": (0, 1)}
     for line in lines:
         for char in line:
-            if char == "U":
-                row -= 1
-            elif char == "D":
-                row += 1
-            elif char == "L":
-                col -= 1
-            else:
-                col += 1
-
-            row = clamp(row, 0, 2)
-            col = clamp(col, 0, 2)
+            drow, dcol = directions[char]
+            row = clamp(row + drow, 0, 2)
+            col = clamp(col + dcol, 0, 2)
 
         code += str(row * 3 + col + 1)
 
@@ -33,9 +25,6 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    row, col = 2, 0
-    code = ""
-
     bounds = {
         0: partial(clamp, min_val=2, max_val=2),
         1: partial(clamp, min_val=1, max_val=3),
@@ -55,6 +44,8 @@ def problem_2() -> None:
             return chr(64 + col)
         return "D"
 
+    row, col = 2, 0
+    code = ""
     for line in lines:
         for char in line:
             if char == "U":
@@ -65,7 +56,6 @@ def problem_2() -> None:
                 col = bounds[row](col - 1)
             else:
                 col = bounds[row](col + 1)
-
         code += keypad(row, col)
 
     print(code)

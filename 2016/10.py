@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import ClassVar
+from typing import ClassVar, Self
 
 
 with open("./2016/resources/10.txt") as f:
@@ -7,19 +7,12 @@ with open("./2016/resources/10.txt") as f:
 
 
 class Bot:
-    lookup: ClassVar[dict[int, Bot]] = {}
+    lookup: ClassVar[dict[int, Self]] = {}
     outputs: ClassVar[dict[int, int]] = {}
 
-    def __init__(
-        self,
-        bot_num: int,
-        low_type: str,
-        low_target: int,
-        high_type: str,
-        high_target: int,
-    ) -> None:
+    def __init__(self, bot_num: int, low_type: str, low_target: int, high_type: str, high_target: int) -> None:
         self.bot_num = bot_num
-        Bot.lookup[bot_num] = self
+        type(self).lookup[bot_num] = self
         self.values: list[int] = []
         self.low_type = low_type
         self.low_target = low_target
@@ -38,13 +31,13 @@ class Bot:
                 return
 
             if self.low_type == "bot":
-                Bot.lookup[self.low_target].add_microchip(low, add_to_output=add_to_output)
+                type(self).lookup[self.low_target].add_microchip(low, add_to_output=add_to_output)
             elif add_to_output:
-                Bot.outputs[self.low_target] = low
+                type(self).outputs[self.low_target] = low
             if self.high_type == "bot":
-                Bot.lookup[self.high_target].add_microchip(high, add_to_output=add_to_output)
+                type(self).lookup[self.high_target].add_microchip(high, add_to_output=add_to_output)
             elif add_to_output:
-                Bot.outputs[self.high_target] = high
+                type(self).outputs[self.high_target] = high
 
 
 def problem_1() -> None:

@@ -27,5 +27,4 @@ def problem_2() -> None:
             count += 1
         if a3 + b3 > c3 and a3 + c3 > b3 and b3 + c3 > a3:
             count += 1
-
     print(count)

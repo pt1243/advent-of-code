@@ -1,6 +1,7 @@
 from collections import namedtuple
 from itertools import chain, combinations
 import heapq
+from typing import cast
 
 
 with open("./2016/resources/11.txt") as f:
@@ -44,7 +45,8 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
         kwargs[f"{element}_microchip"] = microchip_starting_floor
         kwargs[f"{element}_generator"] = generator_starting_floors[element]
 
-    State = namedtuple("State", kwargs.keys())  # type: ignore[misc]  # not sure what mypy doesn't like about
+    # unsurprisingly, mypy is not particularly happy about a dynamically created type
+    State = namedtuple("State", kwargs.keys())  # type: ignore[misc]
 
     def deduplicate_state(state: State) -> State:
         return State(
@@ -56,7 +58,7 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
 
     possible_states = [deduplicate_state(State(**kwargs))]
     states_to_check = {possible_states[0]}
-    while possible_states:
+    while True:
         state = heapq.heappop(possible_states)
         states_to_check.remove(state)
 
@@ -76,7 +78,7 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
             continue
 
         if state.distance_to_top_floor == 0:  # type: ignore[attr-defined]
-            return state.steps  # type: ignore[attr-defined,no-any-return]
+            return cast(int, state.steps)  # type: ignore[attr-defined]
 
         # find possible new states
         current_floor_items = [i for i in range(3, 3 + 2 * num_elements) if state[i] == state.elevator_position]  # type: ignore[attr-defined]
@@ -126,7 +128,6 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
                 if new_state not in states_to_check:
                     states_to_check.add(new_state)
                     heapq.heappush(possible_states, new_state)
-    return 0  # to make mypy happy
 
 
 def problem_1() -> None:

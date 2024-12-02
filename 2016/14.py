@@ -1,6 +1,7 @@
 from functools import cache
 from hashlib import md5
 from itertools import count
+from more_itertools import sliding_window
 
 
 with open("./2016/resources/14.txt") as f:
@@ -26,9 +27,9 @@ def problem_1() -> None:
     for i in count():
         hex_string = hash_salt(i)
         repeated_char = ""
-        for idx, char in enumerate(hex_string[:-2]):
-            if char == hex_string[idx + 1] == hex_string[idx + 2]:
-                repeated_char = char
+        for c1, c2, c3 in sliding_window(hex_string, 3):
+            if c1 == c2 == c3:
+                repeated_char = c1
                 break
         if repeated_char:
             search_string = repeated_char * 5
@@ -47,9 +48,9 @@ def problem_2() -> None:
     for i in count():
         hex_string = key_stretching(i)
         repeated_char = ""
-        for idx, char in enumerate(hex_string[:-2]):
-            if char == hex_string[idx + 1] == hex_string[idx + 2]:
-                repeated_char = char
+        for c1, c2, c3 in sliding_window(hex_string, 3):
+            if c1 == c2 == c3:
+                repeated_char = c1
                 break
         if repeated_char:
             search_string = repeated_char * 5

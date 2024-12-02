@@ -1,5 +1,3 @@
-from collections import deque
-
 import numpy as np
 import numpy.typing as npt
 
@@ -10,24 +8,18 @@ with open("./2016/resources/8.txt") as f:
 
 def process_screen() -> npt.NDArray[np.bool_]:
     screen = np.zeros((6, 50), dtype=bool)
-
     for line in lines:
         if line.startswith("rect"):
             w, h = (int(c) for c in line.split()[1].split("x"))
-            screen[:h, :w] = np.ones((h, w), dtype=bool)
+            screen[:h, :w] = True
         elif "row" in line:
             row_idx = int(line.split()[2].split("=")[1])
             n = int(line.split()[-1])
-            row = deque(screen[row_idx, :])
-            row.rotate(n)
-            screen[row_idx, :] = np.array(row, dtype=bool)
+            screen[row_idx, :] = np.roll(screen[row_idx, :], n)
         else:
             col_idx = int(line.split()[2].split("=")[1])
             n = int(line.split()[-1])
-            col = deque(screen[:, col_idx])
-            col.rotate(n)
-            screen[:, col_idx] = np.array(col, dtype=bool)
-
+            screen[:, col_idx] = np.roll(screen[:, col_idx], n)
     return screen
 
 
