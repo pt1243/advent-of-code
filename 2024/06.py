@@ -6,7 +6,7 @@ def problem_1() -> None:
     directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
     width = len(lines[0])
     height = len(lines)
-    row = [i for i, line in enumerate(lines) if "^" in line][0]
+    row = next(i for i, line in enumerate(lines) if "^" in line)
     col = lines[row].index("^")
     direction = 0
     seen = {(row, col)}
@@ -30,7 +30,7 @@ def problem_2() -> None:
         directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
         width = len(lines[0])
         height = len(lines)
-        row = [i for i, line in enumerate(lines) if "^" in line][0]
+        row = next(i for i, line in enumerate(lines) if "^" in line)
         col = lines[row].index("^")
         direction = 0
         seen = {(row, col, direction)}
@@ -52,7 +52,6 @@ def problem_2() -> None:
     total = 0
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
-            if char == "#":
-                continue
-            total += hits_loop(row, col)
+            if char == ".":
+                total += hits_loop(row, col)
     print(total)
