@@ -29,42 +29,46 @@ def problem_1() -> None:
     print(sum(i * val for i, val in enumerate(final_order)))
 
 
-def problem_2() -> None:  # TODO: speed this up
-    disk: list[tuple[int | None, int]] = []
+def problem_2() -> None:
+    free_space_lengths: dict[int, int] = {}
+    file_indices_and_lengths: dict[int, tuple[int, int]] = {}
     file_ids = count()
+    index = 0
     for pair in batched(nums, 2):
-        disk.append((next(file_ids), pair[0]))
+        file_indices_and_lengths[next(file_ids)] = (index, pair[0])
+        index += pair[0]
         if len(pair) == 2:
-            disk.append((None, pair[1]))
+            free_space_lengths[index] = pair[1]
+            index += pair[1]
 
-    max_file_id_number = next(file_ids) - 1
-    for file_id in range(max_file_id_number, -1, -1):
-        index, length = next((i, val[1]) for i, val in enumerate(disk) if val[0] == file_id)
-        try:
-            available_space_index, available_space_length = next(
-                (i, val[1]) for i, val in enumerate(disk) if i < index and val[0] is None and val[1] >= length
-            )
-        except StopIteration:
+    max_file_id = next(file_ids) - 1
+    for file_id in range(max_file_id, -1, -1):
+        index, length = file_indices_and_lengths[file_id]
+        first_free_position = min(
+            (i for i, val in free_space_lengths.items() if val >= length and i < index), default=None
+        )
+        if first_free_position is None:
             continue
-        if available_space_length == length:
-            disk[available_space_index] = (file_id, length)
-        else:
-            disk.insert(available_space_index, (file_id, length))
-            disk[available_space_index + 1] = (None, available_space_length - length)
-            index += 1
-        disk[index] = (None, length)
-        if disk[index - 1][0] is None:
-            length += disk[index - 1][1]
-            disk[index - 1 : index + 1] = [(None, length)]
-            index -= 1
-        if index < len(disk) - 1 and disk[index + 1][0] is None:
-            length += disk[index + 1][1]
-            disk[index : index + 2] = [(None, length)]
+        file_indices_and_lengths[file_id] = (first_free_position, length)
 
-    expanded = []
-    for val in disk:
-        if val[0] is None:
-            expanded.extend([0] * val[1])
-        else:
-            expanded.extend([val[0]] * val[1])
-    print(sum(i * val for i, val in enumerate(expanded)))
+        destination_space = free_space_lengths.pop(first_free_position)
+        if destination_space > length:
+            difference = destination_space - length
+            free_space_lengths[first_free_position + length] = difference
+
+        free_space_after = free_space_lengths.pop(index + length, None)
+        if free_space_after is not None:
+            length += free_space_after
+
+        index_before = next((i for i in range(1, 10) if free_space_lengths.get(index - i, 0) == i), None)
+        if index_before is not None:
+            free_space_before = free_space_lengths.pop(index - index_before)
+            length += free_space_before
+            index -= index_before
+
+        free_space_lengths[index] = length
+
+    total = 0
+    for file_id, (start_index, length) in file_indices_and_lengths.items():
+        total += file_id * sum(range(start_index, start_index + length))
+    print(total)
