@@ -218,9 +218,10 @@ def problem_1() -> None:
             (room, direction)
             for room, room_connections in connections.items()
             for direction, other_room in room_connections.items()
-            if not other_room and other_room != "Pressure-Sensitive Floor"
+            if not other_room
         ]
         if not places_to_explore:
+            # breakpoint()
             break
         room_to_explore_from, direction_to_explore = places_to_explore[0]
         if room_to_explore_from != current_room:

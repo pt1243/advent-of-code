@@ -1,5 +1,6 @@
 from collections import deque
 from itertools import batched, count
+from typing import cast
 
 
 with open("./2024/resources/9.txt") as f:
@@ -22,7 +23,7 @@ def problem_1() -> None:
                 remaining.pop()
             if not remaining:
                 break
-            final_order.append(remaining.pop())
+            final_order.append(cast(int, remaining.pop()))
         else:
             final_order.append(current)
 

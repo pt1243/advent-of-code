@@ -9,7 +9,7 @@ with open("./2024/resources/8.txt") as f:
 
 def problem_1() -> None:
     height, width = len(lines), len(lines[0])
-    antennas: defaultdict[str, list[str]] = defaultdict(list)
+    antennas: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if char != ".":
@@ -29,7 +29,7 @@ def problem_1() -> None:
 
 def problem_2() -> None:
     height, width = len(lines), len(lines[0])
-    antennas: defaultdict[str, list[str]] = defaultdict(list)
+    antennas: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if char != ".":

@@ -1,3 +1,4 @@
+from typing import cast
 import numpy as np
 
 
@@ -10,7 +11,7 @@ def get_cost(x1: int, x2: int, y1: int, y2: int, target_x: int, target_y: int) -
     inv = np.linalg.inv(matrix)
     a, b = np.round(np.array([target_x, target_y]).T @ inv).astype(int)
     if a * x1 + b * x2 == target_x and a * y1 + b * y2 == target_y:
-        return 3 * a + b
+        return cast(int, 3 * a + b)
     return 0
 
 

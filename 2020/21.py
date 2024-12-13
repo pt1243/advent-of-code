@@ -34,7 +34,7 @@ def get_allergens(lines: list[str]) -> dict[str, str]:
 def problem_1() -> None:
     allergens_to_ingredients = get_allergens(lines)
 
-    ingredient_counts = Counter()
+    ingredient_counts: Counter[str] = Counter()
     for line in lines:
         line_ingredients = line.split("(contains ")[0].split()
         ingredient_counts.update(line_ingredients)
