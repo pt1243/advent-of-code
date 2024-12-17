@@ -1,4 +1,3 @@
-from collections import defaultdict
 import heapq
 
 
@@ -6,115 +5,56 @@ with open("./2024/resources/16.txt") as f:
     lines = f.read().splitlines()
 
 
-def a_star(start_row: int, start_col: int, start_direction: int) -> int:
-    end_row = next(i for i, line in enumerate(lines) if "E" in line)
-    end_col = lines[end_row].index("E")
-    directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
+def get_cost(starting_states: list[tuple[int, int, int]], from_end: bool = False) -> dict[tuple[int, int, int], int]:
+    directions = ((-1, 0), (0, 1), (1, 0), (0, -1))
+    open_set: list[tuple[int, tuple[int, int, int]]] = []
+    for state in starting_states:
+        heapq.heappush(open_set, (0, state))
 
-    open_set = [(0, start_row, start_col, start_direction)]
-
-    g_score: defaultdict[tuple[int, int, int], int] = defaultdict(lambda: 10**12)
-    g_score[start_row, start_col, start_direction] = 0
-    f_score: defaultdict[tuple[int, int, int], int] = defaultdict(lambda: 10**12)
-    f_score[start_row, start_col, start_direction] = abs(start_row - end_row) + abs(start_col - end_col)
-
+    costs: dict[tuple[int, int, int], int] = {}
     while open_set:
-        _, row, col, direction = heapq.heappop(open_set)
-        if row == end_row and col == end_col:
-            return g_score[row, col, direction]
-        for new_direction, (drow, dcol) in directions.items():
-            if (direction + 2) % 4 == new_direction and row != start_row and col != start_col:
-                continue
-            new_row = row + drow
-            new_col = col + dcol
-            if lines[new_row][new_col] == "#":
-                continue
-            tentative_g_score = (
-                g_score[row, col, direction]
-                + 1
-                + (2000 if (direction + 2) % 4 == new_direction else (1000 if direction != new_direction else 0))
-            )
-            if tentative_g_score < g_score[new_row, new_col, new_direction]:
-                g_score[new_row, new_col, new_direction] = tentative_g_score
-                f_score[new_row, new_col, new_direction] = (
-                    tentative_g_score + abs(new_row - end_row) + abs(new_col - end_col)
-                )
-                heapq.heappush(open_set, (f_score[new_row, new_col, new_direction], new_row, new_col, new_direction))
-    raise ValueError("did not find path")
+        cost, current = heapq.heappop(open_set)
+        if current in costs:
+            continue
+        costs[current] = cost
+        row, col, direction = current
+        heapq.heappush(open_set, (cost + 1000, (row, col, (direction + 1) % 4)))
+        heapq.heappush(open_set, (cost + 1000, (row, col, (direction - 1) % 4)))
+        drow, dcol = directions[(direction + 2) % 4 if from_end else direction]
+        if lines[row + drow][col + dcol] != "#":
+            heapq.heappush(open_set, (cost + 1, (row + drow, col + dcol, direction)))
+    return costs
 
 
 def problem_1() -> None:
     start_row = next(i for i, line in enumerate(lines) if "S" in line)
     start_col = lines[start_row].index("S")
-    print(a_star(start_row, start_col, 1))
+    end_row = next(i for i, line in enumerate(lines) if "E" in line)
+    end_col = lines[end_row].index("E")
+    costs_from_start = get_cost([(start_row, start_col, 1)])
+    print(min(cost for state, cost in costs_from_start.items() if state[0] == end_row and state[1] == end_col))
 
 
 def problem_2() -> None:
     start_row = next(i for i, line in enumerate(lines) if "S" in line)
     start_col = lines[start_row].index("S")
-    best_path_cost = a_star(start_row, start_col, 1)
     end_row = next(i for i, line in enumerate(lines) if "E" in line)
     end_col = lines[end_row].index("E")
-    directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
+    costs_from_start = get_cost([(start_row, start_col, 1)])
+    best_cost = min(cost for state, cost in costs_from_start.items() if state[0] == end_row and state[1] == end_col)
+    costs_to_end = get_cost([(end_row, end_col, i) for i in range(4)], from_end=True)
 
-    intersections: dict[tuple[int, int], list[int]] = {}
-    for row, line in enumerate(lines):
-        for col, char in enumerate(line):
-            if char == "#":
+    tiles_on_best_path: set[tuple[int, int]] = set()
+    for row in range(len(lines)):
+        for col in range(len(lines[0])):
+            if lines[row][col] == "#":
                 continue
-            connections: list[int] = []
-            for direction, (drow, dcol) in directions.items():
-                if lines[row + drow][col + dcol] != "#":
-                    connections.append(direction)
-            if len(connections) != 2 or (connections[0] + 2) % 4 != connections[1]:
-                intersections[row, col] = connections
-
-    distances_between_intersections: dict[tuple[int, int], dict[int, int]] = {}
-    for intersection, available_directions in intersections.items():
-        results: dict[int, int] = {}
-        for available_direction in available_directions:
-            row, col = intersection
-            drow, dcol = directions[available_direction]
-            row += drow
-            col += dcol
-            dist = 1
-            while (row, col) not in intersections:
-                row += drow
-                col += dcol
-                dist += 1
-            results[available_direction] = dist
-        distances_between_intersections[intersection] = results
-
-    costs_to_end: dict[tuple[int, int, int], int] = {}
-    for (intersection_row, intersection_col) in distances_between_intersections:
-        for i in range(4):
-            costs_to_end[intersection_row, intersection_col, i] = a_star(intersection_row, intersection_col, i)
-    for i in range(4):
-        costs_to_end[end_row, end_col, i] = 0
-
-    tiles_on_best_paths = {(start_row, start_col)}
-    open_set: list[tuple[int, int, int, int, list[tuple[int, int, int]]]] = [(0, start_row, start_col, 1, [])]
-    while open_set:
-        score, row, col, direction, history = open_set.pop()
-        if row == end_row and col == end_col:
-            for row, col, direction in history:
-                drow, dcol = directions[direction]
-                tiles_on_best_paths.add((row, col))
-                dist = distances_between_intersections[row, col][direction]
-                for _ in range(dist):
-                    row += drow
-                    col += dcol
-                    tiles_on_best_paths.add((row, col))
-            continue
-        for new_direction, dist in distances_between_intersections[row, col].items():
-            if (direction + 2) % 4 == new_direction:
-                continue
-            new_score = score + dist + (1000 if new_direction != direction else 0)
-            drow, dcol = directions[new_direction]
-            new_row = row + drow * dist
-            new_col = col + dcol * dist
-            if new_score + costs_to_end[new_row, new_col, new_direction] > best_path_cost:
-                continue
-            open_set.append((new_score, new_row, new_col, new_direction, history + [(row, col, new_direction)]))
-
-    print(len(tiles_on_best_paths))
+            for i in range(4):
+                point = (row, col, i)
+                if (
+                    point in costs_from_start
+                    and point in costs_to_end
+                    and costs_from_start[point] + costs_to_end[point] == best_cost
+                ):
+                    tiles_on_best_path.add((row, col))
+    print(len(tiles_on_best_path))
