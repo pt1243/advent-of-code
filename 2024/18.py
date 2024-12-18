@@ -43,10 +43,19 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    corrupted: set[tuple[int, int]] = set()
+    corrupted: list[tuple[int, int]] = []
     for line in lines:
         row_str, col_str = line.split(",")
-        corrupted.add((int(row_str), int(col_str)))
-        if a_star(corrupted) is None:
-            print(line)
+        corrupted.append((int(row_str), int(col_str)))
+    
+    low, high = 0, len(lines) - 1
+    while low <= high:
+        m = (low + high) // 2
+        result = a_star(set(corrupted[: m + 1]))
+        if result is not None:
+            low = m + 1
+        elif low == high:
+            print(lines[m])
             return
+        else:
+            high = m - 1            
