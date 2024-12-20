@@ -1,4 +1,5 @@
 from collections import defaultdict
+import bisect
 import heapq
 
 
@@ -47,15 +48,9 @@ def problem_2() -> None:
     for line in lines:
         row_str, col_str = line.split(",")
         corrupted.append((int(row_str), int(col_str)))
-    
-    low, high = 0, len(lines) - 1
-    while low <= high:
-        m = (low + high) // 2
-        result = a_star(set(corrupted[: m + 1]))
-        if result is not None:
-            low = m + 1
-        elif low == high:
-            print(lines[m])
-            return
-        else:
-            high = m - 1            
+
+    print(
+        lines[
+            bisect.bisect_left(list(range(len(corrupted))), True, key=lambda i: a_star(set(corrupted[: i + 1])) is None)
+        ]
+    )
