@@ -26,15 +26,16 @@ def problem_1() -> None:
 
 
 def problem_2() -> None:
-    def hits_loop(obstacle_row: int, obstacle_col: int) -> bool:
-        directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
-        width = len(lines[0])
-        height = len(lines)
-        row = next(i for i, line in enumerate(lines) if "^" in line)
-        col = lines[row].index("^")
-        direction = 0
-        seen = {(row, col, direction)}
+    directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
+    width = len(lines[0])
+    height = len(lines)
+    start_row = next(i for i, line in enumerate(lines) if "^" in line)
+    start_col = lines[start_row].index("^")
 
+    def hits_loop(obstacle_row: int, obstacle_col: int) -> bool:
+        direction = 0
+        row, col = start_row, start_col
+        seen = {(row, col, direction)}
         while True:
             drow, dcol = directions[direction]
             if not (0 <= row + drow < height) or not (0 <= col + dcol < width):
