@@ -24,9 +24,9 @@ def problem_2() -> None:
         tuple(num % 10 for num in islice(calculate_secret_numbers(secret_num), 2001)) for secret_num in secret_nums
     ]
     all_price_changes = [tuple(num_2 - num_1 for num_1, num_2 in pairwise(buyer_prices)) for buyer_prices in all_prices]
-    all_windows = [
-        {window: 2000 - i for i, window in enumerate(reversed(list(sliding_window(price_changes, 4))))}
-        for price_changes in all_price_changes
+    all_windows_to_prices = [
+        {window: prices[2000 - i] for i, window in enumerate(reversed(list(sliding_window(price_changes, 4))))}
+        for price_changes, prices in zip(all_price_changes, all_prices)
     ]
     max_bananas = 0
     for window_target in product(range(-9, 10), repeat=4):
@@ -34,10 +34,8 @@ def problem_2() -> None:
         if any(w > 9 for w in total_differences) or any(w < -9 for w in total_differences):
             continue
         bananas = 0
-        for prices, windows in zip(all_prices, all_windows):
-            idx = windows.get(window_target, None)
-            if idx is not None:
-                bananas += prices[idx]
+        for windows_to_prices in all_windows_to_prices:  # ~3s faster than comprehension, not sure why
+            bananas += windows_to_prices.get(window_target, 0)
         if bananas > max_bananas:
             max_bananas = bananas
     print(max_bananas)
