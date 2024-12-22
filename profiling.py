@@ -27,7 +27,6 @@ def main():
     pr = cProfile.Profile()
     pr.runcall(function)
     with tempfile.TemporaryDirectory() as temp_dir:
-        print(temp_dir)
         pr.dump_stats(f"{temp_dir}/log.pstats")
         os.system(f"gprof2dot {temp_dir}/log.pstats -n 0 -e 0 > {temp_dir}/graph")
         os.system(f"dot -Tsvg {temp_dir}/graph > {temp_dir}/img.svg")
