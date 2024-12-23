@@ -18,7 +18,7 @@ def problem_1() -> None:
             for third in connections[second]:
                 if first in connections[third]:
                     groups_of_three.add(frozenset({first, second, third}))
-    print(sum(1 for g in groups_of_three if any(c.startswith("t") for c in g)))
+    print(sum(any(computer.startswith("t") for computer in g) for g in groups_of_three))
 
 
 def problem_2() -> None:
@@ -34,7 +34,7 @@ def problem_2() -> None:
         group = {start}
         while True:
             for other in connections:
-                if all(other in connections[c] for c in group):
+                if all(other in connections[computer] for computer in group):
                     group.add(other)
                     break
             else:
