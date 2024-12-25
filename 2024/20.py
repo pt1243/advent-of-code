@@ -24,7 +24,7 @@ def get_distances() -> dict[tuple[int, int], int]:
 
 
 def count_cheats(distances: dict[tuple[int, int], int], cheat_distance: int) -> int:
-    counts: defaultdict[tuple[int, int], int] = defaultdict(int)
+    counts: defaultdict[int, int] = defaultdict(int)
     for cheat_start in distances:
         for drow in range(-cheat_distance, cheat_distance + 1):
             for dcol in range(-cheat_distance + abs(drow), cheat_distance - abs(drow) + 1):

@@ -2,7 +2,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from functools import cache
 from operator import xor, or_, and_
-from typing import ClassVar
+from typing import ClassVar, cast
 
 
 with open("./2024/resources/24.txt") as f:
@@ -24,7 +24,7 @@ class Gate:
 
     @cache
     def evaluate(self) -> int:
-        return self.op(self.resolve(self.arg_1), self.resolve(self.arg_2))
+        return cast(int, self.op(self.resolve(self.arg_1), self.resolve(self.arg_2)))
 
     @classmethod
     def resolve(cls, arg: str) -> int:
