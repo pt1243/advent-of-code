@@ -1,4 +1,2 @@
 numpy
 more-itertools
-ruff
-mypy
