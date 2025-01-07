@@ -53,7 +53,6 @@ def problem_1() -> None:
             break
         distance += 1
         direction = next_direction[lines[row][col]][direction]
-        print(f"{row = }, {col = }, character = {lines[row][col]}, {direction = }")
     print(distance // 2 + (1 if distance % 2 == 1 else 0))
 
 
