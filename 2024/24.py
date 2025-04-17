@@ -1,6 +1,8 @@
 from __future__ import annotations
 from collections.abc import Sequence
+from collections import defaultdict
 from functools import cache
+from itertools import combinations
 from operator import xor, or_, and_
 from typing import ClassVar, cast
 
@@ -12,6 +14,7 @@ with open("./2024/resources/24.txt") as f:
 class Gate:
     input_values: ClassVar[dict[str, int]] = {}
     lookup: ClassVar[dict[str, Gate]] = {}
+    associated_gates: ClassVar[defaultdict[str, set[str]]] = defaultdict(set)
 
     def __init__(self, line: str):
         left, name = line.split(" -> ")
@@ -20,6 +23,10 @@ class Gate:
         arg_1, op, arg_2 = left.split()
         self.arg_1 = arg_1
         self.arg_2 = arg_2
+        type(self).associated_gates[name].add(arg_1)
+        type(self).associated_gates[name].add(arg_2)
+        type(self).associated_gates[arg_1].add(name)
+        type(self).associated_gates[arg_2].add(name)
         self.op = {"AND": and_, "XOR": xor, "OR": or_}[op]
 
     @cache
@@ -82,45 +89,67 @@ def problem_2() -> None:
     for line in gate_lines.split("\n"):
         Gate(line)
 
-    # manually found
-    Gate.swap("ggt", "mwh")
-    Gate.swap("z06", "fhc")
-    Gate.swap("qhj", "z11")
-    Gate.swap("z35", "hqk")
-
-    # NOTE: if there are two sequential numbers with problems (ie. 5 and 6, 10 and 11, 34 and 35), the fix needs to
-    # involve both; based on the manually found solutions, this suggests that the upper z output should be one of the
-    # swapped gates. Not sure if this is universal or if it just happens to work for this specific case.
-
-    print(",".join(sorted(["ggt", "mwh", "z06", "fhc", "qhj", "z11", "z35", "hqk"])))
-
     zeros = [0] * 45
-    for bit_position in range(45):
+
+    def wrong_value(bit_position: int) -> bool:
         x = zeros.copy()
         y = zeros.copy()
         x[44 - bit_position] = 1
         y[44 - bit_position] = 1
 
-        result_both = Gate.add_values(x, y)
-        result_x_only = Gate.add_values(x, zeros)
-        result_y_only = Gate.add_values(zeros, y)
+        try:
+            result_both = Gate.add_values(x, y)
+            result_x_only = Gate.add_values(x, zeros)
+            result_y_only = Gate.add_values(zeros, y)
+        except RecursionError:  # hacky way to detect cycles
+            return True
 
         wrong_both = result_both != 2 ** (bit_position + 1)
         wrong_x_only = result_x_only != 2**bit_position
         wrong_y_only = result_y_only != 2**bit_position
 
-        if wrong_both:
-            print(
-                f"Erroneous result for 1 AND 1 on {bit_position = }: output should be {2 ** (bit_position + 1)} but is {result_both}"
-            )
-        if wrong_x_only:
-            print(
-                f"Erroneous result for x only on {bit_position = }: output should be {2 ** bit_position} but is {result_x_only}"
-            )
-        if wrong_y_only:
-            print(
-                f"Erroneous result for y only on {bit_position = }: output should be {2 ** bit_position} but is {result_y_only}"
+        return any((wrong_both, wrong_x_only, wrong_y_only))
+
+    # NOTE: if there are two sequential numbers with problems (ie. 5 and 6, 10 and 11, 34 and 35), the fix needs to
+    # involve both; based on the manually found solutions, this suggests that the upper z output should be one of the
+    # swapped gates. Not sure if this is universal or if it just happens to work for this specific case.
+    swapped_gates = []
+
+    for i in range(45):
+        if wrong_value(i):
+            current_gate_string = str(i).zfill(2)
+            current_x = f"x{current_gate_string}"
+            current_y = f"y{current_gate_string}"
+            current_z = f"z{current_gate_string}"
+            starting_point = {current_x, current_y, current_z}
+
+            consider_both_values = wrong_value(i + 1)
+            if consider_both_values:  # whether the next bit is also wrong
+                next_gate_string = str(i + 1).zfill(2)
+                next_x = f"x{next_gate_string}"
+                next_y = f"y{next_gate_string}"
+                next_z = f"z{next_gate_string}"
+                starting_point |= {next_x, next_y, next_z}
+
+            first_degree = set().union(*(Gate.associated_gates[gate] for gate in starting_point))
+            second_degree = (
+                set().union(*(Gate.associated_gates[gate] for gate in first_degree)) | starting_point | first_degree
             )
 
-        if any((wrong_both, wrong_x_only, wrong_y_only)):  # easier to read
-            print()
+            second_degree -= {current_x, current_y}
+            if consider_both_values:
+                second_degree -= {next_x, next_y}
+
+            for gate_1, gate_2 in combinations(second_degree, 2):
+                # it seems that if the next bit is also wrong, the swap needs to involve the output of the next bit
+                if consider_both_values:
+                    if next_z != gate_1 and next_z != gate_2:
+                        continue
+                Gate.swap(gate_1, gate_2)
+                if not (wrong_value(i - 1) or wrong_value(i) or wrong_value(i + 1)):  # successful swap
+                    swapped_gates.append(gate_1)
+                    swapped_gates.append(gate_2)
+                    break
+                Gate.swap(gate_1, gate_2)  # otherwise, undo the swap
+
+    print(",".join(sorted(swapped_gates)))
