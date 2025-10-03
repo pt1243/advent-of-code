@@ -1,7 +1,7 @@
 from __future__ import annotations
 from collections.abc import Callable
 from operator import add, sub, mul, floordiv
-from typing import ClassVar
+from typing import ClassVar, cast
 
 
 with open("./2022/resources/21.txt") as f:
@@ -19,16 +19,16 @@ class Monkey:
         self.evaluate: Callable[[], int]
         self.parent: Monkey
         if right.isnumeric():
-            self.evaluate = lambda: int(right)
             self.left = None
             self.right = None
             self.op = None
+            self.evaluate = lambda: int(right)
         else:
             self.left = split[0]
             self.op = split[1]
             self.right = split[2]
-            self.evaluate = lambda: {"+": add, "-": sub, "*": mul, "/": floordiv}[self.op](
-                self.resolve(self.left), self.resolve(self.right)
+            self.evaluate = lambda: {"+": add, "-": sub, "*": mul, "/": floordiv}[cast(str, self.op)](
+                self.resolve(cast(str, self.left)), self.resolve(cast(str, self.right))
             )
 
     @classmethod
@@ -37,8 +37,8 @@ class Monkey:
 
     def set_parent(self) -> None:
         if self.op is not None:
-            type(self).lookup[self.left].parent = self
-            type(self).lookup[self.right].parent = self
+            type(self).lookup[cast(str, self.left)].parent = self
+            type(self).lookup[cast(str, self.right)].parent = self
 
 
 def problem_1() -> None:
@@ -61,12 +61,12 @@ def problem_2() -> None:
     last = parents.pop().name
 
     root = Monkey.lookup["root"]
-    target_value = Monkey.resolve(root.left if root.right == last else root.right)
+    target_value = Monkey.resolve(cast(str, root.left if root.right == last else root.right))
     while parents:
         current = parents.pop()
         parent = current.parent
         current_is_left = parent.left == current.name
-        other_value = Monkey.resolve(parent.right if current_is_left else parent.left)
+        other_value = Monkey.resolve(cast(str, parent.right if current_is_left else parent.left))
         if parent.op == "+":
             target_value -= other_value
         elif parent.op == "*":

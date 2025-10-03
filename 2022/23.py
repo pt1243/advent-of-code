@@ -15,7 +15,7 @@ def run_moves(lines: list[str], part_2: bool = False) -> int:
     position_order = deque(((-1, 0), (1, 0), (0, -1), (0, 1)))
 
     for i in count(1):
-        proposed_positions: defaultdict[tuple[int, int], set[int]] = defaultdict(set)
+        proposed_positions: defaultdict[tuple[int, int], set[tuple[int, int]]] = defaultdict(set)
         for row, col in positions:
             num_neighbours = (
                 sum((row + drow, col + dcol) in positions for drow in range(-1, 2) for dcol in range(-1, 2)) - 1
@@ -50,6 +50,7 @@ def run_moves(lines: list[str], part_2: bool = False) -> int:
             return height * width - len(positions)
         if part_2 and not any_moved:
             return i
+    assert False
 
 
 def problem_1() -> None:
