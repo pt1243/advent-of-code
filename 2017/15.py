@@ -26,10 +26,7 @@ def problem_1() -> None:
     gen_b = gen(int(lines[1].split()[-1]), 48271)
     total = 0
     for _ in range(40_000_000):
-        a_val, b_val = next(gen_a), next(gen_b)
-        a_bits = bin(a_val)[-16:].zfill(16)
-        b_bits = bin(b_val)[-16:].zfill(16)
-        if a_bits == b_bits:
+        if (next(gen_a) & 65535) == (next(gen_b) & 65535):
             total += 1
     print(total)
 
@@ -39,9 +36,6 @@ def problem_2() -> None:
     gen_b = gen_criteria(int(lines[1].split()[-1]), 48271, 8)
     total = 0
     for _ in range(5_000_000):
-        a_val, b_val = next(gen_a), next(gen_b)
-        a_bits = bin(a_val)[-16:].zfill(16)
-        b_bits = bin(b_val)[-16:].zfill(16)
-        if a_bits == b_bits:
+        if (next(gen_a) & 65535) == (next(gen_b) & 65535):
             total += 1
     print(total)
