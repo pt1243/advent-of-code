@@ -2,7 +2,7 @@ with open("./2024/resources/6.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def get_visited_tiles() -> set[tuple[int, int]]:
     directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
     width = len(lines[0])
     height = len(lines)
@@ -22,7 +22,11 @@ def problem_1() -> None:
         row += drow
         col += dcol
         seen.add((row, col))
-    print(len(seen))
+    return seen
+
+
+def problem_1() -> None:
+    print(len(get_visited_tiles()))
 
 
 def problem_2() -> None:
@@ -43,16 +47,11 @@ def problem_2() -> None:
             if lines[row + drow][col + dcol] == "#" or (row + drow == obstacle_row and col + dcol == obstacle_col):
                 direction += 1
                 direction %= 4
+                if (row, col, direction) in seen:
+                    return True
+                seen.add((row, col, direction))
                 continue
             row += drow
             col += dcol
-            if (row, col, direction) in seen:
-                return True
-            seen.add((row, col, direction))
 
-    total = 0
-    for row, line in enumerate(lines):
-        for col, char in enumerate(line):
-            if char == ".":
-                total += hits_loop(row, col)
-    print(total)
+    print(sum(hits_loop(row, col) for (row, col) in get_visited_tiles()))
