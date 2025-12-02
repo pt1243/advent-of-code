@@ -4,7 +4,7 @@ with open("./2022/resources/8.txt") as f:
     trees = [[int(x) for x in line] for line in f.read().splitlines()]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     width, height = len(trees[0]), len(trees)
     visible = 0
     for row, line in enumerate(trees):
@@ -19,7 +19,7 @@ def problem_1() -> None:
     print(visible)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     width, height = len(trees[0]), len(trees)
     max_scenic_score = 0
     for row, line in enumerate(trees):

@@ -4,7 +4,7 @@ with open("./2015/resources/6.txt") as f:
     instructions = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     lights = np.zeros((1000, 1000), dtype=bool)
     for instruction in instructions:
         start_str, end_str = instruction.split(" through ")
@@ -22,7 +22,7 @@ def problem_1() -> None:
     print(np.sum(lights))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     lights = np.zeros((1000, 1000), dtype=int)
     for instruction in instructions:
         start_str, end_str = instruction.split(" through ")

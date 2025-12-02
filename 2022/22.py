@@ -49,7 +49,7 @@ def run_moves(layout: list[list[int | None]], connections: tuple[tuple[tuple[int
     return 1000 * final_row + 4 * final_col + final_facing
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(
         run_moves(
             [[None, 0, 1], [None, 2, None], [3, 4, None], [5, None, None]],
@@ -65,7 +65,7 @@ def problem_1() -> None:
     )
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(
         run_moves(
             [[None, 0, 1], [None, 2, None], [3, 4, None], [5, None, None]],

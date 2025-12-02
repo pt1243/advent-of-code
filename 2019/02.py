@@ -30,7 +30,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     nums[1] = 12
     nums[2] = 2
     program = IntcodeProgram(nums)
@@ -38,7 +38,7 @@ def problem_1() -> None:
     print(program.memory[0])
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for noun in range(100):
         for verb in range(100):
             program_input = nums.copy()

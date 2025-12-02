@@ -16,7 +16,7 @@ class Hailstone(NamedTuple):
     vz: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     hailstones: list[Hailstone] = []
     for line_text in input_text:
         pos, vel = line_text.split(" @ ")
@@ -43,7 +43,7 @@ def problem_1() -> None:
     print(num_intersections)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     hailstones: list[Hailstone] = []
     for line_text in input_text:
         pos, vel = line_text.split(" @ ")

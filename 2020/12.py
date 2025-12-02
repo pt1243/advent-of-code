@@ -4,7 +4,7 @@ with open("./2020/resources/12.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     directions = ((1, 0), (0, 1), (-1, 0), (0, -1))
     direction = 1
     x, y = 0, 0
@@ -34,7 +34,7 @@ def problem_1() -> None:
     print(abs(x) + abs(y))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     x, y = 0, 0
     waypoint_x, waypoint_y = 10, 1
     for line in lines:

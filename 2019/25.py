@@ -182,7 +182,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     opposite_directions = {"north": "south", "south": "north", "east": "west", "west": "east"}
     unsafe_items = {"escape pod", "giant electromagnet", "infinite loop", "molten lava", "photons"}
     items: list[str] = []

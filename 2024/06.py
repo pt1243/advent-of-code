@@ -25,11 +25,11 @@ def get_visited_tiles() -> set[tuple[int, int]]:
     return seen
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(len(get_visited_tiles()))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
     width = len(lines[0])
     height = len(lines)

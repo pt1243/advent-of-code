@@ -2,7 +2,7 @@ with open("./2023/resources/11.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     galaxies: list[tuple[int, int]] = []
     empty_rows: set[int] = set()
 
@@ -32,7 +32,7 @@ def problem_1() -> None:
     print(total_distance)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     galaxies: list[tuple[int, int]] = []
     empty_rows: set[int] = set()
 

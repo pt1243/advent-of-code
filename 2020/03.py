@@ -4,7 +4,7 @@ with open("./2020/resources/3.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     width = len(lines[0])
     trees_hit = 0
     for i, row in enumerate(lines):
@@ -13,7 +13,7 @@ def problem_1() -> None:
     print(trees_hit)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     width = len(lines[0])
     prod = 1
     for slope in ((1, 1), (3, 1), (5, 1), (7, 1), (1, 2)):

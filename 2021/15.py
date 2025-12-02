@@ -33,11 +33,11 @@ def a_star(risk_levels: npt.NDArray[np.int_]) -> int:
     raise ValueError("did not reach bottom right corner")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(a_star(risk_levels))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     height, width = risk_levels.shape
     expanded_risk_levels = np.empty((height * 5, width * 5), int)
     for offset in range(9):

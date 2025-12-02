@@ -16,7 +16,7 @@ class Moon:
     vz: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     moons: list[Moon] = []
     for line in lines:
         components = line[1:-1].split(", ")
@@ -54,7 +54,7 @@ def problem_1() -> None:
     print(total_energy)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     moons: list[Moon] = []
     for line in lines:
         components = line[1:-1].split(", ")

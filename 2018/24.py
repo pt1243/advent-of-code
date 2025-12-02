@@ -148,13 +148,13 @@ def simulate_game(groups: list[Group], boost: int = 0) -> tuple[Literal["immune 
         groups = [g for g in groups if g.units > 0]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     groups = parse_input(input_text)
     _, units_left = simulate_game(groups)
     print(units_left)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     groups = parse_input(input_text)
     for boost in count(1):
         winner, units_left = simulate_game(deepcopy(groups), boost)

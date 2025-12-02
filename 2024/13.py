@@ -16,7 +16,7 @@ def get_cost(x1: int, x2: int, y1: int, y2: int, target_x: int, target_y: int) -
     return 0
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for block in text.split("\n\n"):
         x1, y1, x2, y2, target_x, target_y = map(int, re.findall(r"-?\d+", block))
@@ -24,7 +24,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for block in text.split("\n\n"):
         x1, y1, x2, y2, target_x, target_y = map(int, re.findall(r"-?\d+", block))

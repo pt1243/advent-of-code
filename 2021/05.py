@@ -4,7 +4,7 @@ with open("./2021/resources/5.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     counts: defaultdict[tuple[int, int], int] = defaultdict(int)
     for line in lines:
         start, end = line.split(" -> ")
@@ -21,7 +21,7 @@ def problem_1() -> None:
     print(sum(1 for count in counts.values() if count >= 2))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     counts: defaultdict[tuple[int, int], int] = defaultdict(int)
     for line in lines:
         start, end = line.split(" -> ")

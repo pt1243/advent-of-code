@@ -5,7 +5,7 @@ with open("./2022/resources/18.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     cubes: set[tuple[int, int, int]] = set()
     for line in lines:
         cubes.add(cast(tuple[int, int, int], tuple(int(x) for x in line.split(","))))
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(surface_area)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     cubes: set[tuple[int, int, int]] = set()
     for line in lines:
         cubes.add(cast(tuple[int, int, int], tuple(int(x) for x in line.split(","))))

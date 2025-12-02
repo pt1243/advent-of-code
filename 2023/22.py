@@ -26,7 +26,7 @@ class Block:
         return self.max_z == other_block.min_z - 1 and bool(self.xy_positions & other_block.xy_positions)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     blocks: list[Block] = []
     for line in lines:
         left, right = line.split("~")
@@ -64,7 +64,7 @@ def problem_1() -> None:
     print(len(can_be_disintegrated))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     blocks: list[Block] = []
     for line in lines:
         left, right = line.split("~")

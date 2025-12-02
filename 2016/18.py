@@ -26,9 +26,9 @@ def count_safe_tiles(num_rows: int) -> int:
     return num_rows * row_size - sum(sum(row) for row in rows)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(count_safe_tiles(40))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(count_safe_tiles(400000))

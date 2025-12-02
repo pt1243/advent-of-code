@@ -27,7 +27,7 @@ class Node:
         return Node.lookup[self.right_string]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     steps_iterator = cycle(lines[0])
     for line in lines[2:]:
         name, connections = line.split(" = ")
@@ -42,7 +42,7 @@ def problem_1() -> None:
             return
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for line in lines[2:]:
         name, connections = line.split(" = ")
         left, right = connections[1:-1].split(", ")

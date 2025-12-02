@@ -7,7 +7,7 @@ with open("./2015/resources/19.txt") as f:
     lines = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     substitutions: defaultdict[str, list[str]] = defaultdict(list)
     all_rules, molecule = lines.split("\n\n")
     for rule in all_rules.split("\n"):
@@ -26,7 +26,7 @@ def problem_1() -> None:
     print(len(one_step))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_rules, molecule = lines.split("\n\n")
     molecule = molecule[::-1]
     rules = {rule.split(" => ")[1][::-1]: rule.split(" => ")[0][::-1] for rule in all_rules.split("\n")}

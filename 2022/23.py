@@ -52,9 +52,9 @@ def run_moves(lines: list[str], part_2: bool = False) -> int:
     assert False
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(run_moves(lines))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(run_moves(lines, part_2=True))

@@ -4,7 +4,7 @@ with open("./2018/resources/6.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     coordinates = [(int(line.split(", ")[0]), int(line.split(", ")[1])) for line in lines]
     min_x = min((c[0] for c in coordinates))
     min_y = min((c[1] for c in coordinates))
@@ -24,7 +24,7 @@ def problem_1() -> None:
     print(max([num_points for i, num_points in num_closest_points.items() if i not in infinite_indices]))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     coordinates = [(int(line.split(", ")[0]), int(line.split(", ")[1])) for line in lines]
     min_x = min((c[0] for c in coordinates))
     min_y = min((c[1] for c in coordinates))

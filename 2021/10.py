@@ -2,7 +2,7 @@ with open("./2021/resources/10.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total_syntax_error_score = 0
     character_pairs = {"(": ")", "[": "]", "{": "}", "<": ">"}
     scores = {")": 3, "]": 57, "}": 1197, ">": 25137}
@@ -20,7 +20,7 @@ def problem_1() -> None:
     print(total_syntax_error_score)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     completion_scores: list[int] = []
     character_pairs = {"(": ")", "[": "]", "{": "}", "<": ">"}
     scores = {")": 1, "]": 2, "}": 3, ">": 4}

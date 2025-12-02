@@ -12,7 +12,7 @@ class Node(NamedTuple):
     avail: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     all_nodes: list[Node] = []
     for line in lines:
         split = line.split()
@@ -37,7 +37,7 @@ def problem_1() -> None:
     print(found_viable_pairs)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_nodes: list[Node] = []
     for line in lines:
         split = line.split()

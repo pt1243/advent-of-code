@@ -5,7 +5,7 @@ with open("./2024/resources/5.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     rules_text, manuals = text.split("\n\n")
     rules: set[tuple[int, int]] = set()
     for line in rules_text.split("\n"):
@@ -25,7 +25,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     rules_text, manuals = text.split("\n\n")
     rules: set[tuple[int, int]] = set()
     for line in rules_text.split("\n"):

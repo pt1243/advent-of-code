@@ -4,7 +4,7 @@ with open("./2016/resources/15.txt") as f:
     disc_information_list = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     discs: dict[int, tuple[int, int]] = {}
     for line in disc_information_list:
         split = line.split()
@@ -16,7 +16,7 @@ def problem_1() -> None:
             break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     discs: dict[int, tuple[int, int]] = {}
     for line in disc_information_list:
         split = line.split()

@@ -12,9 +12,9 @@ def is_safe(line: list[int]) -> bool:
     return True
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(sum(is_safe(line) for line in lines))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(sum(any(is_safe(line[:i] + line[i + 1 :]) for i in range(len(line))) for line in lines))

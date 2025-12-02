@@ -11,7 +11,7 @@ with open("./2018/resources/22.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     depth = int(lines[0].split(": ")[1])
     target_x, target_y = (int(x) for x in lines[1].split(": ")[1].split(","))
 
@@ -37,7 +37,7 @@ def problem_1() -> None:
     print(np.sum(erosion_level % 3))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     depth = int(lines[0].split(": ")[1])
     target_x, target_y = (int(x) for x in lines[1].split(": ")[1].split(","))
 

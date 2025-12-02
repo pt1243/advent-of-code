@@ -4,7 +4,7 @@ with open("./2018/resources/18.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     size = len(lines)
     area = np.empty((size, size), dtype=int)
     for row_idx, line in enumerate(lines):
@@ -45,7 +45,7 @@ def problem_1() -> None:
     print(np.count_nonzero(area == 1) * np.count_nonzero(area == 2))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     size = len(lines)
     area = np.empty((size, size), dtype=int)
     for row_idx, line in enumerate(lines):

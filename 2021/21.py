@@ -5,7 +5,7 @@ with open("./2021/resources/21.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     die = cycle(range(1, 101))
     die_rolls = 0
     player_1_score, player_2_score = 0, 0
@@ -33,7 +33,7 @@ def problem_1() -> None:
             break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     frequencies = {3: 1, 4: 3, 5: 6, 6: 7, 7: 6, 8: 3, 9: 1}
 
     @cache

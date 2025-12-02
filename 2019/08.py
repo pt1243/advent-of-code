@@ -4,7 +4,7 @@ with open("./2019/resources/8.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     img_data = [int(x) for x in text]
     width, height = 25, 6
     img = np.array(img_data).reshape((-1, height, width))
@@ -13,7 +13,7 @@ def problem_1() -> None:
     print(np.count_nonzero(img[layer_idx, :, :] == 1) * np.count_nonzero(img[layer_idx, :, :] == 2))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     img_data = [int(x) for x in text]
     width, height = 25, 6
     img = np.array(img_data).reshape((-1, height, width))

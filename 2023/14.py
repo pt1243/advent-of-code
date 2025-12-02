@@ -38,7 +38,7 @@ def tilt(arr: npt.NDArray[np.int_], direction: Literal["N", "E", "S", "W"]) -> N
                     break
 
 
-def problem_1() -> None:
+def part_1() -> None:
     width = len(lines[0])
     height = len(lines)
     arr = np.zeros((height, width), dtype=int)
@@ -57,7 +57,7 @@ def problem_1() -> None:
     print(total_weight)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     seen: dict[int, npt.NDArray[np.int_]] = {}
     width = len(lines[0])
     height = len(lines)

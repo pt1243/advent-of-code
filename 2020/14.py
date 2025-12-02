@@ -6,7 +6,7 @@ with open("./2020/resources/14.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     memory: dict[int, int] = {}
     for block in split_before(lines, lambda line: line.startswith("mask")):
         mask = list(block[0].split(" = ")[1])
@@ -21,7 +21,7 @@ def problem_1() -> None:
     print(sum(memory.values()))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     memory: dict[int, int] = {}
     for block in split_before(lines, lambda line: line.startswith("mask")):
         mask = list(block[0].split(" = ")[1])

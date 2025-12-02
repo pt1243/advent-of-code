@@ -2,7 +2,7 @@ with open("./2023/resources/4.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total_points = 0
     for line in lines:
         all_nums = line.split(": ")[1]
@@ -14,7 +14,7 @@ def problem_1() -> None:
     print(total_points)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total_cards = {i: 1 for i in range(1, len(lines) + 1)}
     for line in lines:
         card_info, all_nums = line.split(": ")

@@ -20,7 +20,7 @@ def gen_criteria(start: int, factor: int, multiple: int) -> Generator[int, None,
         yield current
 
 
-def problem_1() -> None:
+def part_1() -> None:
     gen_a = gen(int(lines[0].split()[-1]), 16807)
     gen_b = gen(int(lines[1].split()[-1]), 48271)
     total = 0
@@ -30,7 +30,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     gen_a = gen_criteria(int(lines[0].split()[-1]), 16807, 4)
     gen_b = gen_criteria(int(lines[1].split()[-1]), 48271, 8)
     total = 0

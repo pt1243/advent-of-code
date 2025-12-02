@@ -2,7 +2,7 @@ with open("./2020/resources/8.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     accumulator = 0
     seen: set[int] = set()
     i = 0
@@ -20,7 +20,7 @@ def problem_1() -> None:
     print(accumulator)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for instruction_to_change in range(len(lines)):
         seen: set[int] = set()
         accumulator = 0

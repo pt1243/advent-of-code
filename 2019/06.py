@@ -28,7 +28,7 @@ class OrbitingBody:
         return 1 + self.center_body.direct_and_indirect_orbits()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for line in lines:
         center, in_orbit = line.split(")")
         center_body = OrbitingBody.get_by_name(center)
@@ -38,7 +38,7 @@ def problem_1() -> None:
     print(sum(body.direct_and_indirect_orbits() for body in OrbitingBody._lookup.values()))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for line in lines:
         center, in_orbit = line.split(")")
         center_body = OrbitingBody.get_by_name(center)

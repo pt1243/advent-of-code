@@ -48,7 +48,7 @@ def mix_numbers(numbers: list[Number]) -> None:
                 new_right.left = number
 
 
-def problem_1() -> None:
+def part_1() -> None:
     numbers, zero = create_numbers(lines)
     mix_numbers(numbers)
     current = zero
@@ -60,7 +60,7 @@ def problem_1() -> None:
     print(result)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     numbers, zero = create_numbers([num * 811589153 for num in lines])
     for _ in range(10):
         mix_numbers(numbers)

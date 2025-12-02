@@ -2,7 +2,7 @@ with open("./2025/resources/1.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     current_dial_number = 50
     on_zero = 0
     for line in lines:
@@ -15,7 +15,7 @@ def problem_1() -> None:
     print(on_zero)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     current_dial_number = 50
     zeros = 0
     for line in lines:

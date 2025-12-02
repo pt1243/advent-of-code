@@ -16,9 +16,9 @@ def simulate_lanternfish(days: int) -> int:
     return current.total()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(simulate_lanternfish(80))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(simulate_lanternfish(256))

@@ -13,7 +13,7 @@ directions = {
 }
 
 
-def problem_1() -> None:
+def part_1() -> None:
     q, r = 0, 0
     for move in moves:
         dq, dr = directions[move]
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(max(abs(q), abs(r), abs(s)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     q, r = 0, 0
     max_dist = 0
     for move in moves:

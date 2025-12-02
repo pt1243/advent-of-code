@@ -2,7 +2,7 @@ with open("./2022/resources/2.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     scores = [
         [4, 8, 3],  # rock played; respond with rock, paper, scissors
@@ -15,7 +15,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     scores = [
         [3, 4, 8],  # rock played; lose (scissors), draw (rock), win (paper)

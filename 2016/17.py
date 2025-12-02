@@ -5,7 +5,7 @@ with open("./2016/resources/17.txt") as f:
     passcode = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     queue = deque([("", 0, 0)])
     open_chars = ("b", "c", "d", "e", "f")
 
@@ -25,7 +25,7 @@ def problem_1() -> None:
             queue.append((path + "R", col + 1, row))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     queue = deque([("", 0, 0)])
     open_chars = ("b", "c", "d", "e", "f")
     max_path = 0

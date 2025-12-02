@@ -154,11 +154,11 @@ def most_geodes_for_blueprint(blueprint: Blueprint, max_time: int) -> int:
     return most_geodes
 
 
-def problem_1() -> None:
+def part_1() -> None:
     blueprints = [Blueprint(*islice(map(int, re.findall(r"\d+", line)), 1, None)) for line in lines]
     print(sum(most_geodes_for_blueprint(blueprint, 24) * i for i, blueprint in enumerate(blueprints, start=1)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     blueprints = [Blueprint(*islice(map(int, re.findall(r"\d+", line)), 1, None)) for line in lines[:3]]
     print(prod(most_geodes_for_blueprint(blueprint, 32) for blueprint in blueprints))

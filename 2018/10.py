@@ -4,7 +4,7 @@ with open("./2018/resources/10.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     positions = np.empty((len(lines), 2), dtype=int)
     velocities = np.empty((len(lines), 2), dtype=int)
     for i, line in enumerate(lines):
@@ -30,7 +30,7 @@ def problem_1() -> None:
         print("".join(row))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     positions = np.empty((len(lines), 2), dtype=int)
     velocities = np.empty((len(lines), 2), dtype=int)
     for i, line in enumerate(lines):

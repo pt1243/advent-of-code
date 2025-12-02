@@ -27,13 +27,13 @@ def run_instructions(registers: dict[str, int]) -> dict[str, int]:
     return registers
 
 
-def problem_1() -> None:
+def part_1() -> None:
     registers = {"a": 0, "b": 0, "c": 0, "d": 0}
     result = run_instructions(registers)
     print(result["a"])
 
 
-def problem_2() -> None:
+def part_2() -> None:
     registers = {"a": 0, "b": 0, "c": 1, "d": 0}
     result = run_instructions(registers)
     print(result["a"])

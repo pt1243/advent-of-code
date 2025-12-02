@@ -48,11 +48,11 @@ def enhance_image(image_enhancement_algorithm: str, lines: list[str], steps: int
     return len(on_pixels)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     image_enhancement_algorithm, image_lines = text.split("\n\n")
     print(enhance_image(image_enhancement_algorithm, image_lines.splitlines(), 2))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     image_enhancement_algorithm, image_lines = text.split("\n\n")
     print(enhance_image(image_enhancement_algorithm, image_lines.splitlines(), 50))

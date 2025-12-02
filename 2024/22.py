@@ -15,11 +15,11 @@ def calculate_secret_numbers(secret_num: int) -> Generator[int, None, None]:
         secret_num = ((secret_num * 2048) ^ secret_num) % 16777216
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(sum(next(islice(calculate_secret_numbers(secret_num), 2000, 2001)) for secret_num in secret_nums))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_prices = [
         tuple(num % 10 for num in islice(calculate_secret_numbers(secret_num), 2001)) for secret_num in secret_nums
     ]

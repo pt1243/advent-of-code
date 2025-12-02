@@ -47,12 +47,12 @@ def fft_second_half_only(input_num: list[int]) -> list[int]:
     return numbers
 
 
-def problem_1() -> None:
+def part_1() -> None:
     output = fft(input_num)
     print("".join(str(x) for x in output[:8]))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     message_offset = int("".join(str(x) for x in input_num[:7])) - ((len(input_num) * 10000) // 2)
     assert message_offset >= 0
     output = fft_second_half_only(input_num * 10000)

@@ -2,7 +2,7 @@ with open("./2016/resources/1.txt") as f:
     steps = f.read().strip().split(", ")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     x, y = 0, 0
     directions = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)}
     direction = 0
@@ -17,7 +17,7 @@ def problem_1() -> None:
     print(abs(x) + abs(y))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     x, y = 0, 0
     directions = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)}
     direction = 0

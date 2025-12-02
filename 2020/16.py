@@ -5,7 +5,7 @@ with open("./2020/resources/16.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     rules, _, nearby_tickets = text.split("\n\n")
     allowable_ranges: list[tuple[int, int, int, int]] = []
     for rule_text in rules.split("\n"):
@@ -24,7 +24,7 @@ def problem_1() -> None:
     print(ticket_scanning_error_rate)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     rules, ticket, nearby_tickets = text.split("\n\n")
     allowable_ranges: list[tuple[int, int, int, int]] = []
     for rule_text in rules.split("\n"):

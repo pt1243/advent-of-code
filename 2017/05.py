@@ -2,7 +2,7 @@ with open("./2017/resources/5.txt") as f:
     jumps = [int(jump) for jump in f.read().splitlines()]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     i = 0
     steps = 0
     while 0 <= i < len(jumps):
@@ -13,7 +13,7 @@ def problem_1() -> None:
     print(steps)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     i = 0
     steps = 0
     while 0 <= i < len(jumps):

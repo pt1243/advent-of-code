@@ -180,7 +180,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     panels: defaultdict[tuple[int, int], int] = defaultdict(int)
     panels_painted: set[tuple[int, int]] = set()
     row, col = 0, 0
@@ -202,7 +202,7 @@ def problem_1() -> None:
     print(len(panels_painted))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     panels: defaultdict[tuple[int, int], int] = defaultdict(int)
     panels[0, 0] = 1
     panels_painted: set[tuple[int, int]] = set()

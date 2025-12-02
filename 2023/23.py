@@ -4,7 +4,7 @@ with open("./2023/resources/23.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     max_path_length = 0
     current_paths: list[tuple[int, int, set[tuple[int, int]]]] = [(0, lines[0].index("."), set())]
     slopes = {"^": (-1, 0), ">": (0, 1), "v": (1, 0), "<": (0, -1)}
@@ -36,7 +36,7 @@ def problem_1() -> None:
     print(max_path_length)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     nodes: set[tuple[int, int]] = set()
     for row, line in enumerate(lines):
         for col, char in enumerate(line):

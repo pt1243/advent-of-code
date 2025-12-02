@@ -8,7 +8,7 @@ with open("./2019/resources/24.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     def array_to_tuple(arr: npt.NDArray[np.bool_]) -> tuple[tuple[int, ...], ...]:
         return tuple(chain.from_iterable(tuple(row) for row in arr))
 
@@ -42,7 +42,7 @@ def problem_1() -> None:
         grid = new_grid
 
 
-def problem_2() -> None:
+def part_2() -> None:
     levels: defaultdict[int, npt.NDArray[np.bool_]] = defaultdict(lambda: np.zeros((5, 5), dtype=bool))
 
     levels[0] = np.array([[char == "#" for char in line] for line in lines], dtype=bool)

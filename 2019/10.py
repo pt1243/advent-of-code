@@ -7,7 +7,7 @@ with open("./2019/resources/10.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     asteroids: list[tuple[int, int]] = []
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
@@ -26,7 +26,7 @@ def problem_1() -> None:
     print(most_detected)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     asteroids: list[tuple[int, int]] = []
     for row, line in enumerate(lines):
         for col, char in enumerate(line):

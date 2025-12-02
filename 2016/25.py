@@ -4,7 +4,7 @@ with open("./2016/resources/25.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     constant_1 = int(lines[1].split()[1])
     constant_2 = int(lines[2].split()[1])
     for i in count(1):

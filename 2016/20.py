@@ -6,7 +6,7 @@ with open("./2016/resources/20.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     ranges = sorted(tuple(int(val) for val in line.split("-")) for line in lines)
     for i in count():
         if not any(lower <= i <= upper for lower, upper in ranges):
@@ -14,7 +14,7 @@ def problem_1() -> None:
             break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     upper_limit = 4294967295
     arr = np.ones(upper_limit + 1, dtype=bool)
     ranges = sorted(tuple(int(val) for val in line.split("-")) for line in lines)

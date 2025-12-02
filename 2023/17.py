@@ -46,9 +46,9 @@ def a_star(min_dist: int, max_dist: int) -> int:
     raise ValueError("could not reach target")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(a_star(1, 3))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(a_star(4, 10))

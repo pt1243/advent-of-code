@@ -2,7 +2,7 @@ with open("./2017/resources/2.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total_checksum = 0
     for line in lines:
         nums = [int(n) for n in line.split()]
@@ -10,7 +10,7 @@ def problem_1() -> None:
     print(total_checksum)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for line in lines:
         nums = [int(n) for n in line.split()]

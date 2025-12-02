@@ -25,7 +25,7 @@ class Program:
         return all(Program.lookup[child].get_weight() == target for child in self.children)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for line in lines:
         split = line.split(" -> ")
         name = split[0].split()[0]
@@ -43,7 +43,7 @@ def problem_1() -> None:
             return
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for line in lines:
         split = line.split(" -> ")
         name = split[0].split()[0]

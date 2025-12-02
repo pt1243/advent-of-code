@@ -2,7 +2,7 @@ with open("./2021/resources/9.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     height = len(lines)
     width = len(lines[0])
     sum_of_risk_levels = 0
@@ -22,7 +22,7 @@ def problem_1() -> None:
     print(sum_of_risk_levels)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     height = len(lines)
     width = len(lines[0])
 

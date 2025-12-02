@@ -2,7 +2,7 @@ with open("./2021/resources/11.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     width = len(lines[0])
     height = len(lines)
     total_flashes = 0
@@ -39,7 +39,7 @@ def problem_1() -> None:
     print(total_flashes)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     width = len(lines[0])
     height = len(lines)
     current_brightnesses = {(row, col): int(char) for row, line in enumerate(lines) for col, char in enumerate(line)}

@@ -4,7 +4,7 @@ with open("./2021/resources/3.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     column_counters: list[Counter[str]] = [Counter() for _ in lines[0]]
     for line in lines:
         for c, char in zip(column_counters, line):
@@ -14,7 +14,7 @@ def problem_1() -> None:
     print(gamma_rate * epsilon_rate)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     position = 0
     lines_to_keep = lines.copy()
     while True:

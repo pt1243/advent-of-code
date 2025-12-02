@@ -147,13 +147,13 @@ def magnitude(num: SnailfishNumber | RegularNumber) -> int:
     return 3 * magnitude(num.left) + 2 * magnitude(num.right)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     numbers = [parse_snailfish_num(literal_eval(line)) for line in lines]
     final_sum = reduce(add_snailfish_numbers, numbers)
     print(magnitude(final_sum))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     numbers = [parse_snailfish_num(literal_eval(line)) for line in lines]
     max_magnitude = 0
     for num_1 in numbers:

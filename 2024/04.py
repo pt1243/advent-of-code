@@ -4,7 +4,7 @@ with open("./2024/resources/4.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for row in lines:
         for chars in sliding_window(row, 4):
@@ -27,7 +27,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for line_batch in sliding_window(lines, 3):
         for col_1, col_2, col_3 in sliding_window(zip(*line_batch), 3):

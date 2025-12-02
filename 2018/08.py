@@ -35,11 +35,11 @@ def read_node_recursive(index: int, parent_node: Node | None = None) -> tuple[in
     return index, current_node
 
 
-def problem_1() -> None:
+def part_1() -> None:
     _, root = read_node_recursive(0)
     print(root.sum_metadata_entries_recursive())
 
 
-def problem_2() -> None:
+def part_2() -> None:
     _, root = read_node_recursive(0)
     print(root.get_value())

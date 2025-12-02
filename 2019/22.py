@@ -5,7 +5,7 @@ with open("./2019/resources/22.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     deck_size = 10007
     cards = deque(range(deck_size))
     for line in lines:
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(cards.index(2019))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     deck_size = 119315717514047
     num_shuffles = 101741582076661
 

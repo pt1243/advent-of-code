@@ -4,7 +4,7 @@ with open("./2017/resources/6.txt") as f:
     banks = deque(int(bank) for bank in f.read().strip().split())
 
 
-def problem_1() -> None:
+def part_1() -> None:
     num_banks = len(banks)
     seen: set[tuple[int, ...]] = {tuple(banks)}
     cycles = 0
@@ -27,7 +27,7 @@ def problem_1() -> None:
         seen.add(tuple(banks))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_banks = len(banks)
     seen: list[tuple[int, ...]] = [tuple(banks)]
     cycles = 0

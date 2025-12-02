@@ -18,9 +18,9 @@ def get_checksum(disk_size: int) -> str:
     return checksum
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(get_checksum(272))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(get_checksum(35651584))

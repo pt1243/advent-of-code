@@ -4,7 +4,7 @@ with open("./2018/resources/5.txt") as f:
     starting_polymer = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     polymer = starting_polymer
     start_index = 0
     while True:
@@ -20,7 +20,7 @@ def problem_1() -> None:
     print(len(polymer))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     min_length = len(starting_polymer)
     for lower, upper in zip(ascii_lowercase, ascii_uppercase):
         polymer = starting_polymer.replace(lower, "").replace(upper, "")

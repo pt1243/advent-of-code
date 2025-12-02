@@ -38,7 +38,7 @@ def get_hand_type(hand: Sequence[int]) -> int:
     return 1  # high card
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total_winnings = 0
     all_cards: list[tuple[int, tuple[int, ...], int]] = []
     for line in lines:
@@ -52,7 +52,7 @@ def problem_1() -> None:
     print(total_winnings)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total_winnings = 0
     all_cards: list[tuple[int, tuple[int, ...], int]] = []
     for line in lines:

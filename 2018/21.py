@@ -21,12 +21,12 @@ def run_program() -> Generator[int, None, None]:
         yield r4
 
 
-def problem_1() -> None:
+def part_1() -> None:
     program = run_program()
     print(next(program))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     program = run_program()
     seen: list[int] = []
     while True:

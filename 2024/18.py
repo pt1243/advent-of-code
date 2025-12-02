@@ -34,7 +34,7 @@ def a_star(corrupted: set[tuple[int, int]]) -> int | None:
     return None
 
 
-def problem_1() -> None:
+def part_1() -> None:
     corrupted: set[tuple[int, int]] = set()
     for line in lines[:1024]:
         row_str, col_str = line.split(",")
@@ -42,7 +42,7 @@ def problem_1() -> None:
     print(a_star(corrupted))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     corrupted: list[tuple[int, int]] = []
     for line in lines:
         row_str, col_str = line.split(",")

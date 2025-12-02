@@ -119,13 +119,13 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     program = IntcodeProgram(nums, [1])
     program.run()
     print(program.output_queue.pop())
 
 
-def problem_2() -> None:
+def part_2() -> None:
     program = IntcodeProgram(nums, [5])
     program.run()
     print(program.output_queue.pop())

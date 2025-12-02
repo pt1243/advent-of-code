@@ -30,7 +30,7 @@ class Bag:
         return total
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for line in lines:
         bag_colour = " ".join(line.split(" contain ")[0].split()[:-1])
         bag = Bag.get_by_name(bag_colour)
@@ -49,7 +49,7 @@ def problem_1() -> None:
     print(can_contain_shiny_gold)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for line in lines:
         bag_colour = " ".join(line.split(" contain ")[0].split()[:-1])
         bag = Bag.get_by_name(bag_colour)

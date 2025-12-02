@@ -4,7 +4,7 @@ with open("./2025/resources/2.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for id_range in text.split(","):
         lower, upper = id_range.split("-")
@@ -15,7 +15,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for id_range in text.split(","):
         lower, upper = id_range.split("-")

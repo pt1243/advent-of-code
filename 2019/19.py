@@ -182,7 +182,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     points_affected = 0
     for x in range(50):
         for y in range(50):
@@ -192,7 +192,7 @@ def problem_1() -> None:
     print(points_affected)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     square_size = 100
 
     @cache

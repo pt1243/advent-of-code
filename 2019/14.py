@@ -36,11 +36,11 @@ def get_ore_required(num_fuel: int) -> int:
     return ore_used
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(get_ore_required(1))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     max_safe_val = 0
     step = 1_000_000
     steps_up = 0

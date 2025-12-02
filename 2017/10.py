@@ -18,14 +18,14 @@ def knot_hash(lst: list[int], lengths: list[int], current_pos: int, skip_size: i
     return lst, current_pos, skip_size
 
 
-def problem_1() -> None:
+def part_1() -> None:
     input_lengths = [int(n) for n in input_text.split(",")]
     lst = list(range(256))
     result, *_ = knot_hash(lst, input_lengths, 0, 0)
     print(result[0] * result[1])
 
 
-def problem_2() -> None:
+def part_2() -> None:
     lst = list(range(256))
     lengths = [ord(c) for c in input_text]
     lengths += [17, 31, 73, 47, 23]

@@ -12,7 +12,7 @@ class Sensor(NamedTuple):
     dist: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     cannot_contain_beacon: set[int] = set()
     for line in lines:
         sensor_x, sensor_y, beacon_x, beacon_y = map(int, re.findall(r"-?\d+", line))
@@ -22,7 +22,7 @@ def problem_1() -> None:
     print(len(cannot_contain_beacon))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     sensors: list[Sensor] = []
     for line in lines:
         sensor_x, sensor_y, beacon_x, beacon_y = map(int, re.findall(r"-?\d+", line))

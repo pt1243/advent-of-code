@@ -10,7 +10,7 @@ with open("./2020/resources/18.txt") as f:
 Expression = list[Union["Expression", int, str]]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     def parse(line: str) -> Expression:
         if "(" not in line:
             return [int(item) if item.isnumeric() else item for item in line.split()]
@@ -55,7 +55,7 @@ def problem_1() -> None:
     print(sum(evaluate(parse(line)) for line in lines))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     class ReplaceNodes(ast.NodeTransformer):
         def visit_BinOp(self, node: ast.BinOp) -> ast.BinOp:
             self.generic_visit(node)

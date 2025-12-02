@@ -6,7 +6,7 @@ with open("./2024/resources/9.txt") as f:
     nums = [int(x) for x in f.read().strip()]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     remaining: deque[int | None] = deque()
     file_ids = count()
     for pair in batched(nums, 2):
@@ -29,7 +29,7 @@ def problem_1() -> None:
     print(sum(i * val for i, val in enumerate(final_order)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     free_space_lengths: dict[int, int] = {}
     file_indices_and_lengths: dict[int, tuple[int, int]] = {}
     file_ids = count()

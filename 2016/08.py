@@ -22,12 +22,12 @@ def process_screen() -> npt.NDArray[np.bool_]:
     return screen
 
 
-def problem_1() -> None:
+def part_1() -> None:
     screen = process_screen()
     print(np.sum(screen))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     screen = process_screen()
     letters = np.split(screen, 10, axis=1)
     for row in range(6):

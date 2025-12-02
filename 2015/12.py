@@ -36,9 +36,9 @@ def sum_recursive(iterable: IterableToSum, ignore_red: bool = False) -> int:
     return total
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(sum_recursive(data))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(sum_recursive(data, ignore_red=True))

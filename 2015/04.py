@@ -5,7 +5,7 @@ with open("./2015/resources/4.txt") as f:
     prefix = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for i in count(1):
         combined = (prefix + str(i)).encode()
         computed_hash = md5(combined, usedforsecurity=False).hexdigest()
@@ -14,7 +14,7 @@ def problem_1() -> None:
             break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for i in count(1):
         combined = (prefix + str(i)).encode()
         computed_hash = md5(combined, usedforsecurity=False).hexdigest()

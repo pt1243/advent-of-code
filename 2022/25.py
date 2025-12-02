@@ -30,5 +30,5 @@ def snafu_to_decimal(snafu_number: str) -> int:
     return number
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(decimal_to_snafu(sum(snafu_to_decimal(line) for line in lines)))

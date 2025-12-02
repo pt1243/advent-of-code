@@ -29,7 +29,7 @@ def compare_values(first: int | RecursiveList, second: int | RecursiveList) -> b
     return compare_values(first, [second])
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for i, comparison in enumerate(text.split("\n\n"), start=1):
         first, second = comparison.split("\n")
@@ -40,7 +40,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     first_divider = RecursiveList([[2]])
     second_divider = RecursiveList([[6]])
     all_packets: list[RecursiveList] = [first_divider, second_divider]

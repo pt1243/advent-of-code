@@ -28,7 +28,7 @@ class Program:
                 self.connections.append(p)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for line in lines:
         first, connections = line.split(" <-> ")
         p1 = Program.get_program(int(first))
@@ -51,7 +51,7 @@ def problem_1() -> None:
     print(len([p for p in Program.lookup.values() if p.group]))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for line in lines:
         first, connections = line.split(" <-> ")
         p1 = Program.get_program(int(first))

@@ -47,11 +47,11 @@ def get_num_energized(starting_row: int, starting_col: int, starting_direction: 
     return len(energized)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(get_num_energized(0, -1, 1))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     max_tiles_energized = 0
     for starting_col in range(len(lines[0])):
         top = get_num_energized(-1, starting_col, 2)

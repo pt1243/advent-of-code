@@ -78,7 +78,7 @@ def parse_packet(bits: str, index: int = 0) -> tuple[Packet, int]:
         return OperatorPacket(version, type_id, value, subpackets), index
 
 
-def problem_1() -> None:
+def part_1() -> None:
     packet_bits = bin(int(packet_hex, 16))[2:]
     packet_bits = packet_bits.zfill(ceil(len(packet_bits) / 4) * 4)
     root_packet, _ = parse_packet(packet_bits)
@@ -93,7 +93,7 @@ def problem_1() -> None:
     print(sum_of_version_numbers(root_packet))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     packet_bits = bin(int(packet_hex, 16))[2:]
     packet_bits = packet_bits.zfill(ceil(len(packet_bits) / 4) * 4)
     root_packet, _ = parse_packet(packet_bits)

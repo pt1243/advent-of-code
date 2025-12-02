@@ -8,7 +8,7 @@ def clamp(val: int, min_val: int, max_val: int) -> int:
     return min(max_val, max(min_val, val))
 
 
-def problem_1() -> None:
+def part_1() -> None:
     row, col = 1, 1
     code = ""
     directions = {"U": (-1, 0), "D": (1, 0), "L": (0, -1), "R": (0, 1)}
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(code)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     bounds = {
         0: partial(clamp, min_val=2, max_val=2),
         1: partial(clamp, min_val=1, max_val=3),

@@ -6,7 +6,7 @@ with open("./2024/resources/12.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     seen: set[tuple[int, int]] = set()
     width, height = len(lines[0]), len(lines)
 
@@ -48,7 +48,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     seen: set[tuple[int, int]] = set()
     width, height = len(lines[0]), len(lines)
 

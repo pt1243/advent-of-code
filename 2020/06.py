@@ -2,7 +2,7 @@ with open("./2020/resources/6.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     sum_of_counts = 0
     for group in text.split("\n\n"):
         group = group.replace("\n", "")
@@ -10,7 +10,7 @@ def problem_1() -> None:
     print(sum_of_counts)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     sum_of_counts = 0
     for group in text.split("\n\n"):
         people = [set(line) for line in group.split()]

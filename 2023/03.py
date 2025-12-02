@@ -42,7 +42,7 @@ def get_positions_to_check(i: int, j: int, k: int, max_char_index: int, max_line
     return positions_to_check
 
 
-def problem_1() -> None:
+def part_1() -> None:
     sum_part_nums = 0
     max_line_index = len(lines) - 1
     max_char_index = len(lines[0]) - 1
@@ -57,7 +57,7 @@ def problem_1() -> None:
     print(sum_part_nums)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total_ratio = 0
     max_line_index = len(lines) - 1
     max_char_index = len(lines[0]) - 1

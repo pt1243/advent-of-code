@@ -35,11 +35,11 @@ def count_cheats(distances: dict[tuple[int, int], int], cheat_distance: int) -> 
     return sum(count for distance, count in counts.items() if distance >= 100)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     distances = get_distances()
     print(count_cheats(distances, 2))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     distances = get_distances()
     print(count_cheats(distances, 20))

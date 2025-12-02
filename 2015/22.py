@@ -98,7 +98,7 @@ def apply_spell(state: State, spell: str, part_2: bool = False) -> State | bool:
     return State(spent_mana, player_hp, player_mana, boss_hp, shield_timer, poison_timer, recharge_timer)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     possibilities = [(State(0, starting_player_hp, starting_player_mana, starting_boss_hp, 0, 0, 0), False)]
     seen: set[State] = set()
     while True:
@@ -119,7 +119,7 @@ def problem_1() -> None:
                 heapq.heappush(possibilities, (result, False))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     possibilities = [(State(0, starting_player_hp, starting_player_mana, starting_boss_hp, 0, 0, 0), False)]
     seen: set[State] = set()
     while True:

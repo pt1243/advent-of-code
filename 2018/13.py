@@ -31,7 +31,7 @@ class Cart:
             self.direction %= 4
 
 
-def problem_1() -> None:
+def part_1() -> None:
     carts: list[Cart] = []
     track: list[str] = []
     for row, line in enumerate(lines):
@@ -57,7 +57,7 @@ def problem_1() -> None:
                     return
 
 
-def problem_2() -> None:
+def part_2() -> None:
     carts: list[Cart] = []
     track: list[str] = []
     for row, line in enumerate(lines):

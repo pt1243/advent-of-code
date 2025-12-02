@@ -4,7 +4,7 @@ with open("./2017/resources/20.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     stupidly_high_number = 1_000_000_000_000_000_000_000
     accel_const = stupidly_high_number * (stupidly_high_number + 1) // 2
     closest_dist, closest_particle = np.inf, 0
@@ -25,7 +25,7 @@ def problem_1() -> None:
     print(closest_particle)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     particles = np.empty((len(lines), 9), dtype=int)
     for i, line in enumerate(lines):
         p_entries, v_entries, a_entries = line.split(", ")

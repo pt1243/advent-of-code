@@ -68,13 +68,13 @@ def a_star(target: tuple[int, int], doors: Mapping[tuple[int, int], set[tuple[in
     raise ValueError("could not find path to specified target")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     doors = get_doors(full_regex)
     distances = [a_star(pos, doors) for pos in doors]
     print(max(distances))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     doors = get_doors(full_regex)
     distances = [a_star(pos, doors) for pos in doors]
     print(sum(1 for d in distances if d >= 1000))

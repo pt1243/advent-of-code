@@ -4,7 +4,7 @@ with open("./2020/resources/17.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     current: set[tuple[int, int, int]] = set()
     for x, line in enumerate(lines):
         for y, char in enumerate(line):
@@ -36,7 +36,7 @@ def problem_1() -> None:
     print(len(current))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     current: set[tuple[int, int, int, int]] = set()
     for x, line in enumerate(lines):
         for y, char in enumerate(line):

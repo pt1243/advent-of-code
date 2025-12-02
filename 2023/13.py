@@ -29,7 +29,7 @@ def get_reflection_score(arr: npt.NDArray[np.bool_], ignore: tuple[int, int] | N
     return 0, 0
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for block in contents.split("\n\n"):
         lines = block.strip().split("\n")
@@ -45,7 +45,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for block in contents.split("\n\n"):
         lines = block.strip().split("\n")

@@ -26,7 +26,7 @@ def sum_divisors_part_2(n: int) -> int:
     return sum(found)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for n in count(1):
         current_house_total = 10 * sum_divisors(n)
         if current_house_total >= target:
@@ -34,7 +34,7 @@ def problem_1() -> None:
             break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for n in count(1):
         current_house_total = 11 * sum_divisors_part_2(n)
         if current_house_total >= target:

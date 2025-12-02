@@ -16,7 +16,7 @@ class Robot:
     vy: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     width, height = 101, 103
     quadrants = [0, 0, 0, 0]
     for line in lines:
@@ -36,7 +36,7 @@ def problem_1() -> None:
     print(prod(quadrants))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     width, height = 101, 103
     robots = [Robot(*map(int, re.findall(r"-?\d+", line))) for line in lines]
     for i in count(1):

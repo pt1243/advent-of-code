@@ -2,7 +2,7 @@ with open("./2017/resources/24.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     components: dict[int, tuple[int, int]] = {}
     for i, line in enumerate(lines):
         left, right = line.split("/")
@@ -24,7 +24,7 @@ def problem_1() -> None:
     print(max_strength)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     components: dict[int, tuple[int, int]] = {}
     for i, line in enumerate(lines):
         left, right = line.split("/")

@@ -83,7 +83,7 @@ def get_connections(tiles: dict[int, npt.NDArray[np.bool_]]) -> defaultdict[int,
     return connections
 
 
-def problem_1() -> None:
+def part_1() -> None:
     tiles = extract_tiles(text)
     connections = get_connections(tiles)
 
@@ -94,7 +94,7 @@ def problem_1() -> None:
     print(product)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     tiles = extract_tiles(text)
     connections = get_connections(tiles)
 

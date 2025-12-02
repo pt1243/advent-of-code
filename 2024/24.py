@@ -65,7 +65,7 @@ class Gate:
         return int("".join(str(z[1]) for z in sorted(z_wires, reverse=True)), 2)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     input_wire_lines, gate_lines = text.split("\n\n")
     x_bits: list[tuple[str, str]] = []
     y_bits: list[tuple[str, str]] = []
@@ -84,7 +84,7 @@ def problem_1() -> None:
     print(Gate.add_values(x, y))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     gate_lines = text.split("\n\n")[1]
     for line in gate_lines.split("\n"):
         Gate(line)

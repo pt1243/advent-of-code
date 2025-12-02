@@ -49,7 +49,7 @@ def run_instructions(registers: dict[str, int]) -> dict[str, int]:
     return registers
 
 
-def problem_1() -> None:
+def part_1() -> None:
     registers = {
         "a": 7,
         "b": 0,
@@ -61,7 +61,7 @@ def problem_1() -> None:
     print(result["a"])
 
 
-def problem_2() -> None:
+def part_2() -> None:
     a = 12
     for b in range(11, 0, -1):
         a *= b

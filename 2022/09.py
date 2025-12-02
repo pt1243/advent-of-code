@@ -37,7 +37,7 @@ def get_move(head_row: int, head_col: int, tail_row: int, tail_col: int) -> tupl
     return 0, 0
 
 
-def problem_1() -> None:
+def part_1() -> None:
     head_row, head_col = 0, 0
     tail_row, tail_col = 0, 0
     directions = {"U": (-1, 0), "R": (0, 1), "D": (1, 0), "L": (0, -1)}
@@ -55,7 +55,7 @@ def problem_1() -> None:
     print(len(seen))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     positions = [[0, 0] for _ in range(10)]
     directions = {"U": (-1, 0), "R": (0, 1), "D": (1, 0), "L": (0, -1)}
     seen = {(0, 0)}

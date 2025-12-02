@@ -62,11 +62,11 @@ def throw_items(monkeys: list[Monkey], num_rounds: int, part_2: bool = False) ->
     return num_inspections[0] * num_inspections[1]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     monkeys = Monkey.from_text(text)
     print(throw_items(monkeys, 20))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     monkeys = Monkey.from_text(text)
     print(throw_items(monkeys, 10_000, part_2=True))

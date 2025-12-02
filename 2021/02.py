@@ -2,7 +2,7 @@ with open("./2021/resources/2.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     horizontal = 0
     depth = 0
     for line in lines:
@@ -17,7 +17,7 @@ def problem_1() -> None:
     print(horizontal * depth)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     horizontal = 0
     depth = 0
     aim = 0

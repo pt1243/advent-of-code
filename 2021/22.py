@@ -96,9 +96,9 @@ def run_cubes(part_2: bool = False) -> int:
     return sum(b.volume() for b in current_on_cubes)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(run_cubes())
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(run_cubes(part_2=True))

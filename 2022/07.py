@@ -31,7 +31,7 @@ class File(NamedTuple):
     size: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     root = Directory("/")
     root.parent = root
     current_directory = root
@@ -62,7 +62,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     root = Directory("/")
     root.parent = root
     current_directory = root

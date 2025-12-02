@@ -19,13 +19,13 @@ def marble_game(num_players: int, highest_num_marble: int) -> int:
     return max(player_scores.values())
 
 
-def problem_1() -> None:
+def part_1() -> None:
     num_players = int(words[0])
     highest_num_marble = int(words[6])
     print(marble_game(num_players, highest_num_marble))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_players = int(words[0])
     highest_num_marble = int(words[6])
     print(marble_game(num_players, highest_num_marble * 100))

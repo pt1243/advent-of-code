@@ -2,7 +2,7 @@ with open("./2020/resources/4.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     required_fields = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
     num_valid = 0
     for passport in text.split("\n\n"):
@@ -12,7 +12,7 @@ def problem_1() -> None:
     print(num_valid)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     required_fields = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
     num_valid = 0
     for passport in text.split("\n\n"):

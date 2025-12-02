@@ -5,7 +5,7 @@ with open("./2017/resources/8.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     registers: defaultdict[str, int] = defaultdict(int)
     operators = {
         "<": operator.lt,
@@ -30,7 +30,7 @@ def problem_1() -> None:
     print(max(registers.values()))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     registers: defaultdict[str, int] = defaultdict(int)
     operators = {
         "<": operator.lt,

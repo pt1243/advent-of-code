@@ -21,7 +21,7 @@ def can_reach(nums: Sequence[int], target: int, use_conat: bool = False) -> bool
     return False
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for line in lines:
         left, right = line.split(": ")
@@ -32,7 +32,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for line in lines:
         left, right = line.split(": ")

@@ -180,13 +180,13 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     boost = IntcodeProgram(program, [1])
     boost.run()
     print(boost.output_queue.popleft())
 
 
-def problem_2() -> None:
+def part_2() -> None:
     boost = IntcodeProgram(program, [2])
     boost.run()
     print(boost.output_queue.popleft())

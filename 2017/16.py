@@ -22,12 +22,12 @@ def dance(start: list[str]) -> list[str]:
     return programs
 
 
-def problem_1() -> None:
+def part_1() -> None:
     programs = [chr(i + 97) for i in range(16)]
     print("".join(dance(programs)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     positions_seen: dict[int, str] = {}
     programs = [chr(i + 97) for i in range(16)]
     for i in count(1):

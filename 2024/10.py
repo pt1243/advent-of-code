@@ -25,7 +25,7 @@ def find_paths(start_row: int, start_col: int) -> tuple[int, int]:
     return len(end_points), num_paths
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for row, line in enumerate(grid):
         for col, num in enumerate(line):
@@ -34,7 +34,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for row, line in enumerate(grid):
         for col, num in enumerate(line):

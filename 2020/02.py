@@ -4,7 +4,7 @@ with open("./2020/resources/2.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     num_valid = 0
     for line in lines:
         num_range, char, password = line.split()
@@ -15,7 +15,7 @@ def problem_1() -> None:
     print(num_valid)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_valid = 0
     for line in lines:
         num_range, char, password = line.split()

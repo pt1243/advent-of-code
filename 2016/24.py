@@ -46,7 +46,7 @@ def find_distance(start_pos: tuple[int, int], end_pos: tuple[int, int]) -> set[t
     return set()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     digits = {char: (i, j) for i, row in enumerate(lines) for j, char in enumerate(row) if char.isnumeric()}
     connections = defaultdict(list)
 
@@ -76,7 +76,7 @@ def problem_1() -> None:
             heapq.heappush(queue, (steps + distance, digit_path + [next_digit]))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     digits = {char: (i, j) for i, row in enumerate(lines) for j, char in enumerate(row) if char.isnumeric()}
     connections = defaultdict(list)
 

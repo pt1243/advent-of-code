@@ -4,12 +4,12 @@ with open("./2024/resources/3.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     pattern = re.compile(r"mul\((-?\d+),(-?\d+)\)")
     print(sum(int(match[0]) * int(match[1]) for match in re.findall(pattern, text)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     pattern = re.compile(r"mul\((-?\d+),(-?\d+)\)|(do\(\))|(don't\(\))")
     enabled = True
     total = 0

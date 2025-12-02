@@ -39,11 +39,11 @@ def scramble(d: deque[str]) -> str:
     return "".join(d)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(scramble(deque("abcdefgh")))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     target = "fbgdceah"
 
     for p in permutations(target):

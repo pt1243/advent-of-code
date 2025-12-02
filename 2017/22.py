@@ -4,7 +4,7 @@ with open("./2017/resources/22.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     turn_left = {"u": "l", "l": "d", "d": "r", "r": "u"}
     turn_right = {"u": "r", "r": "d", "d": "l", "l": "u"}
     nodes = defaultdict(bool)
@@ -34,7 +34,7 @@ def problem_1() -> None:
     print(num_caused_infection)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     turn_left = {"u": "l", "l": "d", "d": "r", "r": "u"}
     turn_right = {"u": "r", "r": "d", "d": "l", "l": "u"}
     reverse = {"u": "d", "d": "u", "l": "r", "r": "l"}

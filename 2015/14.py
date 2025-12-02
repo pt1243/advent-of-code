@@ -5,7 +5,7 @@ with open("./2015/resources/14.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     all_reindeer: dict[str, Iterator[int]] = {}
     for line in lines:
         split = line.split()
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(max(distances.values()))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_reindeer: dict[str, Iterator[int]] = {}
     for line in lines:
         split = line.split()

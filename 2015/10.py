@@ -17,9 +17,9 @@ def look_and_say(steps: int) -> int:
     return len(current_sequence)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(look_and_say(40))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(look_and_say(50))

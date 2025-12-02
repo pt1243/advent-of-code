@@ -5,7 +5,7 @@ with open("./2016/resources/5.txt") as f:
     door_id = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     password = ""
     for i in count():
         combined = (door_id + str(i)).encode()
@@ -17,7 +17,7 @@ def problem_1() -> None:
                 break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     password: list[None | str] = [None for _ in range(8)]
     for i in count():
         combined = (door_id + str(i)).encode()

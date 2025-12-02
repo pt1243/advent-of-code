@@ -36,14 +36,14 @@ def a_star(start_row: int, start_col: int, grid: list[list[int]]) -> int | None:
     return None
 
 
-def problem_1() -> None:
+def part_1() -> None:
     start_row = next(i for i, line in enumerate(lines) if "S" in line)
     start_col = lines[start_row].index("S")
     grid = [[ord(c) - ord("a") if c not in "SE" else (0 if c == "S" else 26) for c in line] for line in lines]
     print(a_star(start_row, start_col, grid))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     grid = [[ord(c) - ord("a") if c not in "SE" else (0 if c == "S" else 26) for c in line] for line in lines]
     print(
         min(

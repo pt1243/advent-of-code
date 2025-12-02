@@ -2,7 +2,7 @@ with open("./2017/resources/4.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total_valid = 0
     for line in lines:
         words = line.split()
@@ -11,7 +11,7 @@ def problem_1() -> None:
     print(total_valid)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total_valid = 0
     for line in lines:
         words_letters_sorted = ["".join(sorted(word)) for word in line.split()]

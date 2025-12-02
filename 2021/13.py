@@ -2,7 +2,7 @@ with open("./2021/resources/13.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     dots, folds = text.split("\n\n")
     current_dots = {(int(line.split(",")[0]), int(line.split(",")[1])) for line in dots.split("\n")}
     fold = folds.split("\n")[0]
@@ -15,7 +15,7 @@ def problem_1() -> None:
     print(len(new_dots))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     dots, folds = text.split("\n\n")
     current_dots = {(int(line.split(",")[0]), int(line.split(",")[1])) for line in dots.split("\n")}
     for fold in folds.split("\n"):

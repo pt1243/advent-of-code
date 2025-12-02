@@ -37,7 +37,7 @@ def sum_to(total: int, num_items: int) -> Iterator[list[int]]:
                 yield [i] + rest
 
 
-def problem_1() -> None:
+def part_1() -> None:
     possible_ingredients = process_ingredients()
 
     max_score = 0
@@ -61,7 +61,7 @@ def problem_1() -> None:
     print(max_score)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     possible_ingredients = process_ingredients()
 
     max_score = 0

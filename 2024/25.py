@@ -4,7 +4,7 @@ with open("./2024/resources/25.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     keys: list[list[int]] = []
     locks: list[list[int]] = []
     for block in text.split("\n\n"):

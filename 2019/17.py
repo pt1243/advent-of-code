@@ -191,7 +191,7 @@ def get_scaffold() -> tuple[str, list[str]]:
     return ascii_output, scaffold
 
 
-def problem_1() -> None:
+def part_1() -> None:
     _, scaffold = get_scaffold()
     sum_of_alignment_parameters = 0
     for i, line in enumerate(scaffold[1:-1], start=1):
@@ -207,7 +207,7 @@ def problem_1() -> None:
     print(sum_of_alignment_parameters)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     ascii_output, scaffold = get_scaffold()
 
     def get_path(ascii_output: str, scaffold: list[str]) -> list[tuple[str, ...]]:

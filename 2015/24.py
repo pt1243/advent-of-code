@@ -31,7 +31,7 @@ def can_partition_into_two(S: Sequence[int]) -> bool:
 
 
 def can_partition_into_three(nums: set[int], target: int) -> bool:
-    # essentially just the solution to problem 1
+    # essentially just the solution to part 1
     num_second_group = 1
     while True:
         for second_group_choice in combinations(nums, num_second_group):
@@ -44,7 +44,7 @@ def can_partition_into_three(nums: set[int], target: int) -> bool:
             return False
 
 
-def problem_1() -> None:
+def part_1() -> None:
     target = sum(weights) // 3
 
     min_qe = float("inf")
@@ -65,7 +65,7 @@ def problem_1() -> None:
         num_first_group += 1
 
 
-def problem_2() -> None:
+def part_2() -> None:
     target = sum(weights) // 4
 
     min_qe = float("inf")

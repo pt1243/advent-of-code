@@ -40,7 +40,7 @@ class Bot:
                 type(self).outputs[self.high_target] = high
 
 
-def problem_1() -> None:
+def part_1() -> None:
     # create all bots first
     for line in lines:
         if line.startswith("bot"):
@@ -60,7 +60,7 @@ def problem_1() -> None:
             Bot.lookup[target_bot].add_microchip(val)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     # create all bots first
     for line in lines:
         if line.startswith("bot"):

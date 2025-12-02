@@ -20,7 +20,7 @@ def get_decompressed_length_recursive(text: str) -> int:
     )
 
 
-def problem_1() -> None:
+def part_1() -> None:
     new_length = 0
     i = 0
     while i < len(text):
@@ -35,5 +35,5 @@ def problem_1() -> None:
     print(new_length)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(get_decompressed_length_recursive(text))

@@ -110,7 +110,7 @@ def get_distances(lines: list[str]) -> defaultdict[str, dict[str, int]]:
     return distances
 
 
-def problem_1() -> None:
+def part_1() -> None:
     distances = get_distances(lines)
     paths_to_check: list[tuple[int, str]] = [(0, "AA")]
     while paths_to_check:
@@ -130,7 +130,7 @@ def problem_1() -> None:
             heapq.heappush(paths_to_check, (new_dist, new_current))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     distances = get_distances(lines)
     paths_to_check: list[tuple[int, str, int]] = [(0, "AA", 0)]
     while paths_to_check:

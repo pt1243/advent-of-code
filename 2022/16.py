@@ -89,7 +89,7 @@ def get_max_pressure_released(
     return max_pressure_released
 
 
-def problem_1() -> None:
+def part_1() -> None:
     valve_flow_rates, distances_between_valves, distances_from_AA = get_valve_connections(lines)
     print(
         get_max_pressure_released(
@@ -98,7 +98,7 @@ def problem_1() -> None:
     )
 
 
-def problem_2() -> None:
+def part_2() -> None:
     valve_flow_rates, distances_between_valves, distances_from_AA = get_valve_connections(lines)
 
     print(

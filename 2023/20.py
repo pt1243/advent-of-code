@@ -86,7 +86,7 @@ class Module:
         assert False  # to make mypy happy
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for line in lines:
         name_and_type, destinations = line.split(" -> ")
         if name_and_type == "broadcaster":
@@ -107,7 +107,7 @@ def problem_1() -> None:
     print(Module.num_low_pulses * Module.num_high_pulses)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for line in lines:
         name_and_type, destinations = line.split(" -> ")
         if name_and_type == "broadcaster":

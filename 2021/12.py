@@ -4,7 +4,7 @@ with open("./2021/resources/12.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     connections: defaultdict[str, list[str]] = defaultdict(list)
     for line in lines:
         left, right = line.split("-")
@@ -30,7 +30,7 @@ def problem_1() -> None:
     print(num_paths)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     connections: defaultdict[str, list[str]] = defaultdict(list)
     for line in lines:
         left, right = line.split("-")

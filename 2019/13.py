@@ -181,7 +181,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     game = IntcodeProgram(program)
     game.run()
     tiles: dict[tuple[int, int], int] = {}
@@ -190,7 +190,7 @@ def problem_1() -> None:
     print(sum(1 for tile in tiles.values() if tile == 2))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     program[0] = 2
     game = IntcodeProgram(program)
     score = 0

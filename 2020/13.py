@@ -2,7 +2,7 @@ with open("./2020/resources/13.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     earliest_arrival = int(lines[0])
     bus_ids = [int(x) for x in lines[1].split(",") if x != "x"]
     multiples: list[int] = []
@@ -14,7 +14,7 @@ def problem_1() -> None:
     print((first_time - earliest_arrival) * first_bus)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     remainders_and_moduli = [(int(x) - i, int(x)) for i, x in enumerate(lines[1].split(",")) if x != "x"]
 
     def extended_euclidian_algorithm(a: int, b: int) -> tuple[int, int]:

@@ -54,11 +54,11 @@ def run_instructions(start_a: int, start_b: int) -> tuple[int, int]:
     return a, b
 
 
-def problem_1() -> None:
+def part_1() -> None:
     _, b = run_instructions(0, 0)
     print(b)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     _, b = run_instructions(1, 0)
     print(b)

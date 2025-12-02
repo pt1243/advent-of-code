@@ -124,7 +124,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     max_thruster_signal = 0
     for phase_settings in permutations(range(5), 5):
         amp_a = IntcodeProgram(program, [phase_settings[0], 0])
@@ -142,7 +142,7 @@ def problem_1() -> None:
     print(max_thruster_signal)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     max_thruster_signal = 0
     for phase_settings in permutations(range(5, 10), 5):
         amp_a = IntcodeProgram(program, [phase_settings[0]])

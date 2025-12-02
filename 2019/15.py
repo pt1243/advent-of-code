@@ -250,13 +250,13 @@ def explore_map() -> tuple[tuple[int, int], set[tuple[int, int]]]:
     return oxygen_system_location, open_space
 
 
-def problem_1() -> None:
+def part_1() -> None:
     oxygen_system_location, open_space = explore_map()
     path_to_oxygen_system = a_star(open_space, (0, 0), oxygen_system_location)
     print(len(path_to_oxygen_system) - 1)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     oxygen_system_location, open_space = explore_map()
 
     has_oxygen = {oxygen_system_location}

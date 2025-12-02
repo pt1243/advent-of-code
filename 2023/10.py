@@ -27,7 +27,7 @@ next_direction = {
 }
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for row, line in enumerate(lines):
         if "S" in line:
             start_row = row
@@ -56,7 +56,7 @@ def problem_1() -> None:
     print(distance // 2 + (1 if distance % 2 == 1 else 0))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for row, line in enumerate(lines):
         if "S" in line:
             start_row = row

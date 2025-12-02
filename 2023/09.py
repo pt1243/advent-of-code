@@ -2,7 +2,7 @@ with open("./2023/resources/9.txt") as f:
     lines = [[int(c) for c in line.split()] for line in f.read().splitlines()]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     sum_extrapolated_values = 0
     for line in lines:
         all_differences = [line]
@@ -22,7 +22,7 @@ def problem_1() -> None:
     print(sum_extrapolated_values)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     sum_extrapolated_values = 0
     for line in lines:
         all_differences = [line]

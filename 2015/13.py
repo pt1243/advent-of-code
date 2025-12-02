@@ -6,7 +6,7 @@ with open("./2015/resources/13.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     happiness_by_person: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
     for line in lines:
         split = line.split()
@@ -27,7 +27,7 @@ def problem_1() -> None:
     print(max_happiness)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     happiness_by_person: defaultdict[str, MutableMapping[str, int]] = defaultdict(lambda: defaultdict(int))
     for line in lines:
         split = line.split()

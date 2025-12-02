@@ -4,7 +4,7 @@ with open("./2019/resources/4.txt") as f:
     low, high = (int(val) for val in f.read().strip().split("-"))
 
 
-def problem_1() -> None:
+def part_1() -> None:
     num_meeting_criteria = 0
     for password in range(low, high + 1):
         digits = str(password)
@@ -13,7 +13,7 @@ def problem_1() -> None:
     print(num_meeting_criteria)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_meeting_criteria = 0
     for password in range(low, high + 1):
         digits = str(password)

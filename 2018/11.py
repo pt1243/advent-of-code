@@ -4,7 +4,7 @@ with open("./2018/resources/11.txt") as f:
     grid_serial_number = int(f.read().strip())
 
 
-def problem_1() -> None:
+def part_1() -> None:
     power_levels = np.empty((300, 300), dtype=int)
     for i in range(300):
         for j in range(300):
@@ -28,7 +28,7 @@ def problem_1() -> None:
     print(f"{x},{y}")
 
 
-def problem_2() -> None:
+def part_2() -> None:
     power_levels = np.empty((300, 300), dtype=int)
     for i in range(300):
         for j in range(300):

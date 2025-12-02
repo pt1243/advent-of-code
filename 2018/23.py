@@ -15,7 +15,7 @@ class Nanobot(NamedTuple):
     r: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     nanobots: list[Nanobot] = []
     for line in lines:
         x, y, z = (int(n) for n in line[line.index("<") + 1 : line.index(">")].split(","))
@@ -31,7 +31,7 @@ def problem_1() -> None:
     print(num_in_range)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     nanobots: list[Nanobot] = []
     for line in lines:
         x, y, z = (int(n) for n in line[line.index("<") + 1 : line.index(">")].split(","))

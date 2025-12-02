@@ -4,11 +4,11 @@ with open("./2018/resources/1.txt") as f:
     frequencies = [int(freq) for freq in f.read().splitlines()]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(sum(frequencies))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     seen: set[int] = set()
     total = 0
     repeating_frequencies = cycle(frequencies)

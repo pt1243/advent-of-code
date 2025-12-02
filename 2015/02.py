@@ -2,7 +2,7 @@ with open("./2015/resources/2.txt") as f:
     boxes = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for line in boxes:
         length, width, height = (int(i) for i in line.split("x"))
@@ -14,7 +14,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for line in boxes:
         length, width, height = (int(i) for i in line.split("x"))

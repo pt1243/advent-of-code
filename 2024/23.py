@@ -4,7 +4,7 @@ with open("./2024/resources/23.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     connections: defaultdict[str, set[str]] = defaultdict(set)
     for line in lines:
         left, right = line.split("-")
@@ -20,7 +20,7 @@ def problem_1() -> None:
     print(sum(any(computer.startswith("t") for computer in g) for g in groups_of_three))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     connections: defaultdict[str, set[str]] = defaultdict(set)
     for line in lines:
         left, right = line.split("-")

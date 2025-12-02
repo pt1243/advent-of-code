@@ -30,7 +30,7 @@ def get_allergens(lines: list[str]) -> dict[str, str]:
     return {allergen: possible_ingredients.pop() for allergen, possible_ingredients in intersections.items()}
 
 
-def problem_1() -> None:
+def part_1() -> None:
     allergens_to_ingredients = get_allergens(lines)
 
     ingredient_counts: Counter[str] = Counter()
@@ -47,6 +47,6 @@ def problem_1() -> None:
     )
 
 
-def problem_2() -> None:
+def part_2() -> None:
     allergens_to_ingredients = get_allergens(lines)
     print(",".join(allergens_to_ingredients[val] for val in sorted(allergens_to_ingredients)))

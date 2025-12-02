@@ -4,7 +4,7 @@ with open("./2016/resources/7.txt") as f:
     ips = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     count = 0
 
     for ip in ips:
@@ -30,7 +30,7 @@ def problem_1() -> None:
     print(count)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     count = 0
 
     for ip in ips:

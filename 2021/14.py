@@ -36,9 +36,9 @@ def run_pair_insertion_process(steps: int) -> int:
     return (max(letter_counts.values()) - min(letter_counts.values())) // 2
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(run_pair_insertion_process(10))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(run_pair_insertion_process(40))

@@ -6,7 +6,7 @@ with open("./2020/resources/19.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     parsed_rules: dict[int, list[list[int | str]]] = {}
     lines, messages = text.split("\n\n")
     for line in lines.split("\n"):
@@ -41,7 +41,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     parsed_rules: dict[int, list[list[int | str]]] = {}
     lines, messages = text.split("\n\n")
     for line in lines.split("\n"):

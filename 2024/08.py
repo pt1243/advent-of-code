@@ -6,7 +6,7 @@ with open("./2024/resources/8.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     height, width = len(lines), len(lines[0])
     antennas: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
     for row, line in enumerate(lines):
@@ -26,7 +26,7 @@ def problem_1() -> None:
     print(sum(1 for antinode in antinode_positions if 0 <= antinode[0] < width and 0 <= antinode[1] < height))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     height, width = len(lines), len(lines[0])
     antennas: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
     for row, line in enumerate(lines):

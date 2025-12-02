@@ -4,7 +4,7 @@ with open("./2022/resources/10.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     sum_of_signal_strengths = 0
     x_register = 1
     cycle = 1
@@ -27,7 +27,7 @@ def problem_1() -> None:
     print(sum_of_signal_strengths)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     sprite_middle = 1
     cycle = 0
     pixels: list[bool] = []

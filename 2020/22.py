@@ -5,7 +5,7 @@ with open("./2020/resources/22.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     player_1_deck = deque([int(line) for line in text.split("\n\n")[0].splitlines()[1:]])
     player_2_deck = deque([int(line) for line in text.split("\n\n")[1].splitlines()[1:]])
 
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(sum(i * card for i, card in enumerate(reversed(winning_deck), start=1)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     def play_game_recursive(player_1_deck: deque[int], player_2_deck: deque[int]) -> Literal[1, 2]:
         seen_cards: set[tuple[tuple[int, ...], tuple[int, ...]]] = set()
         while player_1_deck and player_2_deck:

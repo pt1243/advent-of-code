@@ -61,12 +61,12 @@ def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int
     raise ValueError("did not find path to goal")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     target = (31, 39)
     print(len(a_star((1, 1), target)) - 1)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     visited: set[tuple[int, int]] = {(1, 1)}
     for _ in range(50):
         for start_node in visited.copy():

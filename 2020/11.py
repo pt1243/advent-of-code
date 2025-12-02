@@ -4,7 +4,7 @@ with open("./2020/resources/11.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     height = len(lines)
     width = len(lines[0])
     current_seats = np.array([[0 if char == "." else 1 for char in line] for line in lines])
@@ -41,7 +41,7 @@ def problem_1() -> None:
         current_seats = new_seats
 
 
-def problem_2() -> None:
+def part_2() -> None:
     height = len(lines)
     width = len(lines[0])
     current_seats = np.array([[0 if char == "." else 1 for char in line] for line in lines])

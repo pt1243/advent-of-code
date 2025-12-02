@@ -44,7 +44,7 @@ def run_program(A: int, B: int, C: int, program: list[int]) -> list[int]:
     return outputs
 
 
-def problem_1() -> None:
+def part_1() -> None:
     A = int(lines[0].split(": ")[1])
     B = int(lines[1].split(": ")[1])
     C = int(lines[2].split(": ")[1])
@@ -52,7 +52,7 @@ def problem_1() -> None:
     print(",".join(str(x) for x in run_program(A, B, C, program)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     B = int(lines[1].split(": ")[1])
     C = int(lines[2].split(": ")[1])
     program = [int(x) for x in lines[4].split(": ")[1].split(",")]

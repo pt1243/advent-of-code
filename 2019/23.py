@@ -181,7 +181,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     computers = {i: IntcodeProgram(program, [i]) for i in range(50)}
     while True:
         for computer in computers.values():
@@ -196,7 +196,7 @@ def problem_1() -> None:
             computer.output_queue.clear()
 
 
-def problem_2() -> None:
+def part_2() -> None:
     computers = {i: IntcodeProgram(program, [i]) for i in range(50)}
     nat_packet = (0, 0)
     last_nat_packet_sent = (0, 0)

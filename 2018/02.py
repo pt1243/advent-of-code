@@ -5,7 +5,7 @@ with open("./2018/resources/2.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     two, three = 0, 0
     for box_id in lines:
         c = Counter(box_id)
@@ -16,7 +16,7 @@ def problem_1() -> None:
     print(two * three)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for box_1, box_2 in combinations(lines, 2):
         different_letters = 0
         for char_1, char_2 in zip(box_1, box_2):

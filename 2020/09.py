@@ -4,7 +4,7 @@ with open("./2020/resources/9.txt") as f:
     nums = [int(x) for x in f.read().splitlines()]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     preamble_length = 25
     for i, num in enumerate(nums[preamble_length:], start=preamble_length):
         previous = nums[i - preamble_length : i]
@@ -13,7 +13,7 @@ def problem_1() -> None:
             return
 
 
-def problem_2() -> None:
+def part_2() -> None:
     preamble_length = 25
     for i, num in enumerate(nums[preamble_length:], start=preamble_length):
         previous = nums[i - preamble_length : i]

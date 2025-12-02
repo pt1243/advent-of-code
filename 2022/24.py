@@ -58,12 +58,12 @@ def a_star(start: tuple[int, int], goal: tuple[int, int], start_minute: int = 0)
     raise ValueError("failed to find path")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     width, height = len(lines[0]) - 2, len(lines) - 2
     print(a_star((-1, 0), (height, width - 1)))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     width, height = len(lines[0]) - 2, len(lines) - 2
     first_trip_time = a_star((-1, 0), (height, width - 1))
     return_trup_time = a_star((height, width - 1), (-1, 0), start_minute=first_trip_time)

@@ -27,9 +27,9 @@ def run_stones(starting_stones: Iterable[str], blinks: int) -> int:
     return sum(stones.values())
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(run_stones(starting_stones, 25))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(run_stones(starting_stones, 75))

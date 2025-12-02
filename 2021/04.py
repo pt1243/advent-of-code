@@ -4,7 +4,7 @@ with open("./2021/resources/4.txt") as f:
     text = f.read().strip().split("\n\n")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     numbers = [int(x) for x in text[0].split(",")]
     boards = np.array([[[int(x) for x in line.split()] for line in board.split("\n")] for board in text[1:]], int)
     filled = np.zeros_like(boards, bool)
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(score * num)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     numbers = [int(x) for x in text[0].split(",")]
     boards = np.array([[[int(x) for x in line.split()] for line in board.split("\n")] for board in text[1:]], int)
     filled = np.zeros_like(boards, bool)

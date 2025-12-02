@@ -62,7 +62,7 @@ def play_cups(cups: list[int], num_moves: int, part_2: bool = False) -> dict[int
     return nodes
 
 
-def problem_1() -> None:
+def part_1() -> None:
     nodes = play_cups(cups, 100)
     current = nodes[1]
     result = ""
@@ -72,7 +72,7 @@ def problem_1() -> None:
     print(result)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     nodes = play_cups(cups, 10_000_000, part_2=True)
     one = nodes[1]
     print(one.right.value * one.right.right.value)

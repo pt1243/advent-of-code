@@ -4,7 +4,7 @@ with open("./2015/resources/25.txt") as f:
     console_message = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     split = console_message.split()
     row, col = int(split[15].strip(",")), int(split[17].strip("."))
 

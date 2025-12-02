@@ -22,7 +22,7 @@ def key_stretching(i: int) -> str:
     return current
 
 
-def problem_1() -> None:
+def part_1() -> None:
     num_keys_found = 0
     for i in count():
         hex_string = hash_salt(i)
@@ -43,7 +43,7 @@ def problem_1() -> None:
                     break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_keys_found = 0
     for i in count():
         hex_string = key_stretching(i)

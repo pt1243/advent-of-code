@@ -16,7 +16,7 @@ def get_area(vertices: Sequence[tuple[int, int]]) -> int:
     return int(area) + 1
 
 
-def problem_1() -> None:
+def part_1() -> None:
     vertices = [(0, 0)]
     directions = {"U": (0, 1), "D": (0, -1), "L": (-1, 0), "R": (1, 0)}
     for line in lines:
@@ -29,7 +29,7 @@ def problem_1() -> None:
     print(get_area(vertices))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     vertices = [(0, 0)]
     directions = {"3": (0, 1), "1": (0, -1), "2": (-1, 0), "0": (1, 0)}
     for line in lines:

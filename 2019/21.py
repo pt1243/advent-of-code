@@ -180,7 +180,7 @@ class IntcodeProgram:
                 raise ValueError(f"unknown opcode {opcode} at index {self.i}")
 
 
-def problem_1() -> None:
+def part_1() -> None:
     # note: droid always jumps forward 4 spaces; so, if an upcoming space is empty and D is ground, we should jump
     springscript_program = [
         "NOT A J",
@@ -195,7 +195,7 @@ def problem_1() -> None:
     print(springdroid.output_queue.pop())
 
 
-def problem_2() -> None:
+def part_2() -> None:
     springscript_program = [
         # only jump if at least one of A, B, and C is not ground
         "NOT A J",

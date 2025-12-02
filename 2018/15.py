@@ -165,12 +165,12 @@ def simulate_game(text_input: list[str], elf_attack_power: int = 3) -> tuple[int
     assert False  # so that mypy can be sure that this is unreachable
 
 
-def problem_1() -> None:
+def part_1() -> None:
     outcome, _ = simulate_game(lines)
     print(outcome)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for elf_attack_power in count(4):
         outcome, no_elves_dead = simulate_game(lines, elf_attack_power)
         if no_elves_dead:

@@ -2,7 +2,7 @@ with open("./2017/resources/9.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     depth = 0
     total_score = 0
     in_garbage = False
@@ -31,7 +31,7 @@ def problem_1() -> None:
     print(total_score)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     in_garbage = False
     i = 0
     characters = 0

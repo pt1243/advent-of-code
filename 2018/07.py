@@ -5,7 +5,7 @@ with open("./2018/resources/7.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     all_letters_set: set[str] = set()
     prerequisites: defaultdict[str, list[str]] = defaultdict(list)
     for line in lines:
@@ -29,7 +29,7 @@ def problem_1() -> None:
     print(result)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_letters_set: set[str] = set()
     prerequisites: defaultdict[str, list[str]] = defaultdict(list)
     for line in lines:

@@ -30,12 +30,12 @@ def perform_renovations() -> set[tuple[int, int]]:
     return black_tiles
 
 
-def problem_1() -> None:
+def part_1() -> None:
     black_tiles = perform_renovations()
     print(len(black_tiles))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     current_black_tiles = perform_renovations()
 
     for _ in range(100):

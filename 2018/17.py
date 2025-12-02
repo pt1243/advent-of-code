@@ -42,7 +42,7 @@ def fill(x: int, y: int, tiles: defaultdict[tuple[int, int], str], max_y: int) -
     return tiles
 
 
-def problem_1() -> None:
+def part_1() -> None:
     tiles: defaultdict[tuple[int, int], str] = defaultdict(lambda: ".")
     for line in lines:
         left, right = line.split(", ")
@@ -61,7 +61,7 @@ def problem_1() -> None:
     print(sum(1 for (_, y), tile in tiles.items() if tile in ("|", "~") and min_y <= y <= max_y))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     tiles: defaultdict[tuple[int, int], str] = defaultdict(lambda: ".")
     for line in lines:
         left, right = line.split(", ")

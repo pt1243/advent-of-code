@@ -14,7 +14,7 @@ class State(NamedTuple):
     current_1_next: str
 
 
-def problem_1() -> None:
+def part_1() -> None:
     blueprint_states = blueprint.split("\n\n")
     header = blueprint_states[0].split("\n")
     starting_state = header[0].split()[-1][0]

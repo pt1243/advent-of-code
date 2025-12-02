@@ -2,7 +2,7 @@ with open("./2017/resources/19.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     num_letters = len([char for row in lines for char in row if char.isupper()])
     row, col = 0, lines[0].index("|")
     direction = "d"
@@ -30,7 +30,7 @@ def problem_1() -> None:
                 direction = "u" if row > 0 and not lines[row - 1][col].isspace() else "d"
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_letters = len([char for row in lines for char in row if char.isupper()])
     row, col = 0, lines[0].index("|")
     direction = "d"

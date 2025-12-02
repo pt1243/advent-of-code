@@ -5,7 +5,7 @@ with open("./2018/resources/16.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     samples = text.split("\n\n\n\n")[0]
     opcodes: list[Callable[[dict[int, int], int, int], int]] = [
         lambda r, a, b: r[a] + r[b],  # addr
@@ -43,7 +43,7 @@ def problem_1() -> None:
     print(three_or_more)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     samples, program = text.split("\n\n\n\n")
     opcodes: list[Callable[[dict[int, int], int, int], int]] = [
         lambda r, a, b: r[a] + r[b],  # addr

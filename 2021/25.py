@@ -4,7 +4,7 @@ with open("./2021/resources/25.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     east_sea_cucumbers: set[tuple[int, int]] = set()
     south_sea_cucumbers: set[tuple[int, int]] = set()
     for row, line in enumerate(lines):

@@ -129,9 +129,9 @@ def find_min_steps(lines: list[str], extra_first_floor_elements: list[str] | Non
                     heapq.heappush(possible_states, new_state)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(find_min_steps(lines))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(find_min_steps(lines, extra_first_floor_elements=["elerium", "dilithium"]))

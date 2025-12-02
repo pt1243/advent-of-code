@@ -2,7 +2,7 @@ with open("./2018/resources/14.txt") as f:
     number_of_recipes = int(f.read().strip())
 
 
-def problem_1() -> None:
+def part_1() -> None:
     recipes = [3, 7]
     index_1, index_2 = 0, 1
     while len(recipes) < number_of_recipes + 10:
@@ -17,7 +17,7 @@ def problem_1() -> None:
     print("".join(str(x) for x in recipes[number_of_recipes : number_of_recipes + 10]))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     recipes = [3, 7]
     index_1, index_2 = 0, 1
     target_digits = [int(c) for c in str(number_of_recipes)]

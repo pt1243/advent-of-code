@@ -2,7 +2,7 @@ with open("./2019/resources/3.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     directions = {"U": (-1, 0), "R": (0, 1), "D": (1, 0), "L": (0, -1)}
     first_wire_seen: set[tuple[int, int]] = set()
     second_wire_seen: set[tuple[int, int]] = set()
@@ -30,7 +30,7 @@ def problem_1() -> None:
     print(min(abs(p[0]) + abs(p[1]) for p in first_wire_seen & second_wire_seen))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     directions = {"U": (-1, 0), "R": (0, 1), "D": (1, 0), "L": (0, -1)}
     first_wire_seen: set[tuple[int, int]] = set()
     first_wire_steps: dict[tuple[int, int], int] = {}

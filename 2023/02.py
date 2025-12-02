@@ -4,7 +4,7 @@ with open("./2023/resources/2.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     limits = {
         "red": 12,
         "green": 13,
@@ -28,7 +28,7 @@ def problem_1() -> None:
     print(sum_game_ids)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total_power = 0
     for game in lines:
         observations = game.split(": ")[1]

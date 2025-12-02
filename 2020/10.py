@@ -6,7 +6,7 @@ with open("./2020/resources/10.txt") as f:
     all_adapters = {int(x) for x in f.read().splitlines()}
 
 
-def problem_1() -> None:
+def part_1() -> None:
     all_adapters.add(0)
     all_adapters.add(max(all_adapters) + 3)
     one_jolt_differences = 0
@@ -19,7 +19,7 @@ def problem_1() -> None:
     print(one_jolt_differences * three_jolt_differences)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_adapters.add(0)
     all_adapters.add(max(all_adapters) + 3)
     total = 1

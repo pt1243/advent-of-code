@@ -10,7 +10,7 @@ class Rock(NamedTuple):
     positions: list[tuple[int, int]]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     all_rocks = cycle(
         (
             Rock(4, [(0, 0), (0, 1), (0, 2), (0, 3)]),
@@ -52,7 +52,7 @@ def problem_1() -> None:
     print(highest_point)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_rocks = cycle(
         enumerate(
             (

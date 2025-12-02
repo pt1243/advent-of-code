@@ -38,14 +38,14 @@ class Wire:
         return cls.lookup[arg].evaluate()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for connection in connections:
         Wire(connection)
 
     print(Wire.lookup["a"].evaluate())
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for connection in connections:
         Wire(connection)
 

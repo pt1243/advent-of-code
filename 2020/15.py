@@ -22,9 +22,9 @@ def get_number_said(n: int) -> int:
     return last_spoken
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(get_number_said(2020))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(get_number_said(30000000))

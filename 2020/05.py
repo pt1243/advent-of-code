@@ -2,12 +2,12 @@ with open("./2020/resources/5.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     seat_ids = [int(line.replace("F", "0").replace("B", "1").replace("L", "0").replace("R", "1"), 2) for line in lines]
     print(max(seat_ids))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     all_seat_ids = {
         int(line.replace("F", "0").replace("B", "1").replace("L", "0").replace("R", "1"), 2) for line in lines
     }

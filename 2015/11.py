@@ -34,10 +34,10 @@ def get_next_password(current: str) -> str:
             return "".join(chr(c + ord("a")) for c in password)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(get_next_password(current_password))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     first = get_next_password(current_password)
     print(get_next_password(first))

@@ -2,7 +2,7 @@ with open("./2022/resources/5.txt") as f:
     text = f.read().rstrip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     starting_stacks, moves = text.split("\n\n")
     lines = starting_stacks.split("\n")[:-1]
     num_stacks = max(len(line) for line in lines) // 4 + 1
@@ -19,7 +19,7 @@ def problem_1() -> None:
     print("".join(stack[-1] for stack in stacks))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     starting_stacks, moves = text.split("\n\n")
     lines = starting_stacks.split("\n")[:-1]
     num_stacks = max(len(line) for line in lines) // 4 + 1

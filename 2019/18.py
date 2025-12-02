@@ -34,7 +34,7 @@ def get_distances(lines: list[str]) -> defaultdict[str, dict[str, int]]:
     return distances
 
 
-def problem_1() -> None:
+def part_1() -> None:
     distances = get_distances(lines)
     all_keys = {k for k in distances.keys() if k.islower()}
     all_paths: list[tuple[int, set[str], str]] = [(0, set(), "@")]
@@ -60,7 +60,7 @@ def problem_1() -> None:
             heapq.heappush(all_paths, (distance + distance_to_next_step, new_keys, possible_next_step))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     width, height = len(lines[0]), len(lines)
     vertical_midpoint, horizontal_midpoint = height // 2, width // 2
     top_line = lines[vertical_midpoint - 1]

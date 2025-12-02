@@ -41,13 +41,13 @@ class Monkey:
             type(self).lookup[cast(str, self.right)].parent = self
 
 
-def problem_1() -> None:
+def part_1() -> None:
     for line in lines:
         Monkey(line)
     print(Monkey.lookup["root"].evaluate())
 
 
-def problem_2() -> None:
+def part_2() -> None:
     for line in lines:
         Monkey(line)
     for monkey in Monkey.lookup.values():

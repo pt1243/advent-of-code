@@ -5,7 +5,7 @@ with open("./2015/resources/17.txt") as f:
     sizes = [int(size) for size in f.read().splitlines()]
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for comb in product((True, False), repeat=len(sizes)):
         comb_total = 0
@@ -18,7 +18,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_ways: defaultdict[int, int] = defaultdict(int)
     for comb in product((True, False), repeat=len(sizes)):
         comb_total = 0

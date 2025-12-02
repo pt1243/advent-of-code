@@ -2,7 +2,7 @@ with open("./2020/resources/25.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     card_target = int(lines[0])
     door_target = int(lines[1])
 

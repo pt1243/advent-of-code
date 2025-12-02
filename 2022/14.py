@@ -5,7 +5,7 @@ with open("./2022/resources/14.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     occupied: set[tuple[int, int]] = set()
     int_pattern = re.compile(r"-?\d+")
     for line in lines:
@@ -44,7 +44,7 @@ def problem_1() -> None:
     print(sand)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     occupied: set[tuple[int, int]] = set()
     int_pattern = re.compile(r"-?\d+")
     for line in lines:

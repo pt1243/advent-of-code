@@ -25,7 +25,7 @@ def get_cost(starting_states: list[tuple[int, int, int]], from_end: bool = False
     return costs
 
 
-def problem_1() -> None:
+def part_1() -> None:
     start_row = next(i for i, line in enumerate(lines) if "S" in line)
     start_col = lines[start_row].index("S")
     end_row = next(i for i, line in enumerate(lines) if "E" in line)
@@ -34,7 +34,7 @@ def problem_1() -> None:
     print(min(cost for state, cost in costs_from_start.items() if state[0] == end_row and state[1] == end_col))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     start_row = next(i for i, line in enumerate(lines) if "S" in line)
     start_col = lines[start_row].index("S")
     end_row = next(i for i, line in enumerate(lines) if "E" in line)

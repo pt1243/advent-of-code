@@ -78,7 +78,7 @@ def shortest_distance_directional(key_sequence: str, depth: int) -> int:
     return total
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for code in codes:
         min_keypresses = min(
@@ -89,7 +89,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for code in codes:
         min_keypresses = min(

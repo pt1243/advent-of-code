@@ -35,7 +35,7 @@ class Component:
                 c.connections.add(cls.lookup[connection_name])
 
 
-def problem_1() -> None:
+def part_1() -> None:
     all_connections: list[tuple[str, str]] = []
     for line in lines:
         left, right = line.split(": ")

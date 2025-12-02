@@ -2,7 +2,7 @@ with open("./2018/resources/12.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     initial_state, all_rules = text.split("\n\n")
     state = [True if char == "#" else False for char in initial_state.split(": ")[1]]
     rules: dict[tuple[bool, ...], bool] = {}
@@ -34,7 +34,7 @@ def problem_1() -> None:
     print(sum(i for i, plant in enumerate(state, start=min_index) if plant))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     initial_state, all_rules = text.split("\n\n")
     state = [True if char == "#" else False for char in initial_state.split(": ")[1]]
     rules: dict[tuple[bool, ...], bool] = {}

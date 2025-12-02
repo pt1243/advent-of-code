@@ -4,7 +4,7 @@ with open("./2021/resources/17.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     *_, x_range, y_range = text.split()
     x_values = x_range[2:-1].split("..")
     y_values = y_range[2:].split("..")
@@ -35,7 +35,7 @@ def problem_1() -> None:
     print(height)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     *_, x_range, y_range = text.split()
     x_values = x_range[2:-1].split("..")
     y_values = y_range[2:].split("..")

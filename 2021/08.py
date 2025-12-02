@@ -4,7 +4,7 @@ with open("./2021/resources/8.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     appearances = 0
     for line in lines:
         outputs = line.split(" | ")[1].split()
@@ -12,7 +12,7 @@ def problem_1() -> None:
     print(appearances)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     digit_outputs = {
         frozenset({"a", "b", "c", "e", "f", "g"}): "0",

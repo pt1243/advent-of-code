@@ -2,7 +2,7 @@ with open("./2015/resources/16.txt") as f:
     sues = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     fields = (
         "children",
         "cats",
@@ -51,7 +51,7 @@ def problem_1() -> None:
             break
 
 
-def problem_2() -> None:
+def part_2() -> None:
     fields = (
         "children",
         "cats",

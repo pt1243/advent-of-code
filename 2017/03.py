@@ -6,7 +6,7 @@ with open("./2017/resources/3.txt") as f:
     number = int(f.read().strip())
 
 
-def problem_1() -> None:
+def part_1() -> None:
     n = ceil(sqrt(number))
     if n % 2 == 0:
         n += 1
@@ -30,7 +30,7 @@ def problem_1() -> None:
     print(mid_distance + n // 2)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     grid_size = 20
     grid = np.zeros((grid_size + 1, grid_size + 1), dtype=int)
     zero_y, zero_x = grid_size // 2, grid_size // 2

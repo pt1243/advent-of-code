@@ -6,7 +6,7 @@ with open("./2018/resources/19.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     registers = {i: 0 for i in range(6)}
     ip_register = int(lines[0].split()[1])
     instructions = lines[1:]
@@ -40,7 +40,7 @@ def problem_1() -> None:
     print(registers[0])
 
 
-def problem_2() -> None:
+def part_2() -> None:
     registers = {i: 0 for i in range(6)}
     registers[0] = 1
     ip_register = int(lines[0].split()[1])

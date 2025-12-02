@@ -2,7 +2,7 @@ with open("./2022/resources/4.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total = 0
     for line in lines:
         first, second = line.split(",")
@@ -15,7 +15,7 @@ def problem_1() -> None:
     print(total)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total = 0
     for line in lines:
         first, second = line.split(",")

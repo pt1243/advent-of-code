@@ -24,11 +24,11 @@ def get_num_positions(steps: int) -> int:
     return len(current)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(get_num_positions(64))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     f0 = get_num_positions(65 + 131 * 0)
     f1 = get_num_positions(65 + 131 * 1)
     f2 = get_num_positions(65 + 131 * 2)

@@ -5,7 +5,7 @@ with open("./2018/resources/4.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     num_nights = sum((1 for line in lines if "#" in line))
     sorted_lines = sorted(lines)
     guard_numbers: set[int] = set()
@@ -34,7 +34,7 @@ def problem_1() -> None:
     print(most_time_asleep_guard * minute_most_asleep)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     num_nights = sum((1 for line in lines if "#" in line))
     sorted_lines = sorted(lines)
     guard_numbers: set[int] = set()

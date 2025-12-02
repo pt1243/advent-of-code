@@ -13,7 +13,7 @@ def get_position(length: int, steps: int) -> int:
     return pos
 
 
-def problem_1() -> None:
+def part_1() -> None:
     severity = 0
     max_depth = max(layers)
     for current_position in range(max_depth + 1):
@@ -23,7 +23,7 @@ def problem_1() -> None:
     print(severity)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     max_depth = max(layers)
     for start_offset in count():
         for current_position in range(max_depth + 1):

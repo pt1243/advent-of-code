@@ -83,7 +83,7 @@ class Workflow:
         return total
 
 
-def problem_1() -> None:
+def part_1() -> None:
     workflows, parts = input_text.split("\n\n")
     for workflow in workflows.split("\n"):
         paren_index = workflow.index("{")
@@ -100,7 +100,7 @@ def problem_1() -> None:
     print(sum_of_rating_numbers)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     workflows = input_text.split("\n\n")[0]
     for workflow in workflows.split("\n"):
         paren_index = workflow.index("{")

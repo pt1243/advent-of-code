@@ -6,7 +6,7 @@ with open("./2018/resources/3.txt") as f:
     lines = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     fabric = np.zeros((1000, 1000), dtype=int)
     for claim in lines:
         _, positions = claim.split(" @ ")
@@ -17,7 +17,7 @@ def problem_1() -> None:
     print(np.sum(fabric >= 2))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     claims_made: defaultdict[tuple[int, int], list[int]] = defaultdict(list)
     for claim in lines:
         claim_id, positions = claim.split(" @ ")

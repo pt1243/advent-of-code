@@ -69,7 +69,7 @@ def simulate(player_hp: int, player_damage: int, player_armour: int) -> bool:
     return player_hp > 0
 
 
-def problem_1() -> None:
+def part_1() -> None:
     min_cost = float("inf")
     for weapon, armour, ring_combo in product(weapon_choices, armour_choices, ring_choices):
         total_cost = weapon.cost + armour.cost + ring_combo.cost
@@ -83,7 +83,7 @@ def problem_1() -> None:
     print(min_cost)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     max_cost = 0
     for weapon, armour, ring_combo in product(weapon_choices, armour_choices, ring_choices):
         total_cost = weapon.cost + armour.cost + ring_combo.cost

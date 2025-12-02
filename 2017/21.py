@@ -68,9 +68,9 @@ def run_iterations(iterations: int) -> int:
     return cast(int, np.sum(pattern))
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(run_iterations(5))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     print(run_iterations(18))

@@ -2,7 +2,7 @@ with open("./2024/resources/15.txt") as f:
     text = f.read().strip()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     grid_lines, moves = text.split("\n\n")
     directions = {"^": (-1, 0), ">": (0, 1), "v": (1, 0), "<": (0, -1)}
     walls: set[tuple[int, int]] = set()
@@ -42,7 +42,7 @@ def problem_1() -> None:
     print(sum(100 * box[0] + box[1] for box in boxes))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     grid_lines, moves = text.split("\n\n")
     directions = {"^": (-1, 0), ">": (0, 1), "v": (1, 0), "<": (0, -1)}
     walls: set[tuple[int, int]] = set()

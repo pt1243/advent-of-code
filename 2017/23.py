@@ -5,7 +5,7 @@ with open("./2017/resources/23.txt") as f:
     instructions = f.read().splitlines()
 
 
-def problem_1() -> None:
+def part_1() -> None:
     i = 0
     times_mul_invoked = 0
     registers: defaultdict[str, int] = defaultdict(int)
@@ -37,7 +37,7 @@ def problem_1() -> None:
     print(times_mul_invoked)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     lower_bound = int(instructions[0].split()[2]) * int(instructions[4].split()[2]) - int(instructions[5].split()[2])
     upper_bound = lower_bound - int(instructions[7].split()[2])
     step = -int(instructions[-2].split()[2])

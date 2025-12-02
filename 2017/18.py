@@ -83,7 +83,7 @@ class AsyncProgram:
                 raise ValueError
 
 
-def problem_1() -> None:
+def part_1() -> None:
     i = 0
     last_sound = 0
     registers: defaultdict[str, int] = defaultdict(int)
@@ -148,7 +148,7 @@ def problem_1() -> None:
             i += jump
 
 
-def problem_2() -> None:
+def part_2() -> None:
     p0 = AsyncProgram(lines, 0)
     p1 = AsyncProgram(lines, 1)
     while True:

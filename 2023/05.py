@@ -46,13 +46,13 @@ def process_transformations(initial_ranges: list[tuple[int, int]]) -> list[tuple
     return current_ranges
 
 
-def problem_1() -> None:
+def part_1() -> None:
     initial_ranges = [(int(start), 1) for start in input_text.split("\n")[0].split(": ")[1].split()]
     transformed_ranges = process_transformations(initial_ranges)
     print(min(transformed_ranges)[0])
 
 
-def problem_2() -> None:
+def part_2() -> None:
     nums = [int(x) for x in input_text.split("\n")[0].split(": ")[1].split()]
     initial_ranges = cast(list[tuple[int, int]], list(batched(nums, 2)))
     transformed_ranges = process_transformations(initial_ranges)

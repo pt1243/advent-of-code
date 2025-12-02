@@ -25,7 +25,7 @@ def knot_hash(text: str) -> str:
     return "".join(hex(b)[2:].zfill(2) for b in blocks)
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total_used = 0
     for i in range(128):
         hex_string = knot_hash(f"{key_string}-{i}")
@@ -35,7 +35,7 @@ def problem_1() -> None:
     print(total_used)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     groups: defaultdict[tuple[int, int], int] = defaultdict(int)
     all_squares: list[str] = []
     for i in range(128):

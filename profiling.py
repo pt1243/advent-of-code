@@ -15,15 +15,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("year", type=int)
     parser.add_argument("day", type=int)
-    parser.add_argument("problem", type=int)
+    parser.add_argument("part", type=int)
     args = parser.parse_args()
 
     year = args.year
     day = args.day
-    problem = args.problem
+    part = args.part
 
     module = importlib.import_module(f"{year}.{str(day).zfill(2)}", package=".")
-    function = getattr(module, f"problem_{problem}")
+    function = getattr(module, f"part_{part}")
     pr = cProfile.Profile()
     pr.runcall(function)
     with tempfile.TemporaryDirectory() as temp_dir:

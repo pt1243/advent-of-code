@@ -27,7 +27,7 @@ def num_possibilities(record: str, groups: tuple[int, ...]) -> int:
     return total
 
 
-def problem_1() -> None:
+def part_1() -> None:
     total_arrangements = 0
     for line in lines:
         springs, groups_str = line.split()
@@ -36,7 +36,7 @@ def problem_1() -> None:
     print(total_arrangements)
 
 
-def problem_2() -> None:
+def part_2() -> None:
     total_arrangements = 0
     for line in lines:
         springs, groups_str = line.split()

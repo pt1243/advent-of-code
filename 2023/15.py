@@ -18,11 +18,11 @@ class Lens(NamedTuple):
     focal_length: int
 
 
-def problem_1() -> None:
+def part_1() -> None:
     print(sum(hash_algorithm(s) for s in strings))
 
 
-def problem_2() -> None:
+def part_2() -> None:
     boxes: dict[int, list[Lens]] = {i: [] for i in range(256)}
     for s in strings:
         if "=" in s:
