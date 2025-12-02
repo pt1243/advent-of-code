@@ -3,3 +3,4 @@ ruff
 mypy
 specialist
 ty
+pre-commit
