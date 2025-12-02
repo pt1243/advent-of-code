@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-
 with open("./2018/resources/8.txt") as f:
     numbers = [int(n) for n in f.read().strip().split()]
 

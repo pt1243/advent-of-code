@@ -1,6 +1,5 @@
 from typing import Generator
 
-
 with open("./2017/resources/15.txt") as f:
     lines = f.read().splitlines()
 

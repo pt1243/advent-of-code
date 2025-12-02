@@ -1,7 +1,6 @@
 from collections.abc import Iterator
 from itertools import cycle
 
-
 with open("./2015/resources/14.txt") as f:
     lines = f.read().splitlines()
 

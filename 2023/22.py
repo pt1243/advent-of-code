@@ -1,8 +1,8 @@
 from __future__ import annotations
+
 from copy import deepcopy
 from itertools import product
 from operator import attrgetter
-
 
 with open("./2023/resources/22.txt") as f:
     lines = f.read().splitlines()

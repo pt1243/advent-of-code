@@ -1,7 +1,7 @@
 from collections.abc import Generator
 from itertools import accumulate, islice, pairwise, product
-from more_itertools import sliding_window
 
+from more_itertools import sliding_window
 
 with open("./2024/resources/22.txt") as f:
     secret_nums = [int(line) for line in f.read().splitlines()]

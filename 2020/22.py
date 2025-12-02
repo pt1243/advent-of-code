@@ -1,7 +1,6 @@
 from collections import deque
 from typing import Literal
 
-
 with open("./2020/resources/22.txt") as f:
     text = f.read().strip()
 

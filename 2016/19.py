@@ -1,6 +1,5 @@
 from math import floor, log, log2
 
-
 with open("./2016/resources/19.txt") as f:
     num_elves = int(f.read().strip())
 

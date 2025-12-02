@@ -1,11 +1,11 @@
 from __future__ import annotations
+
 from ast import literal_eval
 from copy import deepcopy
 from dataclasses import dataclass
 from functools import reduce
-from math import floor, ceil
+from math import ceil, floor
 from typing import Union
-
 
 with open("./2021/resources/18.txt") as f:
     lines = f.read().splitlines()

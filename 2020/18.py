@@ -1,7 +1,7 @@
 from __future__ import annotations
-import ast
-from typing import cast, Union
 
+import ast
+from typing import Union, cast
 
 with open("./2020/resources/18.txt") as f:
     lines = f.read().splitlines()

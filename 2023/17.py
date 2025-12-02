@@ -1,6 +1,5 @@
-from collections import defaultdict
 import heapq
-
+from collections import defaultdict
 
 with open("./2023/resources/17.txt") as f:
     heat_map = [[int(char) for char in line] for line in f.read().splitlines()]

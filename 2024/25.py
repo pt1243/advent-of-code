@@ -1,5 +1,4 @@
-from itertools import islice, groupby
-
+from itertools import groupby, islice
 
 with open("./2024/resources/25.txt") as f:
     text = f.read().strip()

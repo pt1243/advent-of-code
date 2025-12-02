@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from math import ceil
 
-
 with open("./2021/resources/16.txt") as f:
     packet_hex = f.read().strip()
 

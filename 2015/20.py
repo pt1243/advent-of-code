@@ -1,7 +1,6 @@
 from itertools import count
 from math import isqrt
 
-
 with open("./2015/resources/20.txt") as f:
     target = int(f.read().strip())
 

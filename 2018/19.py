@@ -2,7 +2,6 @@ from collections import Counter
 from itertools import count, product
 from typing import Callable, Mapping
 
-
 with open("./2018/resources/19.txt") as f:
     lines = f.read().splitlines()
 

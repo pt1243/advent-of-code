@@ -1,7 +1,6 @@
-from collections import defaultdict, deque
 import heapq
+from collections import defaultdict, deque
 from itertools import count, pairwise
-
 
 with open("./2019/resources/15.txt") as f:
     program = [int(num) for num in f.read().strip().split(",")]

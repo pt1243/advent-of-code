@@ -1,6 +1,5 @@
-from collections import defaultdict
 import sys
-
+from collections import defaultdict
 
 sys.setrecursionlimit(10_000)
 

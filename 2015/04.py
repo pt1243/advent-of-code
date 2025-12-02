@@ -1,7 +1,6 @@
 from hashlib import md5
 from itertools import count
 
-
 with open("./2015/resources/4.txt") as f:
     prefix = f.read().strip()
 

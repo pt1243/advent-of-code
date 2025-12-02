@@ -1,8 +1,7 @@
-import numpy as np
-import numpy.typing as npt
-
 from typing import cast
 
+import numpy as np
+import numpy.typing as npt
 
 with open("./2017/resources/21.txt") as f:
     lines = f.read().splitlines()

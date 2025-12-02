@@ -1,8 +1,8 @@
-from collections import defaultdict
 import heapq
+from collections import defaultdict
+
 import numpy as np
 import numpy.typing as npt
-
 
 with open("./2021/resources/15.txt") as f:
     risk_levels = np.array([[int(char) for char in line] for line in f.read().splitlines()])

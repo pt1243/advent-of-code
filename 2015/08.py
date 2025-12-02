@@ -1,6 +1,5 @@
 import ast
 
-
 with open("./2015/resources/8.txt") as f:
     strings = f.read().splitlines()
 

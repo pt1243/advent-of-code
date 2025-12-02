@@ -1,6 +1,5 @@
-from collections import defaultdict
 import heapq
-
+from collections import defaultdict
 
 with open("./2016/resources/13.txt") as f:
     designer_number = int(f.read().strip())

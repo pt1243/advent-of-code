@@ -1,6 +1,5 @@
 from collections import deque
 
-
 with open("./2019/resources/5.txt") as f:
     nums = [int(num) for num in f.read().strip().split(",")]
 

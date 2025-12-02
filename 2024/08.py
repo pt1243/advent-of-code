@@ -2,7 +2,6 @@ from collections import defaultdict
 from itertools import combinations, count
 from math import gcd
 
-
 with open("./2024/resources/8.txt") as f:
     lines = f.read().splitlines()
 

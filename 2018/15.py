@@ -1,10 +1,9 @@
+import heapq
 from collections import defaultdict
 from dataclasses import dataclass
 from itertools import count
-import heapq
 from operator import itemgetter
 from typing import Literal
-
 
 with open("./2018/resources/15.txt") as f:
     lines = f.read().splitlines()

@@ -1,6 +1,5 @@
 from itertools import batched
 
-
 with open("./2016/resources/3.txt") as f:
     triangles = f.read().splitlines()
 

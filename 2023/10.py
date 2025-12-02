@@ -1,7 +1,7 @@
 import sys
 from enum import Enum
-import numpy as np
 
+import numpy as np
 
 sys.setrecursionlimit(10**6)
 

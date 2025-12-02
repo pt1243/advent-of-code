@@ -1,7 +1,6 @@
-from collections import defaultdict
 import bisect
 import heapq
-
+from collections import defaultdict
 
 with open("./2024/resources/18.txt") as f:
     lines = f.read().splitlines()

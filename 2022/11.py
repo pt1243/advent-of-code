@@ -1,11 +1,11 @@
 from __future__ import annotations
+
+import re
 from collections import deque
 from collections.abc import Callable
 from dataclasses import dataclass
 from math import lcm
 from operator import add, mul
-import re
-
 
 with open("./2022/resources/11.txt") as f:
     text = f.read().strip()

@@ -1,7 +1,6 @@
 from collections import deque
 from hashlib import md5
 
-
 with open("./2016/resources/17.txt") as f:
     passcode = f.read().strip()
 

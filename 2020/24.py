@@ -1,6 +1,5 @@
 import re
 
-
 with open("./2020/resources/24.txt") as f:
     lines = f.read().splitlines()
 

@@ -1,7 +1,6 @@
 from collections import defaultdict, deque
 from itertools import count
 
-
 with open("./2022/resources/23.txt") as f:
     lines = f.read().splitlines()
 

@@ -1,11 +1,11 @@
 from __future__ import annotations
+
+import heapq
 from collections import defaultdict
 from enum import Enum, auto
-import heapq
 from typing import Generator
 
 import numpy as np
-
 
 with open("./2018/resources/22.txt") as f:
     lines = f.read().splitlines()

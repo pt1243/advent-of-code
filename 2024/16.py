@@ -1,6 +1,5 @@
 import heapq
 
-
 with open("./2024/resources/16.txt") as f:
     lines = f.read().splitlines()
 

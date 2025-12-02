@@ -1,6 +1,5 @@
 from more_itertools import split_after
 
-
 with open("./2022/resources/8.txt") as f:
     trees = [[int(x) for x in line] for line in f.read().splitlines()]
 

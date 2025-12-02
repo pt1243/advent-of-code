@@ -1,6 +1,5 @@
 from typing import NamedTuple
 
-
 with open("./2016/resources/22.txt") as f:
     lines = f.read().splitlines()[2:]
 

@@ -1,6 +1,5 @@
 from collections import deque
 
-
 with open("./2017/resources/6.txt") as f:
     banks = deque(int(bank) for bank in f.read().strip().split())
 

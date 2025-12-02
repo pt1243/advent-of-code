@@ -1,6 +1,5 @@
 from functools import partial
 
-
 with open("./2016/resources/2.txt") as f:
     lines = f.read().splitlines()
 

@@ -1,7 +1,6 @@
 from collections import defaultdict
 from itertools import count
 
-
 with open("./2018/resources/7.txt") as f:
     lines = f.read().splitlines()
 

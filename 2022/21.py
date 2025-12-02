@@ -1,8 +1,8 @@
 from __future__ import annotations
-from collections.abc import Callable
-from operator import add, sub, mul, floordiv
-from typing import ClassVar, cast
 
+from collections.abc import Callable
+from operator import add, floordiv, mul, sub
+from typing import ClassVar, cast
 
 with open("./2022/resources/21.txt") as f:
     lines = f.read().splitlines()

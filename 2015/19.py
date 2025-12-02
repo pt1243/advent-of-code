@@ -3,7 +3,6 @@ from itertools import count
 
 from more_itertools import split_before
 
-
 with open("./2015/resources/19.txt") as f:
     lines = f.read().strip()
 

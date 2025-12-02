@@ -1,6 +1,5 @@
 import re
 
-
 with open("./2024/resources/3.txt") as f:
     text = f.read().strip()
 

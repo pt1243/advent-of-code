@@ -1,6 +1,6 @@
 from __future__ import annotations
-from typing import ClassVar
 
+from typing import ClassVar
 
 with open("./2017/resources/12.txt") as f:
     lines = f.read().splitlines()

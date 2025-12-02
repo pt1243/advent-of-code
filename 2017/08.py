@@ -1,6 +1,5 @@
-from collections import defaultdict
 import operator
-
+from collections import defaultdict
 
 with open("./2017/resources/8.txt") as f:
     lines = f.read().splitlines()

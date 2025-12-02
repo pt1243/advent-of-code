@@ -1,6 +1,5 @@
 from collections import Counter
 
-
 with open("./2024/resources/1.txt") as f:
     nums = [int(x) for x in f.read().strip().split()]
 

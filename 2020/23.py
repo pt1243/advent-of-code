@@ -1,7 +1,7 @@
 from __future__ import annotations
+
 from itertools import pairwise
 from typing import Generic, TypeVar
-
 
 with open("./2020/resources/23.txt") as f:
     cups = [int(char) for char in f.read().strip()]

@@ -1,7 +1,6 @@
 from collections import defaultdict
 from itertools import pairwise
 
-
 with open("./2021/resources/14.txt") as f:
     text = f.read().strip()
 

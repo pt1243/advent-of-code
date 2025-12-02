@@ -1,6 +1,5 @@
 from itertools import batched
 
-
 with open("./2022/resources/10.txt") as f:
     lines = f.read().splitlines()
 

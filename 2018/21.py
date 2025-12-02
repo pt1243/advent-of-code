@@ -1,6 +1,6 @@
 from __future__ import annotations
-from typing import Generator
 
+from typing import Generator
 
 with open("./2018/resources/21.txt") as f:
     lines = f.read().splitlines()

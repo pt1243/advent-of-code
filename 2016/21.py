@@ -1,7 +1,6 @@
 from collections import deque
 from itertools import permutations
 
-
 with open("./2016/resources/21.txt") as f:
     lines = f.read().splitlines()
 

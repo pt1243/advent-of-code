@@ -1,6 +1,5 @@
 from functools import cache
 
-
 with open("./2024/resources/19.txt") as f:
     text = f.read().strip()
 

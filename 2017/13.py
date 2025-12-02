@@ -1,6 +1,5 @@
 from itertools import count
 
-
 with open("./2017/resources/13.txt") as f:
     layers = {int(line.split(": ")[0]): int(line.split(": ")[1]) for line in f.read().splitlines()}
 

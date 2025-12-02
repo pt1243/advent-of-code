@@ -1,6 +1,5 @@
 from itertools import count
 
-
 with open("./2017/resources/16.txt") as f:
     steps = f.read().strip().split(",")
 

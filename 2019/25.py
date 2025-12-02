@@ -1,6 +1,6 @@
 from collections import defaultdict, deque
-from more_itertools import powerset_of_sets
 
+from more_itertools import powerset_of_sets
 
 with open("./2019/resources/25.txt") as f:
     program = [int(num) for num in f.read().strip().split(",")]

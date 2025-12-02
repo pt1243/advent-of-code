@@ -2,7 +2,6 @@ from collections import defaultdict
 
 import numpy as np
 
-
 with open("./2018/resources/3.txt") as f:
     lines = f.read().splitlines()
 

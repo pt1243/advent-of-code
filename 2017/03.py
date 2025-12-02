@@ -1,6 +1,6 @@
 from math import ceil, sqrt
-import numpy as np
 
+import numpy as np
 
 with open("./2017/resources/3.txt") as f:
     number = int(f.read().strip())

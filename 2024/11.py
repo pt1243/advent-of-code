@@ -1,7 +1,6 @@
 from collections import defaultdict
 from collections.abc import Iterable
 
-
 with open("./2024/resources/11.txt") as f:
     starting_stones = f.read().strip().split()
 

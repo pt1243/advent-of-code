@@ -1,6 +1,5 @@
 from collections import deque
 
-
 with open("./2017/resources/17.txt") as f:
     n_times = int(f.read().strip())
 

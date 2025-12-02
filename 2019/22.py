@@ -1,7 +1,6 @@
 from collections import deque
 from functools import reduce
 
-
 with open("./2019/resources/22.txt") as f:
     lines = f.read().splitlines()
 

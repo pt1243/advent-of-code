@@ -1,6 +1,5 @@
 from itertools import product
 
-
 with open("./2020/resources/17.txt") as f:
     lines = f.read().splitlines()
 

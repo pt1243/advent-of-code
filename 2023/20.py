@@ -1,9 +1,9 @@
 from __future__ import annotations
+
 from collections import deque
 from itertools import count
 from math import lcm
-from typing import ClassVar, cast, Literal
-
+from typing import ClassVar, Literal, cast
 
 with open("./2023/resources/20.txt") as f:
     lines = f.read().splitlines()

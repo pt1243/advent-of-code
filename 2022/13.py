@@ -3,7 +3,6 @@ from functools import cmp_to_key
 from itertools import zip_longest
 from typing import Union, cast
 
-
 with open("./2022/resources/13.txt") as f:
     text = f.read().strip()
 

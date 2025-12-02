@@ -1,7 +1,6 @@
 import numpy as np
 import numpy.typing as npt
 
-
 with open("./2016/resources/8.txt") as f:
     lines = f.read().splitlines()
 

@@ -2,11 +2,10 @@ from functools import reduce
 from itertools import combinations
 from math import floor
 from operator import mul
-from typing import cast, Sequence
+from typing import Sequence, cast
 
 import numpy as np
 import numpy.typing as npt
-
 
 with open("./2015/resources/24.txt") as f:
     weights = {int(weight) for weight in f.read().splitlines()}

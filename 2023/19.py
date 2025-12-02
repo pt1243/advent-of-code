@@ -1,7 +1,7 @@
 from __future__ import annotations
+
 from math import prod
 from typing import ClassVar
-
 
 with open("./2023/resources/19.txt") as f:
     input_text = f.read().strip()

@@ -1,7 +1,6 @@
 from collections import Counter
 from itertools import combinations
 
-
 with open("./2018/resources/2.txt") as f:
     lines = f.read().splitlines()
 

@@ -1,5 +1,4 @@
-from math import sin, cos, radians
-
+from math import cos, radians, sin
 
 with open("./2020/resources/12.txt") as f:
     lines = f.read().splitlines()

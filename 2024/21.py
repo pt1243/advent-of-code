@@ -1,7 +1,7 @@
 from functools import cache
 from itertools import pairwise, product
-from more_itertools import split_after
 
+from more_itertools import split_after
 
 with open("./2024/resources/21.txt") as f:
     codes = f.read().splitlines()

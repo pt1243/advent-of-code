@@ -1,7 +1,6 @@
 import numpy as np
 from more_itertools import split_before
 
-
 with open("./2018/resources/4.txt") as f:
     lines = f.read().splitlines()
 

@@ -1,7 +1,6 @@
-from itertools import permutations
 from collections import defaultdict
+from itertools import permutations
 from typing import MutableMapping
-
 
 with open("./2015/resources/13.txt") as f:
     lines = f.read().splitlines()

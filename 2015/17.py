@@ -1,7 +1,6 @@
 from collections import defaultdict
 from itertools import product
 
-
 with open("./2015/resources/17.txt") as f:
     sizes = [int(size) for size in f.read().splitlines()]
 

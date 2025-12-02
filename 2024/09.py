@@ -2,7 +2,6 @@ from collections import deque
 from itertools import batched, count
 from typing import cast
 
-
 with open("./2024/resources/9.txt") as f:
     nums = [int(x) for x in f.read().strip()]
 

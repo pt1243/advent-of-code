@@ -3,7 +3,6 @@ from itertools import groupby
 from math import atan2, pi
 from operator import itemgetter
 
-
 with open("./2019/resources/10.txt") as f:
     lines = f.read().splitlines()
 

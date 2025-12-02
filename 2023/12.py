@@ -1,7 +1,6 @@
 from functools import cache
 from itertools import repeat
 
-
 with open("./2023/resources/12.txt") as f:
     lines = f.read().splitlines()
 

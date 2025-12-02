@@ -1,7 +1,7 @@
 from __future__ import annotations
+
 from functools import cache
 from typing import ClassVar, Self
-
 
 with open("./2019/resources/6.txt") as f:
     lines = f.read().splitlines()

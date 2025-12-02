@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-
 with open("./2022/resources/20.txt") as f:
     lines = [int(line) for line in f.read().splitlines()]
 

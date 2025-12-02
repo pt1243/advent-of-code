@@ -1,7 +1,6 @@
 from collections import Counter, defaultdict
 from copy import deepcopy
 
-
 with open("./2020/resources/21.txt") as f:
     lines = f.read().splitlines()
 

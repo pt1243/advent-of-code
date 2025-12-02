@@ -1,6 +1,5 @@
-from itertools import pairwise, batched
 import re
-
+from itertools import batched, pairwise
 
 with open("./2022/resources/14.txt") as f:
     lines = f.read().splitlines()

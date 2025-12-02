@@ -1,7 +1,6 @@
 from itertools import batched
 from typing import cast
 
-
 with open("./2023/resources/5.txt") as f:
     input_text = f.read().strip()
 

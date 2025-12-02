@@ -4,7 +4,6 @@ from itertools import chain
 import numpy as np
 import numpy.typing as npt
 
-
 with open("./2019/resources/24.txt") as f:
     lines = f.read().splitlines()
 

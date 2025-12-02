@@ -1,7 +1,6 @@
 from itertools import pairwise
 from typing import Sequence
 
-
 with open("./2023/resources/18.txt") as f:
     lines = f.read().splitlines()
 

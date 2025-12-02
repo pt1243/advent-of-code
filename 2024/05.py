@@ -1,7 +1,6 @@
 from collections import defaultdict
 from itertools import combinations
 
-
 with open("./2024/resources/5.txt") as f:
     text = f.read().strip()
 

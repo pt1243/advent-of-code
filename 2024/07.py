@@ -1,7 +1,6 @@
 from collections.abc import Sequence
 from math import floor, log10
 
-
 with open("./2024/resources/7.txt") as f:
     lines = f.read().splitlines()
 

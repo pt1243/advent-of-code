@@ -1,6 +1,5 @@
 import numpy as np
 
-
 with open("./2015/resources/25.txt") as f:
     console_message = f.read().strip()
 

@@ -1,6 +1,5 @@
 import numpy as np
 
-
 with open("./2018/resources/11.txt") as f:
     grid_serial_number = int(f.read().strip())
 

@@ -1,7 +1,6 @@
 from itertools import pairwise
 from string import ascii_lowercase
 
-
 with open("./2015/resources/5.txt") as f:
     strings = f.read().splitlines()
 

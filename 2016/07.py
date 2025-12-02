@@ -1,6 +1,5 @@
 from more_itertools import sliding_window
 
-
 with open("./2016/resources/7.txt") as f:
     ips = f.read().splitlines()
 

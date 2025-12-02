@@ -1,6 +1,5 @@
 from itertools import cycle
 
-
 with open("./2018/resources/13.txt") as f:
     lines = f.read().splitlines()
 

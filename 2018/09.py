@@ -1,6 +1,5 @@
 from collections import deque
 
-
 with open("./2018/resources/9.txt") as f:
     words = f.read().strip().split()
 

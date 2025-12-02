@@ -1,6 +1,5 @@
 from more_itertools import sliding_window
 
-
 with open("./2022/resources/6.txt") as f:
     text = f.read().strip()
 

@@ -1,6 +1,5 @@
 from more_itertools import sliding_window
 
-
 with open("./2024/resources/4.txt") as f:
     lines = f.read().splitlines()
 

@@ -1,6 +1,5 @@
 from collections import defaultdict
 
-
 with open("./2024/resources/20.txt") as f:
     lines = f.read().splitlines()
 

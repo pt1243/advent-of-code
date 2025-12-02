@@ -1,6 +1,5 @@
 from collections import Counter
 
-
 with open("./2020/resources/2.txt") as f:
     lines = f.read().splitlines()
 

@@ -1,7 +1,6 @@
 from collections.abc import Iterator
 from typing import NamedTuple
 
-
 with open("./2015/resources/15.txt") as f:
     lines = f.read().splitlines()
 

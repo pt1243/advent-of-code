@@ -2,8 +2,7 @@ import heapq
 from itertools import product
 from math import ceil, log2
 from operator import itemgetter
-from typing import cast, NamedTuple
-
+from typing import NamedTuple, cast
 
 with open("./2018/resources/23.txt") as f:
     lines = f.read().splitlines()

@@ -1,8 +1,8 @@
 from functools import cache
 from hashlib import md5
 from itertools import count
-from more_itertools import sliding_window
 
+from more_itertools import sliding_window
 
 with open("./2016/resources/14.txt") as f:
     salt = f.read().strip()

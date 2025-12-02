@@ -2,7 +2,6 @@ from collections import defaultdict, deque
 from functools import cache
 from itertools import count
 
-
 with open("./2019/resources/19.txt") as f:
     program = [int(num) for num in f.read().strip().split(",")]
 

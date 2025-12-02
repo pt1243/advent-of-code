@@ -1,7 +1,7 @@
 from collections import defaultdict
+
 import numpy as np
 import numpy.typing as npt
-
 
 with open("./2020/resources/20.txt") as f:
     text = f.read().strip()

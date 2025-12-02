@@ -3,7 +3,6 @@ from itertools import batched
 
 from more_itertools import sliding_window, split_when
 
-
 with open("./2019/resources/17.txt") as f:
     program = [int(num) for num in f.read().strip().split(",")]
 

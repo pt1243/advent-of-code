@@ -1,6 +1,5 @@
 from string import ascii_lowercase, ascii_uppercase
 
-
 with open("./2018/resources/5.txt") as f:
     starting_polymer = f.read().strip()
 

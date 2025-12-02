@@ -1,8 +1,7 @@
+import heapq
 from collections import defaultdict
 from collections.abc import Iterator
-import heapq
 from itertools import combinations
-
 
 with open("./2016/resources/24.txt") as f:
     lines = f.read().splitlines()

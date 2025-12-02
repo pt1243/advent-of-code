@@ -1,7 +1,6 @@
-from functools import cache
 import re
+from functools import cache
 from typing import cast
-
 
 with open("./2020/resources/19.txt") as f:
     text = f.read().strip()

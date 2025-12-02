@@ -1,6 +1,5 @@
-from itertools import product, combinations
+from itertools import combinations, product
 from typing import NamedTuple
-
 
 with open("./2015/resources/21.txt") as f:
     lines = f.read().splitlines()

@@ -1,6 +1,5 @@
 from itertools import batched
 
-
 with open("./2016/resources/16.txt") as f:
     initial_data = f.read().strip()
 

@@ -4,7 +4,6 @@ from typing import Literal
 import numpy as np
 import numpy.typing as npt
 
-
 with open("./2023/resources/14.txt") as f:
     lines = f.read().splitlines()
 

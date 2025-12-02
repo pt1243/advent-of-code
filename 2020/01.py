@@ -1,6 +1,5 @@
 from itertools import combinations
 
-
 with open("./2020/resources/1.txt") as f:
     nums = [int(x) for x in f.read().splitlines()]
 

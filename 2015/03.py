@@ -1,7 +1,6 @@
 from collections import defaultdict
 from itertools import batched
 
-
 with open("./2015/resources/3.txt") as f:
     directions = f.read().strip()
 

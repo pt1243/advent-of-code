@@ -1,6 +1,5 @@
-from collections import defaultdict
 import heapq
-
+from collections import defaultdict
 
 with open("./2019/resources/20.txt") as f:
     lines = f.read().splitlines()

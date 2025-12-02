@@ -1,6 +1,5 @@
 from itertools import count
 
-
 with open("./2016/resources/25.txt") as f:
     lines = f.read().splitlines()
 

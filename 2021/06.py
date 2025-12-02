@@ -1,6 +1,5 @@
 from collections import Counter
 
-
 with open("./2021/resources/6.txt") as f:
     text = f.read().strip()
 

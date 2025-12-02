@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import cast
 
-
 with open("./2018/resources/25.txt") as f:
     lines = f.read().splitlines()
 

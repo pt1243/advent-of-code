@@ -2,7 +2,6 @@ from itertools import pairwise
 
 from more_itertools import split_when
 
-
 with open("./2020/resources/10.txt") as f:
     all_adapters = {int(x) for x in f.read().splitlines()}
 

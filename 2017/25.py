@@ -1,7 +1,6 @@
 from collections import defaultdict
 from typing import NamedTuple
 
-
 with open("./2017/resources/25.txt") as f:
     blueprint = f.read().strip()
 

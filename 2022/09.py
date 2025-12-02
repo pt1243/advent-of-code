@@ -1,7 +1,6 @@
 from itertools import pairwise
 from typing import cast
 
-
 with open("./2022/resources/9.txt") as f:
     lines = f.read().splitlines()
 

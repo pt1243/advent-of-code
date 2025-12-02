@@ -3,7 +3,6 @@ from functools import reduce
 from itertools import batched
 from operator import xor
 
-
 with open("./2017/resources/14.txt") as f:
     key_string = f.read().strip()
 

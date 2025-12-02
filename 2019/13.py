@@ -1,7 +1,6 @@
 from collections import defaultdict, deque
 from itertools import batched
 
-
 with open("./2019/resources/13.txt") as f:
     program = [int(num) for num in f.read().strip().split(",")]
 

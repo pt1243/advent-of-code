@@ -1,7 +1,7 @@
 import re
 from typing import cast
-import numpy as np
 
+import numpy as np
 
 with open("./2024/resources/13.txt") as f:
     text = f.read().strip()

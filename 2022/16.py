@@ -1,8 +1,8 @@
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from itertools import combinations, pairwise
-from more_itertools import set_partitions
 
+from more_itertools import set_partitions
 
 with open("./2022/resources/16.txt") as f:
     lines = f.read().splitlines()

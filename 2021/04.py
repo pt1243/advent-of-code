@@ -1,6 +1,5 @@
 import numpy as np
 
-
 with open("./2021/resources/4.txt") as f:
     text = f.read().strip().split("\n\n")
 

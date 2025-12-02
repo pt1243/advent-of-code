@@ -1,11 +1,11 @@
 from __future__ import annotations
-from collections.abc import Sequence
+
 from collections import defaultdict
+from collections.abc import Sequence
 from functools import cache
 from itertools import combinations
-from operator import xor, or_, and_
+from operator import and_, or_, xor
 from typing import ClassVar, cast
-
 
 with open("./2024/resources/24.txt") as f:
     text = f.read().strip()

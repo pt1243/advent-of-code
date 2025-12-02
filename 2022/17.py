@@ -1,7 +1,6 @@
 from itertools import count, cycle
 from typing import NamedTuple
 
-
 with open("./2022/resources/17.txt") as f:
     text = f.read().strip()
 

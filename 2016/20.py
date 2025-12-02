@@ -1,6 +1,6 @@
 from itertools import count
-import numpy as np
 
+import numpy as np
 
 with open("./2016/resources/20.txt") as f:
     lines = f.read().splitlines()

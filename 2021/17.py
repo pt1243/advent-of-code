@@ -1,6 +1,5 @@
 from math import ceil, floor, sqrt
 
-
 with open("./2021/resources/17.txt") as f:
     text = f.read().strip()
 

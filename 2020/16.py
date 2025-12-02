@@ -1,7 +1,6 @@
 from copy import deepcopy
 from math import prod
 
-
 with open("./2020/resources/16.txt") as f:
     text = f.read().strip()
 

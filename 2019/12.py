@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from itertools import combinations, count
 from math import lcm
 
-
 with open("./2019/resources/12.txt") as f:
     lines = f.read().splitlines()
 

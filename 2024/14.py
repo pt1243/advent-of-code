@@ -4,7 +4,6 @@ from itertools import count
 from math import prod
 from statistics import stdev
 
-
 with open("./2024/resources/14.txt") as f:
     lines = f.read().splitlines()
 

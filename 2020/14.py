@@ -2,7 +2,6 @@ from itertools import product
 
 from more_itertools import split_before
 
-
 with open("./2020/resources/14.txt") as f:
     lines = f.read().splitlines()
 

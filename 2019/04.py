@@ -1,5 +1,4 @@
-from itertools import pairwise, groupby
-
+from itertools import groupby, pairwise
 
 with open("./2019/resources/4.txt") as f:
     low, high = (int(val) for val in f.read().strip().split("-"))

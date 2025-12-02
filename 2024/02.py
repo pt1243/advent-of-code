@@ -1,6 +1,5 @@
 from itertools import pairwise
 
-
 with open("./2024/resources/2.txt") as f:
     lines = [[int(x) for x in line.split()] for line in f.read().splitlines()]
 

@@ -1,7 +1,6 @@
 from copy import deepcopy
 from typing import Callable
 
-
 with open("./2018/resources/16.txt") as f:
     text = f.read().strip()
 

@@ -1,9 +1,9 @@
 from __future__ import annotations
+
+import random
 from collections import Counter, deque
 from itertools import pairwise
-import random
 from typing import ClassVar
-
 
 random.seed("AOC2023")
 

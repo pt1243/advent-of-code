@@ -1,6 +1,5 @@
-from itertools import cycle
 from functools import cache
-
+from itertools import cycle
 
 with open("./2021/resources/21.txt") as f:
     lines = f.read().splitlines()

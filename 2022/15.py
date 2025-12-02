@@ -2,7 +2,6 @@ import re
 from itertools import permutations
 from typing import NamedTuple
 
-
 with open("./2022/resources/15.txt") as f:
     lines = f.read().splitlines()
 

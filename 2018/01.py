@@ -1,6 +1,5 @@
 from itertools import cycle
 
-
 with open("./2018/resources/1.txt") as f:
     frequencies = [int(freq) for freq in f.read().splitlines()]
 

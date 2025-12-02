@@ -1,6 +1,5 @@
 import numpy as np
 
-
 with open("./2020/resources/11.txt") as f:
     lines = f.read().splitlines()
 

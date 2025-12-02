@@ -1,8 +1,8 @@
 from __future__ import annotations
+
 import json
 from collections.abc import Iterable, Mapping
 from typing import Union
-
 
 with open("./2015/resources/12.txt") as f:
     data = json.load(f)

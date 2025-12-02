@@ -1,6 +1,6 @@
 from collections import defaultdict
-from more_itertools import split_when
 
+from more_itertools import split_when
 
 with open("./2024/resources/12.txt") as f:
     lines = f.read().splitlines()

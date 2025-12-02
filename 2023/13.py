@@ -1,7 +1,6 @@
 import numpy as np
 import numpy.typing as npt
 
-
 with open("./2023/resources/13.txt") as f:
     contents = f.read().strip()
 

@@ -1,7 +1,6 @@
 from collections import defaultdict
 from math import ceil, sqrt
 
-
 with open("./2017/resources/23.txt") as f:
     instructions = f.read().splitlines()
 

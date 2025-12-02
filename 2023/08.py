@@ -1,9 +1,9 @@
 from __future__ import annotations
-from itertools import cycle
+
 from functools import cached_property
+from itertools import cycle
 from math import lcm
 from typing import ClassVar
-
 
 with open("./2023/resources/8.txt") as f:
     lines = f.read().splitlines()

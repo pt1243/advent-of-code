@@ -1,8 +1,7 @@
+import heapq
 from collections import namedtuple
 from itertools import chain, combinations
-import heapq
 from typing import cast
-
 
 with open("./2016/resources/11.txt") as f:
     lines = f.read().splitlines()

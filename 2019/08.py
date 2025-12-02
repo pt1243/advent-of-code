@@ -1,6 +1,5 @@
 import numpy as np
 
-
 with open("./2019/resources/8.txt") as f:
     text = f.read().strip()
 

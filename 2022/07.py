@@ -1,9 +1,10 @@
 from __future__ import annotations
+
 from collections.abc import Iterator
 from operator import methodcaller
 from typing import NamedTuple
-from more_itertools import split_before
 
+from more_itertools import split_before
 
 with open("./2022/resources/7.txt") as f:
     lines = f.read().splitlines()
