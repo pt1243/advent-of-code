@@ -1,6 +1,7 @@
 -r requirements.txt
-ruff
 mypy
+pre-commit
+ruff
+scipy-stubs
 specialist
 ty
-pre-commit
