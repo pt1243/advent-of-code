@@ -8,7 +8,7 @@ with open("./2019/resources/25.txt") as f:
 
 class IntcodeProgram:
     def __init__(self, program: list[int], input_queue: list[int] | None = None) -> None:
-        self.memory: defaultdict[int, int] = defaultdict(int)
+        self.memory = defaultdict[int, int](int)
         for i, val in enumerate(program):
             self.memory[i] = val
         self.i = 0
@@ -193,7 +193,7 @@ def part_1() -> None:
     blocks = output_text.split("\n\n")
     room_info = blocks[0]
     current_room = room_info[room_info.index("==") + 3 : room_info.rindex("==") - 1]
-    connections: defaultdict[str, dict[str, str]] = defaultdict(dict)
+    connections = defaultdict[str, dict[str, str]](dict)
     doors = blocks[1]
     for door in doors.split("\n")[1:]:
         connections[current_room][door[2:]] = ""

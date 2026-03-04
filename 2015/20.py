@@ -6,7 +6,7 @@ with open("./2015/resources/20.txt") as f:
 
 
 def sum_divisors(n: int) -> int:
-    found: set[int] = set()
+    found = set[int]()
     for i in range(1, isqrt(n) + 2):
         if n % i == 0:
             found.add(i)
@@ -15,7 +15,7 @@ def sum_divisors(n: int) -> int:
 
 
 def sum_divisors_part_2(n: int) -> int:
-    found: set[int] = set()
+    found = set[int]()
     for i in range(1, isqrt(n) + 2):
         if n % i == 0:
             f1, f2 = i, n // i

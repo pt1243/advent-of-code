@@ -5,7 +5,7 @@ with open("./2021/resources/5.txt") as f:
 
 
 def part_1() -> None:
-    counts: defaultdict[tuple[int, int], int] = defaultdict(int)
+    counts = defaultdict[tuple[int, int], int](int)
     for line in lines:
         start, end = line.split(" -> ")
         x1, y1 = (int(val) for val in start.split(","))
@@ -22,7 +22,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    counts: defaultdict[tuple[int, int], int] = defaultdict(int)
+    counts = defaultdict[tuple[int, int], int](int)
     for line in lines:
         start, end = line.split(" -> ")
         x1, y1 = (int(val) for val in start.split(","))

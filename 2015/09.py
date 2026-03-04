@@ -6,7 +6,7 @@ with open("./2015/resources/9.txt") as f:
 
 
 def part_1() -> None:
-    distances: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
+    distances = defaultdict[str, defaultdict[str, int]](lambda: defaultdict(int))
     for entry in all_distances:
         start, _, end, _, dist = entry.split()
         distances[start][end] = int(dist)
@@ -16,7 +16,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    distances: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
+    distances = defaultdict[str, defaultdict[str, int]](lambda: defaultdict(int))
     for entry in all_distances:
         start, _, end, _, dist = entry.split()
         distances[start][end] = int(dist)

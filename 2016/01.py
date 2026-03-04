@@ -21,7 +21,7 @@ def part_2() -> None:
     x, y = 0, 0
     directions = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)}
     direction = 0
-    seen: set[tuple[int, int]] = set()
+    seen = set[tuple[int, int]]()
 
     for step in steps:
         turn = step[0]

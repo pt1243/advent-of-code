@@ -8,7 +8,7 @@ with open("./2018/resources/4.txt") as f:
 def part_1() -> None:
     num_nights = sum((1 for line in lines if "#" in line))
     sorted_lines = sorted(lines)
-    guard_numbers: set[int] = set()
+    guard_numbers = set[int]()
     date_and_id = np.empty((num_nights, 3), dtype=int)
     sleep_records = np.zeros((num_nights, 60), dtype=bool)
     for i, block_of_lines in enumerate(split_before(sorted_lines, lambda line: "#" in line)):
@@ -37,7 +37,7 @@ def part_1() -> None:
 def part_2() -> None:
     num_nights = sum((1 for line in lines if "#" in line))
     sorted_lines = sorted(lines)
-    guard_numbers: set[int] = set()
+    guard_numbers = set[int]()
     date_and_id = np.empty((num_nights, 3), dtype=int)
     sleep_records = np.zeros((num_nights, 60), dtype=bool)
     for i, block_of_lines in enumerate(split_before(sorted_lines, lambda line: "#" in line)):

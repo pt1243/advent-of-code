@@ -6,12 +6,12 @@ with open("./2024/resources/11.txt") as f:
 
 
 def run_stones(starting_stones: Iterable[str], blinks: int) -> int:
-    stones: defaultdict[str, int] = defaultdict(int)
+    stones = defaultdict[str, int](int)
     for stone in starting_stones:
         stones[stone] += 1
 
     for _ in range(blinks):
-        new_stones: defaultdict[str, int] = defaultdict(int)
+        new_stones = defaultdict[str, int](int)
         num_zeros = stones.pop("0", 0)
         if num_zeros:
             new_stones["1"] = num_zeros

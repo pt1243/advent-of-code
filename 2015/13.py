@@ -7,7 +7,7 @@ with open("./2015/resources/13.txt") as f:
 
 
 def part_1() -> None:
-    happiness_by_person: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
+    happiness_by_person = defaultdict[str, defaultdict[str, int]](lambda: defaultdict(int))
     for line in lines:
         split = line.split()
         person_from = split[0]
@@ -28,7 +28,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    happiness_by_person: defaultdict[str, MutableMapping[str, int]] = defaultdict(lambda: defaultdict(int))
+    happiness_by_person = defaultdict[str, MutableMapping[str, int]](lambda: defaultdict(int))
     for line in lines:
         split = line.split()
         person_from = split[0]

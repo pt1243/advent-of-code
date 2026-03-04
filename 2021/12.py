@@ -5,7 +5,7 @@ with open("./2021/resources/12.txt") as f:
 
 
 def part_1() -> None:
-    connections: defaultdict[str, list[str]] = defaultdict(list)
+    connections = defaultdict[str, list[str]](list)
     for line in lines:
         left, right = line.split("-")
         connections[left].append(right)
@@ -31,7 +31,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    connections: defaultdict[str, list[str]] = defaultdict(list)
+    connections = defaultdict[str, list[str]](list)
     for line in lines:
         left, right = line.split("-")
         connections[left].append(right)

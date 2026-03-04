@@ -6,7 +6,7 @@ def enhance_image(image_enhancement_algorithm: str, lines: list[str], steps: int
     if image_enhancement_algorithm[0] != "#":
         raise ValueError("current implementation only works when index 0 is #")
 
-    on_pixels: set[tuple[int, int]] = set()
+    on_pixels = set[tuple[int, int]]()
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if char == "#":
@@ -14,7 +14,7 @@ def enhance_image(image_enhancement_algorithm: str, lines: list[str], steps: int
 
     for _ in range(steps // 2):
         # step 1: only keep track of pixels that will be off afterwards; everything else is on
-        off_pixels: set[tuple[int, int]] = set()
+        off_pixels = set[tuple[int, int]]()
         min_row = min(pixel[0] for pixel in on_pixels) - 1
         max_row = max(pixel[0] for pixel in on_pixels) + 1
         min_col = min(pixel[1] for pixel in on_pixels) - 1
@@ -30,7 +30,7 @@ def enhance_image(image_enhancement_algorithm: str, lines: list[str], steps: int
                     off_pixels.add((row, col))
 
         # step 2: only keep track of pixels that will be on afterwards; everything else is off
-        on_pixels = set()
+        on_pixels = set[tuple[int, int]]()
         min_row = min(pixel[0] for pixel in off_pixels) - 1
         max_row = max(pixel[0] for pixel in off_pixels) + 1
         min_col = min(pixel[1] for pixel in off_pixels) - 1

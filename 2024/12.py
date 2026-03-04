@@ -7,7 +7,7 @@ with open("./2024/resources/12.txt") as f:
 
 
 def part_1() -> None:
-    seen: set[tuple[int, int]] = set()
+    seen = set[tuple[int, int]]()
     width, height = len(lines[0]), len(lines)
 
     def mark_recursive(row: int, col: int, found: set[tuple[int, int]] | None = None) -> set[tuple[int, int]]:
@@ -49,7 +49,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    seen: set[tuple[int, int]] = set()
+    seen = set[tuple[int, int]]()
     width, height = len(lines[0]), len(lines)
 
     def mark_recursive(row: int, col: int, found: set[tuple[int, int]] | None = None) -> set[tuple[int, int]]:
@@ -77,8 +77,8 @@ def part_2() -> None:
 
     total = 0
     for region in regions:
-        vertical_edges: defaultdict[int, list[tuple[int, bool]]] = defaultdict(list)
-        horizontal_edges: defaultdict[int, list[tuple[int, bool]]] = defaultdict(list)
+        vertical_edges = defaultdict[int, list[tuple[int, bool]]](list)
+        horizontal_edges = defaultdict[int, list[tuple[int, bool]]](list)
         for row, col in region:
             if (row - 1, col) not in region:
                 horizontal_edges[row].append((col, True))

@@ -8,7 +8,7 @@ def part_1() -> None:
     total_flashes = 0
     current_brightnesses = {(row, col): int(char) for row, line in enumerate(lines) for col, char in enumerate(line)}
     for _ in range(100):
-        flashed: set[tuple[int, int]] = set()
+        flashed = set[tuple[int, int]]()
         new_brightnesses = {pos: brightness + 1 for pos, brightness in current_brightnesses.items()}
         while any(brightness > 9 for brightness in new_brightnesses.values()):
             for (row, col), brightness in new_brightnesses.copy().items():
@@ -46,7 +46,7 @@ def part_2() -> None:
     step = 0
     while True:
         step += 1
-        flashed: set[tuple[int, int]] = set()
+        flashed = set[tuple[int, int]]()
         new_brightnesses = {pos: brightness + 1 for pos, brightness in current_brightnesses.items()}
         while any(brightness > 9 for brightness in new_brightnesses.values()):
             for (row, col), brightness in new_brightnesses.copy().items():

@@ -19,7 +19,7 @@ class Component:
         self.name = name
         type(self).lookup[name] = self
         self._connection_names = connections
-        self.connections: set[Component] = set()
+        self.connections = set[Component]()
         self.reachable: bool = False
 
     def __hash__(self) -> int:

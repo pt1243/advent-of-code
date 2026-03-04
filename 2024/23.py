@@ -5,13 +5,13 @@ with open("./2024/resources/23.txt") as f:
 
 
 def part_1() -> None:
-    connections: defaultdict[str, set[str]] = defaultdict(set)
+    connections = defaultdict[str, set[str]](set)
     for line in lines:
         left, right = line.split("-")
         connections[left].add(right)
         connections[right].add(left)
 
-    groups_of_three: set[frozenset[str]] = set()
+    groups_of_three = set[frozenset[str]]()
     for first, first_connections in connections.items():
         for second in first_connections:
             for third in connections[second]:
@@ -21,13 +21,13 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    connections: defaultdict[str, set[str]] = defaultdict(set)
+    connections = defaultdict[str, set[str]](set)
     for line in lines:
         left, right = line.split("-")
         connections[left].add(right)
         connections[right].add(left)
 
-    largest_clique: set[str] = set()
+    largest_clique = set[str]()
     largest_clique_size = 0
 
     def bron_kerbosch(R: set[str], P: set[str], X: set[str]) -> None:

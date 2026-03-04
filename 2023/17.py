@@ -12,10 +12,10 @@ def a_star(min_dist: int, max_dist: int) -> int:
     target = (height - 1, width - 1)
     directions = ((-1, 0), (0, 1), (1, 0), (0, -1))
 
-    g_score: defaultdict[tuple[int, int, int], int] = defaultdict(lambda: 10**12)
+    g_score = defaultdict[tuple[int, int, int], int](lambda: 10**12)
     g_score[0, 0, 1] = 0
     g_score[0, 0, 2] = 0
-    f_score: defaultdict[tuple[int, int, int], int] = defaultdict(lambda: 10**12)
+    f_score = defaultdict[tuple[int, int, int], int](lambda: 10**12)
     starting_dist = target[0] + target[1]
     f_score[0, 0, 1] = starting_dist
     f_score[0, 0, 2] = starting_dist

@@ -8,7 +8,7 @@ with open("./2019/resources/15.txt") as f:
 
 class IntcodeProgram:
     def __init__(self, program: list[int], input_queue: list[int] | None = None) -> None:
-        self.memory: defaultdict[int, int] = defaultdict(int)
+        self.memory = defaultdict[int, int](int)
         for i, val in enumerate(program):
             self.memory[i] = val
         self.i = 0
@@ -186,9 +186,9 @@ def a_star(open_space: set[tuple[int, int]], start: tuple[int, int], end: tuple[
     offsets = ((-1, 0), (0, 1), (0, -1), (1, 0))
     open_set = [(0, start)]
     came_from: dict[tuple[int, int], tuple[int, int]] = {}
-    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    g_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     g_score[start] = 0
-    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    f_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     f_score[start] = abs(start[0] - end[0]) + abs(start[1] - end[1])
     while open_set:
         _, current = heapq.heappop(open_set)
@@ -216,7 +216,7 @@ def explore_map() -> tuple[tuple[int, int], set[tuple[int, int]]]:
     offsets = ((-1, 0), (1, 0), (0, -1), (0, 1))
     reverse_movements = {1: 2, 2: 1, 3: 4, 4: 3}
     open_space: set[tuple[int, int]] = {(0, 0)}
-    walls: set[tuple[int, int]] = set()
+    walls = set[tuple[int, int]]()
     current_position = (0, 0)
     oxygen_system_location = (0, 0)
     repair_droid = IntcodeProgram(program)

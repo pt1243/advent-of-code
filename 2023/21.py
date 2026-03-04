@@ -10,7 +10,7 @@ def get_num_positions(steps: int) -> int:
     vacant = {(row, col) for row, line in enumerate(lines) for col, char in enumerate(line) if char != "#"}
     current = {(starting_row, starting_col)}
     for _ in range(steps):
-        new: set[tuple[int, int]] = set()
+        new = set[tuple[int, int]]()
         for row, col in current:
             if ((row - 1) % 131, col % 131) in vacant:
                 new.add((row - 1, col))

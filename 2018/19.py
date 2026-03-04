@@ -84,7 +84,7 @@ def part_2() -> None:
                 break
     counts = Counter(prime_factors)
     unique_prime_factors = sorted(set(prime_factors))
-    all_factors: set[int] = set()
+    all_factors = set[int]()
     for powers in product(*[range(c + 1) for c in counts.values()]):
         prod = 1
         for i, power in enumerate(powers):

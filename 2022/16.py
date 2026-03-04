@@ -32,7 +32,7 @@ def get_valve_connections(lines: list[str]) -> tuple[dict[str, int], defaultdict
             for j in range(num_edges):
                 if dist[i][j] > dist[i][k] + dist[k][j]:
                     dist[i][j] = dist[i][k] + dist[k][j]
-    distances_between_valves: defaultdict[str, dict[str, int]] = defaultdict(dict)
+    distances_between_valves = defaultdict[str, dict[str, int]](dict)
     for start, end in combinations(valve_flow_rates, 2):
         i, j = indices[start], indices[end]
         distances_between_valves[start][end] = dist[i][j]

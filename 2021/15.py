@@ -12,9 +12,9 @@ def a_star(risk_levels: npt.NDArray[np.int_]) -> int:
     width = len(risk_levels[0])
     height = len(risk_levels)
     open_set = [(0, 0, 0)]
-    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**6)
+    g_score = defaultdict[tuple[int, int], int](lambda: 10**6)
     g_score[(0, 0)] = 0
-    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**6)
+    f_score = defaultdict[tuple[int, int], int](lambda: 10**6)
     f_score[(0, 0)] = 0
     while open_set:
         _, row, col = heapq.heappop(open_set)

@@ -7,7 +7,7 @@ with open("./2018/resources/20.txt") as f:
 
 
 def get_doors(regex: str) -> dict[tuple[int, int], set[tuple[int, int]]]:
-    doors: defaultdict[tuple[int, int], set[tuple[int, int]]] = defaultdict(set)
+    doors = defaultdict[tuple[int, int], set[tuple[int, int]]](set)
     directions = {"N": (-1, 0), "E": (0, 1), "S": (1, 0), "W": (0, -1)}
     current_positions = {(0, 0)}
     group_starting_positions: list[set[tuple[int, int]]] = []

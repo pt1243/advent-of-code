@@ -4,8 +4,8 @@ with open("./2019/resources/3.txt") as f:
 
 def part_1() -> None:
     directions = {"U": (-1, 0), "R": (0, 1), "D": (1, 0), "L": (0, -1)}
-    first_wire_seen: set[tuple[int, int]] = set()
-    second_wire_seen: set[tuple[int, int]] = set()
+    first_wire_seen = set[tuple[int, int]]()
+    second_wire_seen = set[tuple[int, int]]()
 
     row, col = 0, 0
     for movement in lines[0].split(","):
@@ -32,9 +32,9 @@ def part_1() -> None:
 
 def part_2() -> None:
     directions = {"U": (-1, 0), "R": (0, 1), "D": (1, 0), "L": (0, -1)}
-    first_wire_seen: set[tuple[int, int]] = set()
+    first_wire_seen = set[tuple[int, int]]()
     first_wire_steps: dict[tuple[int, int], int] = {}
-    second_wire_seen: set[tuple[int, int]] = set()
+    second_wire_seen = set[tuple[int, int]]()
     second_wire_steps: dict[tuple[int, int], int] = {}
 
     row, col, steps = 0, 0, 0

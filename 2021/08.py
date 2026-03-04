@@ -28,7 +28,7 @@ def part_2() -> None:
     }
     for line in lines:
         left, right = line.split(" | ")
-        combinations: defaultdict[int, list[set[str]]] = defaultdict(list)
+        combinations = defaultdict[int, list[set[str]]](list)
         for input_combo in left.split():
             letters = set(input_combo)
             combinations[len(letters)].append(letters)

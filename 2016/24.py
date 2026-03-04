@@ -19,9 +19,9 @@ def find_distance(start_pos: tuple[int, int], end_pos: tuple[int, int]) -> set[t
     open_set = [(h(start_pos), start_pos)]
     open_set_set = {start_pos}
     came_from: dict[tuple[int, int], tuple[int, int]] = {}
-    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    g_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     g_score[start_pos] = 0
-    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    f_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     f_score[start_pos] = h(start_pos)
 
     while open_set:

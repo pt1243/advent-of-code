@@ -7,7 +7,7 @@ with open("./2019/resources/18.txt") as f:
 
 def get_distances(lines: list[str]) -> defaultdict[str, dict[str, int]]:
     offsets = ((-1, 0), (0, 1), (1, 0), (0, -1))
-    distances: defaultdict[str, dict[str, int]] = defaultdict(dict)
+    distances = defaultdict[str, dict[str, int]](dict)
     for row, line in enumerate(lines):
         for col, starting_char in enumerate(line):
             if starting_char not in ".#":
@@ -38,7 +38,7 @@ def part_1() -> None:
     distances = get_distances(lines)
     all_keys = {k for k in distances.keys() if k.islower()}
     all_paths: list[tuple[int, set[str], str]] = [(0, set(), "@")]
-    distances_to_states: defaultdict[tuple[tuple[str, ...], str], int] = defaultdict(lambda: 10**12)
+    distances_to_states = defaultdict[tuple[tuple[str, ...], str], int](lambda: 10**12)
 
     while all_paths:
         distance, keys, current = heapq.heappop(all_paths)
@@ -87,7 +87,7 @@ def part_2() -> None:
     all_keys.update({k for k in bottom_right_distances.keys() if k.islower()})
 
     all_paths: list[tuple[int, set[str], list[str]]] = [(0, set(), ["@", "@", "@", "@"])]
-    distances_to_states: defaultdict[tuple[tuple[str, ...], tuple[str, ...]], int] = defaultdict(lambda: 10**12)
+    distances_to_states = defaultdict[tuple[tuple[str, ...], tuple[str, ...]], int](lambda: 10**12)
 
     while all_paths:
         distance, keys, all_current = heapq.heappop(all_paths)

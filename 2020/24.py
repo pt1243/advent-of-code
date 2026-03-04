@@ -5,7 +5,7 @@ with open("./2020/resources/24.txt") as f:
 
 
 def perform_renovations() -> set[tuple[int, int]]:
-    black_tiles: set[tuple[int, int]] = set()
+    black_tiles = set[tuple[int, int]]()
     directions = {
         "w": (-1, 0),
         "nw": (0, -1),
@@ -43,7 +43,7 @@ def part_2() -> None:
         for q, r in current_black_tiles:
             tiles_to_consider.update({(q - 1, r), (q, r - 1), (q - 1, r + 1), (q + 1, r), (q + 1, r - 1), (q, r + 1)})
 
-        new_black_tiles: set[tuple[int, int]] = set()
+        new_black_tiles = set[tuple[int, int]]()
         for q, r in tiles_to_consider:
             num_black_neighbours = (
                 ((q - 1, r) in current_black_tiles)

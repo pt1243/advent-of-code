@@ -19,7 +19,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    num_ways: defaultdict[int, int] = defaultdict(int)
+    num_ways = defaultdict[int, int](int)
     for comb in product((True, False), repeat=len(sizes)):
         comb_total = 0
         for idx, include in enumerate(comb):  # faster than comprehension

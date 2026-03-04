@@ -6,8 +6,8 @@ with open("./2018/resources/7.txt") as f:
 
 
 def part_1() -> None:
-    all_letters_set: set[str] = set()
-    prerequisites: defaultdict[str, list[str]] = defaultdict(list)
+    all_letters_set = set[str]()
+    prerequisites = defaultdict[str, list[str]](list)
     for line in lines:
         first, second = line.split()[1], line.split()[7]
         all_letters_set.add(first)
@@ -30,8 +30,8 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    all_letters_set: set[str] = set()
-    prerequisites: defaultdict[str, list[str]] = defaultdict(list)
+    all_letters_set = set[str]()
+    prerequisites = defaultdict[str, list[str]](list)
     for line in lines:
         first, second = line.split()[1], line.split()[7]
         all_letters_set.add(first)

@@ -7,7 +7,7 @@ with open("./2024/resources/5.txt") as f:
 
 def part_1() -> None:
     rules_text, manuals = text.split("\n\n")
-    rules: set[tuple[int, int]] = set()
+    rules = set[tuple[int, int]]()
     for line in rules_text.split("\n"):
         first, second = line.split("|")
         rules.add((int(first), int(second)))
@@ -27,12 +27,12 @@ def part_1() -> None:
 
 def part_2() -> None:
     rules_text, manuals = text.split("\n\n")
-    rules: set[tuple[int, int]] = set()
+    rules = set[tuple[int, int]]()
     for line in rules_text.split("\n"):
         first, second = line.split("|")
         rules.add((int(first), int(second)))
 
-    nums_before: defaultdict[int, set[int]] = defaultdict(set)
+    nums_before = defaultdict[int, set[int]](set)
     for left, right in rules:
         nums_before[right].add(left)
 

@@ -30,9 +30,9 @@ def a_star(start: tuple[int, int], goal: tuple[int, int], start_minute: int = 0)
         return up_blizzards | down_blizzards | left_blizzards | right_blizzards
 
     open_set = [(0, (0, *start))]
-    g_score: defaultdict[tuple[int, int, int], int] = defaultdict(lambda: 10**12)
+    g_score = defaultdict[tuple[int, int, int], int](lambda: 10**12)
     g_score[0, *start] = 0
-    f_score: defaultdict[tuple[int, int, int], int] = defaultdict(lambda: 10**12)
+    f_score = defaultdict[tuple[int, int, int], int](lambda: 10**12)
     f_score[0, *start] = abs(goal[0] - start[0]) + abs(goal[1] - start[1])
 
     while open_set:

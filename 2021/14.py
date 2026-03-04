@@ -15,19 +15,19 @@ def run_pair_insertion_process(steps: int) -> int:
         left, right = rule.split(" -> ")
         rules[left] = (left[0] + right, right + left[1])
 
-    current_counts: defaultdict[str, int] = defaultdict(int)
+    current_counts = defaultdict[str, int](int)
     for pair_string in pairwise(polymer_template):
         current_counts[pair_string[0] + pair_string[1]] += 1
 
     for _ in range(steps):
-        new_counts: defaultdict[str, int] = defaultdict(int)
+        new_counts = defaultdict[str, int](int)
         for pair, count in current_counts.items():
             replacements = rules[pair]
             new_counts[replacements[0]] += count
             new_counts[replacements[1]] += count
         current_counts = new_counts
 
-    letter_counts: defaultdict[str, int] = defaultdict(int)
+    letter_counts = defaultdict[str, int](int)
     for pair, count in current_counts.items():
         letter_counts[pair[0]] += count
         letter_counts[pair[1]] += count

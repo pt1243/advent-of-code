@@ -7,7 +7,7 @@ with open("./2019/resources/13.txt") as f:
 
 class IntcodeProgram:
     def __init__(self, program: list[int], input_queue: list[int] | None = None) -> None:
-        self.memory: defaultdict[int, int] = defaultdict(int)
+        self.memory = defaultdict[int, int](int)
         for i, val in enumerate(program):
             self.memory[i] = val
         self.i = 0

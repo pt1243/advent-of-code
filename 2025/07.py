@@ -9,7 +9,7 @@ def part_1() -> None:
     current_positions = {start_col}
     splits = 0
     for line in lines[1:]:
-        new_positions: set[int] = set()
+        new_positions = set[int]()
         for pos in current_positions:
             if line[pos] == "^":
                 splits += 1
@@ -23,10 +23,10 @@ def part_1() -> None:
 
 def part_2() -> None:
     start_col = lines[0].index("S")
-    counts: defaultdict[int, int] = defaultdict(int)
+    counts = defaultdict[int, int](int)
     counts[start_col] = 1
     for line in lines[1:]:
-        new_counts: defaultdict[int, int] = defaultdict(int)
+        new_counts = defaultdict[int, int](int)
         for pos, count in list(counts.items()):
             if line[pos] == "^":
                 new_counts[pos - 1] += count

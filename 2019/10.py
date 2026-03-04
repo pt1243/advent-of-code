@@ -16,7 +16,7 @@ def part_1() -> None:
 
     most_detected = 0
     for monitoring_station in asteroids:
-        angles: set[float] = set()
+        angles = set[float]()
         for asteroid in asteroids:
             if monitoring_station == asteroid:
                 continue
@@ -36,7 +36,7 @@ def part_2() -> None:
     most_detected = 0
     best_location = (0, 0)
     for monitoring_station in asteroids:
-        angles: set[float] = set()
+        angles = set[float]()
         for asteroid in asteroids:
             if monitoring_station == asteroid:
                 continue
@@ -47,7 +47,7 @@ def part_2() -> None:
             best_location = monitoring_station
 
     asteroids.remove(best_location)
-    all_angles: set[tuple[float, int, int, int]] = set()
+    all_angles = set[tuple[float, int, int, int]]()
     station_row, station_col = best_location
     for asteroid in asteroids:
         row, col = asteroid

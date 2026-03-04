@@ -5,8 +5,8 @@ with open("./2021/resources/25.txt") as f:
 
 
 def part_1() -> None:
-    east_sea_cucumbers: set[tuple[int, int]] = set()
-    south_sea_cucumbers: set[tuple[int, int]] = set()
+    east_sea_cucumbers = set[tuple[int, int]]()
+    south_sea_cucumbers = set[tuple[int, int]]()
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if char == "v":

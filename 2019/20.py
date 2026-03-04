@@ -81,7 +81,7 @@ def get_distances(lines: list[str]) -> defaultdict[str, dict[str, int]]:
         suffix = "" if connection in ("AA", "ZZ") else ("_outer" if pos in outer_edge_positions else "_inner")
         return connection + suffix
 
-    distances: defaultdict[str, dict[str, int]] = defaultdict(dict)
+    distances = defaultdict[str, dict[str, int]](dict)
     offsets = ((-1, 0), (0, 1), (1, 0), (0, -1))
     for pos in all_positions:
         if lines[pos[0]][pos[1]] == ".":

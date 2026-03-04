@@ -18,7 +18,7 @@ def extract_tiles(text: str) -> dict[int, npt.NDArray[np.bool_]]:
 
 
 def get_connections(tiles: dict[int, npt.NDArray[np.bool_]]) -> defaultdict[int, set[int]]:
-    connections: defaultdict[int, set[int]] = defaultdict(set)
+    connections = defaultdict[int, set[int]](set)
     for tile_id, tile in tiles.items():
         for other_tile_id, other_tile in tiles.items():
             if tile_id == other_tile_id:

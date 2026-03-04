@@ -32,7 +32,7 @@ def part_2() -> None:
     total_power = 0
     for game in lines:
         observations = game.split(": ")[1]
-        min_dice: defaultdict[str, int] = defaultdict(int)
+        min_dice = defaultdict[str, int](int)
         for observation in observations.split("; "):
             for dice_observed in observation.split(", "):
                 split = dice_observed.split()

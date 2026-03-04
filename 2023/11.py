@@ -4,7 +4,7 @@ with open("./2023/resources/11.txt") as f:
 
 def part_1() -> None:
     galaxies: list[tuple[int, int]] = []
-    empty_rows: set[int] = set()
+    empty_rows = set[int]()
 
     for row, line in enumerate(lines):
         if all(c == "." for c in line):
@@ -34,7 +34,7 @@ def part_1() -> None:
 
 def part_2() -> None:
     galaxies: list[tuple[int, int]] = []
-    empty_rows: set[int] = set()
+    empty_rows = set[int]()
 
     for row, line in enumerate(lines):
         if all(c == "." for c in line):

@@ -9,9 +9,9 @@ with open("./2024/resources/18.txt") as f:
 def a_star(corrupted: set[tuple[int, int]]) -> int | None:
     start = (0, 0)
     end_row, end_col = 70, 70
-    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    g_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     g_score[start] = 0
-    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    f_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     f_score[start] = end_row + end_col
     open_set = [(0, start)]
     directions = ((-1, 0), (0, 1), (1, 0), (0, -1))
@@ -35,7 +35,7 @@ def a_star(corrupted: set[tuple[int, int]]) -> int | None:
 
 
 def part_1() -> None:
-    corrupted: set[tuple[int, int]] = set()
+    corrupted = set[tuple[int, int]]()
     for line in lines[:1024]:
         row_str, col_str = line.split(",")
         corrupted.add((int(row_str), int(col_str)))

@@ -25,7 +25,7 @@ def part_1() -> None:
 
 def part_2() -> None:
     def play_game_recursive(player_1_deck: deque[int], player_2_deck: deque[int]) -> Literal[1, 2]:
-        seen_cards: set[tuple[tuple[int, ...], tuple[int, ...]]] = set()
+        seen_cards = set[tuple[tuple[int, ...], tuple[int, ...]]]()
         while player_1_deck and player_2_deck:
             if (tuple(player_1_deck), tuple(player_2_deck)) in seen_cards:
                 return 1

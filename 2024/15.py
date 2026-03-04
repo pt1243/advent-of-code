@@ -5,8 +5,8 @@ with open("./2024/resources/15.txt") as f:
 def part_1() -> None:
     grid_lines, moves = text.split("\n\n")
     directions = {"^": (-1, 0), ">": (0, 1), "v": (1, 0), "<": (0, -1)}
-    walls: set[tuple[int, int]] = set()
-    boxes: set[tuple[int, int]] = set()
+    walls = set[tuple[int, int]]()
+    boxes = set[tuple[int, int]]()
     robot_row, robot_col = 0, 0
     for row, line in enumerate(grid_lines.split("\n")):
         for col, char in enumerate(line):
@@ -45,8 +45,8 @@ def part_1() -> None:
 def part_2() -> None:
     grid_lines, moves = text.split("\n\n")
     directions = {"^": (-1, 0), ">": (0, 1), "v": (1, 0), "<": (0, -1)}
-    walls: set[tuple[int, int]] = set()
-    boxes: set[tuple[int, int]] = set()
+    walls = set[tuple[int, int]]()
+    boxes = set[tuple[int, int]]()
     robot_row, robot_col = 0, 0
     for row, line in enumerate(grid_lines.split("\n")):
         for col, char in enumerate(line):
@@ -97,7 +97,7 @@ def part_2() -> None:
             # if no box: just move robot directly
             if (row + drow, col) not in boxes and (row + drow, col - 1) not in boxes:
                 return [], True
-            boxes_to_move_set: set[tuple[int, int]] = set()
+            boxes_to_move_set = set[tuple[int, int]]()
             if (row + drow, col - 1) in boxes:  # robot is on the right side of the box
                 can_move = check_can_move_up_down(row, col - 1, drow, boxes_to_move_set)
             else:  # box is on the left side of the box

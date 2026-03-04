@@ -6,7 +6,7 @@ with open("./2017/resources/8.txt") as f:
 
 
 def part_1() -> None:
-    registers: defaultdict[str, int] = defaultdict(int)
+    registers = defaultdict[str, int](int)
     operators = {
         "<": operator.lt,
         "<=": operator.le,
@@ -31,7 +31,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    registers: defaultdict[str, int] = defaultdict(int)
+    registers = defaultdict[str, int](int)
     operators = {
         "<": operator.lt,
         "<=": operator.le,

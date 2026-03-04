@@ -4,7 +4,7 @@ with open("./2020/resources/8.txt") as f:
 
 def part_1() -> None:
     accumulator = 0
-    seen: set[int] = set()
+    seen = set[int]()
     i = 0
     while i not in seen:
         seen.add(i)
@@ -22,7 +22,7 @@ def part_1() -> None:
 
 def part_2() -> None:
     for instruction_to_change in range(len(lines)):
-        seen: set[int] = set()
+        seen = set[int]()
         accumulator = 0
         i = 0
         while i not in seen:

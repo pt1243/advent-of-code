@@ -64,7 +64,7 @@ def part_2() -> None:
 
     found_nums = find_number_indices()
 
-    gears: defaultdict[tuple[int, int], list[int]] = defaultdict(list)
+    gears = defaultdict[tuple[int, int], list[int]](list)
     for i, j, k in found_nums:
         positions_to_check = get_positions_to_check(i, j, k, max_char_index, max_line_index)
 

@@ -13,7 +13,7 @@ class Sensor(NamedTuple):
 
 
 def part_1() -> None:
-    cannot_contain_beacon: set[int] = set()
+    cannot_contain_beacon = set[int]()
     for line in lines:
         sensor_x, sensor_y, beacon_x, beacon_y = map(int, re.findall(r"-?\d+", line))
         dist = abs(beacon_x - sensor_x) + abs(beacon_y - sensor_y)

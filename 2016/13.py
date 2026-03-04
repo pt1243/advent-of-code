@@ -37,10 +37,10 @@ def a_star(start: tuple[int, int], goal: tuple[int, int]) -> list[tuple[int, int
     open_set_set = {start}
     came_from: dict[tuple[int, int], tuple[int, int]] = {}
 
-    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**6)
+    g_score = defaultdict[tuple[int, int], int](lambda: 10**6)
     g_score[start] = 0
 
-    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**6)
+    f_score = defaultdict[tuple[int, int], int](lambda: 10**6)
     f_score[start] = h(start, goal)
 
     while open_set:
@@ -67,7 +67,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    visited: set[tuple[int, int]] = {(1, 1)}
+    visited = {(1, 1)}
     for _ in range(50):
         for start_node in visited.copy():
             for neighbour in get_neighbours(start_node):

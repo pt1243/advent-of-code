@@ -77,7 +77,7 @@ def simulate_game(text_input: list[str], elf_attack_power: int = 3) -> tuple[int
             item = board[row + offset[0]][col + offset[1]]
             if isinstance(item, Unit) and item.unit_type != unit.unit_type:
                 return row, col
-        target_positions: set[tuple[int, int]] = set()
+        target_positions = set[tuple[int, int]]()
         for i, board_row in enumerate(board):
             for j, position in enumerate(board_row):
                 if isinstance(position, Unit) and position.unit_type != unit.unit_type:

@@ -43,11 +43,11 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    levels: defaultdict[int, npt.NDArray[np.bool_]] = defaultdict(lambda: np.zeros((5, 5), dtype=bool))
+    levels = defaultdict[int, npt.NDArray[np.bool_]](lambda: np.zeros((5, 5), dtype=bool))
 
     levels[0] = np.array([[char == "#" for char in line] for line in lines], dtype=bool)
     for _ in range(200):
-        new_levels: defaultdict[int, npt.NDArray[np.bool_]] = defaultdict(lambda: np.zeros((5, 5), dtype=bool))
+        new_levels = defaultdict[int, npt.NDArray[np.bool_]](lambda: np.zeros((5, 5), dtype=bool))
         keys = list(levels.keys())
         for level in keys:
             level_arr = levels[level]

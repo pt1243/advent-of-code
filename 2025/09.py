@@ -33,7 +33,7 @@ def part_2() -> None:
             continue
         y_compression[y] = i
 
-    compressed_edge_points: set[tuple[int, int]] = set()
+    compressed_edge_points = set[tuple[int, int]]()
     for p1, p2 in pairwise(positions + [positions[0]]):
         if p1[0] == p2[0]:  # same horizontal position: vertical edge
             y1 = min(p1[1], p2[1])
@@ -53,7 +53,7 @@ def part_2() -> None:
     min_y = min(y_compression.values()) - 1
     max_y = max(y_compression.values()) + 1
 
-    outside_points: set[tuple[int, int]] = set()
+    outside_points = set[tuple[int, int]]()
     open_set = [(max_x, max_y)]  # definitely outside
     while open_set:
         current = open_set.pop()

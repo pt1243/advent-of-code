@@ -9,7 +9,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    seen: set[int] = set()
+    seen = set[int]()
     total = 0
     repeating_frequencies = cycle(frequencies)
     while True:

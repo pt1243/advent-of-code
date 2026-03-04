@@ -12,9 +12,9 @@ def a_star(start_row: int, start_col: int, grid: list[list[int]]) -> int | None:
     end_col = lines[end_row].index("E")
 
     start = (start_row, start_col)
-    g_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    g_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     g_score[start] = 0
-    f_score: defaultdict[tuple[int, int], int] = defaultdict(lambda: 10**12)
+    f_score = defaultdict[tuple[int, int], int](lambda: 10**12)
     f_score[start] = abs(end_row - start_row) + abs(end_col - start_col)
 
     open_set = [(0, start)]

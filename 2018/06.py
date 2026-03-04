@@ -13,7 +13,7 @@ def part_1() -> None:
     infinite_indices = {
         i for i, c in enumerate(coordinates) if c[0] == min_x or c[0] == max_x or c[1] == min_y or c[1] == max_y
     }
-    num_closest_points: defaultdict[int, int] = defaultdict(int)
+    num_closest_points = defaultdict[int, int](int)
     for i in range(min_x, max_x + 1):
         for j in range(min_y, max_y + 1):
             distances = [abs(i - c[0]) + abs(j - c[1]) for c in coordinates]

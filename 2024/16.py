@@ -43,7 +43,7 @@ def part_2() -> None:
     best_cost = min(cost for state, cost in costs_from_start.items() if state[0] == end_row and state[1] == end_col)
     costs_to_end = get_cost([(end_row, end_col, i) for i in range(4)], from_end=True)
 
-    tiles_on_best_path: set[tuple[int, int]] = set()
+    tiles_on_best_path = set[tuple[int, int]]()
     for row in range(len(lines)):
         for col in range(len(lines[0])):
             if lines[row][col] == "#":

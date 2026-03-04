@@ -8,13 +8,13 @@ with open("./2024/resources/8.txt") as f:
 
 def part_1() -> None:
     height, width = len(lines), len(lines[0])
-    antennas: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
+    antennas = defaultdict[str, list[tuple[int, int]]](list)
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if char != ".":
                 antennas[char].append((row, col))
 
-    antinode_positions: set[tuple[int, int]] = set()
+    antinode_positions = set[tuple[int, int]]()
     for positions in antennas.values():
         for antenna_1, antenna_2 in combinations(positions, 2):
             drow = antenna_2[0] - antenna_1[0]
@@ -28,13 +28,13 @@ def part_1() -> None:
 
 def part_2() -> None:
     height, width = len(lines), len(lines[0])
-    antennas: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
+    antennas = defaultdict[str, list[tuple[int, int]]](list)
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if char != ".":
                 antennas[char].append((row, col))
 
-    antinode_positions: set[tuple[int, int]] = set()
+    antinode_positions = set[tuple[int, int]]()
     for positions in antennas.values():
         for antenna_1, antenna_2 in combinations(positions, 2):
             drow = antenna_2[0] - antenna_1[0]

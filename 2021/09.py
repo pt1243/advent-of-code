@@ -27,7 +27,7 @@ def part_2() -> None:
     width = len(lines[0])
 
     def basin_size(starting_row: int, starting_col: int) -> int:
-        seen: set[tuple[int, int]] = set()
+        seen = set[tuple[int, int]]()
         queue = [(starting_row, starting_col)]
         while queue:
             row, col = queue.pop()

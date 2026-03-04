@@ -6,7 +6,7 @@ with open("./2022/resources/14.txt") as f:
 
 
 def part_1() -> None:
-    occupied: set[tuple[int, int]] = set()
+    occupied = set[tuple[int, int]]()
     int_pattern = re.compile(r"-?\d+")
     for line in lines:
         ints = map(int, re.findall(int_pattern, line))
@@ -45,7 +45,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    occupied: set[tuple[int, int]] = set()
+    occupied = set[tuple[int, int]]()
     int_pattern = re.compile(r"-?\d+")
     for line in lines:
         ints = map(int, re.findall(int_pattern, line))

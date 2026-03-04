@@ -33,7 +33,7 @@ def part_1() -> None:
         )
 
     position = 0
-    tape: defaultdict[int, int] = defaultdict(int)
+    tape = defaultdict[int, int](int)
     state = states[starting_state]
     for _ in range(steps):
         if not tape[position]:

@@ -6,7 +6,7 @@ def find_paths(start_row: int, start_col: int) -> tuple[int, int]:
     width, height = len(grid[0]), len(grid)
     open_set = [(start_row, start_col)]
     num_paths = 0
-    end_points: set[tuple[int, int]] = set()
+    end_points = set[tuple[int, int]]()
     while open_set:
         row, col = open_set.pop()
         val = grid[row][col]

@@ -35,8 +35,8 @@ def part_2() -> None:
 
     for ip in ips:
         in_hypernet_sequence = False
-        abas_found: set[str] = set()
-        babs_found: set[str] = set()
+        abas_found = set[str]()
+        babs_found = set[str]()
 
         for c1, c2, c3 in sliding_window(ip, 3):
             if c1 == "[":

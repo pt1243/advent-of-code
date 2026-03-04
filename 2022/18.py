@@ -6,7 +6,7 @@ with open("./2022/resources/18.txt") as f:
 
 
 def part_1() -> None:
-    cubes: set[tuple[int, int, int]] = set()
+    cubes = set[tuple[int, int, int]]()
     for line in lines:
         cubes.add(cast(tuple[int, int, int], tuple(int(x) for x in line.split(","))))
 
@@ -24,7 +24,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    cubes: set[tuple[int, int, int]] = set()
+    cubes = set[tuple[int, int, int]]()
     for line in lines:
         cubes.add(cast(tuple[int, int, int], tuple(int(x) for x in line.split(","))))
 
@@ -35,12 +35,12 @@ def part_2() -> None:
     min_z = min(cube[2] for cube in cubes)
     max_z = max(cube[2] for cube in cubes)
 
-    air_inside: set[tuple[int, int, int]] = set()
+    air_inside = set[tuple[int, int, int]]()
 
     def mark_reachable(start_x: int, start_y: int, start_z: int) -> None:
         nonlocal air_inside
         open_set = [(start_x, start_y, start_z)]
-        to_add: set[tuple[int, int, int]] = set()
+        to_add = set[tuple[int, int, int]]()
 
         while open_set:
             x, y, z = open_set.pop()

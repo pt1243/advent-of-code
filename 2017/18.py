@@ -7,7 +7,7 @@ with open("./2017/resources/18.txt") as f:
 class AsyncProgram:
     def __init__(self, instructions: list[str], p: int) -> None:
         self.instructions = instructions
-        self.registers: defaultdict[str, int] = defaultdict(int)
+        self.registers = defaultdict[str, int](int)
         self.registers["p"] = p
         self.i = 0
         self.receive_queue: list[int] = []
@@ -86,7 +86,7 @@ class AsyncProgram:
 def part_1() -> None:
     i = 0
     last_sound = 0
-    registers: defaultdict[str, int] = defaultdict(int)
+    registers = defaultdict[str, int](int)
     while 0 <= i < len(lines):
         curr = lines[i]
         split = curr.split()

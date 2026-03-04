@@ -37,7 +37,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    nodes: set[tuple[int, int]] = set()
+    nodes = set[tuple[int, int]]()
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if row == 0 or row == len(lines) - 1 or char == "#":
@@ -70,7 +70,7 @@ def part_2() -> None:
                     current.append((new_position, position, dist + 1))
         return max_dist
 
-    distances: defaultdict[tuple[int, int], dict[tuple[int, int], int]] = defaultdict(dict)
+    distances = defaultdict[tuple[int, int], dict[tuple[int, int], int]](dict)
     for point in nodes:
         for other_point in nodes:
             dist = distance_between(point, other_point)

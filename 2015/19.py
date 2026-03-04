@@ -8,7 +8,7 @@ with open("./2015/resources/19.txt") as f:
 
 
 def part_1() -> None:
-    substitutions: defaultdict[str, list[str]] = defaultdict(list)
+    substitutions = defaultdict[str, list[str]](list)
     all_rules, molecule = lines.split("\n\n")
     for rule in all_rules.split("\n"):
         initial, replacement = rule.split(" => ")
@@ -16,7 +16,7 @@ def part_1() -> None:
 
     atoms = ["".join(atom_chars) for atom_chars in split_before(molecule, lambda s: s.isupper())]
 
-    one_step: set[str] = set()
+    one_step = set[str]()
 
     for idx, atom in enumerate(atoms):
         if atom in substitutions:

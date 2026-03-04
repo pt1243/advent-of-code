@@ -6,7 +6,7 @@ with open("./2022/resources/23.txt") as f:
 
 
 def run_moves(lines: list[str], part_2: bool = False) -> int:
-    positions: set[tuple[int, int]] = set()
+    positions = set[tuple[int, int]]()
     for row, line in enumerate(lines):
         for col, char in enumerate(line):
             if char == "#":
@@ -14,7 +14,7 @@ def run_moves(lines: list[str], part_2: bool = False) -> int:
     position_order = deque(((-1, 0), (1, 0), (0, -1), (0, 1)))
 
     for i in count(1):
-        proposed_positions: defaultdict[tuple[int, int], set[tuple[int, int]]] = defaultdict(set)
+        proposed_positions = defaultdict[tuple[int, int], set[tuple[int, int]]](set)
         for row, col in positions:
             num_neighbours = (
                 sum((row + drow, col + dcol) in positions for drow in range(-1, 2) for dcol in range(-1, 2)) - 1
@@ -32,7 +32,7 @@ def run_moves(lines: list[str], part_2: bool = False) -> int:
                     break
 
         any_moved = False
-        new_positions: set[tuple[int, int]] = set()
+        new_positions = set[tuple[int, int]]()
         for proposed_new_position, elves_wanting_to_move in proposed_positions.items():
             if len(elves_wanting_to_move) == 1:
                 new_positions.add(proposed_new_position)

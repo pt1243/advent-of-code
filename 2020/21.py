@@ -6,7 +6,7 @@ with open("./2020/resources/21.txt") as f:
 
 
 def get_allergens(lines: list[str]) -> dict[str, str]:
-    all_ingredients_per_allergen: defaultdict[str, list[set[str]]] = defaultdict(list)
+    all_ingredients_per_allergen = defaultdict[str, list[set[str]]](list)
     for line in lines:
         line_ingredients, line_allergens = line.strip(")").split("(contains ")
         for allergen in line_allergens.split(", "):

@@ -100,7 +100,7 @@ def apply_spell(state: State, spell: str, part_2: bool = False) -> State | bool:
 
 def part_1() -> None:
     possibilities = [(State(0, starting_player_hp, starting_player_mana, starting_boss_hp, 0, 0, 0), False)]
-    seen: set[State] = set()
+    seen = set[State]()
     while True:
         state, victory = heapq.heappop(possibilities)
         if victory:
@@ -121,7 +121,7 @@ def part_1() -> None:
 
 def part_2() -> None:
     possibilities = [(State(0, starting_player_hp, starting_player_mana, starting_boss_hp, 0, 0, 0), False)]
-    seen: set[State] = set()
+    seen = set[State]()
     while True:
         state, victory = heapq.heappop(possibilities)
         if victory:

@@ -6,7 +6,7 @@ with open("./2019/resources/11.txt") as f:
 
 class IntcodeProgram:
     def __init__(self, program: list[int], input_queue: list[int] | None = None) -> None:
-        self.memory: defaultdict[int, int] = defaultdict(int)
+        self.memory = defaultdict[int, int](int)
         for i, val in enumerate(program):
             self.memory[i] = val
         self.i = 0
@@ -181,8 +181,8 @@ class IntcodeProgram:
 
 
 def part_1() -> None:
-    panels: defaultdict[tuple[int, int], int] = defaultdict(int)
-    panels_painted: set[tuple[int, int]] = set()
+    panels = defaultdict[tuple[int, int], int](int)
+    panels_painted = set[tuple[int, int]]()
     row, col = 0, 0
     direction = 0
     directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
@@ -203,9 +203,9 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    panels: defaultdict[tuple[int, int], int] = defaultdict(int)
+    panels = defaultdict[tuple[int, int], int](int)
     panels[0, 0] = 1
-    panels_painted: set[tuple[int, int]] = set()
+    panels_painted = set[tuple[int, int]]()
     row, col = 0, 0
     direction = 0
     directions = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}

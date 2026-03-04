@@ -29,7 +29,7 @@ def part_2() -> None:
     }
 
     for line in lines:
-        numbers: set[tuple[int, str]] = set()
+        numbers = set[tuple[int, str]]()
         for number_name, number_value in number_names.items():
             if number_name in line:
                 first_idx = line.find(number_name)

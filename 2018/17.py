@@ -43,7 +43,7 @@ def fill(x: int, y: int, tiles: defaultdict[tuple[int, int], str], max_y: int) -
 
 
 def part_1() -> None:
-    tiles: defaultdict[tuple[int, int], str] = defaultdict(lambda: ".")
+    tiles = defaultdict[tuple[int, int], str](lambda: ".")
     for line in lines:
         left, right = line.split(", ")
         left_num = int(left[2:])
@@ -62,7 +62,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    tiles: defaultdict[tuple[int, int], str] = defaultdict(lambda: ".")
+    tiles = defaultdict[tuple[int, int], str](lambda: ".")
     for line in lines:
         left, right = line.split(", ")
         left_num = int(left[2:])

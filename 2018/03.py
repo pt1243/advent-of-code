@@ -18,7 +18,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    claims_made: defaultdict[tuple[int, int], list[int]] = defaultdict(list)
+    claims_made = defaultdict[tuple[int, int], list[int]](list)
     for claim in lines:
         claim_id, positions = claim.split(" @ ")
         claim_number = int(claim_id[1:])
