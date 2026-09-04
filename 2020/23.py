@@ -1,16 +1,10 @@
-from __future__ import annotations
-
 from itertools import pairwise
-from typing import Generic, TypeVar
 
 with open("./2020/resources/23.txt") as f:
     cups = [int(char) for char in f.read().strip()]
 
 
-T = TypeVar("T")
-
-
-class Node(Generic[T]):
+class Node[T]:
     def __init__(self, value: T) -> None:
         self.value = value
         self.left: Node[T]

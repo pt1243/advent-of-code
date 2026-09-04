@@ -17,7 +17,7 @@ class Constellation:
 
 
 def part_1() -> None:
-    points = [cast(tuple[int, int, int, int], tuple((int(x) for x in line.split(",")))) for line in lines]
+    points = [cast(tuple[int, int, int, int], tuple(int(x) for x in line.split(","))) for line in lines]
 
     constellations: list[Constellation] = []
     for p in points:

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from copy import deepcopy
 from itertools import product
 from operator import attrgetter

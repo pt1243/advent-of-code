@@ -22,9 +22,9 @@ def part_1() -> None:
         for g2 in galaxies[i + 1 :]:
             r2, c2 = g2
             dist = abs(r1 - r2) + abs(c1 - c2)
-            upper_row = r1 if r1 >= r2 else r2
+            upper_row = max(r1, r2)
             lower_row = r2 if upper_row == r1 else r1
-            upper_col = c1 if c1 >= c2 else c2
+            upper_col = max(c1, c2)
             lower_col = c2 if upper_col == c1 else c1
             additional_rows = {row for row in empty_rows if lower_row < row < upper_row}
             additional_cols = {col for col in empty_cols if lower_col < col < upper_col}
@@ -52,9 +52,9 @@ def part_2() -> None:
         for g2 in galaxies[i + 1 :]:
             r2, c2 = g2
             dist = abs(r1 - r2) + abs(c1 - c2)
-            upper_row = r1 if r1 >= r2 else r2
+            upper_row = max(r1, r2)
             lower_row = r2 if upper_row == r1 else r1
-            upper_col = c1 if c1 >= c2 else c2
+            upper_col = max(c1, c2)
             lower_col = c2 if upper_col == c1 else c1
             additional_rows = {row for row in empty_rows if lower_row < row < upper_row}
             additional_cols = {col for col in empty_cols if lower_col < col < upper_col}

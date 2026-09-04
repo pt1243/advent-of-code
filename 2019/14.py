@@ -18,13 +18,13 @@ def get_ore_required(num_fuel: int) -> int:
                 reactants.append((reactant, int(reactant_qty)))
         reactions[output] = (int(produced_qty), ore_consumed, reactants)
 
-    current = {product: 0 for product in reactions.keys()}
+    current = {product: 0 for product in reactions}
     ore_used = 0
     for reactant, qty in reactions["FUEL"][2]:
         current[reactant] = -qty * num_fuel
 
     while any(v < 0 for v in current.values()):
-        item_to_produce = [item for item, qty in current.items() if qty < 0][0]
+        item_to_produce = next(item for item, qty in current.items() if qty < 0)
         output_qty, ore_consumed, input_items = reactions[item_to_produce]
         full_reactions, mod = divmod(abs(current[item_to_produce]), output_qty)
         if mod:

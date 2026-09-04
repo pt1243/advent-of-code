@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from ast import literal_eval
 from copy import deepcopy
 from dataclasses import dataclass
@@ -83,7 +81,7 @@ def reduce_snailfish_num(num: SnailfishNumber) -> SnailfishNumber:
                 raise ValueError("exploding pair must have a parent")
 
             flattened_number_left = traverse_pre(num)
-            target_index_left = [i for i, val in enumerate(flattened_number_left) if val is pair_to_explode][0]
+            target_index_left = next(i for i, val in enumerate(flattened_number_left) if val is pair_to_explode)
             left_regular_numbers = [
                 val
                 for i, val in enumerate(flattened_number_left)
@@ -93,7 +91,7 @@ def reduce_snailfish_num(num: SnailfishNumber) -> SnailfishNumber:
                 left_regular_numbers[-1].value += pair_to_explode.left.value
 
             flattened_number_right = traverse_post(num)
-            target_index_right = [i for i, val in enumerate(flattened_number_right) if val is pair_to_explode][0]
+            target_index_right = next(i for i, val in enumerate(flattened_number_right) if val is pair_to_explode)
             right_regular_numbers = [
                 val
                 for i, val in enumerate(flattened_number_right)

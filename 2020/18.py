@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import ast
 from typing import Union, cast
 
@@ -64,6 +62,8 @@ def part_2() -> None:
             elif isinstance(node.op, ast.Mult):
                 return ast.BinOp(left=node.left, op=ast.Add(), right=node.right)
             else:
+                # Ruff complains that we raise a ValueError for an incorrect type, but conceptually these types
+                # represent different values for the operator
                 raise ValueError(f"invalid operatior of type {type(node.op)}")
 
     total = 0

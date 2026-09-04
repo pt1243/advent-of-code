@@ -1,4 +1,5 @@
 from itertools import cycle
+from typing import ClassVar
 
 with open("./2018/resources/13.txt") as f:
     lines = f.read().splitlines()
@@ -6,8 +7,8 @@ with open("./2018/resources/13.txt") as f:
 
 class Cart:
     movements = ((-1, 0), (0, 1), (1, 0), (0, -1))  # up, right, down, left
-    backslash_directions = {1: 2, 0: 3, 3: 0, 2: 1}
-    slash_directions = {1: 0, 2: 3, 3: 2, 0: 1}
+    backslash_directions: ClassVar = {1: 2, 0: 3, 3: 0, 2: 1}
+    slash_directions: ClassVar = {1: 0, 2: 3, 3: 2, 0: 1}
 
     def __init__(self, row: int, col: int, direction: int) -> None:
         self.row = row

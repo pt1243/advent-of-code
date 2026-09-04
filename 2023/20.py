@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections import deque
 from itertools import count
 from math import lcm
@@ -66,6 +64,7 @@ class Module:
         cls.num_low_pulses += 1
         while cls.pulse_queue:
             source, dest, pulse_type = cls.pulse_queue.popleft()
+            # keep the if statements separate for clarity
             if watch_for_high:
                 if dest in watch_for_high and not pulse_type:
                     cls.rx_aggregator_inputs[source] = num
@@ -74,7 +73,7 @@ class Module:
     @classmethod
     def get_times_to_button_inputs(cls) -> dict[str, int]:
         rx = cls.lookup["rx"]
-        rx_aggregator = [m for m in cls.lookup.values() if rx in m.destinations][0]
+        rx_aggregator = next(m for m in cls.lookup.values() if rx in m.destinations)
         inputs_to_aggregator = [m for m in cls.lookup.values() if rx_aggregator in m.destinations]
         inputs_to_inputs = [m for m in cls.lookup.values() if any(d in m.destinations for d in inputs_to_aggregator)]
         for module_to_watch in inputs_to_inputs:

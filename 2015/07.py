@@ -1,7 +1,6 @@
-from __future__ import annotations
-
+from collections.abc import Callable
 from functools import cache
-from typing import Callable, ClassVar
+from typing import ClassVar
 
 with open("./2015/resources/7.txt") as f:
     connections = f.read().splitlines()

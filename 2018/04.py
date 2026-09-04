@@ -6,7 +6,7 @@ with open("./2018/resources/4.txt") as f:
 
 
 def part_1() -> None:
-    num_nights = sum((1 for line in lines if "#" in line))
+    num_nights = sum("#" in line for line in lines)
     sorted_lines = sorted(lines)
     guard_numbers = set[int]()
     date_and_id = np.empty((num_nights, 3), dtype=int)
@@ -35,7 +35,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    num_nights = sum((1 for line in lines if "#" in line))
+    num_nights = sum("#" in line for line in lines)
     sorted_lines = sorted(lines)
     guard_numbers = set[int]()
     date_and_id = np.empty((num_nights, 3), dtype=int)

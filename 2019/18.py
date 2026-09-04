@@ -36,7 +36,7 @@ def get_distances(lines: list[str]) -> defaultdict[str, dict[str, int]]:
 
 def part_1() -> None:
     distances = get_distances(lines)
-    all_keys = {k for k in distances.keys() if k.islower()}
+    all_keys = {k for k in distances if k.islower()}
     all_paths: list[tuple[int, set[str], str]] = [(0, set(), "@")]
     distances_to_states = defaultdict[tuple[tuple[str, ...], str], int](lambda: 10**12)
 
@@ -81,10 +81,10 @@ def part_2() -> None:
     bottom_left_distances = get_distances(bottom_left_lines)
     bottom_right_distances = get_distances(bottom_right_lines)
 
-    all_keys = {k for k in top_left_distances.keys() if k.islower()}
-    all_keys.update({k for k in top_right_distances.keys() if k.islower()})
-    all_keys.update({k for k in bottom_left_distances.keys() if k.islower()})
-    all_keys.update({k for k in bottom_right_distances.keys() if k.islower()})
+    all_keys = {k for k in top_left_distances if k.islower()}
+    all_keys.update({k for k in top_right_distances if k.islower()})
+    all_keys.update({k for k in bottom_left_distances if k.islower()})
+    all_keys.update({k for k in bottom_right_distances if k.islower()})
 
     all_paths: list[tuple[int, set[str], list[str]]] = [(0, set(), ["@", "@", "@", "@"])]
     distances_to_states = defaultdict[tuple[tuple[str, ...], tuple[str, ...]], int](lambda: 10**12)

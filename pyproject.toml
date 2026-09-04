@@ -1,6 +1,11 @@
 [tool.ruff]
+target-version = "py314"
 line-length = 120
 lint.extend-select = ["I"]
+lint.ignore = [
+    "TRY004",  # raising non-TypeErrors on type checks
+    "SIM102",  # nested if statements
+]
 
 [tool.mypy]
 strict = true

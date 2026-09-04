@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from copy import deepcopy
 from dataclasses import dataclass
 from itertools import count
@@ -38,14 +36,14 @@ def parse_input(text: str) -> list[Group]:
         if "(" in line:
             weaknesses_and_immunities = line[line.index("(") + 1 : line.index(")")].split("; ")
             if len(weaknesses_and_immunities) == 1:
-                items = set(item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:])
+                items = {item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:]}
                 if weaknesses_and_immunities[0].startswith("weak"):
                     weaknesses, immunities = items, set()
                 else:
                     weaknesses, immunities = set(), items
             else:
-                first_items = set(item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:])
-                second_items = set(item.rstrip(",") for item in weaknesses_and_immunities[1].split()[2:])
+                first_items = {item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:]}
+                second_items = {item.rstrip(",") for item in weaknesses_and_immunities[1].split()[2:]}
                 if weaknesses_and_immunities[0].startswith("weak"):
                     weaknesses, immunities = first_items, second_items
                 else:
@@ -63,14 +61,14 @@ def parse_input(text: str) -> list[Group]:
         if "(" in line:
             weaknesses_and_immunities = line[line.index("(") + 1 : line.index(")")].split("; ")
             if len(weaknesses_and_immunities) == 1:
-                items = set(item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:])
+                items = {item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:]}
                 if weaknesses_and_immunities[0].startswith("weak"):
                     weaknesses, immunities = items, set()
                 else:
                     weaknesses, immunities = set(), items
             else:
-                first_items = set(item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:])
-                second_items = set(item.rstrip(",") for item in weaknesses_and_immunities[1].split()[2:])
+                first_items = {item.rstrip(",") for item in weaknesses_and_immunities[0].split()[2:]}
+                second_items = {item.rstrip(",") for item in weaknesses_and_immunities[1].split()[2:]}
                 if weaknesses_and_immunities[0].startswith("weak"):
                     weaknesses, immunities = first_items, second_items
                 else:
@@ -121,7 +119,8 @@ def simulate_game(groups: list[Group], boost: int = 0) -> tuple[Literal["immune 
                     if damage > best_damage:
                         use_target = True
                     elif damage == best_damage:
-                        if target.effective_power > best_effective_power:
+                        # keep the branches separate for clarity
+                        if target.effective_power > best_effective_power:  # noqa: SIM114
                             use_target = True
                         elif target.effective_power == best_effective_power and target.initiative > best_initiative:
                             use_target = True

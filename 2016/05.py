@@ -1,5 +1,6 @@
 from hashlib import md5
 from itertools import count
+from typing import cast
 
 with open("./2016/resources/5.txt") as f:
     door_id = f.read().strip()
@@ -29,5 +30,5 @@ def part_2() -> None:
                 if 0 <= position <= 7 and password[position] is None:
                     password[position] = computed_hash[6]
                     if all(c is not None for c in password):
-                        print("".join(password))  # type: ignore[arg-type]  # the list is all str's at this point
+                        print("".join(cast(list[str], password)))
                         break

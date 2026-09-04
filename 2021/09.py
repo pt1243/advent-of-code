@@ -13,9 +13,9 @@ def part_1() -> None:
                 low_point = False
             if row < height - 1 and lines[row + 1][col] <= char:
                 low_point = False
-            if col > 0 and lines[row][col - 1] <= char:
+            if col > 0 and line[col - 1] <= char:
                 low_point = False
-            if col < width - 1 and lines[row][col + 1] <= char:
+            if col < width - 1 and line[col + 1] <= char:
                 low_point = False
             if low_point:
                 sum_of_risk_levels += int(char) + 1
@@ -52,9 +52,9 @@ def part_2() -> None:
                 low_point = False
             if row < height - 1 and lines[row + 1][col] <= char:
                 low_point = False
-            if col > 0 and lines[row][col - 1] <= char:
+            if col > 0 and line[col - 1] <= char:
                 low_point = False
-            if col < width - 1 and lines[row][col + 1] <= char:
+            if col < width - 1 and line[col + 1] <= char:
                 low_point = False
             if low_point:
                 basin_sizes.append(basin_size(row, col))

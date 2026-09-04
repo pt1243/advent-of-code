@@ -5,7 +5,7 @@ with open("./2023/resources/21.txt") as f:
 
 
 def get_num_positions(steps: int) -> int:
-    starting_row = [i for i, line in enumerate(lines) if "S" in line][0]
+    starting_row = next(i for i, line in enumerate(lines) if "S" in line)
     starting_col = lines[starting_row].index("S")
     vacant = {(row, col) for row, line in enumerate(lines) for col, char in enumerate(line) if char != "#"}
     current = {(starting_row, starting_col)}

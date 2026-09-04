@@ -1,3 +1,5 @@
+from itertools import pairwise
+
 with open("./2023/resources/9.txt") as f:
     lines = [[int(c) for c in line.split()] for line in f.read().splitlines()]
 
@@ -9,7 +11,7 @@ def part_1() -> None:
         last_line = all_differences[-1]
         while not all(c == 0 for c in last_line):
             new_line: list[int] = []
-            for c1, c2 in zip(last_line[:-1], last_line[1:]):
+            for c1, c2 in pairwise(last_line):
                 new_line.append(c2 - c1)
             all_differences.append(new_line)
             last_line = new_line
@@ -29,7 +31,7 @@ def part_2() -> None:
         last_line = all_differences[-1]
         while not all(c == 0 for c in last_line):
             new_line: list[int] = []
-            for c1, c2 in zip(last_line[:-1], last_line[1:]):
+            for c1, c2 in pairwise(last_line):
                 new_line.append(c2 - c1)
             all_differences.append(new_line)
             last_line = new_line

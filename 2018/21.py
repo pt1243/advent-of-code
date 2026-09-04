@@ -1,12 +1,10 @@
-from __future__ import annotations
-
-from typing import Generator
+from collections.abc import Generator
 
 with open("./2018/resources/21.txt") as f:
     lines = f.read().splitlines()
 
 
-def run_program() -> Generator[int, None, None]:
+def run_program() -> Generator[int]:
     input_num = int(lines[8].split()[1])
     r4 = 0
     while True:

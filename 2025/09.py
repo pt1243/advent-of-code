@@ -24,11 +24,11 @@ def part_2() -> None:
     # compress the coordinates to do a floodfill of the outside points
     x_compression: dict[int, int] = {}
     y_compression: dict[int, int] = {}
-    for x, i in zip(intersperse(None, sorted(set(p[0] for p in positions))), count()):
+    for x, i in zip(intersperse(None, sorted({p[0] for p in positions})), count()):
         if x is None:
             continue
         x_compression[x] = i
-    for y, i in zip(intersperse(None, sorted(set(p[1] for p in positions))), count()):
+    for y, i in zip(intersperse(None, sorted({p[1] for p in positions})), count()):
         if y is None:
             continue
         y_compression[y] = i

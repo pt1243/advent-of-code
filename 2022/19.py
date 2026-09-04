@@ -33,8 +33,7 @@ def most_geodes_for_blueprint(blueprint: Blueprint, max_time: int) -> int:
     while open_set:
         time, state = open_set.pop()
         if time == max_time:
-            if state.geodes > most_geodes:
-                most_geodes = state.geodes
+            most_geodes = max(most_geodes, state.geodes)
             continue
 
         # if we were able to build a geode robot every single minute until the end

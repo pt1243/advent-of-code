@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import ClassVar
 
 with open("./2020/resources/7.txt") as f:
@@ -21,7 +19,7 @@ class Bag:
         return cls(name)
 
     def can_contain(self, colour: str) -> bool:
-        return any(b.colour == colour or b.can_contain(colour) for b in self.contents.keys())
+        return any(b.colour == colour or b.can_contain(colour) for b in self.contents)
 
     def num_inside(self) -> int:
         total = 0

@@ -7,4 +7,4 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    print(sum(sorted(((sum(int(line) for line in block.split("\n"))) for block in text.split("\n\n")))[-3:]))
+    print(sum(sorted((sum(int(line) for line in block.split("\n"))) for block in text.split("\n\n"))[-3:]))

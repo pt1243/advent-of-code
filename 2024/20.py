@@ -24,12 +24,12 @@ def get_distances() -> dict[tuple[int, int], int]:
 
 def count_cheats(distances: dict[tuple[int, int], int], cheat_distance: int) -> int:
     counts = defaultdict[int, int](int)
-    for cheat_start in distances:
+    for cheat_start, value in distances.items():
         for drow in range(-cheat_distance, cheat_distance + 1):
             for dcol in range(-cheat_distance + abs(drow), cheat_distance - abs(drow) + 1):
                 cheat_end = (cheat_start[0] + drow, cheat_start[1] + dcol)
                 if cheat_end in distances:
-                    cheat_savings = distances[cheat_start] - distances[cheat_end] - abs(drow) - abs(dcol)
+                    cheat_savings = value - distances[cheat_end] - abs(drow) - abs(dcol)
                     if cheat_savings > 0:
                         counts[cheat_savings] += 1
     return sum(count for distance, count in counts.items() if distance >= 100)

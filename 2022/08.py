@@ -10,8 +10,8 @@ def part_1() -> None:
     for row, line in enumerate(trees):
         for col, tree in enumerate(line):
             if (
-                all(trees[row][c] < tree for c in range(col))
-                or all(trees[row][c] < tree for c in range(col + 1, width))
+                all(line[c] < tree for c in range(col))
+                or all(line[c] < tree for c in range(col + 1, width))
                 or all(trees[r][col] < tree for r in range(row))
                 or all(trees[r][col] < tree for r in range(row + 1, height))
             ):
@@ -24,9 +24,10 @@ def part_2() -> None:
     max_scenic_score = 0
     for row, line in enumerate(trees):
         for col, tree in enumerate(line):
-            up = len(next(split_after((trees[r][col] for r in range(row - 1, -1, -1)), lambda x: x >= tree), ()))
-            down = len(next(split_after((trees[r][col] for r in range(row + 1, height)), lambda x: x >= tree), ()))
-            left = len(next(split_after((trees[row][c] for c in range(col - 1, -1, -1)), lambda x: x >= tree), ()))
-            right = len(next(split_after((trees[row][c] for c in range(col + 1, width)), lambda x: x >= tree), ()))
+            # Ruff does not understand that the tree binding is not used after each loop iteration
+            up = len(next(split_after((trees[r][col] for r in range(row - 1, -1, -1)), lambda x: x >= tree), ()))  # noqa: B023
+            down = len(next(split_after((trees[r][col] for r in range(row + 1, height)), lambda x: x >= tree), ()))  # noqa: B023
+            left = len(next(split_after((line[c] for c in range(col - 1, -1, -1)), lambda x: x >= tree), ()))  # noqa: B023
+            right = len(next(split_after((line[c] for c in range(col + 1, width)), lambda x: x >= tree), ()))  # noqa: B023
             max_scenic_score = max(max_scenic_score, up * down * left * right)
     print(max_scenic_score)

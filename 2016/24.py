@@ -28,7 +28,7 @@ def find_distance(start_pos: tuple[int, int], end_pos: tuple[int, int]) -> set[t
         _, current = heapq.heappop(open_set)
         if current == end_pos:
             total_path = {current}
-            while current in came_from.keys():
+            while current in came_from:
                 current = came_from[current]
                 total_path.add(current)
             return total_path

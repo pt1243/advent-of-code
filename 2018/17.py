@@ -54,8 +54,8 @@ def part_1() -> None:
                 tiles[(left_num, i)] = "#"
             else:
                 tiles[(i, left_num)] = "#"
-    min_y = min(pos[1] for pos in tiles.keys())
-    max_y = max(pos[1] for pos in tiles.keys())
+    min_y = min(pos[1] for pos in tiles)
+    max_y = max(pos[1] for pos in tiles)
 
     tiles = fill(500, 0, tiles, max_y)
     print(sum(1 for (_, y), tile in tiles.items() if tile in ("|", "~") and min_y <= y <= max_y))
@@ -73,8 +73,8 @@ def part_2() -> None:
                 tiles[(left_num, i)] = "#"
             else:
                 tiles[(i, left_num)] = "#"
-    min_y = min(pos[1] for pos in tiles.keys())
-    max_y = max(pos[1] for pos in tiles.keys())
+    min_y = min(pos[1] for pos in tiles)
+    max_y = max(pos[1] for pos in tiles)
 
     tiles = fill(500, 0, tiles, max_y)
     print(sum(1 for (_, y), tile in tiles.items() if tile == "~" and min_y <= y <= max_y))

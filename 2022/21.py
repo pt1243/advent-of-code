@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Callable
 from operator import add, floordiv, mul, sub
 from typing import ClassVar, cast

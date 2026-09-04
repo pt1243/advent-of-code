@@ -22,7 +22,7 @@ def part_1() -> None:
         if not current_infected:
             num_caused_infection += 1
         direction = turn_right[direction] if current_infected else turn_left[direction]
-        nodes[(row, col)] = False if current_infected else True
+        nodes[(row, col)] = not current_infected
         if direction == "u":
             row -= 1
         elif direction == "d":

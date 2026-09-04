@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import ClassVar, Self
 
 with open("./2016/resources/10.txt") as f:
@@ -23,7 +21,7 @@ class Bot:
         self.values.append(value)
         if len(self.values) == 2:
             a, b = self.values
-            low = a if a <= b else b
+            low = min(a, b)
             high = b if low == a else a
 
             if low == 17 and high == 61 and not add_to_output:

@@ -1,9 +1,7 @@
-from __future__ import annotations
-
 import heapq
 from collections import defaultdict
+from collections.abc import Generator
 from enum import Enum, auto
-from typing import Generator
 
 import numpy as np
 
@@ -80,7 +78,7 @@ def part_2() -> None:
 
     def get_neighbour_states(
         position: tuple[int, int], equipment: Equipment
-    ) -> Generator[tuple[int, tuple[int, int], Equipment], None, None]:
+    ) -> Generator[tuple[int, tuple[int, int], Equipment]]:
         # consider changing tool
         current_region = types[position[0], position[1]]
         for new_equipment in Equipment:

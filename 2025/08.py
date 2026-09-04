@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from itertools import combinations
 from math import prod
 from typing import NamedTuple

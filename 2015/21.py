@@ -77,8 +77,7 @@ def part_1() -> None:
         total_armour = weapon.armour + armour.armour + ring_combo.armour
 
         if simulate(100, total_damage, total_armour):
-            if total_cost < min_cost:
-                min_cost = total_cost
+            min_cost = min(min_cost, total_cost)
 
     print(min_cost)
 
@@ -91,7 +90,6 @@ def part_2() -> None:
         total_armour = weapon.armour + armour.armour + ring_combo.armour
 
         if not simulate(100, total_damage, total_armour):
-            if total_cost > max_cost:
-                max_cost = total_cost
+            max_cost = max(max_cost, total_cost)
 
     print(max_cost)

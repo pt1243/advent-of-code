@@ -55,4 +55,4 @@ def part_2() -> None:
                 return True
         return False
 
-    print(sum(hits_target(x_vel, y_vel) for x_vel in range(0, max_x + 1) for y_vel in range(-200, 200)))
+    print(sum(hits_target(x_vel, y_vel) for x_vel in range(max_x + 1) for y_vel in range(-200, 200)))

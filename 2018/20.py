@@ -1,6 +1,6 @@
 import heapq
 from collections import defaultdict
-from typing import Mapping
+from collections.abc import Mapping
 
 with open("./2018/resources/20.txt") as f:
     full_regex = f.read().strip()

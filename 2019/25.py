@@ -256,9 +256,9 @@ def part_1() -> None:
 
     droid.output_queue.clear()
     current_items = set(items)
-    move_to_pressure_sensitive_floor = [
+    move_to_pressure_sensitive_floor = next(
         m for m, dest in connections["Security Checkpoint"].items() if dest == "Pressure-Sensitive Floor"
-    ][0]
+    )
     for item_combination in powerset_of_sets(items):
         items_to_drop = current_items - item_combination
         items_to_pick_up = item_combination - current_items

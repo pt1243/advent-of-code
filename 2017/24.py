@@ -11,7 +11,7 @@ def part_1() -> None:
 
     def find_bridges(current_num: int, indices_used: set[int]) -> None:
         nonlocal max_strength
-        max_strength = max(max_strength, sum((sum(components[i]) for i in indices_used)))
+        max_strength = max(max_strength, sum(sum(components[i]) for i in indices_used))
         next_indices = {i for i, component in components.items() if i not in indices_used and current_num in component}
         for idx in next_indices:
             side_1, side_2 = components[idx]
@@ -36,9 +36,9 @@ def part_2() -> None:
         length = len(indices_used)
         if length > max_length:
             max_length = length
-            max_strength = sum((sum(components[i]) for i in indices_used))
+            max_strength = sum(sum(components[i]) for i in indices_used)
         elif length == max_length:
-            max_strength = max(max_strength, sum((sum(components[i]) for i in indices_used)))
+            max_strength = max(max_strength, sum(sum(components[i]) for i in indices_used))
         next_indices = {i for i, component in components.items() if i not in indices_used and current_num in component}
         for idx in next_indices:
             side_1, side_2 = components[idx]

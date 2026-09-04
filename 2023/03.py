@@ -24,7 +24,7 @@ def find_number_indices() -> list[tuple[int, int, int]]:
 def get_positions_to_check(i: int, j: int, k: int, max_char_index: int, max_line_index: int) -> list[tuple[int, int]]:
     positions_to_check: list[tuple[int, int]] = []
     if i != 0:
-        positions_to_check.extend(((i - 1, m) for m in range(j, k + 1)))
+        positions_to_check.extend((i - 1, m) for m in range(j, k + 1))
         if j != 0:
             positions_to_check.append((i - 1, j - 1))
         if k != max_char_index:
@@ -34,7 +34,7 @@ def get_positions_to_check(i: int, j: int, k: int, max_char_index: int, max_line
     if k != max_char_index:
         positions_to_check.append((i, k + 1))
     if i != max_line_index:
-        positions_to_check.extend(((i + 1, m) for m in range(j, k + 1)))
+        positions_to_check.extend((i + 1, m) for m in range(j, k + 1))
         if j != 0:
             positions_to_check.append((i + 1, j - 1))
         if k != max_char_index:

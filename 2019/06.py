@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-from functools import cache
 from typing import ClassVar, Self
 
 with open("./2019/resources/6.txt") as f:
@@ -21,7 +18,6 @@ class OrbitingBody:
             return cls._lookup[name]
         return cls(name)
 
-    @cache
     def direct_and_indirect_orbits(self) -> int:
         if self.name == "COM":
             return 0

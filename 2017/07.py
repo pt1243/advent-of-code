@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import ClassVar
 
 with open("./2017/resources/7.txt") as f:
@@ -69,7 +67,7 @@ def part_2() -> None:
         child = Program.lookup[child_name]
         if weights.count(child.get_weight()) == 1:
             print(
-                [w for w in weights if w != child.weight][0]
+                next(w for w in weights if w != child.weight)
                 - sum(Program.lookup[c].get_weight() for c in child.children)
             )
             return

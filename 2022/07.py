@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Iterator
 from operator import methodcaller
 from typing import NamedTuple

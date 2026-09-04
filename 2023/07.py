@@ -1,5 +1,5 @@
+from collections.abc import Sequence
 from itertools import product
-from typing import Sequence
 
 with open("./2023/resources/7.txt") as f:
     lines = f.read().splitlines()

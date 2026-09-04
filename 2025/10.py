@@ -13,7 +13,7 @@ with open("./2025/resources/10.txt") as f:
 def part_1() -> None:
     total = 0
     for line in lines:
-        desired = set(i for i, c in enumerate(line[1 : line.index("]")]) if c == "#")
+        desired = {i for i, c in enumerate(line[1 : line.index("]")]) if c == "#"}
         buttons = [
             (ast.literal_eval(tup[:-1] + "," + ")")) for tup in line[line.index("(") : line.rindex(")") + 1].split()
         ]
@@ -24,7 +24,7 @@ def part_1() -> None:
             for include, b in zip(button_presses, buttons):
                 if include:
                     counter.update(b)
-            lights_on = set(pos for pos, val in counter.items() if val % 2 == 1)
+            lights_on = {pos for pos, val in counter.items() if val % 2 == 1}
             if lights_on == desired:
                 total += sum(button_presses)
                 break

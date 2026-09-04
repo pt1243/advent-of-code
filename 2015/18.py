@@ -30,7 +30,7 @@ def get_num_neighbours_on(matrix: list[list[bool]], i: int, j: int) -> int:
 
 
 def part_1() -> None:
-    matrix: list[list[bool]] = [[True if char == "#" else False for char in line] for line in lines]
+    matrix: list[list[bool]] = [[char == "#" for char in line] for line in lines]
     update_dict: dict[tuple[int, int], bool] = {}
 
     for _ in range(100):
@@ -39,9 +39,9 @@ def part_1() -> None:
                 light = matrix[i][j]
                 neighbours = get_num_neighbours_on(matrix, i, j)
                 if light:
-                    update_dict[(i, j)] = True if neighbours == 2 or neighbours == 3 else False
+                    update_dict[(i, j)] = neighbours == 2 or neighbours == 3
                 else:
-                    update_dict[(i, j)] = True if neighbours == 3 else False
+                    update_dict[(i, j)] = neighbours == 3
         for i in range(100):
             for j in range(100):
                 matrix[i][j] = update_dict[(i, j)]
@@ -49,7 +49,7 @@ def part_1() -> None:
 
 
 def part_2() -> None:
-    matrix: list[list[bool]] = [[True if char == "#" else False for char in line] for line in lines]
+    matrix: list[list[bool]] = [[char == "#" for char in line] for line in lines]
     update_dict: dict[tuple[int, int], bool] = {}
 
     matrix[0][0] = True
@@ -63,9 +63,9 @@ def part_2() -> None:
                 light = matrix[i][j]
                 neighbours = get_num_neighbours_on(matrix, i, j)
                 if light:
-                    update_dict[(i, j)] = True if neighbours == 2 or neighbours == 3 else False
+                    update_dict[(i, j)] = neighbours == 2 or neighbours == 3
                 else:
-                    update_dict[(i, j)] = True if neighbours == 3 else False
+                    update_dict[(i, j)] = neighbours == 3
         update_dict[(0, 0)] = True
         update_dict[(0, 99)] = True
         update_dict[(99, 0)] = True

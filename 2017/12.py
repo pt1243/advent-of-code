@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import ClassVar
 
 with open("./2017/resources/12.txt") as f:
@@ -8,7 +6,7 @@ with open("./2017/resources/12.txt") as f:
 
 class Program:
     lookup: ClassVar[dict[int, Program]] = {}
-    used_groups: set[int] = {0}
+    used_groups: ClassVar[set[int]] = {0}
 
     @classmethod
     def get_program(cls, id_num: int) -> Program:

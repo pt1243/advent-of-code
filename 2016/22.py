@@ -50,14 +50,14 @@ def part_2() -> None:
                 int(split[3][:-1]),
             )
         )
-    max_x = max((node.x for node in all_nodes))
+    max_x = max(node.x for node in all_nodes)
 
     large_size_threshold = 400
     large_node_positions = [(node.x, node.y) for node in all_nodes if node.size > large_size_threshold]
-    empty_position = [(node.x, node.y) for node in all_nodes if node.used == 0][0]
+    empty_position = next((node.x, node.y) for node in all_nodes if node.used == 0)
 
     large_positions_y = large_node_positions[0][1]
-    large_positions_start_x = sorted(large_node_positions)[0][0]
+    large_positions_start_x = min(large_node_positions)[0]
 
     steps_to_move_next_to_g = max_x - empty_position[0] + empty_position[1]
     if empty_position[1] > large_positions_y and large_positions_start_x <= empty_position[0]:

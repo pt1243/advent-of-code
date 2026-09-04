@@ -1,8 +1,9 @@
+from collections.abc import Sequence
 from functools import reduce
 from itertools import combinations
 from math import floor
 from operator import mul
-from typing import Sequence, cast
+from typing import cast
 
 import numpy as np
 import numpy.typing as npt
@@ -56,8 +57,7 @@ def part_1() -> None:
             if sum(present_choices) == target:  # check that the remaining present choices can be split
                 if can_partition_into_two(tuple(weights - set(present_choices))):
                     qe = reduce(mul, present_choices)
-                    if qe < min_qe:
-                        min_qe = qe
+                    min_qe = min(min_qe, qe)
                     found = True
         if found:
             print(min_qe)
@@ -77,8 +77,7 @@ def part_2() -> None:
             if sum(first_group_choice) == target:
                 if can_partition_into_three(weights - set(first_group_choice), target):
                     qe = reduce(mul, first_group_choice)
-                    if qe < min_qe:
-                        min_qe = qe
+                    min_qe = min(min_qe, qe)
                     found = True
         if found:
             print(min_qe)

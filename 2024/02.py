@@ -7,9 +7,9 @@ with open("./2024/resources/2.txt") as f:
 def is_safe(line: list[int]) -> bool:
     if not (sorted(line) == line or sorted(line) == line[::-1]):
         return False
-    if not all(1 <= abs(a - b) <= 3 for a, b in pairwise(line)):
-        return False
-    return True
+    return all(1 <= abs(a - b) <= 3 for a, b in pairwise(line))
+    #     return False
+    # return True
 
 
 def part_1() -> None:

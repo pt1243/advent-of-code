@@ -7,7 +7,7 @@ with open("./2024/resources/22.txt") as f:
     secret_nums = [int(line) for line in f.read().splitlines()]
 
 
-def calculate_secret_numbers(secret_num: int) -> Generator[int, None, None]:
+def calculate_secret_numbers(secret_num: int) -> Generator[int]:
     while True:
         yield secret_num
         secret_num = ((secret_num * 64) ^ secret_num) % 16777216
@@ -36,6 +36,5 @@ def part_2() -> None:
         bananas = 0
         for windows_to_prices in all_windows_to_prices:  # ~3s faster than comprehension, not sure why
             bananas += windows_to_prices.get(window_target, 0)
-        if bananas > max_bananas:
-            max_bananas = bananas
+        max_bananas = max(max_bananas, bananas)
     print(max_bananas)

@@ -4,11 +4,11 @@ with open("./2018/resources/12.txt") as f:
 
 def part_1() -> None:
     initial_state, all_rules = text.split("\n\n")
-    state = [True if char == "#" else False for char in initial_state.split(": ")[1]]
+    state = [char == "#" for char in initial_state.split(": ")[1]]
     rules: dict[tuple[bool, ...], bool] = {}
     for rule in all_rules.split("\n"):
         lhs, rhs = rule.split(" => ")
-        rules[tuple([True if char == "#" else False for char in lhs])] = True if rhs == "#" else False
+        rules[tuple([char == "#" for char in lhs])] = rhs == "#"
 
     min_index = 0
     for _ in range(20):
@@ -36,11 +36,11 @@ def part_1() -> None:
 
 def part_2() -> None:
     initial_state, all_rules = text.split("\n\n")
-    state = [True if char == "#" else False for char in initial_state.split(": ")[1]]
+    state = [char == "#" for char in initial_state.split(": ")[1]]
     rules: dict[tuple[bool, ...], bool] = {}
     for rule in all_rules.split("\n"):
         lhs, rhs = rule.split(" => ")
-        rules[tuple([True if char == "#" else False for char in lhs])] = True if rhs == "#" else False
+        rules[tuple([char == "#" for char in lhs])] = rhs == "#"
 
     min_index = 0
     last = 0

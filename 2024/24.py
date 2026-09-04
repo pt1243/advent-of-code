@@ -1,8 +1,5 @@
-from __future__ import annotations
-
 from collections import defaultdict
 from collections.abc import Sequence
-from functools import cache
 from itertools import combinations
 from operator import and_, or_, xor
 from typing import ClassVar, cast
@@ -28,10 +25,12 @@ class Gate:
         type(self).associated_gates[arg_1].add(name)
         type(self).associated_gates[arg_2].add(name)
         self.op = {"AND": and_, "XOR": xor, "OR": or_}[op]
+        self.evaluation_result: int | None = None
 
-    @cache
     def evaluate(self) -> int:
-        return cast(int, self.op(self.resolve(self.arg_1), self.resolve(self.arg_2)))
+        if self.evaluation_result is None:
+            self.evaluation_result = cast(int, self.op(self.resolve(self.arg_1), self.resolve(self.arg_2)))
+        return self.evaluation_result
 
     @classmethod
     def resolve(cls, arg: str) -> int:
@@ -55,7 +54,7 @@ class Gate:
             cls.input_values[f"y{str(i).zfill(2)}"] = bit
 
         for gate in cls.lookup.values():
-            gate.evaluate.cache_clear()
+            gate.evaluation_result = None
 
         z_wires: list[tuple[str, int]] = []
         for gate in cls.lookup.values():
@@ -75,8 +74,8 @@ def part_1() -> None:
             x_bits.append((name, value))
         else:
             y_bits.append((name, value))
-    x = list(int(x[1]) for x in sorted(x_bits, reverse=True))
-    y = list(int(y[1]) for y in sorted(y_bits, reverse=True))
+    x = [int(x[1]) for x in sorted(x_bits, reverse=True)]
+    y = [int(y[1]) for y in sorted(y_bits, reverse=True)]
 
     for line in gate_lines.split("\n"):
         Gate(line)
@@ -142,9 +141,8 @@ def part_2() -> None:
 
             for gate_1, gate_2 in combinations(second_degree, 2):
                 # it seems that if the next bit is also wrong, the swap needs to involve the output of the next bit
-                if consider_both_values:
-                    if next_z != gate_1 and next_z != gate_2:
-                        continue
+                if consider_both_values and next_z != gate_1 and next_z != gate_2:
+                    continue
                 Gate.swap(gate_1, gate_2)
                 if not (wrong_value(i - 1) or wrong_value(i) or wrong_value(i + 1)):  # successful swap
                     swapped_gates.append(gate_1)

@@ -35,7 +35,7 @@ def simulate_game(text_input: list[str], elf_attack_power: int = 3) -> tuple[int
                 all_units.append(unit)
                 num_elves += 1
             else:
-                board_row.append(True if char == "." else False)
+                board_row.append(char == ".")
         board.append(board_row)
 
     def a_star(
@@ -52,7 +52,7 @@ def simulate_game(text_input: list[str], elf_attack_power: int = 3) -> tuple[int
             current = (row, col)
             if current == target:
                 path = [current]
-                while current in came_from.keys():
+                while current in came_from:
                     current = came_from[current]
                     path.append(current)
                 return g_score[target], path[::-1]
