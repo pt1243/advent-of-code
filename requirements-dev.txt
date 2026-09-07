@@ -1,7 +1,0 @@
--r requirements.txt
-mypy
-pre-commit
-ruff
-scipy-stubs
-specialist
-ty
