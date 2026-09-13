@@ -1,3 +1,2 @@
 more-itertools
 numpy
-scipy
